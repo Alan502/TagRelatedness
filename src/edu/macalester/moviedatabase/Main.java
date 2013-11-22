@@ -1,17 +1,10 @@
 package edu.macalester.moviedatabase;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Writer;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.Map;
+
 
 public class Main {
 
@@ -21,7 +14,7 @@ public class Main {
 	 */
 	public static void main(String[] args) throws IOException {
 		
-		MovieDatabase database = new MovieDatabase();
+		MatchingSimilarityDatabase database = new MatchingSimilarityDatabase();
 		
 		database.intializeMovieTags("ml-10M100K/tags.dat");
 		
@@ -47,7 +40,7 @@ public class Main {
 			i++;
 			for(String comparedTag : tags.subList(i, tags.size())){
 							
-				int cc = database.calculateCoOccurrence(comparingTag, comparedTag);
+				int cc = database.calculateSimilarity(comparingTag, comparedTag);
 				
 				if(cc != 0){
 					writer.append('"' + comparingTag + '"'+ ',' + '"' + comparedTag + '"' + " , " + cc);

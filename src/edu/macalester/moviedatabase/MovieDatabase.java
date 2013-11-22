@@ -10,10 +10,10 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
-public class MovieDatabase {
+public class MovieDatabase{
 
-	private HashMap<String, HashSet<String>> tagsMap;
-	private HashMap<String, HashSet<String>> moviesMap;
+	protected HashMap<String, HashSet<String>> tagsMap;
+	protected HashMap<String, HashSet<String>> moviesMap;
 	
 	public MovieDatabase(){
 		tagsMap = new HashMap<String, HashSet<String>>();
@@ -37,15 +37,6 @@ public class MovieDatabase {
 		
 		moviesSet.add(movieName);			
 		tagsMap.put(tagName, moviesSet);
-	}
-	
-	public int calculateCoOccurrence(String tag1, String tag2){
-		
-		HashSet<String> movieSet1 = (HashSet<String>) tagsMap.get(tag1).clone();
-		HashSet<String> movieSet2 = (HashSet<String>) tagsMap.get(tag2).clone();
-		
-		movieSet1.retainAll(movieSet2);
-		return movieSet1.size();
 	}
 	
 	public Set<String> getTagsKeySet(){
@@ -85,4 +76,5 @@ public class MovieDatabase {
 			e.printStackTrace();
 		}
 	}
+
 }
