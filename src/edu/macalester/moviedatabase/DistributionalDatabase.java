@@ -14,8 +14,9 @@ import java.util.Set;
 
 public class DistributionalDatabase implements Database{
 
-	protected HashMap<String, ArrayList<String>> tagsMap;
-	protected HashMap<String, ArrayList<String>> moviesMap;
+	private HashMap<String, ArrayList<String>> tagsMap;
+	private HashMap<String, ArrayList<String>> moviesMap;
+	private int totalEntries = 0;
 	
 	public DistributionalDatabase(){
 		tagsMap = new HashMap<String, ArrayList<String>>();
@@ -37,6 +38,7 @@ public class DistributionalDatabase implements Database{
 		
 		moviesList.add(movieName);			
 		tagsMap.put(tagName, moviesList);
+		totalEntries++;
 		}
 	
 	public void intializeMovieTags(String tagsDataFileDir){
@@ -82,6 +84,9 @@ public class DistributionalDatabase implements Database{
 	
 	public HashMap<String, ArrayList<String>> getTagsMap(){
 		return tagsMap;
+	}
+	public int getTotalEntries(){
+		return totalEntries;
 	}
 
 }
