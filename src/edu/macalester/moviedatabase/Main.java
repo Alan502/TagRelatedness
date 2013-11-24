@@ -14,15 +14,17 @@ public class Main {
 	 */
 	public static void main(String[] args) throws IOException {
 		
-		MatchingSimilarityDatabase database = new MatchingSimilarityDatabase();
+		ProjectionalDatabase database = new ProjectionalDatabase();
 		
 		database.intializeMovieTags("ml-10M100K/tags.dat");
 		
 		LinkedList<String> tags = new LinkedList<String>();
 		
-		for(String tag : database.getTagsKeySet()){
+		for(String tag : database.getTagsSet()){
 			tags.add(tag);
 		}
+		
+		ProjectionalOverlap similarityMeasure = new ProjectionalOverlap(database);
 		
 		FileWriter writer = null;
 		
@@ -32,7 +34,7 @@ public class Main {
 			e.printStackTrace();
 		}
 		
-		writer.append('"' + " Tag 1 " + '"'+ ',' + '"' + " Tag 2 " + '"' + " , " + "Number of Co Occurrent movies");
+		writer.append('"' + " Tag 1 " + '"'+ ',' + '"' + " Tag 2 " + '"' + " , " + "Similarity");
 		writer.append('\n');
 		
 		int i = 0;
@@ -40,7 +42,7 @@ public class Main {
 			i++;
 			for(String comparedTag : tags.subList(i, tags.size())){
 							
-				int cc = database.calculateSimilarity(comparingTag, comparedTag);
+				double cc = similarityMeasure.calculateSimilarity(comparingTag, comparedTag);
 				
 				if(cc != 0){
 					writer.append('"' + comparingTag + '"'+ ',' + '"' + comparedTag + '"' + " , " + cc);
