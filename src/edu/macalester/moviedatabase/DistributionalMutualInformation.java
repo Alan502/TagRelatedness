@@ -27,33 +27,31 @@ public class DistributionalMutualInformation implements TagSimilarityMeasure{
 		
 		movieSet1.retainAll(movieSet2); // movieSet1 now holds the intersection between movieSet1 and movieSet2
 		
-		double jointProbability = 0.0;
+		final double marginalProbability1 = ( (double) moviesList1.size() )/( (double) db.getTotalEntries() );
+		final double marginalProbability2 = ( (double) moviesList2.size() )/( (double) db.getTotalEntries() );
+		double similarity = 0.0;
 		
-		for(String intersectingMovie : movieSet1){
-			
+		for(String comparingMovie : movieSet1){
 			int list1Count = 0;
 			int list2Count = 0;
 			
 			for(String movie : moviesList1){
-				if(intersectingMovie.equals(movie))
+				if(comparingMovie.equals(movie))
 					list1Count++;
 			}
 			
 			for(String movie : moviesList2){
-				if(intersectingMovie.equals(movie))
+				if(comparingMovie.equals(movie))
 					list2Count++;
 			}
 			
-			int minimum = list1Count - list2Count > 0 ? list1Count : list2Count;
+			double minimum = list1Count - list2Count > 0 ? list2Count : list1Count;		
+			double jointProbability = ( minimum )/( (double) db.getTotalEntries()) ;
 			
-			jointProbability += ( (double) minimum )/( (double) db.getTotalEntries()) ;				
-			
+			similarity+= jointProbability * Math.log(jointProbability / (marginalProbability1*marginalProbability2));	
 		}
 		
-		double marginalProbability1 = ( (double) moviesList1.size() )/( (double) db.getTotalEntries() );
-		double marginalProbability2 = ( (double) moviesList2.size() )/( (double) db.getTotalEntries() );
-				
-		return jointProbability * Math.log(jointProbability / (marginalProbability1*marginalProbability2));
+		return similarity;
 	}
 	
 

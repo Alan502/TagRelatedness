@@ -70,7 +70,8 @@ public class ProjectionalDatabase implements Database{
 			
 			while(readerStream.ready()){
 				
-				String line = readerStream.readLine();
+				String line = readerStream.readLine();	
+				
 				String tagInfo[] = line.split("::");
 				
 				String movie = tagInfo[1];

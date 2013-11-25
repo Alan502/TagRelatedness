@@ -13,6 +13,7 @@ public class DistributionalMatching implements TagSimilarityMeasure{
 	}
 
 	public double calculateSimilarity(String tag1, String tag2) {
+		
 		HashMap<String, HashSet<String>> tagsMap = db.getTagsMap();
 		
 		HashSet<String> movies1 = (HashSet<String>) tagsMap.get(tag1).clone();
@@ -24,16 +25,13 @@ public class DistributionalMatching implements TagSimilarityMeasure{
 		final double totalMovies = db.getMoviesSet().size();
 		
 		HashMap<String, HashSet<String>> moviesMap = db.getMoviesMap();
+		
 		for(String movie : movies1 ){
-			double associated = 0.0;
-			for(String tag : db.getTagsSet() ){				
-				if(tagsMap.get(tag).contains(movie))
-					associated++;
-			}
+			double associated = moviesMap.get(movie).size();
 			similarity += Math.log(associated / totalMovies );
 		}
 		
-		return similarity;
+		return similarity*-1;
 	}
 	
 	

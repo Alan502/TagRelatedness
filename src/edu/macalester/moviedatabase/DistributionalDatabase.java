@@ -31,13 +31,18 @@ public class DistributionalDatabase implements Database{
 		
 		tagsList.add(tagName);
 		
+		moviesMap.put(movieName, tagsList);
+		
 		ArrayList<String> moviesList = tagsMap.get(tagName);
 		
 		if(null == moviesList)
 			moviesList = new ArrayList<String>();
 		
-		moviesList.add(movieName);			
+		moviesList.add(movieName);		
+		
 		tagsMap.put(tagName, moviesList);
+		
+		
 		totalEntries++;
 		}
 	

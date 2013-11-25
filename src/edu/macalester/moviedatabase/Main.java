@@ -18,12 +18,6 @@ public class Main {
 		
 		database.intializeMovieTags("ml-10M100K/tags.dat");
 		
-		LinkedList<String> tags = new LinkedList<String>();
-		
-		for(String tag : database.getTagsSet()){
-			tags.add(tag);
-		}
-		
 		ProjectionalOverlap similarityMeasure = new ProjectionalOverlap(database);
 		
 		FileWriter writer = null;
@@ -38,6 +32,11 @@ public class Main {
 		writer.append('\n');
 		
 		int i = 0;
+		LinkedList<String> tags = new LinkedList<String>();
+		for(String tag : database.getTagsSet()){
+			tags.add(tag);
+		}
+		
 		for(String comparingTag : tags){
 			i++;
 			for(String comparedTag : tags.subList(i, tags.size())){
@@ -45,7 +44,9 @@ public class Main {
 				double cc = similarityMeasure.calculateSimilarity(comparingTag, comparedTag);
 				
 				if(cc != 0){
-					writer.append('"' + comparingTag + '"'+ ',' + '"' + comparedTag + '"' + " , " + cc);
+					
+					// Remove newlines, commas and apostrophes that may distort the CSV file when being written.							
+					writer.append('"' + comparingTag.replace('"', ' ').replace('\n', ' ').replace(',', ' ') + '"'+ ',' + '"' + comparedTag.replace('"', ' ').replace('\n', ' ').replace(',', ' ') + '"' + " , " + cc);
 					writer.append('\n');
 				}
 				
