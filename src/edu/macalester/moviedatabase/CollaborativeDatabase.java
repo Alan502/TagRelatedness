@@ -22,32 +22,33 @@ public class CollaborativeDatabase{
 		allTags = new HashSet<String>();
 	}
 
-	@SuppressWarnings("unchecked")
 	public void addTag(String user, String movieName, String tagName) {
 		
-		ArrayList<HashMap<String, HashSet<String>>> map = userMap.get(user);
+		ArrayList<HashMap<String, HashSet<String>>> mapList = userMap.get(user);
 		
-		if(null == map){
-			map = new ArrayList<HashMap<String, HashSet<String>>>();
-			map.add(new HashMap<String, HashSet<String>>());
-			map.add(new HashMap<String, HashSet<String>>());
+		if(null == mapList){
+			mapList = new ArrayList<HashMap<String, HashSet<String>>>();
+			mapList.add(0, new HashMap<String, HashSet<String>>()); // moviesMap
+			mapList.add(1, new HashMap<String, HashSet<String>>()); // tagsMap
 		}
 		
-		HashSet<String> tagsSet = map.get(0).get(movieName);
+		HashSet<String> tagsSet = mapList.get(0).get(movieName);
 		
 		if(null == tagsSet)
 			tagsSet = new HashSet<String>();
 		
 		tagsSet.add(tagName);
+		mapList.get(0).put(movieName, tagsSet);
 		
-		HashSet<String> moviesSet = map.get(1).get(tagName);
+		HashSet<String> moviesSet = mapList.get(1).get(tagName);
 		
 		if(null == moviesSet)
 			moviesSet = new HashSet<String>();
 		
-		moviesSet.add(movieName);			
+		moviesSet.add(movieName);
+		mapList.get(1).put(tagName, moviesSet);
 		
-		userMap.put(user, map);
+		userMap.put(user, mapList);
 		allTags.add(tagName);
 				
 	}
