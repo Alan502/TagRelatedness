@@ -8,17 +8,18 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
-public class ProjectionalDatabase implements Database{
+public class ProjectionalDatabase implements NoUserDatabase{
 
 	protected HashMap<String, HashSet<String>> tagsMap;
 	protected HashMap<String, HashSet<String>> moviesMap;
+	private int totalEntries;
 	
 	public ProjectionalDatabase(){
 		tagsMap = new HashMap<String, HashSet<String>>();
 		moviesMap = new HashMap<String, HashSet<String>>();
+		totalEntries = 0;
 	}
 	
 	public void addTag(String movieName, String tagName){
@@ -38,6 +39,8 @@ public class ProjectionalDatabase implements Database{
 		
 		moviesSet.add(movieName);			
 		tagsMap.put(tagName, moviesSet);
+		
+		totalEntries++;
 	}
 	
 	public Set<String> getTagsSet(){
@@ -89,5 +92,10 @@ public class ProjectionalDatabase implements Database{
 			e.printStackTrace();
 		}
 	}
+
+	public int getTotalEntries() {
+		return totalEntries;
+	}
+
 
 }

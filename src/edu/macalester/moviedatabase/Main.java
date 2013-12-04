@@ -14,11 +14,11 @@ public class Main {
 	 */
 	public static void main(String[] args) throws IOException {
 		
-		ProjectionalDatabase database = new ProjectionalDatabase();
+		CollaborativeDatabase database = new CollaborativeDatabase();
 		
 		database.intializeMovieTags("ml-10M100K/tags.dat");
 		
-		ProjectionalOverlap similarityMeasure = new ProjectionalOverlap(database);
+		CollaborativeMutualInformation similarityMeasure = new CollaborativeMutualInformation(database);
 		
 		FileWriter writer = null;
 		
@@ -37,6 +37,8 @@ public class Main {
 			tags.add(tag);
 		}
 		
+		int completedTags = 0;
+		
 		for(String comparingTag : tags){
 			i++;
 			for(String comparedTag : tags.subList(i, tags.size())){
@@ -51,10 +53,13 @@ public class Main {
 				}
 				
 			}
+			completedTags++;
+			System.out.println("Percentage completition: "+((double) completedTags)/((double)tags.size())*100+"%");
 		}
 				
 		writer.flush();
 	    writer.close();
+	    System.out.println("Percentage completition: 100%");
 		
 	}
 

@@ -1,6 +1,5 @@
 package edu.macalester.moviedatabase;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -11,7 +10,7 @@ public class DistributionalMatching implements TagSimilarityMeasure{
 	public DistributionalMatching(ProjectionalDatabase database){
 		db = database;
 	}
-
+	@SuppressWarnings("unchecked")
 	public double calculateSimilarity(String tag1, String tag2) {
 		
 		HashMap<String, HashSet<String>> tagsMap = db.getTagsMap();

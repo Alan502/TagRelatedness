@@ -1,6 +1,5 @@
 package edu.macalester.moviedatabase;
 
-import java.util.HashMap;
 import java.util.HashSet;
 
 public class ProjectionalOverlap implements TagSimilarityMeasure{
@@ -11,6 +10,7 @@ public class ProjectionalOverlap implements TagSimilarityMeasure{
 		db = database;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public double calculateSimilarity(String tag1, String tag2) {
 		HashSet<String> movieSet1 = (HashSet<String>) db.getTagsMap().get(tag1).clone();
 		HashSet<String> movieSet2 = (HashSet<String>) db.getTagsMap().get(tag2).clone();

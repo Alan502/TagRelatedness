@@ -8,11 +8,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.Set;
 
-public class DistributionalDatabase implements Database{
+public class DistributionalDatabase implements NoUserDatabase{
 
 	private HashMap<String, ArrayList<String>> tagsMap;
 	private HashMap<String, ArrayList<String>> moviesMap;
@@ -89,6 +87,9 @@ public class DistributionalDatabase implements Database{
 	
 	public HashMap<String, ArrayList<String>> getTagsMap(){
 		return tagsMap;
+	}
+	public HashMap<String, ArrayList<String>> getMoviesMap(){
+		return moviesMap;
 	}
 	public int getTotalEntries(){
 		return totalEntries;
