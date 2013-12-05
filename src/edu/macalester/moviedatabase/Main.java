@@ -36,7 +36,7 @@ public class Main {
 		int threads  = 12;
 		
 		for(int i = 0; i < threads; i++){
-			new TagCalculationProcedure<>(similarityMeasure, tags, tags.size()/threads * i, tags.size()/threads * i+1, writer);
+			new TagCalculationProcedure<>(similarityMeasure, tags, tags.size()/threads * i, tags.size()/threads * (i+1), writer);
 		}
 				
 		writer.flush();
