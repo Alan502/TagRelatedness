@@ -31,35 +31,16 @@ public class Main {
 		writer.append('"' + " Tag 1 " + '"'+ ',' + '"' + " Tag 2 " + '"' + " , " + "Similarity");
 		writer.append('\n');
 		
-		int i = 0;
-		LinkedList<String> tags = new LinkedList<String>();
-		for(String tag : database.getTagsSet()){
-			tags.add(tag);
-		}
+		LinkedList<String> tags = new LinkedList<String>(database.getTagsSet());
+						
+		int threads  = 12;
 		
-		int completedTags = 0;
-		
-		for(String comparingTag : tags){
-			i++;
-			for(String comparedTag : tags.subList(i, tags.size())){
-							
-				double cc = similarityMeasure.calculateSimilarity(comparingTag, comparedTag);
-				
-				if(cc != 0){
-					
-					// Remove newlines, commas and apostrophes that may distort the CSV file when being written.							
-					writer.append('"' + comparingTag.replace('"', ' ').replace('\n', ' ').replace(',', ' ') + '"'+ ',' + '"' + comparedTag.replace('"', ' ').replace('\n', ' ').replace(',', ' ') + '"' + " , " + cc);
-					writer.append('\n');
-				}
-				
-			}
-			completedTags++;
-			System.out.println("Percentage completition: "+((double) completedTags)/((double)tags.size())*100+"%");
+		for(int i = 0; i < threads; i++){
+			new TagCalculationProcedure<>(similarityMeasure, tags, tags.size()/threads * i, tags.size()/threads * i+1, writer);
 		}
 				
 		writer.flush();
 	    writer.close();
-	    System.out.println("Percentage completition: 100%");
 		
 	}
 

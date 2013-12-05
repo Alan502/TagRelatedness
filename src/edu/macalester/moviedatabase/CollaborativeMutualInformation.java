@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
-public class CollaborativeMutualInformation {
+public class CollaborativeMutualInformation implements TagSimilarityMeasure {
 
 	private CollaborativeDatabase db;
 	HashMap<String, ArrayList<HashMap<String, HashSet<String>>>>  userMap;
@@ -46,7 +46,7 @@ public class CollaborativeMutualInformation {
 					
 					double jointProbability = (double) tagsSet1.size()/totalEntries;
 					
-					similarity += jointProbability * Math.log(jointProbability / (marginalProbability1* marginalProbability2));
+					similarity += jointProbability != 0 ? jointProbability * Math.log(jointProbability / (marginalProbability1* marginalProbability2)) : 0;
 				}
 			}	
 		}

@@ -18,13 +18,8 @@ public class DistributionalMutualInformation implements TagSimilarityMeasure{
 		ArrayList<String> movieList1 = tagsMap.get(tag1);	
 		ArrayList<String> movieList2 = tagsMap.get(tag2);
 		
-		HashSet<String> movieSet1 = new HashSet<String>();
-		for(String movie : movieList1)
-			movieSet1.add(movie);
-		
-		HashSet<String> movieSet2 = new HashSet<String>();
-		for(String movie : movieList2)
-			movieSet2.add(movie);		
+		HashSet<String> movieSet1 = new HashSet<String>(movieList1);
+		HashSet<String> movieSet2 = new HashSet<String>(movieList2);	
 
 		double similarity = 0.0;
 		final double totalEntries = db.getTotalEntries();		
@@ -36,13 +31,8 @@ public class DistributionalMutualInformation implements TagSimilarityMeasure{
 				ArrayList<String> tagsList1 = moviesMap.get(comparedMovie);
 				ArrayList<String> tagsList2 = moviesMap.get(comparingMovie);
 				
-				HashSet<String> tagsSet1 = new HashSet<String>();
-				for(String tag : tagsList1 )
-					tagsSet1.add(tag);
-				
-				HashSet<String> tagsSet2 = new HashSet<String>();
-				for(String tag : tagsList2)
-					tagsSet2.add(tag);
+				HashSet<String> tagsSet1 = new HashSet<String>(tagsList1);				
+				HashSet<String> tagsSet2 = new HashSet<String>(tagsList2);
 				
 				tagsSet1.retainAll(tagsSet2); // tagSet1 now holds the intersection between both sets
 				
@@ -69,7 +59,7 @@ public class DistributionalMutualInformation implements TagSimilarityMeasure{
 								
 				double jointProbability = minSum/totalEntries;
 				
-				similarity += jointProbability * Math.log(jointProbability / (marginalProbability1* marginalProbability2));
+				similarity += jointProbability != 0 ? jointProbability * Math.log(jointProbability / (marginalProbability1* marginalProbability2)) : 0;
 			}
 		}	
 		return similarity;
