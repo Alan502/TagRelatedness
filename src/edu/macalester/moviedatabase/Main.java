@@ -16,11 +16,11 @@ public class Main {
 	 */
 	public static void main(String[] args) throws IOException {
 		
-		DistributionalDatabase database = new DistributionalDatabase();
+		CollaborativeDatabase database = new CollaborativeDatabase();
 		
 		database.intializeMovieTags("ml-10M100K/tags.dat");
 		
-		final DistributionalMutualInformation similarityMeasure = new DistributionalMutualInformation(database);
+		final CollaborativeMatching similarityMeasure = new CollaborativeMatching(database);
 		
 		FileWriter fWriter = null;
 		try {
@@ -34,7 +34,7 @@ public class Main {
 		
 		final LinkedList<String> tags = new LinkedList<String>(database.getTagsSet());
 						
-		int threads  = 12;
+		int threads  = 4;
 		
 		HashSet<TagCalculationProcedure> procedures = new HashSet<TagCalculationProcedure>();
 		final FileWriter writer = fWriter;
