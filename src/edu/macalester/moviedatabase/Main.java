@@ -16,11 +16,11 @@ public class Main {
 	 */
 	public static void main(String[] args) throws IOException {
 		
-		CollaborativeDatabase database = new CollaborativeDatabase();
+		DistributionalDatabase database = new DistributionalDatabase();
 		
 		database.intializeMovieTags("ml-10M100K/tags.dat");
 		
-		final CollaborativeMutualInformation similarityMeasure = new CollaborativeMutualInformation(database);
+		final DistributionalMutualInformation similarityMeasure = new DistributionalMutualInformation(database);
 		
 		FileWriter fWriter = null;
 		try {
