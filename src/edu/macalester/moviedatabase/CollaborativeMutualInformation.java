@@ -25,13 +25,13 @@ public class CollaborativeMutualInformation implements TagSimilarityMeasure {
 			if(null == movieSet1 || null == movieSet2)
 				continue;
 	
-			int totalEntries = 0;
+			double totalEntries = 0;
 			for(String tag : tagsMap.keySet()){
 				totalEntries += tagsMap.get(tag).size();
 			}
 			
 			for(String comparingMovie : movieSet1){
-				double marginalProbability1 = moviesMap.get(comparingMovie).size()/totalEntries;
+				double marginalProbability1 = (moviesMap.get(comparingMovie).size())/totalEntries;
 				for(String comparedMovie : movieSet2){
 					double marginalProbability2 = moviesMap.get(comparedMovie).size()/totalEntries;
 					
@@ -48,6 +48,7 @@ public class CollaborativeMutualInformation implements TagSimilarityMeasure {
 					
 					similarity += jointProbability != 0 ? jointProbability * Math.log(jointProbability / (marginalProbability1* marginalProbability2)) : 0;
 				}
+				
 			}	
 		}
 		return similarity;
