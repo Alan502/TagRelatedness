@@ -34,7 +34,7 @@ public class Main {
 		
 		final LinkedList<String> tags = new LinkedList<String>(database.getTagsSet());
 						
-		int threads  = 4;
+		int threads  = 12;
 		
 		HashSet<TagCalculationProcedure> procedures = new HashSet<TagCalculationProcedure>();
 		final FileWriter writer = fWriter;
