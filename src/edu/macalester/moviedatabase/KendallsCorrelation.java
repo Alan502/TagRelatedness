@@ -108,9 +108,7 @@ public class KendallsCorrelation {
         
         final int n = xs.size();
         final long numPairs = (long) n * (n - 1) / 2;
-        System.out.println("n:"+n);
-        System.out.println("nm pairs:"+numPairs);
-
+        
         ComparablePair[] pairs = new ComparablePair[n];
         for (int i = 0; i < n; i++) {
             pairs[i] = new ComparablePair(xs.get(i), ys.get(i));
@@ -199,7 +197,6 @@ public class KendallsCorrelation {
         long concordantMinusDiscordant = (long) numPairs - tiedXPairs - tiedYPairs
                 + tiedXYPairs - 2 * swaps;
 
-        System.out.println("concordant - discord: "+concordantMinusDiscordant+" numpairs: "+numPairs+" tied x pairs: "+tiedXPairs+" tied y pairs "+tiedYPairs);
         return concordantMinusDiscordant /
                 Math.sqrt((numPairs - tiedXPairs) * (numPairs - tiedYPairs));
 

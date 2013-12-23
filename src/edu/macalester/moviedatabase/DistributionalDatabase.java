@@ -8,9 +8,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Set;
 
-public class DistributionalDatabase{
+public class DistributionalDatabase implements Database{
 
 	private HashMap<String, ArrayList<String>> tagsMap;
 	private HashMap<String, ArrayList<String>> moviesMap;
@@ -44,7 +45,7 @@ public class DistributionalDatabase{
 		totalEntries++;
 		}
 	
-	public void intializeMovieLensTags(String tagsDataFileDir){
+	public void initializeMovieLensTags(String tagsDataFileDir){
 		
 		FileInputStream fileStream;
 		BufferedInputStream bufferedStream;
@@ -77,8 +78,8 @@ public class DistributionalDatabase{
 		}
 	}
 
-	public Set<String> getTagsSet() {
-		return tagsMap.keySet();
+	public HashSet<String> getTagsSet() {
+		return (HashSet<String>) tagsMap.keySet();
 	}
 	
 	public Set<String> getMoviesSet(){

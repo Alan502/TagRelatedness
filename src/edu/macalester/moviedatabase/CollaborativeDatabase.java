@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
-public class CollaborativeDatabase{
+public class CollaborativeDatabase implements Database{
 	private HashMap<String, ArrayList<HashMap<String, HashSet<String>>> > userMap;
 	private HashSet<String> allTags;
 	// Each key in the map above is a user tag, and each user is asociated with two hashmaps:
@@ -53,14 +53,14 @@ public class CollaborativeDatabase{
 				
 	}
 
-	public void intializeMovieLensTags(String tagsDataFileDir) {
+	public void initializeMovieLensTags(String dir) {
 		FileInputStream fileStream;
 		BufferedInputStream bufferedStream;
 		BufferedReader readerStream;
 		
 		try {
 			
-			fileStream = new FileInputStream(tagsDataFileDir);
+			fileStream = new FileInputStream(dir);
 			bufferedStream = new BufferedInputStream(fileStream);
 			readerStream = new BufferedReader(new InputStreamReader(bufferedStream));
 			
@@ -95,6 +95,8 @@ public class CollaborativeDatabase{
 	public HashSet<String> getTagsSet() {
 		return allTags;
 	}
+
+
 
 
 }

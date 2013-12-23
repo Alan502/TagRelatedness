@@ -1,8 +1,6 @@
 package edu.macalester.moviedatabase;
 
-import java.awt.BufferCapabilities;
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -17,11 +15,7 @@ import edu.cmu.lti.ws4j.util.WS4JConfiguration;
 
 public class Main {
 
-	public static void main(String[] args) throws IOException {
-		int n = 47951;
-        long numPairs = (long) n * (n - 1) / 2;
-        System.out.println("n:"+n);
-        System.out.println("nm pairs:"+numPairs);
+	public static void main(String[] args) {
 		tauBetweenCSVandWordnet(args[0]);	
 	}
 	
@@ -53,14 +47,11 @@ public class Main {
 	    System.out.println(KendallsCorrelation.correlation(distMatchingSimilarities, wordnetSimilarities));
 	}
 	
-	public static void generateTagSimilarityCSV() throws IOException{
-		ProjectionalDatabase database = new ProjectionalDatabase();
-		database.intializeMovieLensTags("ml-10M100K/tags.dat");		
-		final DistributionalMatching similarityMeasure = new DistributionalMatching(database);
+	public static void generateTagSimilarityCSV(Database database, final TagSimilarityMeasure similarityMeasure, String outputFile) throws IOException{
 		
 		FileWriter fWriter = null;
 		try {
-			fWriter = new FileWriter("tags.csv");
+			fWriter = new FileWriter(outputFile);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
