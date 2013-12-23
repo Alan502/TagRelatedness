@@ -18,7 +18,7 @@ import edu.cmu.lti.ws4j.util.WS4JConfiguration;
 public class Main {
 
 	public static void main(String[] args) throws IOException {
-		tauBetweenCSVandWordnet("distributional_matching.csv");		
+		tauBetweenCSVandWordnet(args[0]);		
 	}
 	
 	public static void tauBetweenCSVandWordnet(String file){
