@@ -107,7 +107,9 @@ public class KendallsCorrelation {
             final List<F> ys) {
         
         final int n = xs.size();
+        System.out.println(n);
         final int numPairs = n * (n - 1) / 2;
+        System.out.println("numpairs: "+n);
 
         ComparablePair[] pairs = new ComparablePair[n];
         for (int i = 0; i < n; i++) {
