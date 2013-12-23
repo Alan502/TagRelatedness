@@ -18,7 +18,7 @@ import edu.cmu.lti.ws4j.util.WS4JConfiguration;
 public class Main {
 
 	public static void main(String[] args) throws IOException {
-		tauBetweenCSVandWordnet(args[0]);		
+		tauBetweenCSVandWordnet(args[0]);	
 	}
 	
 	public static void tauBetweenCSVandWordnet(String file){
@@ -37,8 +37,7 @@ public class Main {
 			br.readLine(); // Skip first line, which is just the column tags.
 			while ((line = br.readLine()) != null) {
 				 String[] column = line.split(",");
-				 double jc = rc.calcRelatednessOfWords(column[0].replace("\"", "") , column[1].replaceAll("\"", ""));
-				 
+				 double jc = rc.calcRelatednessOfWords(column[0].replace("\"", "").replace(" ", "") , column[1].replace("\"", "").replace(" ", ""));
 				 if(jc != 0.0){
 					 distMatchingSimilarities.add(Double.parseDouble(column[2]));
 					 wordnetSimilarities.add(jc);
