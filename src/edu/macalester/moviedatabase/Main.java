@@ -18,6 +18,10 @@ import edu.cmu.lti.ws4j.util.WS4JConfiguration;
 public class Main {
 
 	public static void main(String[] args) throws IOException {
+		int n = 47951;
+        long numPairs = (long) n * (n - 1) / 2;
+        System.out.println("n:"+n);
+        System.out.println("nm pairs:"+numPairs);
 		tauBetweenCSVandWordnet(args[0]);	
 	}
 	
@@ -46,7 +50,6 @@ public class Main {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		System.out.println(distMatchingSimilarities.size()+" "+wordnetSimilarities.size());
 	    System.out.println(KendallsCorrelation.correlation(distMatchingSimilarities, wordnetSimilarities));
 	}
 	
