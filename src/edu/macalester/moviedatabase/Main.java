@@ -38,7 +38,8 @@ public class Main {
 			while ((line = br.readLine()) != null) {
 				 String[] column = line.split(",");
 				 double jc = rc.calcRelatednessOfWords(column[0].replace("\"", "") , column[1].replaceAll("\"", ""));
-				 if(jc != 0){
+				 
+				 if(jc != 0.0){
 					 distMatchingSimilarities.add(Double.parseDouble(column[2]));
 					 wordnetSimilarities.add(jc);
 				 }
