@@ -105,9 +105,6 @@ public class KendallsCorrelation {
     static public <E extends Comparable<E>, F extends Comparable<F>> double correlation (
             final List<E> xs,
             final List<F> ys) {
-    	
-    	System.out.println(xs.toString());
-    	System.out.println(ys.toString());
         
         final int n = xs.size();
         final int numPairs = n * (n - 1) / 2;
@@ -200,6 +197,7 @@ public class KendallsCorrelation {
         int concordantMinusDiscordant = numPairs - tiedXPairs - tiedYPairs
                 + tiedXYPairs - 2 * swaps;
 
+        System.out.println("concordant - discord: "+concordantMinusDiscordant+" numpairs: "+numPairs+" tied x pairs: "+tiedXPairs+" tied y pairs "+tiedYPairs);
         return concordantMinusDiscordant /
                 Math.sqrt((numPairs - tiedXPairs) * (numPairs - tiedYPairs));
 

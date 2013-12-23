@@ -86,9 +86,8 @@ public class Main {
 
 //		fWriter.flush();
 //	    fWriter.close();
-	    
-		System.out.println(distMatchingSimilarities.size());
-		System.out.println(wordnetSimilarities.size());
+		
+		System.out.println(distMatchingSimilarities.size()+"  "+wordnetSimilarities.size());
 	    
 	    System.out.println(KendallsCorrelation.correlation(distMatchingSimilarities, wordnetSimilarities));
 		
