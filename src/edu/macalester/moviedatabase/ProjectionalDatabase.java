@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
-public class ProjectionalDatabase implements NoUserDatabase{
+public class ProjectionalDatabase{
 
 	protected HashMap<String, HashSet<String>> tagsMap;
 	protected HashMap<String, HashSet<String>> moviesMap;
@@ -59,7 +59,7 @@ public class ProjectionalDatabase implements NoUserDatabase{
 		return moviesMap;
 	}
 	
-	public void intializeMovieTags(String tagsDataFileDir){
+	public void intializeMovieLensTags(String tagsDataFileDir){
 		
 		FileInputStream fileStream;
 		BufferedInputStream bufferedStream;

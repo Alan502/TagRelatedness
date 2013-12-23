@@ -53,7 +53,7 @@ public class CollaborativeDatabase{
 				
 	}
 
-	public void intializeMovieTags(String tagsDataFileDir) {
+	public void intializeMovieLensTags(String tagsDataFileDir) {
 		FileInputStream fileStream;
 		BufferedInputStream bufferedStream;
 		BufferedReader readerStream;

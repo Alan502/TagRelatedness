@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 
-public class DistributionalDatabase implements NoUserDatabase{
+public class DistributionalDatabase{
 
 	private HashMap<String, ArrayList<String>> tagsMap;
 	private HashMap<String, ArrayList<String>> moviesMap;
@@ -44,7 +44,7 @@ public class DistributionalDatabase implements NoUserDatabase{
 		totalEntries++;
 		}
 	
-	public void intializeMovieTags(String tagsDataFileDir){
+	public void intializeMovieLensTags(String tagsDataFileDir){
 		
 		FileInputStream fileStream;
 		BufferedInputStream bufferedStream;
