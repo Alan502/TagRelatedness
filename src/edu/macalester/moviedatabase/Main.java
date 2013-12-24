@@ -15,9 +15,10 @@ import edu.cmu.lti.ws4j.util.WS4JConfiguration;
 
 
 public class Main {
-	static int threads  = 12;
+	static int threads  = Runtime.getRuntime().availableProcessors();
 
 	public static void main(String[] args) {
+		ParallelForEach.LOG.info("Running program with "+threads+" threads.");
 //		CollaborativeDatabase db = new CollaborativeDatabase();
 //		db.initializeMovieLensTags("ml-10M100K/tags.dat");
 //		try {

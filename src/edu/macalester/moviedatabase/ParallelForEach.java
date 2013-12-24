@@ -81,7 +81,7 @@ public class ParallelForEach {
                 final int finalI = i;
                 exec.submit(new Runnable() {
                     public void run() {
-                        T obj = asList.get(finalI);
+                        T obj = asList.get(finalI);                       
                         try {
                             if (finalI % logModulo == 0) {
                                 LOG.info("processing list element " + (finalI+1) + " of " + asList.size());

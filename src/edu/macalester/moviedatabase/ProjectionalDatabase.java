@@ -43,8 +43,8 @@ public class ProjectionalDatabase implements Database{
 		totalEntries++;
 	}
 	
-	public HashSet<String> getTagsSet(){
-		return (HashSet<String>) tagsMap.keySet();
+	public Set<String> getTagsSet(){
+		return tagsMap.keySet();
 	}
 	
 	public Set<String> getMoviesSet(){
