@@ -36,13 +36,13 @@ public class Main {
 //			e.printStackTrace();
 //		}
 		
-		ProjectionalDatabase pdb = new ProjectionalDatabase();
-		pdb.initializeMovieLensTags("ml-10M100K/tags.dat");
-		try {
-			generateTagSimilarityCSV(pdb, new DistributionalMatching(pdb), "dist_matching.csv");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+//		ProjectionalDatabase pdb = new ProjectionalDatabase();
+//		pdb.initializeMovieLensTags("ml-10M100K/tags.dat");
+//		try {
+//			generateTagSimilarityCSV(pdb, new DistributionalMatching(pdb), "dist_matching.csv");
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 		System.out.println("Kendalls Tau for collaborative matching:");
 		tauBetweenCSVandWordnet("collab_matching.csv");
 //		System.out.println("Kendalls Tau for collaborative MI:");
