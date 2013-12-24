@@ -45,10 +45,10 @@ public class Main {
 		}
 		System.out.println("Kendalls Tau for collaborative matching:");
 		tauBetweenCSVandWordnet("collab_matching.csv");
-		System.out.println("Kendalls Tau for collaborative MI:");
-		tauBetweenCSVandWordnet("collab_MI.csv");
-		System.out.println("Kendalls Tau for distributional matching:");
-		tauBetweenCSVandWordnet("dist_matching.csv");
+//		System.out.println("Kendalls Tau for collaborative MI:");
+//		tauBetweenCSVandWordnet("collab_MI.csv");
+//		System.out.println("Kendalls Tau for distributional matching:");
+//		tauBetweenCSVandWordnet("dist_matching.csv");
 		System.out.println("Kendalls Tau for distributional MI:");
 		tauBetweenCSVandWordnet("dist_MI.csv");
 	}
