@@ -1,9 +1,13 @@
 package edu.macalester.moviedatabase;
 
+import java.awt.List;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -14,6 +18,7 @@ import edu.cmu.lti.ws4j.util.WS4JConfiguration;
 
 
 public class Main {
+	static int threads  = 12;
 
 	public static void main(String[] args) {
 		tauBetweenCSVandWordnet(args[0]);	
@@ -23,27 +28,30 @@ public class Main {
 		
 		WS4JConfiguration.getInstance().setMFS(true);
         ILexicalDatabase db = new NictWordNet();
-		JiangConrath rc = new JiangConrath(db);
+		final JiangConrath rc = new JiangConrath(db);
 		
-		ArrayList<Double> distMatchingSimilarities  = new ArrayList<Double>();
-		ArrayList<Double> wordnetSimilarities = new ArrayList<Double>();
+		final ArrayList<Double> distMatchingSimilarities  = new ArrayList<Double>();
+		final ArrayList<Double> wordnetSimilarities = new ArrayList<Double>();
 		
-		BufferedReader br = null;
+		LinkedList<String> lines = null;
 		try {
-			br = new BufferedReader(new FileReader(file));
-			String line = "";
-			br.readLine(); // Skip first line, which is just the column tags.
-			while ((line = br.readLine()) != null) {
-				 String[] column = line.split(",");
+			lines = (LinkedList<String>) Files.readAllLines(Paths.get(file), Charset.defaultCharset());
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		ParallelForEach.loop(lines, threads, new Procedure<String>() {
+			public void call(String line){
+				String[] column = line.split(",");
 				 double jc = rc.calcRelatednessOfWords(column[0].replace("\"", "").replace(" ", "") , column[1].replace("\"", "").replace(" ", ""));
 				 if(jc != 0.0){
-					 distMatchingSimilarities.add(Double.parseDouble(column[2]));
-					 wordnetSimilarities.add(jc);
-				 }
+					 synchronized (distMatchingSimilarities) {
+						 distMatchingSimilarities.add(Double.parseDouble(column[2]));
+						 wordnetSimilarities.add(jc);
+					}	 
+				 }				
 			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		});
+		
 	    System.out.println(KendallsCorrelation.correlation(distMatchingSimilarities, wordnetSimilarities));
 	}
 	
@@ -60,9 +68,7 @@ public class Main {
 		fWriter.append('\n');
 		
 		final LinkedList<String> tags = new LinkedList<String>(database.getTagsSet());
-						
-		int threads  = 12;
-		
+								
 		final FileWriter writer = fWriter;
 		ParallelForEach.loop(tags,
 				threads,
@@ -78,8 +84,7 @@ public class Main {
             					
             					// Remove newlines, commas and apostrophes that may distort the CSV file when being written.
             					synchronized(writer){
-            					writer.append('"' + comparingTag.replace('"', ' ').replace('\n', ' ').replace(',', ' ') + '"'+ ',' + '"' + comparedTag.replace('"', ' ').replace('\n', ' ').replace(',', ' ') + '"' + " , " + cc);
-            					writer.append('\n');
+            					writer.append("\"" + comparingTag.replace("\"", "").replace("\n", "").replace(",", "") + '"'+ ',' + '"' + comparedTag.replace("\"", "").replace("\n", "").replace(",", "") + '"' + "," + cc+"\n");
             					}           						
             						
             						
