@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Set;
 
 public class DistributionalDatabase implements Database{
@@ -78,8 +77,8 @@ public class DistributionalDatabase implements Database{
 		}
 	}
 
-	public HashSet<String> getTagsSet() {
-		return (HashSet<String>) tagsMap.keySet();
+	public Set<String> getTagsSet() {
+		return tagsMap.keySet();
 	}
 	
 	public Set<String> getMoviesSet(){

@@ -18,14 +18,14 @@ public class Main {
 	static int threads  = 12;
 
 	public static void main(String[] args) {
-		CollaborativeDatabase db = new CollaborativeDatabase();
-		db.initializeMovieLensTags("ml-10M100K/tags.dat");
-		try {
-			generateTagSimilarityCSV(db, new CollaborativeMatching(db), "collab_matching.csv");
-			generateTagSimilarityCSV(db, new CollaborativeMutualInformation(db), "collab_MI.csv");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+//		CollaborativeDatabase db = new CollaborativeDatabase();
+//		db.initializeMovieLensTags("ml-10M100K/tags.dat");
+//		try {
+//			generateTagSimilarityCSV(db, new CollaborativeMatching(db), "collab_matching.csv");
+//			generateTagSimilarityCSV(db, new CollaborativeMutualInformation(db), "collab_MI.csv");
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 		
 		DistributionalDatabase ddb = new DistributionalDatabase();
 		ddb.initializeMovieLensTags("ml-10M100K/tags.dat");
@@ -109,7 +109,6 @@ public class Main {
             				double cc = similarityMeasure.calculateSimilarity(comparingTag, comparedTag);
             				
             				if(cc != 0){
-            					
             					// Remove newlines, commas and apostrophes that may distort the CSV file when being written.
             					synchronized(writer){
             					writer.append("\"" + comparingTag.replace("\"", "").replace("\n", "").replace(",", "") + '"'+ ',' + '"' + comparedTag.replace("\"", "").replace("\n", "").replace(",", "") + '"' + "," + cc+"\n");

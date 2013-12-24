@@ -34,7 +34,9 @@ public class DistributionalMutualInformation implements TagSimilarityMeasure{
 				HashSet<String> tagsSet1 = new HashSet<String>(tagsList1);				
 				HashSet<String> tagsSet2 = new HashSet<String>(tagsList2);
 				
-				tagsSet1.retainAll(tagsSet2); // tagSet1 now holds the intersection between both sets
+				HashSet<String> intersection = (HashSet<String>) tagsSet1.clone();
+				
+				intersection.retainAll(tagsSet2); // tagSet1 now holds the intersection between both sets
 				
 				double minSum = 0.0;
 				
@@ -42,7 +44,7 @@ public class DistributionalMutualInformation implements TagSimilarityMeasure{
 				 * all the other fields will be equal to 0, therefore
 				 * the do not attribute to the sum*/
 				
-				for(String tag : tagsSet1){
+				for(String tag : intersection){
 				double freq1 = 0;
 				double freq2 = 0;
 					for(String tagFreq : tagsSet1){

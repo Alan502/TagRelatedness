@@ -1,11 +1,11 @@
 package edu.macalester.moviedatabase;
 
-import java.util.HashSet;
+import java.util.Set;
 
 public interface Database {
 	
 	public void initializeMovieLensTags(String dir);
 //	public void initializeBibSonomyTags(String dir);
-	public HashSet<String> getTagsSet();
+	public Set<String> getTagsSet();
 
 }
