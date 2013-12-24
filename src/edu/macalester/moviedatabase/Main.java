@@ -27,14 +27,14 @@ public class Main {
 //		} catch (IOException e) {
 //			e.printStackTrace();
 //		}
-		
-		DistributionalDatabase ddb = new DistributionalDatabase();
-		ddb.initializeMovieLensTags("ml-10M100K/tags.dat");
-		try {
-			generateTagSimilarityCSV(ddb, new DistributionalMutualInformation(ddb), "dist_MI.csv");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+//		
+//		DistributionalDatabase ddb = new DistributionalDatabase();
+//		ddb.initializeMovieLensTags("ml-10M100K/tags.dat");
+//		try {
+//			generateTagSimilarityCSV(ddb, new DistributionalMutualInformation(ddb), "dist_MI.csv");
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 		
 		ProjectionalDatabase pdb = new ProjectionalDatabase();
 		pdb.initializeMovieLensTags("ml-10M100K/tags.dat");
