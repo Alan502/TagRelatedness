@@ -1,8 +1,5 @@
 package edu.macalester.moviedatabase;
 
-import java.awt.List;
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -21,7 +18,38 @@ public class Main {
 	static int threads  = 12;
 
 	public static void main(String[] args) {
-		tauBetweenCSVandWordnet(args[0]);	
+		CollaborativeDatabase db = new CollaborativeDatabase();
+		db.initializeMovieLensTags("ml-10M100K/tags.dat");
+		try {
+			generateTagSimilarityCSV(db, new CollaborativeMatching(db), "collab_matching.csv");
+			generateTagSimilarityCSV(db, new CollaborativeMutualInformation(db), "collab_MI.csv");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		DistributionalDatabase ddb = new DistributionalDatabase();
+		ddb.initializeMovieLensTags("ml-10M100K/tags.dat");
+		try {
+			generateTagSimilarityCSV(ddb, new DistributionalMutualInformation(ddb), "dist_MI.csv");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		ProjectionalDatabase pdb = new ProjectionalDatabase();
+		pdb.initializeMovieLensTags("ml-10M100K/tags.dat");
+		try {
+			generateTagSimilarityCSV(pdb, new DistributionalMatching(pdb), "dist_matching.csv");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		System.out.println("Kendalls Tau for collaborative matching:");
+		tauBetweenCSVandWordnet("collab_matching.csv");
+		System.out.println("Kendalls Tau for collaborative MI:");
+		tauBetweenCSVandWordnet("collab_MI.csv");
+		System.out.println("Kendalls Tau for distributional matching:");
+		tauBetweenCSVandWordnet("dist_matching.csv");
+		System.out.println("Kendalls Tau for distributional MI:");
+		tauBetweenCSVandWordnet("dist_MI.csv");
 	}
 	
 	public static void tauBetweenCSVandWordnet(String file){
@@ -35,7 +63,7 @@ public class Main {
 		
 		java.util.List<String> lines = null;
 		try {
-			lines  = Files.readAllLines(Paths.get(file), Charset.defaultCharset());
+			lines = Files.readAllLines(Paths.get(file), Charset.defaultCharset());
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
@@ -48,7 +76,7 @@ public class Main {
 						 distMatchingSimilarities.add(Double.parseDouble(column[2]));
 						 wordnetSimilarities.add(jc);
 					 }
-				 }				
+				 }
 			}
 		});
 		
@@ -76,7 +104,7 @@ public class Main {
                     @Override
                     public void call(String comparingTag) throws Exception {
                     	int start = tags.indexOf(comparingTag);
-                    	for(String comparedTag : tags.subList(start, tags.size() )){
+                    	for(String comparedTag : tags.subList(start+1, tags.size() )){
 							
             				double cc = similarityMeasure.calculateSimilarity(comparingTag, comparedTag);
             				
