@@ -24,27 +24,23 @@ public class CollaborativeMutualInformation implements TagSimilarityMeasure {
 			
 			if(null == movieSet1 || null == movieSet2)
 				continue;
-	
-			double totalEntries = 0;
-			for(String tag : tagsMap.keySet()){
-				totalEntries += tagsMap.get(tag).size();
-			}
+			
+			double totalTags = tagsMap.keySet().size();
+			similarity += Math.log(totalTags/ totalTags+1);
 			
 			for(String comparingMovie : movieSet1){
-				double marginalProbability1 = (moviesMap.get(comparingMovie).size())/totalEntries;
+				double marginalProbability1 = (moviesMap.get(comparingMovie).size())/(totalTags+1);
 				for(String comparedMovie : movieSet2){
-					double marginalProbability2 = moviesMap.get(comparedMovie).size()/totalEntries;
+					double marginalProbability2 = moviesMap.get(comparedMovie).size()/(totalTags+1);
 					
-					HashSet<String> tagsSet1 = moviesMap.get(comparingMovie);
-					HashSet<String> tagsSet2 = moviesMap.get(comparedMovie);
+					HashSet<String> tagsSet1 = (HashSet<String>) moviesMap.get(comparingMovie).clone();
+					HashSet<String> tagsSet2 = (HashSet<String>) moviesMap.get(comparedMovie).clone();
 					
-					/* We use the intersection between both tags sets given that
-					 * all of the other cells will have 0 in them. The intersection
-					 * will be the sum of minimum.
+					/* Add the joint probability for the intersections
 					 */
 					tagsSet1.retainAll(tagsSet2);
 					
-					double jointProbability = (double) tagsSet1.size()/totalEntries;
+					double jointProbability = (double) tagsSet1.size()/(totalTags+1);
 					
 					similarity += jointProbability != 0 ? jointProbability * Math.log(jointProbability / (marginalProbability1* marginalProbability2)) : 0;
 				}

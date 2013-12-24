@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
-public class CollaborativeMatching implements TagSimilarityMeasure{
+public class MacroAggregationMatching implements TagSimilarityMeasure{
 	
 	CollaborativeDatabase db;
 	
-	public CollaborativeMatching(CollaborativeDatabase database){
+	public MacroAggregationMatching(CollaborativeDatabase database){
 		db = database;
 	}
 	@SuppressWarnings("unchecked")
@@ -26,16 +26,15 @@ public class CollaborativeMatching implements TagSimilarityMeasure{
 			HashSet<String> movies1 = (HashSet<String>) tagsMap.get(tag1).clone();
 			HashSet<String> movies2 = (HashSet<String>) tagsMap.get(tag2).clone();
 			
-			double totalTags = tagsMap.keySet().size();
-			similarity += Math.log(totalTags/ totalTags+1);	
-			
 			movies1.retainAll(movies2);
 						
 			HashMap<String, HashSet<String>> moviesMap = userMap.get(user).get(0);
-						
+			
+			final double totalMovies = moviesMap.keySet().size();
+			
 			for(String movie : movies1 ){
 				double associated = moviesMap.get(movie).size();
-				similarity += Math.log(associated / totalTags + 1 );
+				similarity += Math.log(associated / totalMovies );
 			}
 			
 			

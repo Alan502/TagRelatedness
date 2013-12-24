@@ -115,10 +115,10 @@ public class KendallsCorrelation {
         }
         Arrays.sort(pairs);
 
-        int tiedXPairs = 0;
-        int tiedXYPairs = 0;
-        int consecutiveXTies = 1;
-        int consecutiveXYTies = 1;
+        long tiedXPairs = 0;
+        long tiedXYPairs = 0;
+        long consecutiveXTies = 1;
+        long consecutiveXYTies = 1;
         ComparablePair prev = pairs[0];
         for (int i = 1; i < n; i++) {
             final ComparablePair curr = pairs[i];
@@ -141,7 +141,7 @@ public class KendallsCorrelation {
         tiedXPairs += consecutiveXTies * (consecutiveXTies - 1) / 2;
         tiedXYPairs += consecutiveXYTies * (consecutiveXYTies - 1) / 2;
 
-        int swaps = 0;
+        long swaps = 0;
         ComparablePair[] pairsDestination = new ComparablePair[n];
         for (int segmentSize = 1; segmentSize < n; segmentSize <<= 1) {
             for (int offset = 0; offset < n; offset += 2 * segmentSize) {
@@ -155,7 +155,7 @@ public class KendallsCorrelation {
                     if (i < iEnd) {
                         if (j < jEnd) {
                             if (pairs[i].y.compareTo(pairs[j].y) <= 0) {
-                                pairsDestination[copyLocation] = pairs[i];
+                            	pairsDestination[copyLocation] = pairs[i];
                                 i++;
                             } else {
                                 pairsDestination[copyLocation] = pairs[j];
@@ -179,11 +179,11 @@ public class KendallsCorrelation {
             
         }
 
-        int tiedYPairs = 0;
-        int consecutiveYTies = 1;
+        long tiedYPairs = 0;
+        long consecutiveYTies = 1;
         prev = pairs[0];
         for (int i = 1; i < n; i++) {
-            final ComparablePair curr = pairs[i];
+            final ComparablePair curr = pairs[ i];
             if (curr.y.equals(prev.y)) {
                 consecutiveYTies++;
             } else {
