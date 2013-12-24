@@ -33,9 +33,9 @@ public class Main {
 		final ArrayList<Double> distMatchingSimilarities  = new ArrayList<Double>();
 		final ArrayList<Double> wordnetSimilarities = new ArrayList<Double>();
 		
-		LinkedList<String> lines = null;
+		java.util.List<String> lines = null;
 		try {
-			lines = (LinkedList<String>) Files.readAllLines(Paths.get(file), Charset.defaultCharset());
+			lines  = Files.readAllLines(Paths.get(file), Charset.defaultCharset());
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
@@ -47,7 +47,7 @@ public class Main {
 					 synchronized (distMatchingSimilarities) {
 						 distMatchingSimilarities.add(Double.parseDouble(column[2]));
 						 wordnetSimilarities.add(jc);
-					}	 
+					 }
 				 }				
 			}
 		});
