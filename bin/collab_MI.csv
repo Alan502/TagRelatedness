@@ -1,0 +1,1631 @@
+" Tag 1 "," Tag 2 " , Similarity
+"dystopia","see also:Zathura",0.006315201482415479
+"dystopia","assasination plot",0.007501370461014641
+"see also:Zathura","assasination plot",0.0012703799012293707
+"dystopia","plucky crew",0.08353574206358236
+"dystopia","visually appealing",0.26647772592587093
+"dystopia","writers at work",0.006832515033591659
+"denzel's fine behind","noir thriller",0.23025850929940456
+"dystopia","hilarious",0.14135345625344836
+"dystopia","Futuristmovies.com",0.14135345625344836
+"dystopia","On TV all the time",0.14135345625344836
+"dystopia","dystopian",0.07994511256220323
+"dystopia","action groovy",0.14135345625344836
+"dystopia","Marco Brambilla",0.14135345625344836
+"My movies","funny",0.31971209988380234
+"My movies","Children",0.09865189836390527
+"My movies","DEMONIC POSSESSION",3.8762790737383415
+"My movies","cult film",4.516869148383409
+"de-genderization","ignorance",3.6976099611847905E-4
+"2","coup",0.27031007207210955
+"G","R",0.0011396718439493354
+"Michael Byrne","Bernard Hill",0.004955122365091824
+"M","Q",0.04574495130179249
+"SUICIDE","affectionate",8.748905547442774E-4
+"R","love affair",0.01643560950727159
+"Decovny","puns",0.36477864056412496
+"R","Alan Ball",1.7181490126881973
+"R","Takeshi Kitano",0.3662040962227032
+"pedophile","wartime",8.725141447196897E-4
+"f","g",0.7765772130918976
+"f","d",1.1728521367989186
+"f","e",0.5864260683994593
+"f","b",0.5864260683994593
+"f","c",0.5864260683994593
+"f","a",1.1728521367989186
+"f","h",0.5864260683994593
+"f","t",0.5864260683994593
+"f","s",0.5864260683994593
+"g","d",1.1728521367989186
+"g","e",0.5864260683994593
+"g","b",0.5864260683994593
+"g","c",0.5864260683994593
+"g","a",1.1728521367989186
+"g","h",0.5864260683994593
+"g","t",0.5864260683994593
+"g","s",0.5864260683994593
+"d","e",0.5864260683994593
+"d","b",0.5864260683994593
+"d","c",0.5864260683994593
+"d","a",1.1728521367989186
+"d","h",0.5864260683994593
+"d","t",0.5864260683994593
+"d","s",0.5864260683994593
+"e","b",0.29321303419972966
+"e","c",0.29321303419972966
+"e","a",0.5864260683994593
+"e","h",0.29321303419972966
+"e","t",0.29321303419972966
+"e","s",0.29321303419972966
+"b","c",0.29321303419972966
+"b","a",0.5864260683994593
+"b","h",0.29321303419972966
+"b","t",0.29321303419972966
+"b","s",0.29321303419972966
+"c","a",0.5864260683994593
+"c","h",0.29321303419972966
+"c","t",0.29321303419972966
+"c","s",0.29321303419972966
+"wartime","crime",0.36477864056412496
+"quick cuts","illusionism",0.004102475016281482
+"transsexuals","guilt",3.800366713839885E-4
+"magical aging/immortality","adapted from:game",0.0013028091511347627
+"affectionate","BUILDING SELF-ESTEEM",0.03539429022643771
+"great cast excellent","Great Adaptations",0.055706570250973114
+"adapted from:game"," ",0.0034766630738422848
+"guilt","memory",0.17851484105136767
+"guilt","psychology",0.17851484105136767
+" ","chase in airport cargo handling facility",7.313533024677197E-4
+"07.05.06","16.01.06",0.020979655259508078
+"07.05.06","26.02.06",0.021519944413895153
+"07.05.06","01.02.05",0.02283958694807764
+"thought-provoking","Complex",0.18219921808513267
+"07.05.06","29.03.06",0.010759972206947577
+"thought-provoking","chick flick",0.054571308152348535
+" ","I have found the video posted into this page: http://www.tu.tv/videos/el-hombre-que-plantaba-arboles",0.27031007207210955
+"anti-war commentary","could have been better",0.008571065849385861
+"special police forces","brazil",0.33285676595884867
+"Roald Dahl","space",0.027954069778348557
+"bullying","hormonal",0.0020206920074207855
+"Spielberg","Music",0.07994511256220323
+"Spielberg","Seen 2006",1.0129276308087583
+"Charles Dickens","Biblical",0.044423212710721374
+"Charles Dickens","World War I",0.019415709585551062
+"social message","smart kids",0.08032701682016671
+"social message","fable",0.09631782434607489
+"volleyball","fear of commitment",4.4265769121680824E-4
+"Biblical","Jesus",0.34657359027997264
+"visually appealing","shakespeare",0.3364523462915702
+"Robert Ludlum","assassin",0.22236305999681275
+"unintentional comedy","MST3K",8.560264653985081
+"plot:romance during porno shoot","movie within a movie",0.0011691340917235015
+"muse","movie theatre",0.0017074345588270398
+"movie theatre","butchery",0.0056954588268119995
+"Robert Ludlum","assassin-in-training (scene)",0.2986265782046758
+"Robert Ludlum","espionage",0.2986265782046758
+"Robert Ludlum","Jean Reno",0.1831020481113516
+"space","spain",0.002130039771884214
+"space","WWII",0.034270683608890885
+"space","voyeurism",0.009268606062486128
+"space","Coen Brothers",0.013372817632682853
+"space","Firefly",0.27465307216702745
+"space","Tom Hanks",0.3276959195249285
+"space","aliens",0.16057620877200915
+"space","SF",2.5744806577749357
+"space","slasher",2.4246994985359254
+"space","adventure",0.3678109698793973
+"space","time travel",0.1564609338840251
+"good sci-fi flick","Firefly",0.21576155433883565
+"good sci-fi flick","action",0.21576155433883565
+"Amazing Cinematography","Great Adaptations",0.14304131316371785
+"Amazing Cinematography","WWII",0.3290913929336232
+"BUILDING SELF-ESTEEM","KIDNAPPING",7.02553858785843E-4
+"KIDNAPPING","MUTANTS",0.0021352236560712784
+"scaring greatSoundtrack davidLynch angeloBadalamenti thriller","sad",0.08664339756999316
+"scaring greatSoundtrack davidLynch angeloBadalamenti thriller","art house",0.25993019270997947
+"scaring greatSoundtrack davidLynch angeloBadalamenti thriller","comedy",0.08664339756999316
+"Neil Jordan","Irvin Kershner",0.01973751442809512
+"Neil Jordan","crime",0.05878462435703541
+"scaring greatSoundtrack davidLynch angeloBadalamenti thriller","romantic",0.08664339756999316
+"scaring greatSoundtrack davidLynch angeloBadalamenti thriller","love this movie",0.25993019270997947
+"MUTANTS","END OF THE WORLD",0.0026246716642328322
+"16.01.06","26.02.06",0.019660012725325596
+"16.01.06","01.02.05",0.02283958694807764
+"16.01.06","29.03.06",0.010759972206947577
+"sexual fantasy","teacher student relationship",0.011179333068250011
+"teacher student relationship","Drive-In",4.6829819019007145E-4
+"teacher student relationship","Queen Elizabeth",0.0011829932454912166
+"Queen Elizabeth","adultry",0.017784830725640695
+"Queen Elizabeth","Wachowski Brothers",0.014047818525352727
+"Ang Lee","martial arts",0.27031007207210955
+"smart kids","artist",0.014022215430396846
+"26.02.06","01.02.05",0.019660012725325596
+"26.02.06","29.03.06",0.010759972206947577
+"IN LIBRARY","netwatch",1.9381008149416203
+"terrible","wedding",0.03006248042600451
+"terrible","arch",0.21576155433883565
+"Great Adaptations","World War I",7.708371015428722E-4
+"terrible","lame",0.21576155433883565
+"UFOS","out from prison",6.748373006872077E-4
+"END OF THE WORLD","gloomy",0.002055051583783914
+"chick flick","dance",0.2878761275284956
+"chick flick","religious theme",0.07004392766950678
+"chick flick","meg ryan",0.36651629274966196
+"adultry","Wachowski Brothers",0.008892415362820347
+"01.02.05","29.03.06",0.009830006362662798
+"curious","funny",0.30179593715958447
+"friends","mute",4.5498436655841206E-4
+"curious","music",0.30179593715958447
+"Cool but freaky","violence",0.34657359027997264
+"Don Cheadle","WWII",0.008372544553062035
+"Don Cheadle","Snoop Dogg",0.012729656758128873
+"remake of a french film","haunted house",0.02567862664053764
+"9/11","aviation",0.27031007207210955
+"Great dialogue","Hilarious",0.24751963807553964
+"netflix","murder",0.21576155433883565
+"flash back","Benicio Del Toro",0.35937524037701774
+"Funny as hell","amazing",0.3675044019336294
+"Funny as hell","Monty Python",0.34657359027997264
+"road trip","quirky good",0.24626725245045883
+"road trip","American history",0.034088497867206156
+"road trip","brothers",0.3631276544516587
+"WWII","voyeurism",0.0021382883806044754
+"setting:Chicago","villain:The Scarecrow",0.0018592936924671387
+"WWII","Coen Brothers",0.004457605877560951
+"road trip","california",0.3611918412977808
+"netflix","adultery",0.21576155433883565
+"formulaic","pointless",0.029205545802116168
+"formulaic","violently stupid",0.035232912589593955
+"netflix","netflixbacklist",1.073796830138887
+"WWII","War",0.5493061443340548
+"imperialism","gloomy",9.989206401009364E-4
+"Irvin Kershner","crime",0.038954077630174236
+"gloomy","drab",0.018551725262914185
+"fountain of youth","Darren Aronofsky",0.5353679821083517
+"voyeurism","Coen Brothers",0.0027635237053664874
+"dance","black",0.006814997865584177
+"like the first","excelent!!!",0.27031007207210955
+"drab","WOMEN FRIENDSHIP'S",0.008015421538792603
+"drab","ESCAPE FROM PRISON",0.005164049053673839
+"WOMEN FRIENDSHIP'S","ESCAPE FROM PRISON",0.002315166357648949
+"madness","funny",0.020730603086731567
+"songwriting","melodramatic",0.01092061013005421
+"too nice","controversial",0.21576155433883565
+"too nice","historically inaccurate",0.21576155433883565
+"snakes","orcs",0.006458484332085363
+"discovery","rocket",0.3543499047627984
+"Steve Carell","funny",0.24413606414846883
+"Razzie nominee: worst actor","boat",0.0011698053495433928
+"disappointing","weak story",0.2986265782046758
+"boat","Classic",0.06108604879161034
+"Darren Aronofsky","hip hop montage",0.34657359027997264
+"Alberta","Brian Aldiss",0.0034074989327920885
+"bad guy good","eva mendez",0.13117180078686086
+"Coen Brothers","John Candy",0.018794141101214103
+"Coen Brothers","crime",0.9253165314200853
+"Coen Brothers","gangster",0.36651629274966196
+"GENDER-BENDING","REINCARNATION",6.826755440169833E-4
+"John Candy","Sir John Candy",3.2958368660043296
+"one of the greatest scripts of the last 10 years","owned",0.36651629274966196
+"neil simon","artist",8.974671520550167E-4
+"funny","Oscar Nominee",0.16665960847389508
+"funny","Children",0.4243456660799857
+"funny","music",0.1834840265072062
+"funny","real-life cartoon",0.29144631955236805
+"funny","simpsons",0.3631276544516587
+"funny","God",0.08664339756999316
+"funny","will farell",0.30649537425959444
+"funny","nascar",0.30649537425959444
+"better than the remake","vivid characters",0.07127857833168802
+"better than the remake","underwater",0.043598095869061285
+"thrilling end","slow starter",0.34657359027997264
+"pointless","violently stupid",0.029205545802116168
+"pointless","moronic",0.36651629274966196
+"Peter Jackson","Children",0.02048862907460092
+"occult","exorcism",0.40546510810816433
+"haunted house","Post apocalyptic",0.0034074989327920885
+"haunted house","Oscar Nominee",0.007223834671017204
+"seen at the cinema","Star Trek",2.128766716081596
+"seen at the cinema","Sacha Baron Cohen",1.5429130598319696
+"good will hunting","inspiring",0.21576155433883565
+"Post apocalyptic","post-apocalyptic",0.13212915413765
+"Post apocalyptic","time travel",0.13212915413765
+"SERVANTS AND EMPLOYERS","LIFE UNDER OCCUPATION",7.172084463508588E-4
+"Post apocalyptic","video game adaptation",2.0154645061401237
+"Post apocalyptic","future",0.13212915413765
+"Post apocalyptic","end of the world",0.13212915413765
+"Post apocalyptic","twist ending",0.15415067982725833
+"Gay","london",0.21576155433883565
+"Gay","adolescent gays",0.21576155433883565
+"iraq","caper",0.27031007207210955
+"Monty Python","Fun",0.06656668362975954
+"fat women","ice",0.01838791773581379
+"brain","intellectualness",0.0013250212506912078
+"Believer","Emanuelle Seigner",0.3579322767129623
+"crime","interrogation",0.0775852781260708
+"crime","homesteading",0.0036120201261941494
+"crime","popularity",0.003668076109758092
+"crime","great music",0.10845411954768211
+"crime","sailing",0.041395376490971886
+"crime","book",1.055040737910679
+"crime","scandal",0.011568244192176105
+"crime","Tom Hanks",0.0039179223260708195
+"crime","vampires",0.18477440572272477
+"crime","adventure",0.16845819396091466
+"crime","Bangkok",0.3138200412708387
+"crime","drugs",0.31350605872348175
+"crime","drama",0.4378773892751655
+"Ellen Page","Diane Keaton",0.021695827825218957
+"crime","action packed",0.4569533025072402
+"spying","TchÃ©ky Karyo",0.10830424696249145
+"boss","episodic",8.512963759841576E-4
+"episodic","interrogation",0.0016372164066407024
+"Jack the Ripper","19th century",0.06251963478316477
+"modern fantasy","surrealism",0.28277856510853494
+"PRIVATE EYES","intimate",0.0017135186707834004
+"book-learned","great music",3.875417338058897E-4
+"book-learned","outpatients",0.001447357410324828
+"great music","clever",0.3579322767129623
+"Tim Allen as a hitman","Excellent story",0.1405019296981053
+"genetics","aliens",0.016317726983017183
+"blaxploitation","music",0.035469632101400445
+"blaxploitation","Charlie Chaplin",0.08391599745691408
+"bob dylan","music",0.33332880452642805
+"Quite Romantic","book",0.28768207245178085
+"warm","MIDLIFE CRISES",0.004369508301580193
+"Saturn Award (Best Writing)","Milos Forman",0.026101320435534363
+"Quite Romantic","Comedy",0.34657359027997264
+"bond","007",1.0484196739686436
+"HIGH SCHOOL LIFE","bright",0.002302558056092823
+"Children","Fantasy",2.705803789637378
+"book","Milos Forman",0.3026827560957572
+"book","stephen king",0.33423942150583863
+"jim jarmusch","owned",0.39887711341589815
+"bright","nocturnal",7.705822078899812E-4
+"book","Comedy",0.6931471805599453
+"beat generation","avant garde",0.17851484105136767
+"beat generation","jack kerouac",0.17851484105136767
+"Donald Sutherland","Humorous",0.20417511663241117
+"authority","aviation",0.0024537540503765487
+"aviation","nocturnal",4.953306135928949E-4
+"aviation","World War II",0.6289335114324216
+"aviation","Nudity (Topless - Brief)",0.34657359027997264
+"Milos Forman","Tom Hanks",0.007291004399061659
+"just terrible","only three characters with any stand-out qualities or background story",0.3662040962227032
+"Tom Hanks","Danny Elfman",0.015639865873059898
+"Tom Hanks","vampires",0.021957073847439466
+"Tom Hanks","Jennifer Connelly",0.02141546328599721
+"Tom Hanks","Michael J. Fox",0.016570550653043706
+"Tom Hanks","Tim Allen",0.128755032994728
+"Tom Hanks","Ben Affleck",0.011249342204440863
+"Tom Hanks","My DVDs",0.30422622409455524
+"Tom Hanks","US history",0.053675570702383005
+"To See with Rachel","movie to see",1.9334770586542118
+"climate","MT",0.10072914187658631
+"gonzo","journalism",0.3061060685979011
+"gonzo","drugs",0.3061060685979011
+"middle east","activist",0.02759247704671009
+"Danny Elfman","vampires",0.02740348079360634
+"Danny Elfman","Jennifer Connelly",0.04283092657199442
+"Danny Elfman","Ben Affleck",0.022498684408881725
+"Danny Elfman","My DVDs",0.21017924839295488
+"sequels","music",0.0010431752990312485
+"music","Excellent story",0.21576155433883565
+"music","biopics",0.02689720103932476
+"music","adam sandler",0.3197804502488129
+"music","rock and roll",0.3146616642562408
+"music","Charlie Chaplin",0.086900909226789
+"music","love",0.3306195292201721
+"music","loss",0.17503748350931062
+"music","black and white",0.3146616642562408
+"music","true story",-0.015418864702451398
+"music","photography - simply excellent movie!",0.21576155433883565
+"mind fuck","matrix",0.3218875824868201
+"near future","aliens",0.01570668818384577
+"SINGLE PARENTS","DOCTORS AND PATIENTS",0.005464471674421324
+"boxing drama","down and out",0.27031007207210955
+"vampires","Jennifer Connelly",0.02828853689454787
+"vampires","Ben Affleck",0.022498684408881725
+"vampires","My DVDs",0.21017924839295488
+"setting:Afghanistan","author:Khaled Hosseini",0.016155133822528287
+"Jennifer Connelly","Ben Affleck",0.01468587900871619
+"Jennifer Connelly","My DVDs",0.21017924839295488
+"NA","marathons",0.27031007207210955
+"19.01.06","07.02.06",0.020979655259508078
+"19.01.06","09.05.06",0.010759972206947577
+"19.01.06","04.03.06",0.01141979347403882
+"19.01.06","08.02.06",0.012349759318323598
+"19.01.06","21.08.05",0.012349759318323598
+"dolphins","free air diving",0.3678548769739927
+"dolphins","greek islands",0.3091737778232852
+"dolphins","summer vacation",0.03583897092564865
+"dolphins","archaeology",0.03583897092564865
+"dolphins","nude beach",0.03583897092564865
+"Michael J. Fox","Christopher Lloyd",0.1220680320742344
+"archive footage","PG",0.013621121038820386
+"setting:Africa","setting:Jungle",0.012048843649411094
+"Ben Affleck","My DVDs",0.07480649494871283
+"DOCTORS AND PATIENTS","FILMMAKING",0.0039314016333110175
+"My DVDs","Kate Winslet",0.007224516775791512
+"Oscar (Best Foreign Language Film)","Oscar (Best Actor in a Leading Role)",0.3677212204218422
+"Oscar (Best Foreign Language Film)","Golden Palm",8.18298044939428
+"Corey Feldman","Jason Bateman",0.34657359027997264
+"generation X","Romance",0.1699006291458506
+"Mafia","Fantasy",0.024279543253862876
+"Mafia","gangster",0.28591964379278484
+"adam sandler","drew barrymore",0.03219345954647877
+"abortion","rebel",0.011473880207749988
+"love/hate","mary steenburgen",0.0036411206670381984
+"yakuza","Landscapes",0.07824046010856292
+"acrobat","rock and roll",5.472166831366975E-4
+"submarine","president",0.0183279061589814
+"submarine","World War II",0.5041365184404979
+"submarine","hunted",0.2716950224577554
+"Shakespeare","Stephen King",0.17669896569066038
+"rock and roll","Jack Black",0.3631276544516587
+"rock and roll","fucking awesome",0.3631276544516587
+"UK","religous",0.019670817457777687
+"TV","Michel Gondry",0.008024621388177557
+"TV","Orson Welles",0.015298639512878874
+"TV","Richard Marquand",0.013834866559419796
+"Oscar (Best Editing)","aliens",0.024648813356469977
+"Oscar (Best Editing)","favela",0.0034461658700426626
+"marooned","aliens",0.058758671206076356
+"aliens","Kate Winslet",0.00953728622959064
+"weed","psychiatry",0.24033731187229493
+"aliens","adventure",0.15193463066162882
+"aliens","zombies",0.21576155433883565
+"optimism","World War II",0.3342394215058387
+"aliens","archaeology",0.15193463066162882
+"aliens","plot point:solving riddles/puzzles",0.15193463066162882
+"weed","new york",0.24033731187229493
+"weed","hip-hop",0.24033731187229493
+"lighting","belivability",0.1591323331522466
+"idealism","week",0.002318137603391842
+"idealism","good soundtrack",0.13768656249299988
+"demons","Keanu Reeves",0.30649537425959444
+"idealism","politics",1.1661898066861371
+"07.02.06","09.05.06",0.009830006362662798
+"07.02.06","04.03.06",0.01141979347403882
+"07.02.06","08.02.06",0.012349759318323598
+"07.02.06","21.08.05",0.012349759318323598
+"SF","industrial progress",0.033513695276829944
+"SF","time travel",1.0952265371881758
+"slasher","Wes Craven",0.34657359027997264
+"slasher","spoof",0.34657359027997264
+"jena malone","drew barrymore",0.09332170124700649
+"author:John Grisham","character based on real person:Hunter S. Thompson",0.009267512775378657
+"author:John Grisham","innocent person on the run",0.011252055691521962
+"character based on real person:Hunter S. Thompson","innocent person on the run",0.0014936536391743952
+"Sundance Grand Jury Prize: Dramatic 2001","Sundance Grand Jury Prize: Dramatic 2006",0.02076050483252792
+"Best Performance:  Diane Keaton as Annie Hall","Best Performance:  Bette Davis as Margo Channing",0.013923489478724285
+"self discovery","ssss",0.3029589222865284
+"self discovery","based on a true story",0.28762689692740007
+"self discovery","Alaska",0.28762689692740007
+"self discovery","non-linear",0.28762689692740007
+"self discovery","nature wildlife",0.28762689692740007
+"self discovery","fall of superheros",0.21576155433883565
+"historic Austrialian Outback","From an epic ballad",0.3662040962227032
+"self discovery","superheros",0.21576155433883565
+"Uma Thurman","Philip K. Dick",0.09347862060415618
+"israel","Madness",7.879399452431576E-4
+"hilarious","Terrific Cast",0.18310754626705578
+"israel","politics",0.4378773892751655
+"Philip K. Dick","surrealism",0.2879695656771679
+"Philip K. Dick","ghost story",0.06883568884574769
+"river","When the Going Gets Tough!",0.3662040962227032
+"Christopher Nolan","PG-13",0.13544183091388245
+"surrealism","Fantasy",0.051044956347453624
+"surrealism","Michel Gondry",0.03601392761437181
+"surrealism","Vergiss mein Nicht (German title)",0.3662040962227032
+"surrealism","Futuristmovies.com",-0.0653886168674484
+"surrealism","smoking",0.041907243961491605
+"surrealism","Saturn Award (Best Science Fiction Film)",0.18053668007348067
+"college","violence",0.18643908117295854
+"surrealism","time travel",0.134326868036151
+"surrealism","virtual reality",0.041907243961491605
+"surrealism","Nudity (Topless)",0.041907243961491605
+"surrealism","cyberpunk",0.041907243961491605
+"surrealism","sci-fi",0.3567707920711233
+"surrealism","New Year 1999",0.041907243961491605
+"surrealism","Jim Carrey",0.18053668007348067
+"surrealism","alcohol consume",0.041907243961491605
+"Irish","Suspense",0.08355985537645967
+"Irish","Colin Farrell",1.024491268669172
+"Amy Adams","John C. Reilly",0.10830424696249145
+"Fantasy","loop",0.15206360847832678
+"Fantasy","Romance",0.8645003620445584
+"Fantasy","Mystery",0.37593421592555565
+"Fantasy","Horror",0.37593421592555565
+"violence","India",0.1577173368694205
+"violence","photography",0.3631276544516587
+"Monica Bellucci","Paul Giamatti",0.12805942205520873
+"Monica Bellucci","Eamonn Walker",0.08778896724436024
+"mini coopers","heist",0.21237800307558297
+"hacking","Halle Berry",0.13872190994788564
+"hacking","phreaking",0.27031007207210955
+"09.05.06","04.03.06",0.009830006362662798
+"09.05.06","08.02.06",0.012349759318323598
+"09.05.06","21.08.05",0.012349759318323598
+"long","gangster",0.008305708651359125
+"04.03.06","08.02.06",0.009830006362662798
+"04.03.06","21.08.05",0.012349759318323598
+"holiday","Poland",0.0065479409634198425
+"H.P. Lovecraft","gun fu",0.005151704500573535
+"Comic Book","Nicholas Cage",0.4641595769171919
+"crap","pirates",0.30649537425959444
+"crap","BORING!",0.30649537425959444
+"street race","spy",-0.08664339756999316
+"ghost story","David Lynch",0.03589548694513391
+"ghost story","Pixar",0.03959377069284093
+"ghost story","Vincent Price",0.2451901481186278
+"critique of capitalism","corporate greed",0.3342394215058387
+"street race","cars",0.25993019270997947
+"critique of capitalism","anti-Western",0.3342394215058387
+"street race","action",0.34657359027997264
+"street race","racing",0.25993019270997947
+"street race","franchise",0.08664339756999316
+"street race","james bond",0.08664339756999316
+"Toronto Film Festival Winner 1980","Toronto Film Festival Winner 1985",0.007327649966534492
+"superhuman","blindness",0.20205829154466046
+"but Emmy Rossum is terrific","a slight film",0.3342394215058387
+"new jersey","Directorial Debut",0.223940500682236
+"pg","animation",0.3218875824868201
+"LOOKING FOR LOVE","GHOST STORIES",0.002730399290792467
+"Fameke Jasson","alan Cumming",0.5100451324485937
+"Fameke Jasson","Halle Berry",0.6691736745222969
+"Fameke Jasson","Professor Xavier",0.48390012636348634
+"Fameke Jasson","Ian Mckellen",0.78686970466308
+"Fameke Jasson","Magneto",0.2648378191956621
+"Fameke Jasson","Hugh Jackman",0.6452001684846485
+"homoerotic","Classical Studies",0.27031007207210955
+"Toronto Film Festival Winner 1997","Toronto Film Festival Winner 1995",0.007327649966534492
+"Toronto Film Festival Winner 1997","Toronto Film Festival Winner 1994",0.008309444839848861
+"Toronto Film Festival Winner 1995","Toronto Film Festival Winner 1994",0.007327649966534492
+"Arizona","Vincent Gallo",0.3197804502488129
+"sports hero","alcoholism",0.34657359027997264
+"sports hero","ski jumping",0.34657359027997264
+"India","brothers",0.034656475251355345
+"India","Bollywood",0.34657359027997264
+"love","surreal",0.3177076383015326
+"love","brilliant",0.24033731187229493
+"love","witty",0.24033731187229493
+"Michel Gondry","Orson Welles",0.023981461467099587
+"Michel Gondry","Richard Marquand",0.011332530167506636
+"Michel Gondry","surreal",0.30649537425959444
+"Michel Gondry","Charlie Kaufman",0.8948306917824057
+"love","moving",0.24033731187229493
+"Michel Gondry","quirky",0.30649537425959444
+"love","seen more than once",0.24033731187229493
+"waking up","hack the system",0.29375226827858475
+"Yugoslavia","World War II",0.3543499047627984
+"Orson Welles","Richard Marquand",0.008830193775593477
+"plot twist","Will Smith",0.3662040962227032
+"Vergiss mein Nicht (German title)","Futuristmovies.com",0.041907243961491605
+"Vergiss mein Nicht (German title)","smoking",0.041907243961491605
+"Vergiss mein Nicht (German title)","Saturn Award (Best Science Fiction Film)",0.18053668007348067
+"Vergiss mein Nicht (German title)","time travel",0.134326868036151
+"Vergiss mein Nicht (German title)","virtual reality",0.041907243961491605
+"smart","Brilliant",0.3917549516090717
+"Vergiss mein Nicht (German title)","Nudity (Topless)",0.041907243961491605
+"Vergiss mein Nicht (German title)","cyberpunk",0.041907243961491605
+"Vergiss mein Nicht (German title)","sci-fi",0.3567707920711233
+"Vergiss mein Nicht (German title)","New Year 1999",0.041907243961491605
+"Vergiss mein Nicht (German title)","Jim Carrey",0.18053668007348067
+"SNL alums","Based on a TV show",0.008041474675228146
+"Vergiss mein Nicht (German title)","alcohol consume",0.041907243961491605
+"Bruce Lee","trilogy",0.011292348289215763
+"bittersweet","compassionate",0.1979305029032769
+"bittersweet","Scarlett Johannson",0.17851484105136767
+"bittersweet","Melancholic",0.17851484105136767
+"bittersweet","Bill Murray",0.17851484105136767
+"myan","mexico",0.32654814716784386
+"08.02.06","21.08.05",0.010759972206947577
+"vivid characters","underwater",0.3487847669524903
+"mexico","Tornado",0.02120263536200091
+"keira knightley","adventure",0.21576155433883565
+"Film Noir","Sean Connery",0.007039505780835867
+"foggy","rourke great",0.28456799773288216
+"charles bronson","brothers",0.050766840745760974
+"Doris Day","Romance",4.816889690693986
+"one of the most romantic kisses in films","Romance",-0.03646431135879092
+"one of the most romantic kisses in films","romance",0.3218875824868201
+"one of the most romantic kisses in films","teens",0.5051457288616511
+"LONE WOLVES","TREASURE HUNTS",0.004841201346066351
+"adapted from:comic","Halle Berry",0.006212957645789403
+"meditation about war","Sean Connery",0.0071614480438892915
+"Kung Fu","animation",0.2566017261305131
+"walken","indy",0.3662040962227032
+"Kung Fu","sword fighting",0.3197804502488129
+"stoner","marijuana",0.34657359027997264
+"Sean Connery","Halle Berry",0.00978510977604954
+"David Lynch","Pixar",0.00690833550801433
+"David Lynch","Vincent Price",0.049038029623725575
+"David Lynch","surreal",0.5682673954467808
+"David Lynch","Laura Dern",0.3611918412977808
+"lesbian character","fatih akin",0.3543499047627984
+"lesbian character","lesbian sex scene",0.27031007207210955
+"logic complexity","alternate universe",0.709649445444698
+"bomb expert","fbi",0.1147250936727381
+"and is my all time western.","Character driven",0.34657359027997264
+"and is my all time western.","star studded action",0.34657359027997264
+"and is my all time western.","magnificent",0.34657359027997264
+"play within a movie","playwright:Shakespeare",0.003724112846041229
+"trilogy","roald dahl",0.052225369725343807
+"trilogy","Jesus",0.30649537425959444
+"Romance","Classic",0.06094679053098774
+"Romance","Adventure",0.24413606414846883
+"Romance","romance",0.18325814637483098
+"Romance","time travel",0.27031007207210955
+"TREASURE HUNTS","WOMEN IN JEOPARDY",0.0014267303590611102
+"Kali Martial Art and Romance","Morals",0.25993019270997947
+"Romance","teens",0.6437751649736402
+"witch","adventure",0.12915206046688052
+"sessao da tarde","eua",0.022390073908866052
+"sessao da tarde","adventure",0.3119567841932047
+"biblical","brilliant",0.3631276544516587
+"biblical","must-see",0.3631276544516587
+"crude humor","high school",0.028286415919180408
+"post-apocalyptic","zombies",0.17562991359842225
+"post-apocalyptic","Futuristmovies.com",0.27031007207210955
+"literary adaptation","South America",0.033392744474725344
+"post-apocalyptic","time travel",0.277987164150759
+"misunderstood","underrated",0.7330325854993239
+"post-apocalyptic","future",0.277987164150759
+"CRUMBLING MARRIAGES","sensual",0.002252449586143692
+"post-apocalyptic","end of the world",0.277987164150759
+"post-apocalyptic","twist ending",0.555974328301518
+"Depressing","best movie ever",0.21576155433883565
+"sensual","WANDERLUST",0.0071440806758816386
+"WANDERLUST","menacing",0.0015269166544573973
+"greek islands","summer vacation",0.3583897092564865
+"neorealism","sad",0.36651629274966196
+"greek islands","archaeology",0.3583897092564865
+"greek islands","nude beach",0.3583897092564865
+"Fiction","Bewitched",0.35685687149237616
+"Fiction","Nicole Kidman",0.35685687149237616
+"redbox","danberry",0.10855027158751217
+"great doc","need to buy",0.18442404478803645
+"fable","historical",0.008925742052568391
+"CAV","CLV",2.598869434957619
+"Funniest Movies","great humour",0.3543499047627984
+"Funniest Movies","video game testers",0.34657359027997264
+"eua","adventure",0.17466237382821653
+"california","sex",0.3543499047627984
+"adventure","book was better",0.16587091294296577
+"adventure","Bryan Singer",0.1862629004739306
+"adventure","animation",0.5003569509911339
+"adventure","hayao miyazaki",0.6681820288970279
+"adventure","spike jones",0.03911697266725145
+"adventure","history",0.37294752194342756
+"adventure","limada",0.14637487398614626
+"adventure","drama",0.36216713615401736
+"adventure","action",0.36651629274966196
+"prison break","prison escape",0.549774439124493
+"South America","blindness",0.013662079095631609
+"Classic","Mozart",0.03522307674285285
+"Meg Ryan","New York City",0.4797959367061508
+"unusual","fun",0.08405359406262275
+"compassionate","whimsical",0.003037670219361493
+"unusual","remake",0.11811663492093281
+"historical","World War II",0.5612005619964369
+"historical","journalism",0.33222834605436496
+"historical","glbt",0.17124869239504564
+"historical","Dustin Hoffman",-0.03497598674596392
+"historical","true story",0.25993019270997947
+"historical","history",0.02935876700320802
+"historical","French",0.34657359027997264
+"historical","Holocaust",0.17328679513998632
+"cloning","Warsaw ghetto",0.001763705746281148
+"historical","biopic",0.34657359027997264
+"historical","20th century",0.34657359027997264
+"stark","Sophia Loren",0.2716950224577554
+"stark","black and white",0.2716950224577554
+"whimsical","modern",0.3631276544516587
+"gritty","visceral",0.10118458511484735
+"propaganda","World War II",0.7158645534259246
+"propaganda","animation",0.268653736072302
+"propaganda","Lobbyism",0.3218875824868201
+"Mozart","blindness",0.0058657280514210625
+"Pixar","Vincent Price",0.03942917578697827
+"Pixar","animation",4.565948879211404
+"Pixar","dvd",0.46209812037329684
+"bleak","TERRORISM",0.0479318274735488
+"psychological","Mystery",0.09010335735736986
+"Vincent Price","World War II",0.16313194076816206
+"Vincent Price","Michael Mann",0.26758550064787856
+"Suspense","Kick-Butt Women",0.32036894611168565
+"Suspense","Colin Farrell",0.48827212829693767
+"Arnold","surreal",0.08827927306522071
+"Arnold","Arnold Schwarzenegger",0.27031007207210955
+"vampire","Scotland",0.003179095409863547
+"is it 5/5-worthy?","probably deserves at least as much as Shallow Grave...",0.049569884686998356
+"DANGEROUS ATTRACTION","enigmatic",0.0023829501877592326
+"Vincent Gallo","Christina Ricci",0.117540494290337
+"Scotland","Oscar (Best Director)",0.00953728622959064
+"Alec Guiness","World War II",0.3404515253967824
+"discipline","magic",0.21576155433883565
+"love overcomes all","surreal",0.3007980782521347
+"enigmatic","VOODOO",0.02718200938214979
+"enigmatic","speech",0.27031007207210955
+"enigmatic","time travel",0.27031007207210955
+"enigmatic","Pierce Brosnan",0.27031007207210955
+"interpretable","Guillermo del Toro",0.7356219397587946
+"Mystery","Scary",0.18053668007348067
+"interpretable","twist ending",0.3678109698793973
+"surreal","journalism",0.00992349449412043
+"surreal","Terry Gilliam",0.2986265782046758
+"surreal","Nudity (Topless - Notable)",0.30649537425959444
+"surreal","narrated",0.30649537425959444
+"surreal","psychology",0.27031007207210955
+"gay","aids",0.3678109698793973
+"gay","Oscar (Best Actor)",0.3678109698793973
+"christianity","conspiracy theory",0.20707555414900003
+"christianity","religion",0.24033731187229493
+"christianity","evangelism",0.24033731187229493
+"wales","dylan thomas",0.36041342942947946
+"Intriguing","good direction",0.29321303419972966
+"Intriguing","good actor",0.29321303419972966
+"World War II","Michael Mann",0.0858553111406921
+"World War II","AFI 100 (Laughs)",0.006283276595784421
+"World War II","ghibli",0.2986265782046758
+"World War II","J. G. Ballard",0.2517724898230907
+"Judy","Dad",0.354589256525963
+"crichton","tom selleck",0.04052002069347185
+"Jacob Aaron Estes","Michael Mann",0.026058588344007753
+"CGI","computer animation",0.27031007207210955
+"07.01.06","07.04.06",0.019660012725325596
+"07.01.06","12.03.06",0.02283958694807764
+"fun","heist",0.18310754626705578
+"fun","dancing",0.3626630757974296
+"fun","remake",0.3543499047627984
+"Nice movie","but too slow",0.27031007207210955
+"testosteroney - the sweetest treat","non-existant storyline",0.30649537425959444
+"testosteroney - the sweetest treat","though bad for your teeth",0.30649537425959444
+"photography","qube",1.4775955483976606
+"dumb","Immature",0.17851484105136767
+"ryan","chick flick 212",0.34657359027997264
+"jackie chan","jet li",0.19133852034411206
+"simon pegg","dylan moran",0.3218875824868201
+"simon pegg","rom-rom-com",0.3218875824868201
+"simon pegg","edgar wright",0.3218875824868201
+"heist","zombies",0.005151704500573535
+"07.04.06","12.03.06",0.020979655259508078
+"glbt","good direction",0.13632583547518043
+"black and white","true story",0.009873368069672648
+"black and white","animation",0.08355985537645967
+"AFI 100 (Laughs)","Morgan Freeman",0.015954717535957768
+"CLV","DVD-Video",0.3827791788847649
+"London","Beckinsale",0.3631276544516587
+"buried alive","zombies",0.00749939251691836
+"buried alive","animation",0.0759972433183459
+"London","Scams",0.3631276544516587
+"zombies","animation",0.08213517101007929
+"zombies","Bond James Bond",0.00836221575458357
+"zombies","cool",0.03665162927496621
+"zombies","double feature",0.4904146265058631
+"Dustin Hoffman","true story",0.34657359027997264
+"zombies","zombie",0.27031007207210955
+"zombies","suspense",0.27031007207210955
+"Scarlett Johansson","Piano tie",0.010904491725124768
+"Peter Pan","true story",0.09278599675067445
+"Scarlett Johansson","seen more than once",0.14733779932411525
+"satanism","ancient books",0.30649537425959444
+"satanism","devil",0.30649537425959444
+"ice age","Ron Perlman",0.2517724898230907
+"true story","Al Pacino",0.24413606414846883
+"true story","dvd",0.46066978823401317
+"true story","Leonardo DiCaprio",0.68953985421735
+"true story","space program",0.4107949328937517
+"Morgan Freeman","brilliant",0.3197804502488129
+"Morgan Freeman","Catherine Zeta-Jones",0.030737340798006076
+"joy division","manchester",0.34657359027997264
+"true story","al pacino",0.2986265782046758
+"true story","imdb top 250",0.7803552045207032
+"explicit sex scene","road movie",0.13632583547518043
+"animation","Universal monsters",0.08230896908726791
+"animation","computer animation",0.34657359027997264
+"animation","pixar",0.34657359027997264
+"Vivian Leigh","want to see again",0.3218875824868201
+"homocide","Al Pacino",0.012989505971169404
+"Kick-Butt Women","Culture",0.18877314251478092
+"Samuel L. Jackson","1940's",0.016318566661944336
+"dildo","cia",0.31190411448140987
+"Lutheran","New York",0.005897131505592183
+"Star Wars connection","Didn't finish",0.013096477127612272
+"Love Affair","New York City",0.36651629274966196
+"john travolta","julie andrews",0.11279515913795593
+"john travolta","assassin",0.056397579568977965
+"john travolta","audrey hepburn",0.08305708651359124
+"Futuristmovies.com","smoking",0.33525795169193284
+"Futuristmovies.com","Saturn Award (Best Science Fiction Film)",0.041907243961491605
+"Futuristmovies.com","time travel",0.134326868036151
+"Futuristmovies.com","virtual reality",0.18053668007348067
+"Futuristmovies.com","Nudity (Topless)",0.18053668007348067
+"Futuristmovies.com","cyberpunk",0.18053668007348067
+"Futuristmovies.com","sci-fi",0.49540022818311236
+"Futuristmovies.com","New Year 1999",0.18053668007348067
+"Futuristmovies.com","Jim Carrey",0.18053668007348067
+"Futuristmovies.com","alcohol consume",0.18053668007348067
+"terrible career choices","all around",0.23025850929940456
+"Star Trek","TOS",1.3862943611198906
+"Giallo","Italian",0.3662040962227032
+"New York","horses",0.005897131505592183
+"Dad","Pat",0.02166084939249829
+"overrated","genius",0.07025994933738892
+"overrated","way too long",0.7503448192158426
+"overrated","lays it on thick",0.17574060838282762
+"cops","drugs",0.2986265782046758
+"overrated","boring",0.6254245281434252
+"cool","killer",0.3408750455728247
+"Oscar (Best Effects - Visual Effects)","Olympics",0.005364579383504252
+"Allison Anders","Alexandre Rockwell",0.2986265782046758
+"A Legend","it is a good action movie",0.27031007207210955
+"tentou sair do clichÃª","quase conseguiu mas se embolou muito no final",0.3579322767129623
+"kate winslet's tits","Keanu Reaves",0.27031007207210955
+"Olympics","inspirational",0.006655231992271924
+"dumb fun","well-done time travel",1.1310245698351107
+"Christopher Eccleston","Megan Burns",0.11770146798550815
+"misrepresented on dvd","lost nature opportunity",0.021660849392498287
+"crazy mother","satirical",0.2544316243440109
+"drugs","sometimes scary",0.3122961025130053
+"drugs","great dialogue",0.18576194142038044
+"drugs","bowling",0.18576194142038044
+"drugs","smoking",0.3122961025130053
+"drugs","Ewan McGregor",0.3662040962227032
+"drugs","sobriety",0.04404305137921667
+"drugs","addiction",0.5178225018373688
+"drugs","chemical dependency",0.5178225018373688
+"drugs","recovery",0.15989022512440645
+"Oscar (Best Music - Original Song)","androids",0.0034385188768035722
+"modern","history",0.34657359027997264
+"Billy Wilder","AFI 100 (Movie Quotes)",0.006374088496830207
+"Nicolas Cage","Russell Crowe",0.003479886061255962
+"Nicolas Cage","want to see again",1.2736778679415393
+"Action/Comedy","Drugs",0.27031007207210955
+"Action/Comedy","Crime",0.27031007207210955
+"Beautiful","martial arts",0.36651629274966196
+"gothic","DC Comics",0.2810680679428734
+"gothic","Ridley Scott",0.09589062708048081
+"gothic","Depp & Burton",0.27031007207210955
+"gothic","Johnny Depp",0.27031007207210955
+"Buenos Aires","awful reviews...........cannot figure out why. outstanding.",0.30995419858880463
+"high school","mockumentary",0.005997005940280785
+"high school","dvd",0.15472197849566832
+"Russell Crowe","Al Pacino",0.015109837056517743
+"AFI 100 (Movie Quotes)","Al Pacino",0.03739511115192572
+"tuberculosis","part animated",0.0032417042222969775
+"but it's fun.","Not a great movie",0.3662040962227032
+"Gordon Liu","kung fu",0.19427003740843699
+"crimial","plan",0.14794522588322603
+"Gordon Liu","martial arts",0.19427003740843699
+"crimial","contemplative",0.17328679513998632
+"crimial","criminal",0.10462352709822947
+"nascar","police",0.09429839530293524
+"Arthur C. Clarke","island",0.012296728390551714
+"Paris","innoncence",0.2369780840638416
+"edo","Samurai",0.34657359027997264
+"fairytale","dark",0.27031007207210955
+"Cold War","must show",0.011468054048505299
+"series","George Lucas",8.248165887297613
+"series","drama",0.24371078529997087
+"country life","nature",0.0901733603098349
+"dvd","sad",0.4332169878499658
+"dvd","art house",0.34657359027997264
+"dvd","comedy",0.8873647873535884
+"dvd","(s)vcd",0.32344403524066295
+"dvd","funny as hell",0.3675044019336294
+"dvd","gypsy accent",0.3675044019336294
+"dvd","romantic",0.5198603854199589
+"dvd","love this movie",0.5198603854199589
+"great special efects","great soundtrack",0.3662040962227032
+"grainy","stylish",0.4893655836742413
+"grainy","dark",1.0841875856162797
+"grainy","character driven",0.7158645534259246
+"satirical","witty",0.006073025330959391
+"awesome!","OMG",0.35581495707279565
+"brilliant","witty",0.10263650214600911
+"witty","ROBOTS AND ANDROIDS",0.014917221105451593
+"witty","notable soundtrack",0.05048983867183166
+"witty","new york",0.24033731187229493
+"witty","quirky",0.24033731187229493
+"witty","urbane",0.24033731187229493
+"witty","lots of characters",0.24033731187229493
+"dog","ukraine",0.08673013650792272
+"want to see again","Holocaust",0.16355433605311248
+"want to see again","Johnny Depp",0.27031007207210955
+"want to see again","lyrical",0.3662040962227032
+"want to see again","comic book",3.258992432357684
+"Catherine Zeta-Jones","remake",0.07494051750080483
+"Leonardo DiCaprio","Fair",0.3631276544516587
+"Leonardo DiCaprio","David Thewlis",0.3662040962227032
+"Leonardo DiCaprio","More mature Leo Decaprio",0.34657359027997264
+"Leonardo DiCaprio","romance",0.30308743731699067
+"Leonardo DiCaprio","Johnny Depp",0.3631276544516587
+"Leonardo DiCaprio","Edward Zwick",0.34657359027997264
+"rescue","rapping mafia",0.0049634917906148475
+"piano","obscure sports",0.013395113186574424
+"Top 10 Movies","Repeat Watch",0.20707555414900003
+"Best Performance:  Ralph Fiennes as Amon Goeth","Best Performance:  Peter o'Toole as T.E. Lawrence",0.013923489478724285
+"teeming","huge war",0.3197804502488129
+"probably libelous about Vietnamese","Vietnam War",0.012786819200472466
+"Martin Lawrence","roadtrip",0.48745657679659105
+"remembrance","Holocaust",0.36041342942947946
+"remembrance","mothers and daughters",0.36041342942947946
+"religion","medieval",0.1108042346715166
+"religion","repression",0.05226648537047431
+"religion","drama",0.3751724096079213
+"religion","educational",0.3678109698793973
+"explosions","apocalypse",0.055985125170559
+"Jim Jarmusch","Stephen King",0.0906657689493574
+"Jim Jarmusch","Johnny Depp",0.6825771591327889
+"julianne moore","tom cruise",0.1196278756586218
+"dramatic irony","Federico Fellini",0.01440772802493269
+"lawyers","loan shark",0.20707555414900003
+"kung fu","Jackie Chan",1.0602073241876317
+"rap","hip hop",0.277987164150759
+"business","going postal",0.05346809260591854
+"repression","assassination",0.3342394215058387
+"Jim Cummings","James Earl Jones",0.0086444255246264
+"governator","drama",0.29321303419972966
+"needles","disgust",0.3404515253967824
+"needles","freakishly good",0.27031007207210955
+"Will Smith","exciting",0.3342394215058387
+"tarantino","sad",0.007778072448310281
+"tarantino","death",0.015636724642829208
+"singularity","artificial intelligence",0.134326868036151
+"singularity","mindfuck",0.06823907603703501
+"U.S.S. Enterprise (CVN-65)","U.S.S. Reuben James",0.3599619570964599
+"author:Stephen Crane","author:Arthur Golden",0.0018753426152536602
+"paranoid","COURT MARTIAL",0.0036098756210457606
+"new zealand","remake",0.008960699746386074
+"Phillip Glass score","gets better as it goes",0.25993019270997947
+"remake","Nudity (Full Frontal - Brief)",0.008960699746386074
+"Brilliant","Loved it",0.19577816810955206
+"pigs","sad",0.0029134846735519825
+"sad","death",0.010143762484351048
+"sad","art house",0.25993019270997947
+"sad","comedy",0.25993019270997947
+"sad","romantic",0.25993019270997947
+"sad","love this movie",0.25993019270997947
+"comic books","r. crumb",0.34657359027997264
+"comic books","boring",0.35424033517583303
+"assassination","death",0.008935122201814737
+"julie andrews","assassin",0.040802767718663945
+"julie andrews","audrey hepburn",0.08305708651359124
+"alcoholism","typical John Houston",0.21576155433883565
+"sustainability","environment",0.28456799773288216
+"death","italy",0.3662040962227032
+"death","apocolypse",0.03263422166258781
+"realistic action","stylish",0.9162907318741549
+"smoking","Saturn Award (Best Science Fiction Film)",0.18053668007348067
+"Renny Harlin","Marco Brambilla",0.008285275326521853
+"smoking","time travel",0.134326868036151
+"smoking","virtual reality",0.18053668007348067
+"smoking","Nudity (Topless)",0.18053668007348067
+"smoking","cyberpunk",0.18053668007348067
+"smoking","sci-fi",0.49540022818311236
+"smoking","New Year 1999",0.18053668007348067
+"purity of essence","Slim Pickens",0.27031007207210955
+"smoking","Jim Carrey",0.18053668007348067
+"smoking","alcohol consume",0.18053668007348067
+"history","Stephen King",0.01240468904877675
+"history","geisha",0.2986265782046758
+"history","drama",0.3247840136491546
+"history","romance",0.08899213376865163
+"history","boxing",0.07248862946960531
+"Stephen King","Shyamalan",0.157065747280587
+"history","chris farley",0.40546510810816433
+"Stephen King","Kevin Smith",0.18493096056942898
+"Stephen King","Johnny Depp",0.4319543485157519
+"colin firth","Gwenth Paltrow",0.16561192728095755
+"sex","drama",0.040794332112736094
+"Indiana Jones","archaeology",0.3631276544516587
+"epico","oscar",0.020349775522683206
+"spy","prejudice",0.003684438231739559
+"spy","cars",0.08664339756999316
+"spy","action",0.5198603854199589
+"spy","racing",0.25993019270997947
+"spy","franchise",0.25993019270997947
+"spy","james bond",0.25993019270997947
+"Daniel Radcliffe","emma thompson",0.15193463066162882
+"Daniel Radcliffe","Wizards",0.15193463066162882
+"Daniel Radcliffe","harry potter",0.15193463066162882
+"Daniel Radcliffe","based on a book",0.060773852264651526
+"cheese","cheesy",0.36651629274966196
+"awful","hard to watch",0.3267949828987178
+"Leonard Nimoy","William Shatner",0.016787063586235586
+"young romance","would see again",0.27031007207210955
+"coen brothers","arty ending",0.3579322767129623
+"emma thompson","Wizards",0.2986265782046758
+"emma thompson","harry potter",0.2986265782046758
+"need to own","coming of age",0.27031007207210955
+"emma thompson","based on a book",0.5972531564093516
+"canada","curling",0.27031007207210955
+"ALL THE ACTORS WERE JUST WONDERFUL!! A movie for anybody","GREAT GREAT MOVIE",0.3404515253967824
+"Nicole Kidman","Meryl Streep",0.34657359027997264
+"Nicole Kidman","Julianne Moore",0.23104906018664842
+"wine","obsession",0.27031007207210955
+"america","weapons",0.3678548769739927
+"Dark","Great Story",0.27031007207210955
+"Bollywood","Indian",0.21576155433883565
+"Bollywood","ShahRukh Khan",0.21576155433883565
+"Tumey's DVDs","Tumey's To See Again",0.3679057912751119
+"murder","skateboarding",0.28173219870016897
+"murder","split personality",0.21576155433883565
+"murder","writer",0.21576155433883565
+"murder","murder mystery",0.17851484105136767
+"murder","adultery",0.17851484105136767
+"anti-war","philip k dick",0.00520973888299066
+"murder","courtroom drama",0.17851484105136767
+"still behind chasing amy.","Way better than Dogma or Jersey Girl",0.3342394215058387
+"assassin","audrey hepburn",0.040802767718663945
+"French","on the run",0.22092146554173692
+"oscar","lesbian",0.9868068269974745
+"assassin","assassin-in-training (scene)",0.4817286263160274
+"French","France",0.34657359027997264
+"assassin","espionage",0.5972531564093516
+"assassin","Jean Reno",0.5972531564093516
+"Elisha Cuthbert","Timothy Olyphant",0.27031007207210955
+"kidnapping","tryrty",0.34657359027997264
+"Trey Parker","not exactly pc",0.3579322767129623
+"crude","low budget",0.3579322767129623
+"17th century","serial killer",0.34657359027997264
+"Johnny Cash","Oscar Nomination",0.277987164150759
+"Shyamalan","Kevin Smith",0.314131494561174
+"Dreamworks","Wallace & Gromit",0.3662040962227032
+"26.01.06","28.12.05",0.009830006362662798
+"Anthony Hopkins","Hannibal Lecter",0.14654139176017655
+"Anthony Hopkins","romance",0.3061060685979011
+"escapism","filmed during occupation",0.36651629274966196
+"football","popcorn movie",0.2879695656771679
+"football","soccer",0.40546510810816433
+"surfing","big wave",0.27031007207210955
+"mutants","lone hero",0.06085442622058439
+"non-existant storyline","though bad for your teeth",0.30649537425959444
+"based on a video game","based on a true story",0.014540760450014087
+"beer","guy movie",0.36651629274966196
+"Imagination","Identity",0.1577173368694205
+"Imagination","schizophrenia",0.010144245611317333
+"Disappointing","unexpected classic from Spielberg",0.27031007207210955
+"Hackman","Action",0.23025850929940456
+"julia roberts","drama",0.025265712973462962
+"julia roberts","romance",0.18442404478803645
+"story","drama",0.019940914261789677
+"Bogart & Bacall","mystery",0.27031007207210955
+"DVD-Video","CinemaScope 55",0.05337595713712666
+"DVD-Video","Grandeur",0.05517962754686048
+"Politics","History",0.09781188870175522
+"narnia","middle earth",0.25239387387502166
+"based on a true story","Kevin Spacey",0.016318566661944336
+"Kevin Spacey","conspiracy",0.35581495707279565
+"Kevin Spacey","Ryan Gosling",0.34657359027997264
+"based on a true story","al pacino",0.1831020481113516
+"Kevin Spacey","dark comedy",0.03265481471678439
+"based on a true story","imdb top 250",0.8958797346140275
+"obsession","unanswered love",0.3404515253967824
+"FANTASY LANDS","JOURNEY OF SELF-DISCOVERY",0.010021089377499565
+"catastrophy","threat",0.3367283047555035
+"catastrophy","disaster",0.3367283047555035
+"Husband Wife Relationship","parenthood",0.2986265782046758
+"Agatha Christie","author:Agatha Christie",1.853557307228499
+"Robin Williams","Billy Crystal",0.7158645534259246
+"DEMONIC POSSESSION","cult film",0.04569426254298277
+"wendy o williams","spoof",0.27031007207210955
+"Ewan McGregor","musical",0.27031007207210955
+"Meryl Streep","Emma Thompson",0.27031007207210955
+"Jack Nicholson","drama",0.3634846280642753
+"21.02.06","not seen",0.07864005090130238
+"21.02.06","23.03.06",0.01141979347403882
+"fabulus","Steven Spielberg",0.34657359027997264
+"cancer","British",0.08505097579101727
+"conspiracy","Frida Kahlo",0.019415709585551062
+"author:Rudyard Kipling","independent woman",0.004606946905752034
+"not seen","23.03.06",0.07864005090130238
+"not seen","action",0.6104081351581275
+"not seen","sci-fi",0.778983518037216
+"not seen","to-rent",1.7896613835648114
+"suspensful","great",0.36651629274966196
+"Carey Grant","classic love story",0.5198603854199589
+"drama","Gay and Straight",0.048574386592061335
+"drama","scorcese",0.15945684146780942
+"drama","romance",0.9173603195695532
+"drama","realistic",0.2544316243440109
+"drama","tom arnold",0.2656802513818748
+"drama","biographical",0.34657359027997264
+"drama","thriller",0.40546510810816433
+"mature theme","disturbing images",0.3662040962227032
+"Cars","Action",0.018215150841965778
+"personality disorder","Stanley Kubrick",0.06394819059884106
+"huffing","Phillip Seymour Hoffman",0.21660849392498288
+"art house","comedy",0.25993019270997947
+"art house","romantic",0.25993019270997947
+"art house","love this movie",0.25993019270997947
+"Action","War",0.36651629274966196
+"Action","comedy",0.19730379672781054
+"Action","Thriller",0.12206803207423442
+"Action","Sci-Fi",0.1220680320742344
+"African-American","Tyler Perry",0.34657359027997264
+"Robert Downey Jr","classic",0.3631276544516587
+"Robert Downey Jr","spirits",0.3631276544516587
+"ballet","British",0.22674649211081035
+"ballet","feel good",0.3524682239952852
+"ballet","coming of age",0.3524682239952852
+"grunge","community",0.08390576540564626
+"sobriety","addiction",0.4796706753732194
+"sobriety","chemical dependency",0.7158645534259246
+"historical epic","historically inaccurate",0.25993019270997947
+"sobriety","recovery",0.3579322767129623
+"Stanley Kubrick","dark comedy",0.3626630757974296
+"Kurosawa","samurai",0.21576155433883565
+"Kurosawa","Japan",0.21576155433883565
+"Hey gringo","Yul",0.17851484105136767
+"Hey gringo","Charles Bronson",0.17851484105136767
+"Hey gringo","Clint Eastwood",0.17851484105136767
+"Kevin Smith","romance",0.04028315847280756
+"Kevin Smith","Akira Kurosawa",0.06025792735768228
+"Civil War","Vietnam war",0.00869786716433591
+"steroids","cheating",0.3579322767129623
+"aardman","almost favorite",0.34657359027997264
+"clarivoyance","musical",0.025103899360365334
+"martial arts","computers",0.19501868320243254
+"Love","Drugs",0.06576404327605608
+"fairy tale","romance",0.3409920127961577
+"fairy tale","Disney",1.2221471002017363
+"Based on a comic book","author:Frank Miller",0.2274469474228157
+"Based on a comic book","HEROIC MISSION",0.2274469474228157
+"Based on a comic book","unintentionally funny",0.2274469474228157
+"Based on a comic book","atmospheric",0.2274469474228157
+"Based on a comic book","narrated",0.2274469474228157
+"Based on a comic book","Graphic Novel",0.2274469474228157
+"Based on a comic book","comic",0.2274469474228157
+"Based on a comic book","action",0.2274469474228157
+"Based on a comic book","sword fight",0.2274469474228157
+"Stand Up","stand-up comedy",0.04367129751833557
+"romance","Harrison Ford",0.018493153235403258
+"romance","Akira Kurosawa",0.04765525134750146
+"romance","comedy",0.6506862171608345
+"romance","action",0.08305708651359124
+"romance","teens",0.6437751649736402
+"Totoro","Funny",0.12331315722589056
+"Widow","Burlesque",0.030499785591686063
+"non-us","foreign",0.3678109698793973
+"non-us","weird",0.10788077716941784
+"hugh jackman","cult film",0.30649537425959444
+"non-us","commedy",0.12260365662646577
+"non-us","dark",0.12260365662646577
+"hugh jackman","sexy guys",0.30649537425959444
+"Disney","musical",0.22567358072732646
+"Disney","Johnny Depp",0.40546510810816433
+"slash","lesbian",7.783640596221251
+"docudrama","own",0.3620036670664079
+"lesbian","foreign",1.118191759156588
+"lesbian","coming of age",0.268653736072302
+"lesbian","GLBT",0.06525793375288523
+"lesbian","mafia",0.17328679513998632
+"lesbian","the american dream",0.17328679513998632
+"lesbian","organized crime",0.5198603854199589
+"lesbian","immigration",0.17328679513998632
+"lesbian","thelma & louise",0.34657359027997264
+"mindfuck","weird",0.2879695656771679
+"egypt","mummy",0.19730379672781054
+"spaghetti westerm","leone",0.20205829154466046
+"disco","musical",0.3276959195249285
+"Toshiro Mifune","Akira Kurosawa",0.2986265782046758
+"Terry Gilliam","going postal",0.01499878503383672
+"Terry Gilliam","Johnny Depp",0.011233186724763816
+"Batman","marvel",0.004670083184754179
+"marvel","comic book",0.21576155433883565
+"marvel","superhero",0.21576155433883565
+"Funny","sad but good",0.5368984150694435
+"Penelope Cruz","Martin Freeman",0.27031007207210955
+"Caper","Slashy",1.4572315977618402
+"Caper","Heist",0.1549704725877074
+"alternate universe","sequels filmed simultaneously",0.14346269273431864
+"Audrey Hepburn","classic love story",0.34657359027997264
+"Henry Fonda","James Cagney",0.10830424696249145
+"Antonio Banderas","Chow Yun Fat",0.00697837179388062
+"Depp & Burton","Johnny Depp",0.7070959783914651
+"really bad","Seann William Scott",0.17682838864033554
+"Gilliam","Trilogy of the Imagination",0.5368984150694435
+"awful movie","Overrated",0.27031007207210955
+"own","almost favorite",11.155119143527894
+"own","politics",4.77955138427206
+"brad pitt","edward norton",0.07379042407116027
+"18.03.06","13.01.06",0.020979655259508078
+"18.03.06","21.03.06",0.02283958694807764
+"brad pitt","seen more than once",0.5198603854199589
+"Johnny Depp","pirates",0.8328071099983184
+"Johnny Depp","Tim Burton",0.4319543485157519
+"CinemaScope 55","Grandeur",0.004399650790724022
+"heroin addiction","John F. Kennedy",0.011145269465375146
+"heroin addiction","Akira Kurosawa",0.05897762102340147
+"heroin addiction","new york",0.015837508277136373
+"heroin addiction","Los Angeles",0.008509811147472214
+"heroin addiction","fake documentary",0.007918754138568187
+"heroin addiction","divorce",0.0164285652860404
+"almost favorite","Alfred Hitchcock",0.9455314662693354
+"John F. Kennedy","Akira Kurosawa",0.09553458309439254
+"John F. Kennedy","new york",0.031675016554272746
+"John F. Kennedy","Los Angeles",0.017019622294944428
+"John F. Kennedy","fake documentary",0.015837508277136373
+"John F. Kennedy","divorce",0.0328571305720808
+"teenagers","divorce",0.29144631955236805
+"old","moldy",0.7045058669929349
+"Prudie","ScottLemieux",0.023908365583527828
+"one set","entirely dialogue",0.2986265782046758
+"friendship","life philosophy",0.27031007207210955
+"Noir","Tommy Lee Jones",0.2986265782046758
+"13.01.06","21.03.06",0.020979655259508078
+"hugh grant","romantic comedy",0.3662040962227032
+"Akira Kurosawa","new york",0.09553458309439253
+"Akira Kurosawa","Los Angeles",0.0595686780323055
+"Akira Kurosawa","fake documentary",0.0554312789699773
+"Akira Kurosawa","divorce",0.11499995700228277
+"Akira Kurosawa","dreamlike",0.36651629274966196
+"Akira Kurosawa","samurai",0.30649537425959444
+"Akira Kurosawa","Japan",0.30649537425959444
+"new york","Los Angeles",0.01381667101602866
+"new york","fake documentary",0.015837508277136373
+"new york","divorce",0.0328571305720808
+"new york","mafia",0.2369780840638416
+"new york","quirky",0.24033731187229493
+"new york","urbane",0.24033731187229493
+"new york","lots of characters",0.24033731187229493
+"Los Angeles","fake documentary",0.00690833550801433
+"Los Angeles","divorce",0.0164285652860404
+"plot holes","boring",0.1336929966918256
+"photography - simply excellent movie!","artistic",0.27031007207210955
+"fake documentary","divorce",0.01322561400712463
+"Mae West","less than 300 ratings",0.27031007207210955
+"author:E. M. Forster","author:Frederick Forsyth",0.0037506852305073204
+"cult film","Uma Thruman",0.1493132891023379
+"cult film","sexy guys",0.30649537425959444
+"Steven Spielberg","Alfred Hitchcock",0.06749453265226525
+"Steven Spielberg","western",0.0164285652860404
+"Steven Spielberg","Roman Polanski",0.008509811147472214
+"corporate America","capitalism",0.12474858468537925
+"sporks","hilarity",0.014345110872553236
+"corporatism","capitalism",0.14978661367769955
+"coming of age","capitalism",0.11107415651665846
+"coming of age","australian",0.3579322767129623
+"Saturn Award (Best Science Fiction Film)","time travel",0.134326868036151
+"Saturn Award (Best Science Fiction Film)","virtual reality",0.18053668007348067
+"boring","Overrated",0.34657359027997264
+"boring","cutesy",0.36651629274966196
+"Saturn Award (Best Science Fiction Film)","Nudity (Topless)",0.18053668007348067
+"Saturn Award (Best Science Fiction Film)","cyberpunk",0.18053668007348067
+"18.01.06","20.03.06",0.020979655259508078
+"boring","plotless",0.3997255628110161
+"Saturn Award (Best Science Fiction Film)","sci-fi",0.49540022818311236
+"Saturn Award (Best Science Fiction Film)","New Year 1999",0.18053668007348067
+"boring","slow",0.3997255628110161
+"Saturn Award (Best Science Fiction Film)","Jim Carrey",0.18053668007348067
+"boring","dark",0.3997255628110161
+"Saturn Award (Best Science Fiction Film)","alcohol consume",0.18053668007348067
+"Jack Black","not very funny",0.27031007207210955
+"Overrated","Nudity (Topless - Notable)",0.5987047981233172
+"Overrated","After school special",0.27031007207210955
+"intriguing","good",0.27031007207210955
+"animals","young heroes",0.23469140082603768
+"animals","documenatary",0.34657359027997264
+"weird","commedy",0.3678109698793973
+"weird","dark",0.3678109698793973
+"extortion","vigilante",0.13212915413765
+"extortion","flashbacks",0.13212915413765
+"extortion","vigilantism",0.13212915413765
+"extortion","revenge",0.13212915413765
+"Oscar (Best Supporting Actor)","Oscar (Best Actress)",0.018794141101214103
+"extortion","prison",0.13212915413765
+"tolkien","epic",0.09545254458140932
+"Alfred Hitchcock","western",0.12966955222439422
+"Alfred Hitchcock","Roman Polanski",0.07658830032724992
+"Ray Bradbury","Frank Herbert",0.0073070671715406875
+"mob","Nudity (Topless - Notable)",0.08846841194870747
+"great soundtrack","Japan",0.27031007207210955
+"vigilante","flashbacks",0.13212915413765
+"vigilante","vigilantism",0.13212915413765
+"beauty pageant","dysfunctional family",0.29375226827858475
+"beauty pageant","philisophical",0.29375226827858475
+"beauty pageant","quirky",0.29375226827858475
+"vigilante","revenge",0.13212915413765
+"vigilante","prison",0.13212915413765
+"stylized","Groundbreaking",0.30649537425959444
+"stylized","special",0.30649537425959444
+"muscle","action packed",0.3662040962227032
+"Crime","astronauts",0.03617946874158893
+"Crime","War",0.08899213376865163
+"epic","violent",0.10595477458989334
+"minnsota","minnesota",0.06197296286770066
+"scorsese is god but this movie really sucks","violent",0.27031007207210955
+"bab cinema","to see",0.9904306194183405
+"Hugh Jackman","comedy",0.039341634915555375
+"british comedy","marijuana",0.21576155433883565
+"british comedy","comedy",0.21576155433883565
+"mafia","samurai",0.22411322515497484
+"mafia","the american dream",0.5198603854199589
+"mafia","action",0.06570081339440723
+"mafia","Martin Scorsese",0.34657359027997264
+"mafia","italian",0.3218875824868201
+"mafia","organized crime",1.2130075659799042
+"mafia","immigration",0.6931471805599453
+"mafia","thelma & louise",0.6931471805599453
+"mafia","kung-fu",0.18325814637483098
+"loved it","awesome",0.3579322767129623
+"time travel","virtual reality",0.134326868036151
+"time travel","realistic tough female",0.03376494779570348
+"time travel","Nudity (Topless)",0.18053668007348067
+"western","quirky",0.3524682239952852
+"time travel","humorous",0.30649537425959444
+"time travel","cyberpunk",0.18053668007348067
+"western","Roman Polanski",0.01440772802493269
+"time travel","psychology",0.27031007207210955
+"time travel","sci-fi",0.541610040220442
+"time travel","future",0.277987164150759
+"time travel","New Year 1999",0.18053668007348067
+"western","action",0.3524682239952852
+"time travel","Bruce Willis",0.30649537425959444
+"time travel","Jim Carrey",0.18053668007348067
+"time travel","alcohol consume",0.18053668007348067
+"time travel","end of the world",0.277987164150759
+"time travel","twist ending",0.555974328301518
+"Kevin Bacon","elizabeth shue",0.36651629274966196
+"read the book","high fantasy",0.4247247769764426
+"violent","Tommy Lee Jones",0.3678548769739927
+"cars","action",0.5198603854199589
+"cars","parody",0.12852788570095722
+"cars","France",0.6931471805599453
+"cars","racing",0.25993019270997947
+"cars","franchise",0.25993019270997947
+"cars","james bond",0.25993019270997947
+"quirky","colourful",0.3933835118491925
+"quirky","urbane",0.24033731187229493
+"quirky","lots of characters",0.24033731187229493
+">1000 translations","accurate",0.3678109698793973
+">1000 translations","most famous jesus movie ever",0.3678109698793973
+"in-laws","comedy",0.3662040962227032
+"Bibliothek","08.05.06",3.115464857560339
+"Bibliothek","Enkheim",3.458151510225902
+"Bibliothek","15.02.06",3.498826153854584
+"coen bros","influencial",0.06757751801802739
+"unintentionally funny","video game",0.20205829154466046
+"coen bros","classic",0.4817286263160274
+"Noiva Nervosa","Noivo NeurÃ³tico",0.27031007207210955
+"virtual reality","Nudity (Topless)",0.18053668007348067
+"virtual reality","cyberpunk",0.18053668007348067
+"virtual reality","sci-fi",0.541610040220442
+"virtual reality","New Year 1999",0.18053668007348067
+"virtual reality","Jim Carrey",0.18053668007348067
+"virtual reality","alcohol consume",0.18053668007348067
+"confusing","confusing plot",0.3662040962227032
+"confusing","memorable sequence",0.3662040962227032
+"confusing","thought provoking",0.34657359027997264
+"Erotic","Notable Nudity",0.34657359027997264
+"Betamax","DVD-RAM",0.05242043535966589
+"death metal","glue sniffing",0.3138705812946884
+"death metal","stoner rock",0.3138705812946884
+"urbane","lots of characters",0.24033731187229493
+"influencial","classic",0.5493061443340548
+"War","Thriller",0.025533023464468185
+"dreamlike","cerebral",0.36651629274966196
+"Potential Oscar Nom","Oscar Nom 2007",38.09037823072167
+"bazooka","homeland security",0.23025850929940456
+"Demi Moore","Vietnam",0.07330325854993242
+"Stewart Granger","John Wayne",0.3854212639204929
+"stylish","dark",0.7158645534259246
+"girls","comedy",0.16962108289600727
+"stylish","character driven",0.3579322767129623
+"Oh No","NOT Again!",0.3579322767129623
+"comedy","spoof",0.1399609961537407
+"comedy","Dennis Rodman",0.30649537425959444
+"comedy","politics",0.36651629274966196
+"comedy","magic",0.5718319836733973
+"comedy","action",0.7359240676016012
+"comedy","sci-fi",0.12531140530851856
+"comedy","romantic",0.25993019270997947
+"comedy","love this movie",0.25993019270997947
+"comedy","jim carrey",0.34657359027997264
+"Erin","Eric",0.023908365583527828
+"but a classic","Cheesy",0.3662040962227032
+"Michael Moore","political",0.3218875824868201
+"story-in-a-story","fantasy",0.7330325854993239
+"DVD-RAM","DVD-R",0.15827525048503266
+"DivX","Christian Bale",1.3436430040934157
+"ancient books","devil",0.30649537425959444
+"WizardOfOz","remakeOf:The Shaggy Dog(1959)",0.0016230599247596747
+"addiction","Ingmar Bergman",0.00690833550801433
+"addiction","chemical dependency",1.4317291068518492
+"addiction","recovery",0.7158645534259246
+"resorts to unnecessary graphical violence","senseless violence",0.34657359027997264
+"inarritu","Alejandro Gonzalez Inarritu",0.3662040962227032
+"plotless","slow",0.3197804502488129
+"plotless","dark",0.3197804502488129
+"persuasion","love story",0.2879695656771679
+"persuasion","jane austen",0.2879695656771679
+"comic strip","talking animals",0.020124248582747317
+"author:Martin Cruz Smith","author:Ayn Rand",0.001763705746281148
+"mystery","erotic",0.1549704725877074
+"mystery","action",0.03596025905647261
+"mystery","children",0.17328679513998632
+"mystery","comic book",0.10462352709822947
+"mystery","noir",0.4086604990127926
+"mystery","fantasy",0.10462352709822947
+"mystery","bogart",0.7330325854993239
+"Oliver Stone","Vietnam",0.10055021680229212
+"talking animals","politics",0.0036535335857703437
+"Oliver Stone","action",0.41125577490138815
+"Oliver Stone","war",0.24413606414846883
+"talking animals","steampunk",0.5198603854199589
+"jonossa","Christopher Walken",2.0556158744944355
+"complicated","must be seen more than once",0.3218875824868201
+"Yul","Charles Bronson",0.17851484105136767
+"Yul","Clint Eastwood",0.17851484105136767
+"coolness","action",0.4378773892751655
+"coolness","classic",0.17896613835648115
+"politics","A love love story",0.21576155433883565
+"politics","africa",0.21576155433883565
+"the american dream","organized crime",0.6931471805599453
+"the american dream","immigration",0.34657359027997264
+"the american dream","thelma & louise",0.34657359027997264
+"magic","sequel",0.27031007207210955
+"narrated","action",0.1662330408326609
+"magic","fantasy",0.33838547741386776
+"1920s","apes",0.017631979916636488
+"Wizards","harry potter",0.2986265782046758
+"Wizards","based on a book",0.5972531564093516
+"mental hospital","sexual harrassment",0.3611918412977808
+"mental hospital","overture",0.3611918412977808
+"AFI #54","AFI #52",0.018794141101214103
+"google video","imdb top 250",32.97864320007929
+"Quentin Tarantino","grindhouse",0.17896613835648115
+"Quentin Tarantino","Uma Thruman",2.3396759505408706
+"Quentin Tarantino","Tarantino",0.36651629274966196
+"AFI #86","AFI #93",0.01687250551776309
+"tear-jerker","heart-wrenching",0.25993019270997947
+"Oregon","Portland",0.34657359027997264
+"18th century","Jane Austen",0.4828313737302301
+"George Clooney","Tom Cruise",0.044207097160083884
+"George Clooney","Matt Damon",0.20707555414900003
+"Classical Chinese","Emperor",0.36651629274966196
+"As historicaly correct as Germany winning WW2","but still a fun movie.",0.3662040962227032
+"sequel","ridiculous",0.029195734423202
+"sequel","humorous",0.3218875824868201
+"sequel","sci-fi",0.20205829154466046
+"ridiculous","silly",0.20205829154466046
+"Tom Cruise","cyborgs",0.01805070782708191
+"Tom Cruise","action",0.3579322767129623
+"Tom Cruise","Good story",0.044207097160083884
+"Free to download","amature",0.08459249977267377
+"Have","but not seen",0.3662040962227032
+"split personality","writer",0.21576155433883565
+"so bad it's funny","japan",0.34657359027997264
+"so bad it's funny","humor",0.5198603854199589
+"so bad it's funny","ironic",0.5198603854199589
+"so bad it's funny","extravagant",0.17328679513998632
+"action","italian",0.5051457288616511
+"action","sci-fi",1.2568728611321607
+"action","Mel Gibson",0.27031007207210955
+"action","racing",0.5198603854199589
+"action","classic",0.5368984150694435
+"action","franchise",0.5198603854199589
+"action","james bond",0.5198603854199589
+"action","kung-fu",0.6437751649736402
+"action","to-rent",0.7158645534259246
+"action","thriller",0.30649537425959444
+"Edward Norton","AMMChickFlicks",0.3662040962227032
+"bears","documentary",0.34657359027997264
+"Nudity (Topless)","Nudity (Rear)",0.6457742969884276
+"Nudity (Topless)","cyberpunk",0.18053668007348067
+"Nudity (Topless)","sci-fi",0.541610040220442
+"Nudity (Topless)","New Year 1999",0.18053668007348067
+"Nudity (Topless)","Jim Carrey",0.18053668007348067
+"Nudity (Topless)","seen more than once",0.36651629274966196
+"Nudity (Topless)","alcohol consume",0.18053668007348067
+"genocide","Rwanda",0.29144631955236805
+"scary","monkey",1.4317291068518492
+"scary","dissection",0.27031007207210955
+"erlend's DVDs","hard rock",2.2096100205716867
+"Miyazaki","Japan",0.6648306744273791
+"Funfunfun","seen more than once",0.3662040962227032
+"Miyazaki","Hayao Miyazaki",0.48417020593554494
+"Miyazaki","Studio Ghibli",0.7158645534259246
+"Slashy","Heist",2.3245570888156113
+"judi dench","johnny depp",0.0697031180553486
+"Sylvester Stallone","Wesley Snipes",0.2879695656771679
+"Goonies","The",0.3662040962227032
+"Nudity (Rear)","Nudity (Full Frontal)",0.21287281711051262
+"based on true story","esoteric plotlines",0.6684788430116774
+"italian","kung-fu",0.3218875824868201
+"mars","force",0.3300953659172462
+"flashbacks","vigilantism",0.13212915413765
+"flashbacks","revenge",0.13212915413765
+"flashbacks","prison",0.13212915413765
+"Planes","Snakes",0.36651629274966196
+"chemical dependency","recovery",0.7158645534259246
+"fish","ocean",0.277987164150759
+"Sueños de libertad","based on a book",0.27031007207210955
+"sure thing","top ten",0.09864606491408412
+"well done","different",0.5736254683636905
+"on computer","on dvr",0.7034006816582695
+"cyberpunk","sci-fi",0.541610040220442
+"cyberpunk","New Year 1999",0.18053668007348067
+"cyberpunk","Jim Carrey",0.18053668007348067
+"cyberpunk","alcohol consume",0.18053668007348067
+"musicians","cuba",0.34657359027997264
+"war","desert",0.2517724898230907
+"war","sci-fi",0.09531050269500292
+"clinton","classic",0.3662040962227032
+"A love love story","africa",0.21576155433883565
+"ending lame","haunting visuals",0.21576155433883565
+"ending lame","creepy",0.21576155433883565
+"not nearly as interesting as it could be. Token Americana.","BEH...long tedious",0.16355433605311248
+"kuitenkin maailma ja hahmot mielenkiintoisia.","Kohtuullisen tylsÃ¤ks meni",0.27031007207210955
+"americana","Lolita-fetish",0.10569873776878186
+"Guillermo del Toro","twist ending",0.7797905781299383
+"Ernest Hemingway","Isaac Asimov",0.01826766792885172
+"Wim Wenders","German",0.3579322767129623
+"Kristin Scott Thomas","Hugh Grant",0.3579322767129623
+"Africa","Chuck Palahniuk",0.0036535335857703437
+"psychology","midgets",0.0034074989327920885
+"silent comedy","Harold Lloyd",0.3662040962227032
+"sci-fi","Luc Besson",0.07942490404307401
+"sci-fi","humor",0.30995419858880463
+"sci-fi","Bill Murray",0.12051585471536456
+"sci-fi","dark",0.12222076882408699
+"sci-fi","New Year 1999",0.541610040220442
+"sci-fi","Jim Carrey",0.541610040220442
+"sci-fi","alcohol consume",0.541610040220442
+"sci-fi","Michael Crichton",0.36651629274966196
+"sci-fi","to-rent",0.7158645534259246
+"sci-fi","thriller",0.30649537425959444
+"clancy","books",0.27031007207210955
+"couldn't finish it","excellent!",0.3579322767129623
+"poetry","Pablo Neruda",0.3218875824868201
+"cheerleading","Lolita-fetish",0.1549704725877074
+"bad cgi","video game adaptation",0.05925820077506918
+"Japan","anime",0.7109215402326823
+"the photagraphy is amazing","the atmosphere very natural",0.3061060685979011
+"organized crime","immigration",0.6931471805599453
+"organized crime","thelma & louise",0.6931471805599453
+"slow","dark",0.3197804502488129
+"Divx1","DVD1",0.09595797434427536
+"dystopic future","distopia",0.34657359027997264
+"unique look","1940's feel",0.34657359027997264
+"Nudity (Full Frontal)","gold digger",0.3342394215058387
+"future","end of the world",0.277987164150759
+"future","twist ending",0.555974328301518
+"autism","Asperger syndrome",0.08529189189150999
+"al pacino","imdb top 250",0.8958797346140275
+"japan","baseball",0.014381558836374797
+"japan","humor",0.43321698784996576
+"japan","ironic",0.6065037829899521
+"japan","extravagant",0.17328679513998632
+"Charles Bronson","Clint Eastwood",0.17851484105136767
+"VHS","Ultra Panavision 70",0.005016329776987317
+"VHS","70mm",0.006249687749513911
+"humor","ironic",1.0397207708399179
+"humor","extravagant",0.34657359027997264
+"dark","social commentary",0.19730379672781054
+"dark","classic",0.34657359027997264
+"Ultra Panavision 70","70mm",0.005633008763250615
+"dark","character driven",0.7158645534259246
+"vigilantism","revenge",0.13212915413765
+"vigilantism","prison",0.13212915413765
+"New Year 1999","Jim Carrey",0.18053668007348067
+"New Year 1999","alcohol consume",0.18053668007348067
+"USA","documentary",0.36651629274966196
+"masturbatory garbage","Zack Snyder has the mentality of a 13 year old boy",0.29144631955236805
+"world war II","fantasy",0.34657359027997264
+"legend","faerie tale",0.07046582517918791
+"anime","Hayao Miyazaki",18.819367194430114
+"anime","children",2.4137650560804995
+"anime","comic book",0.2959556950917158
+"anime","Studio Ghibli",37.660873401261846
+"immigration","thelma & louise",0.34657359027997264
+"Can't remember","K movie",0.7681097489873915
+"documentary","morgan freeman",0.21576155433883565
+"documentary","nuclear",0.5655122849175553
+"documentary","french",0.21576155433883565
+"murder mystery","adultery",0.17851484105136767
+"murder mystery","courtroom drama",0.17851484105136767
+"scarlett johansson","painting",0.21237800307558297
+"spies","Angelina Jolie",0.02532769803397674
+"Tony Awards","Gay Fave",0.34657359027997264
+"social commentary","classic",0.25993019270997947
+"horror","thriller",0.3579322767129623
+"great for the kids and adults","very funny",0.36651629274966196
+"gross","satire",0.27031007207210955
+"post-punk","concert",0.277987164150759
+"stupid","kid flick",0.16953071756350396
+"carjacking","car chase",0.2119095491797867
+"dvd-r","buy",0.03563260568786909
+"Hayao Miyazaki","Studio Ghibli",2.8634582137036984
+"Moving","Great Screenplays",0.013007357824393903
+"Mel Gibson","awesome",0.07491116818022871
+"Mel Gibson","Drama",0.3579322767129623
+"Mel Gibson","Julia Roberts",0.268653736072302
+"notable cast","irreverent",0.05971604824755191
+"imdb top 250","existentialism",0.30995419858880463
+"assassin-in-training (scene)","espionage",0.2986265782046758
+"assassin-in-training (scene)","Jean Reno",0.2986265782046758
+"ironic","extravagant",0.6931471805599453
+"ironic","buddhist monks",0.27031007207210955
+"morgan freeman","french",0.21576155433883565
+"chaplin","hard to rate",0.049278250145047206
+"Richard Gere","prostitution",0.1549704725877074
+"civil rights","racism",0.36651629274966196
+"A complete waste of time!","Completely BORING!",0.08323133470628467
+"beautiful","humane",0.09166557661806524
+"complex","Goodfellas II",0.09855650029009441
+"good","predictable",0.037455584090114354
+"children","Studio Ghibli",2.255605295553334
+"gore","awesome ending",0.5972531564093516
+"Atmospheric","great photograpy",0.36651629274966196
+"Jim Carrey","comic book",0.06968864716063242
+"Jim Carrey","alcohol consume",0.18053668007348067
+"Hugo Weaving","Natalie Portman",2.2183757671815636
+"Jim Carrey","Comedy",0.5198603854199589
+"romantic","love this movie",0.25993019270997947
+"romantic","Great movie",0.3662040962227032
+"Kubrick","classic",0.8355985537645967
+"70mm","Cinerama",1.7405997078444304
+"harry potter","based on a book",0.5972531564093516
+"anime. miyazaki","fantasy",0.27031007207210955
+"love mr. tumnus","Christian",0.2656802513818748
+"racing","car chase",0.1549704725877074
+"racing","franchise",0.25993019270997947
+"racing","james bond",0.25993019270997947
+"Christian","faith",0.3342394215058387
+"comic book","seen more than once",3.662101441939778
+"comic book","revenge",0.5070182224477673
+"comic book","superhero",2.926613626646565
+"racism","Oscar (Best Picture)",0.571316555730876
+"seen more than once","goofy comedy",0.19730379672781054
+"seen more than once","classic",0.36007507438868785
+"seen more than once","suprisingly clever",0.2986265782046758
+"Good action","movie",0.1927918285514358
+"puppetry","king prawn",0.19730379672781054
+"revenge","prison",0.13212915413765
+"noir","bogart",1.4660651709986479
+"dan akroyd","classic",0.2986265782046758
+"fantasy","mythology",0.33838547741386776
+"fantasy","kids",0.27031007207210955
+"classic","must see",0.18077378207304684
+"classic","french",0.44793986730701374
+"classic","family",0.5878143210318295
+"classic","Hollywood",0.27031007207210955
+"classic","prison",0.3218875824868201
+"classic","spirits",0.3631276544516587
+"Jack Lemmon","Walter Matthau",0.08256886693749055
+"Jack Lemmon","Mamet",0.20205829154466046
+"animated","Comedy",0.36651629274966196
+"but it's a bit long.","I'd see it again",0.27031007207210955
+"Walter Matthau","Supreme Court",0.11611364930987841
+"superhero","jim carrey",0.3662040962227032
+"franchise","james bond",0.25993019270997947
+"adultery","courtroom drama",0.17851484105136767
+"must see","Great movie",0.08177716802655624
+"must see","Favorite",0.3579322767129623
+"Oscar (Best Picture)","tear jerker",1.2061127287651827
+"end of the world","twist ending",0.555974328301518
+"unnecessary","cute",0.36651629274966196
+"Comedy","fake horror",0.1927918285514358
+"Frank Capra","Christmas",0.3342394215058387
+"cute","but a little slow",0.27031007207210955
+"THEATER","RENT",0.23298851502661272
+"Good effects","alien series",0.36651629274966196
+"unforgetable","Tom Cruise's best work",0.20205829154466046
+"you've seen them all.","When you've seen one Jackie Chan movie",0.277987164150759
+"haunting visuals","creepy",0.21576155433883565
+"creepy","7-4-2007",0.08764381818299229
+"creepy","uncanny",0.08764381818299229
+"creepy","entertaining",0.3579322767129623
+"Christmas","family",0.15232894695229235
+"elijah wood","artsy",0.08746977013240842
+"Weird Al","80's classic",0.07336148076457245
+"Clint Eastwood","thriller",0.4319543485157519
+"family","espionage",0.09139017220030848
+"prison","based on a book",0.5907096544284415
+"ghosts","twist ending",0.17682838864033554
+"espionage","Jean Reno",0.2986265782046758
+"espionage","twist ending",0.1435889273576205
