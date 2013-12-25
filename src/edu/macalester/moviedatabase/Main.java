@@ -28,29 +28,29 @@ public class Main {
 			e.printStackTrace();
 		}
 		
-		DistributionalDatabase ddb = new DistributionalDatabase();
-		ddb.initializeMovieLensTags("ml-10M100K/tags.dat");
-		try {
-			generateTagSimilarityCSV(ddb, new DistributionalMutualInformation(ddb), "dist_MI.csv");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		ProjectionalDatabase pdb = new ProjectionalDatabase();
-		pdb.initializeMovieLensTags("ml-10M100K/tags.dat");
-		try {
-			generateTagSimilarityCSV(pdb, new DistributionalMatching(pdb), "dist_matching.csv");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+//		DistributionalDatabase ddb = new DistributionalDatabase();
+//		ddb.initializeMovieLensTags("ml-10M100K/tags.dat");
+//		try {
+//			generateTagSimilarityCSV(ddb, new DistributionalMutualInformation(ddb), "dist_MI.csv");
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//		
+//		ProjectionalDatabase pdb = new ProjectionalDatabase();
+//		pdb.initializeMovieLensTags("ml-10M100K/tags.dat");
+//		try {
+//			generateTagSimilarityCSV(pdb, new DistributionalMatching(pdb), "dist_matching.csv");
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 		System.out.println("Kendalls Tau for collaborative matching:");
 		tauBetweenCSVandWordnet("collab_matching.csv");
 		System.out.println("Kendalls Tau for collaborative MI:");
 		tauBetweenCSVandWordnet("collab_MI.csv");
 		System.out.println("Kendalls Tau for distributional matching:");
-		tauBetweenCSVandWordnet("dist_matching.csv");
-		System.out.println("Kendalls Tau for distributional MI:");
-		tauBetweenCSVandWordnet("dist_MI.csv");
+//		tauBetweenCSVandWordnet("dist_matching.csv");
+//		System.out.println("Kendalls Tau for distributional MI:");
+//		tauBetweenCSVandWordnet("dist_MI.csv");
 	}
 	
 	public static void tauBetweenCSVandWordnet(String file){

@@ -26,7 +26,7 @@ public class CollaborativeMutualInformation implements TagSimilarityMeasure {
 				continue;
 			
 			double totalTags = tagsMap.keySet().size();
-			similarity += Math.log(totalTags/ totalTags+1);
+			similarity += Math.log(totalTags/ (totalTags+1));
 			
 			for(String comparingMovie : movieSet1){
 				double marginalProbability1 = (moviesMap.get(comparingMovie).size())/(totalTags+1);
