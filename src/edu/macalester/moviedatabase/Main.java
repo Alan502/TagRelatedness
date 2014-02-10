@@ -16,6 +16,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.TreeMap;
 
 import edu.cmu.lti.jawjaw.pobj.POS;
@@ -186,27 +187,30 @@ public class Main {
 			e.printStackTrace();
 		}
 		
-        HashMap<String,Integer> unsortedMap = new HashMap<String,Integer>();
-		
-        System.out.println(resourcesWithOverlappingTags);
+		Collections.sort(resourcesWithOverlappingTags);
+        TreeMap<Integer,String> map = new TreeMap<Integer,String>();
         
+        int count = 0;
+        String lastKey = "";
 		for(String res : resourcesWithOverlappingTags){
-			if(unsortedMap.containsKey(res))
-				unsortedMap.put(res, unsortedMap.get(res)+1);
-			else
-				unsortedMap.put(res, 1);
+			if(res.equals(lastKey)){
+				count++;
+			}else{
+				map.put(count, lastKey);
+				count = 0;
+			}
 		}
 		
-		ValueComparator bvc =  new ValueComparator(unsortedMap);
-        TreeMap<String,Integer> sortedMap = new TreeMap<String,Integer>(bvc);
-        		
         try {
 			FileWriter writer = new FileWriter(outputDir);
-			String currentKey = sortedMap.lastKey();        
-        
-			for(int i = 0; i < 2000; i++){
-				writer.append(currentKey+"\n");
-				currentKey = sortedMap.floorKey(currentKey);
+			
+			int i = 0;
+			Entry<Integer, String> lastEntry = map.pollLastEntry();
+			
+			while(i < 2000 && null != lastEntry){
+				writer.append(lastEntry.getValue()+"\n");
+				i++;
+				lastEntry = map.pollLastEntry();
 			}
 			
 			writer.flush();
@@ -219,21 +223,4 @@ public class Main {
         
 	}
 
-}
-
-// Class taken from: http://stackoverflow.com/questions/109383/how-to-sort-a-mapkey-value-on-the-values-in-java
-class ValueComparator implements Comparator<String> {
-
-    Map<String, Integer> base;
-    public ValueComparator(Map<String, Integer> base) {
-        this.base = base;
-    }
-
-    public int compare(String a, String b) {
-        if (base.get(a) >= base.get(b)) {
-            return -1;
-        } else {
-            return 1;
-        } 
-    }
 }
