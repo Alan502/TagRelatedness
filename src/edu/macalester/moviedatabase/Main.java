@@ -196,6 +196,7 @@ public class Main {
 			if(res.equals(lastKey)){
 				count++;
 			}else{
+				System.out.println(count+" "+lastKey);
 				map.put(count, lastKey);
 				count = 0;
 			}
