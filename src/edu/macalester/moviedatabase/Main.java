@@ -1,15 +1,27 @@
 package edu.macalester.moviedatabase;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
+import java.util.TreeMap;
 
+import edu.cmu.lti.jawjaw.pobj.POS;
 import edu.cmu.lti.lexical_db.ILexicalDatabase;
 import edu.cmu.lti.lexical_db.NictWordNet;
+import edu.cmu.lti.ws4j.WS4J;
 import edu.cmu.lti.ws4j.impl.JiangConrath;
 import edu.cmu.lti.ws4j.util.WS4JConfiguration;
 
@@ -18,9 +30,14 @@ public class Main {
 	static int threads  = Runtime.getRuntime().availableProcessors();
 
 	public static void main(String[] args) {
+		generateMostFrequentResources("bibsonomy/2008-01-01/tas", "most-common-resoruces.csv");
+		
+		System.exit(0);
+		
 		ParallelForEach.LOG.info("Running program with "+threads+" threads.");
 		CollaborativeDatabase db = new CollaborativeDatabase();
-		db.initializeMovieLensTags("ml-10M100K/tags.dat");
+		//db.initializeMovieLensTags("ml-10M100K/tags.dat");
+		db.intializeBibsonomyTags("bibsonomy/2008-01-01/tas");
 		try {
 			generateTagSimilarityCSV(db, new CollaborativeMatching(db), "collab_matching.csv");
 			generateTagSimilarityCSV(db, new CollaborativeMutualInformation(db), "collab_MI.csv");
@@ -28,29 +45,31 @@ public class Main {
 			e.printStackTrace();
 		}
 		
-//		DistributionalDatabase ddb = new DistributionalDatabase();
-//		ddb.initializeMovieLensTags("ml-10M100K/tags.dat");
-//		try {
-//			generateTagSimilarityCSV(ddb, new DistributionalMutualInformation(ddb), "dist_MI.csv");
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//		
-//		ProjectionalDatabase pdb = new ProjectionalDatabase();
-//		pdb.initializeMovieLensTags("ml-10M100K/tags.dat");
-//		try {
-//			generateTagSimilarityCSV(pdb, new DistributionalMatching(pdb), "dist_matching.csv");
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-		System.out.println("Kendalls Tau for collaborative matching:");
+		DistributionalDatabase ddb = new DistributionalDatabase();
+		//ddb.initializeMovieLensTags("ml-10M100K/tags.dat");
+		ddb.intializeBibsonomyTags("bibsonomy/2008-01-01/tas");
+		try {
+			generateTagSimilarityCSV(ddb, new DistributionalMutualInformation(ddb), "dist_MI.csv");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		ProjectionalDatabase pdb = new ProjectionalDatabase();
+		//pdb.initializeMovieLensTags("ml-10M100K/tags.dat");
+		pdb.initializeMovieLensTags("bibsonomy/2008-01-01/tas");
+		try {
+			generateTagSimilarityCSV(pdb, new DistributionalMatching(pdb), "dist_matching.csv");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		System.out.println("Calculation for collaborative matching:");
 		tauBetweenCSVandWordnet("collab_matching.csv");
-		System.out.println("Kendalls Tau for collaborative MI:");
+		System.out.println("Calculation for collaborative MI:");
 		tauBetweenCSVandWordnet("collab_MI.csv");
-		System.out.println("Kendalls Tau for distributional matching:");
-//		tauBetweenCSVandWordnet("dist_matching.csv");
-//		System.out.println("Kendalls Tau for distributional MI:");
-//		tauBetweenCSVandWordnet("dist_MI.csv");
+		System.out.println("Calculation for distributional matching:");
+		tauBetweenCSVandWordnet("dist_matching.csv");
+		System.out.println("Calculation for distributional MI:");
+		tauBetweenCSVandWordnet("dist_MI.csv");
 	}
 	
 	public static void tauBetweenCSVandWordnet(String file){
@@ -58,6 +77,7 @@ public class Main {
 		WS4JConfiguration.getInstance().setMFS(true);
         ILexicalDatabase db = new NictWordNet();
 		final JiangConrath rc = new JiangConrath(db);
+		
 		
 		final ArrayList<Double> distMatchingSimilarities  = new ArrayList<Double>();
 		final ArrayList<Double> wordnetSimilarities = new ArrayList<Double>();
@@ -81,7 +101,7 @@ public class Main {
 			}
 		});
 		
-	    System.out.println(KendallsCorrelation.correlation(distMatchingSimilarities, wordnetSimilarities));
+	    System.out.println("Tau: "+KendallsCorrelation.correlation(distMatchingSimilarities, wordnetSimilarities));
 	}
 	
 	public static void generateTagSimilarityCSV(Database database, final TagSimilarityMeasure similarityMeasure, String outputFile) throws IOException{
@@ -127,5 +147,93 @@ public class Main {
 	    fWriter.close();
 		
 	}
+	
+	public static void generateMostFrequentResources(String bibsonomyDSdir, String outputDir){
+		FileInputStream fileStream;
+		BufferedInputStream bufferedStream;
+		BufferedReader readerStream;
+		
+		ArrayList<String> resourcesWithOverlappingTags = new ArrayList<String>();
+		
+		try {
+			fileStream = new FileInputStream(bibsonomyDSdir);
+			bufferedStream = new BufferedInputStream(fileStream);
+			readerStream = new BufferedReader(new InputStreamReader(bufferedStream));
+			
+			while(readerStream.ready()){
+				String line = readerStream.readLine();
+				String tagInfo[] = line.split("\t");
+				if( tagInfo.length == 5 && // the line was split correctly
+						//check that the word exists in the wordnet dictionary:
+						(WS4J.findDefinitions(tagInfo[1], POS.n).isEmpty()
+					||  WS4J.findDefinitions(tagInfo[1], POS.v).isEmpty()
+					||  WS4J.findDefinitions(tagInfo[1], POS.a).isEmpty()
+					||  WS4J.findDefinitions(tagInfo[1], POS.r).isEmpty())
+					){
+					resourcesWithOverlappingTags.add(tagInfo[2]);
+				}		
+			}
+			
+			readerStream.close();
+			fileStream.close();
+			bufferedStream.close();
+			
+		} catch (FileNotFoundException e) {
+			System.out.println("File not found exception: "+e.getMessage());
+			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.println("IOException: "+e.getMessage());
+			e.printStackTrace();
+		}
+		
+        HashMap<String,Integer> unsortedMap = new HashMap<String,Integer>();
+		
+        System.out.println(resourcesWithOverlappingTags);
+        
+		for(String res : resourcesWithOverlappingTags){
+			if(unsortedMap.containsKey(res))
+				unsortedMap.put(res, unsortedMap.get(res)+1);
+			else
+				unsortedMap.put(res, 1);
+		}
+		
+		ValueComparator bvc =  new ValueComparator(unsortedMap);
+        TreeMap<String,Integer> sortedMap = new TreeMap<String,Integer>(bvc);
+        		
+        try {
+			FileWriter writer = new FileWriter(outputDir);
+			String currentKey = sortedMap.lastKey();        
+        
+			for(int i = 0; i < 2000; i++){
+				writer.append(currentKey+"\n");
+				currentKey = sortedMap.floorKey(currentKey);
+			}
+			
+			writer.flush();
+			writer.close();
+			
+		} catch (IOException e) {
+			System.out.println("IOException: "+e.getMessage());
+			e.printStackTrace();
+		}
+        
+	}
 
+}
+
+// Class taken from: http://stackoverflow.com/questions/109383/how-to-sort-a-mapkey-value-on-the-values-in-java
+class ValueComparator implements Comparator<String> {
+
+    Map<String, Integer> base;
+    public ValueComparator(Map<String, Integer> base) {
+        this.base = base;
+    }
+
+    public int compare(String a, String b) {
+        if (base.get(a) >= base.get(b)) {
+            return -1;
+        } else {
+            return 1;
+        } 
+    }
 }

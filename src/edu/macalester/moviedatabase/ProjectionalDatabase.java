@@ -80,8 +80,40 @@ public class ProjectionalDatabase implements Database{
 				String movie = tagInfo[1];
 				String tag = tagInfo[2];
 				
-				if(tagInfo.length == 4)
+				if(tagInfo.length == 6)
 					addTag(movie, tag);
+			}
+			
+		} catch (FileNotFoundException e) {
+			System.out.println("File not found exception: "+e.toString());
+			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.println("Input output exception: "+e.toString());
+			e.printStackTrace();
+		}
+	}
+	
+	public void intializeBibsonomyTags(String dir){
+		FileInputStream fileStream;
+		BufferedInputStream bufferedStream;
+		BufferedReader readerStream;
+		
+		try {
+			fileStream = new FileInputStream(dir);
+			bufferedStream = new BufferedInputStream(fileStream);
+			readerStream = new BufferedReader(new InputStreamReader(bufferedStream));
+			
+			while(readerStream.ready()){
+				
+				String line = readerStream.readLine();	
+				
+				String tagInfo[] = line.split("\t");
+				
+				String tag = tagInfo[1];
+				String resource = tagInfo[2];
+				
+				if(tagInfo.length == 4)
+					addTag(resource, tag);
 			}
 			
 		} catch (FileNotFoundException e) {

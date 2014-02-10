@@ -1,2 +1,16 @@
-MovieLens dataset and wordnet, distributional matching:
-0.25265792935623477
+Kendalls Tau between MovieLens dataset and wordnet
+
+Collaborative matching:
+Swaps: 28617648043 Numpairs: 73935698070 Concordant - Discordant: 875268291 Tied X pairs: 15640056846 Tied Y pairs: 240058780 Tied XY Pairs: 54981933
+Tau: 0.01335371976521613
+
+Collaborative mutual information:
+Swaps: 33605818002 Numpairs: 73935698070 Concordant - Discordant: 1599407326 Tied X pairs: 4905393851 Tied Y pairs: 240058780 Tied XY Pairs: 20797891
+Tau: 0.02242426886722152
+
+Distributional matching:
+Tau: 0.027632083503050315
+
+Distributional mutual information:
+Swaps: 342867031057 Numpairs: 732436646040 Concordant - Discordant: 44105704377 Tied X pairs: 18166347 Tied Y pairs: 2578857731 Tied XY Pairs: 144529
+Tau: 0.060324814085180701

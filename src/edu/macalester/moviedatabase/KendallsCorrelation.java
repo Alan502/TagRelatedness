@@ -196,7 +196,7 @@ public class KendallsCorrelation {
 
         long concordantMinusDiscordant = (long) numPairs - tiedXPairs - tiedYPairs
                 + tiedXYPairs - 2 * swaps;
-        System.out.println("swaps"+swaps+"numpairs: "+numPairs+"concord - discord: "+concordantMinusDiscordant+"tied X: "+tiedXPairs+"tied Y: "+tiedYPairs+"tied XY: "+tiedXYPairs);
+        System.out.println("Swaps: "+swaps+" Numpairs: "+numPairs+" Concordant - Discordant: "+concordantMinusDiscordant+" Tied X pairs: "+tiedXPairs+" Tied Y pairs: "+tiedYPairs+" Tied XY Pairs: "+tiedXYPairs);
         return concordantMinusDiscordant /
                 Math.sqrt((numPairs - tiedXPairs) * (numPairs - tiedYPairs));
 

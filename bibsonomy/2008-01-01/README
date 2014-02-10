@@ -1,0 +1,74 @@
+README for the BibSonomy Dataset
+
+Please send comments, errors, etc. to: webmaster@bibsonomy.org
+
+Christoph Schmitz
+July 26, 2006
+
+
+
+
+You will find three files for each snapshot:
+
+tas
+bookmark
+bibtex
+
+
+These are tab-separated files which have the following columns:
+
+tas: 	Tag assignments: Fact table; who 
+	attached which tag to which resource/content
+
+1. user  (number, no user names available)
+2. tag
+3. content_id (matches bookmark.content_id or bibtex.content_id)
+4. content_type (1 = bookmark, 2 = bibtex)
+5. date
+6. spam-flag (0 = non-spammer, -2147483648 = spammer)
+
+bookmark: 	Dimension table for bookmark data
+
+1. content_id (matches tas.content_id)
+2. url_hash   The URL as md5 hash
+3. url
+4. description
+5. extended description
+6. date
+
+bibtex: 	Dimension table for BibTeX data
+
+1. content_id (matches tas.content_id)
+2. journal volume 
+3. chapter 
+4. edition 
+5. month 
+6. day 
+7. booktitle
+8. howPublished
+9. institution
+10. organization
+11. publisher
+12. address
+13. school
+14. series
+15. bibtexKey  The bibtex key (in the @... line)
+16. url
+17. type
+18. description
+19. annote
+20. note
+21. pages
+22. bKey     The "key" field
+23. number
+24. crossref
+25. misc
+26. bibtexAbstract
+27. simhash0  Hash for duplicate detection within a user -- strict -- (obsolete)
+28. simhash1  Hash for duplicate detection among users -- sloppy --
+29. simhash2  Hash for duplicate detection within a user -- strict --
+30. entrytype
+31. title
+32. author
+33. editor
+34. year

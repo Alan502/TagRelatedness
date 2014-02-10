@@ -22,7 +22,7 @@ public class CollaborativeDatabase implements Database{
 		allTags = new HashSet<String>();
 	}
 
-	public void addTag(String user, String movieName, String tagName) {
+	public void addTag(String user, String resourceName, String tagName) {
 		
 		ArrayList<HashMap<String, HashSet<String>>> mapList = userMap.get(user);
 		
@@ -32,20 +32,20 @@ public class CollaborativeDatabase implements Database{
 			mapList.add(1, new HashMap<String, HashSet<String>>()); // tagsMap
 		}
 		
-		HashSet<String> tagsSet = mapList.get(0).get(movieName);
+		HashSet<String> tagsSet = mapList.get(0).get(resourceName);
 		
 		if(null == tagsSet)
 			tagsSet = new HashSet<String>();
 		
 		tagsSet.add(tagName);
-		mapList.get(0).put(movieName, tagsSet);
+		mapList.get(0).put(resourceName, tagsSet);
 		
 		HashSet<String> moviesSet = mapList.get(1).get(tagName);
 		
 		if(null == moviesSet)
 			moviesSet = new HashSet<String>();
 		
-		moviesSet.add(movieName);
+		moviesSet.add(resourceName);
 		mapList.get(1).put(tagName, moviesSet);
 		
 		userMap.put(user, mapList);
@@ -86,6 +86,39 @@ public class CollaborativeDatabase implements Database{
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public void intializeBibsonomyTags(String dir){
+		FileInputStream fileStream;
+		BufferedInputStream bufferedStream;
+		BufferedReader readerStream;
+		
+		try {
+			fileStream = new FileInputStream(dir);
+			bufferedStream = new BufferedInputStream(fileStream);
+			readerStream = new BufferedReader(new InputStreamReader(bufferedStream));
+			
+			while(readerStream.ready()){
+				
+				String line = readerStream.readLine();	
+				
+				String tagInfo[] = line.split("\t");
+				
+				String user = tagInfo[0];
+				String tag = tagInfo[1];
+				String resource = tagInfo[2];
+				
+				if(tagInfo.length == 6)
+					addTag(user, resource, tag);
+			}
+			
+		} catch (FileNotFoundException e) {
+			System.out.println("File not found exception: "+e.toString());
+			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.println("Input output exception: "+e.toString());
+			e.printStackTrace();
+		}
 	}
 	
 	public HashMap<String, ArrayList<HashMap<String, HashSet<String>>>> getUserMap(){
