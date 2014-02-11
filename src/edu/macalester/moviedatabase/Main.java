@@ -154,7 +154,7 @@ public class Main {
 		BufferedInputStream bufferedStream;
 		BufferedReader readerStream;
 		
-		ArrayList<String> resourcesWithOverlappingTags = new ArrayList<String>();
+		LinkedList<String> resourcesWithOverlappingTags = new LinkedList<String>();
 		
 		try {
 			fileStream = new FileInputStream(bibsonomyDSdir);
@@ -191,18 +191,18 @@ public class Main {
         TreeMap<Integer,String> map = new TreeMap<Integer,String>();
         
         int count = 0;
-        String lastKey = "";
+        String lastKey = resourcesWithOverlappingTags.get(0);
         System.out.println(resourcesWithOverlappingTags);
-		for(String res : resourcesWithOverlappingTags){
+		for(String res : resourcesWithOverlappingTags.subList(1, resourcesWithOverlappingTags.size())){
 			if(res.equals(lastKey)){
 				count++;
 			}else{
 				System.out.println(count+" "+lastKey);
 				map.put(count, lastKey);
+				lastKey = res;
 				count = 0;
 			}
 		}
-		
         try {
 			FileWriter writer = new FileWriter(outputDir);
 			
