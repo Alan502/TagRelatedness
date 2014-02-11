@@ -192,6 +192,7 @@ public class Main {
         
         int count = 0;
         String lastKey = "";
+        System.out.println(resourcesWithOverlappingTags);
 		for(String res : resourcesWithOverlappingTags){
 			if(res.equals(lastKey)){
 				count++;
