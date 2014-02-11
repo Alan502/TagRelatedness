@@ -166,10 +166,10 @@ public class Main {
 				String tagInfo[] = line.split("\t");
 				if( tagInfo.length == 5 && // the line was split correctly
 						//check that the word exists in the wordnet dictionary:
-						(WS4J.findDefinitions(tagInfo[1], POS.n).isEmpty()
-					||  WS4J.findDefinitions(tagInfo[1], POS.v).isEmpty()
-					||  WS4J.findDefinitions(tagInfo[1], POS.a).isEmpty()
-					||  WS4J.findDefinitions(tagInfo[1], POS.r).isEmpty())
+						(!WS4J.findDefinitions(tagInfo[1], POS.n).isEmpty()
+					||  !WS4J.findDefinitions(tagInfo[1], POS.v).isEmpty()
+					||  !WS4J.findDefinitions(tagInfo[1], POS.a).isEmpty()
+					||  !WS4J.findDefinitions(tagInfo[1], POS.r).isEmpty())
 					){
 					resourcesWithOverlappingTags.add(tagInfo[2]);
 				}		
