@@ -11,6 +11,7 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -188,7 +189,7 @@ public class Main {
 		}
 		
 		Collections.sort(resourcesWithOverlappingTags);
-        TreeMap<Integer,String> map = new TreeMap<Integer,String>();
+		LinkedList<BibsonomyEntry> bibs = new LinkedList<BibsonomyEntry>();
         
         int count = 0;
         String lastKey = resourcesWithOverlappingTags.get(0);
@@ -198,21 +199,26 @@ public class Main {
 				count++;
 			}else{
 				System.out.println(count+" "+lastKey);
-				map.put(count, lastKey);
+				bibs.add(new BibsonomyEntry(lastKey, count));
 				lastKey = res;
 				count = 0;
 			}
 		}
+		
+		Collections.sort(bibs);
+		Collections.reverse(bibs);
+		
         try {
 			FileWriter writer = new FileWriter(outputDir);
-			
+				
 			int i = 0;
-			Entry<Integer, String> lastEntry = map.pollLastEntry();
-			
-			while(i < 2000 && null != lastEntry){
-				writer.append(lastEntry.getValue()+"\n");
+			for(BibsonomyEntry bib : bibs){
+				if(2000 <= i)
+					break;
+				
+				writer.append(bib.contentID+"\n");	
+				
 				i++;
-				lastEntry = map.pollLastEntry();
 			}
 			
 			writer.flush();
@@ -224,5 +230,8 @@ public class Main {
 		}
         
 	}
+	
+	
 
 }
+
