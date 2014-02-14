@@ -251,13 +251,13 @@ public class Main {
 			fileStream = new FileInputStream(bibsonomyDir);
 			bufferedStream = new BufferedInputStream(fileStream);
 			readerStream = new BufferedReader(new InputStreamReader(bufferedStream));
-			writer = new FileWriter("tas-200-most-common");
+			writer = new FileWriter("tas-2000-most-common");
 			
 			while(readerStream.ready()){
 				String line = readerStream.readLine();
 				String tagInfo[] = line.split("\t");
 				if( tagInfo.length == 5 && mostCommonResources.contains(tagInfo[2]) ){
-					writer.append(line);
+					writer.append(line+"\n");
 				}		
 			}
 			
