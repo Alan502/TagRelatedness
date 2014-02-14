@@ -15,8 +15,10 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Map;
+import java.util.Set;
 import java.util.Map.Entry;
 import java.util.TreeMap;
 
@@ -32,7 +34,7 @@ public class Main {
 	static int threads  = Runtime.getRuntime().availableProcessors();
 
 	public static void main(String[] args) {
-		generateMostFrequentResources("bibsonomy/2008-01-01/tas", "most-common-resoruces.csv");
+		filterBibsonomy("most-common-resoruces.csv", "bibsonomy/2008-01-01/tas");
 		
 		System.exit(0);
 		
@@ -229,6 +231,50 @@ public class Main {
 			e.printStackTrace();
 		}
         
+	}
+	
+	public static void filterBibsonomy(String mostCommonResourcesCSV, String bibsonomyDir){
+		java.util.List<String> lines = null;
+		try {
+			lines = Files.readAllLines(Paths.get(mostCommonResourcesCSV), Charset.defaultCharset());
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		HashSet<String> mostCommonResources = new HashSet<String>(lines);
+		
+		FileInputStream fileStream = null;
+		BufferedInputStream bufferedStream = null;
+		BufferedReader readerStream = null;
+		FileWriter writer = null;
+		
+		try {
+			fileStream = new FileInputStream(bibsonomyDir);
+			bufferedStream = new BufferedInputStream(fileStream);
+			readerStream = new BufferedReader(new InputStreamReader(bufferedStream));
+			writer = new FileWriter("tas-200-most-common");
+			
+			while(readerStream.ready()){
+				String line = readerStream.readLine();
+				String tagInfo[] = line.split("\t");
+				if( tagInfo.length == 5 && mostCommonResources.contains(tagInfo[2]) ){
+					writer.append(line);
+				}		
+			}
+			
+			readerStream.close();
+			fileStream.close();
+			bufferedStream.close();
+			writer.flush();
+			writer.close();
+			
+		} catch (FileNotFoundException e) {
+			System.out.println("File not found exception: "+e.getMessage());
+			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.println("IOException: "+e.getMessage());
+			e.printStackTrace();
+		}
+		
 	}
 	
 	
