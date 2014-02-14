@@ -35,24 +35,24 @@ public class Main {
 
 	public static void main(String[] args) {		
 		ParallelForEach.LOG.info("Running program with "+threads+" threads.");
-		CollaborativeDatabase db = new CollaborativeDatabase();
-		//db.initializeMovieLensTags("ml-10M100K/tags.dat");
-		db.intializeBibsonomyTags("bibsonomy/2008-01-01/tas-2000-most-common");
-		try {
-			generateTagSimilarityCSV(db, new CollaborativeMatching(db), "collab_matching.csv");
-			generateTagSimilarityCSV(db, new CollaborativeMutualInformation(db), "collab_MI.csv");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		DistributionalDatabase ddb = new DistributionalDatabase();
-		//ddb.initializeMovieLensTags("ml-10M100K/tags.dat");
-		ddb.intializeBibsonomyTags("bibsonomy/2008-01-01/tas-2000-most-common");
-		try {
-			generateTagSimilarityCSV(ddb, new DistributionalMutualInformation(ddb), "dist_MI.csv");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+//		CollaborativeDatabase db = new CollaborativeDatabase();
+//		//db.initializeMovieLensTags("ml-10M100K/tags.dat");
+//		db.intializeBibsonomyTags("bibsonomy/2008-01-01/tas-2000-most-common");
+//		try {
+//			generateTagSimilarityCSV(db, new CollaborativeMatching(db), "collab_matching.csv");
+//			generateTagSimilarityCSV(db, new CollaborativeMutualInformation(db), "collab_MI.csv");
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//		
+//		DistributionalDatabase ddb = new DistributionalDatabase();
+//		//ddb.initializeMovieLensTags("ml-10M100K/tags.dat");
+//		ddb.intializeBibsonomyTags("bibsonomy/2008-01-01/tas-2000-most-common");
+//		try {
+//			generateTagSimilarityCSV(ddb, new DistributionalMutualInformation(ddb), "dist_MI.csv");
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 		
 		ProjectionalDatabase pdb = new ProjectionalDatabase();
 		//pdb.initializeMovieLensTags("ml-10M100K/tags.dat");
@@ -62,10 +62,10 @@ public class Main {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		System.out.println("Calculation for collaborative matching:");
-		tauBetweenCSVandWordnet("collab_matching.csv");
-		System.out.println("Calculation for collaborative MI:");
-		tauBetweenCSVandWordnet("collab_MI.csv");
+//		System.out.println("Calculation for collaborative matching:");
+//		tauBetweenCSVandWordnet("collab_matching.csv");
+//		System.out.println("Calculation for collaborative MI:");
+//		tauBetweenCSVandWordnet("collab_MI.csv");
 		System.out.println("Calculation for distributional matching:");
 		tauBetweenCSVandWordnet("dist_matching.csv");
 		System.out.println("Calculation for distributional MI:");
