@@ -33,15 +33,11 @@ import edu.cmu.lti.ws4j.util.WS4JConfiguration;
 public class Main {
 	static int threads  = Runtime.getRuntime().availableProcessors();
 
-	public static void main(String[] args) {
-		filterBibsonomy("most-common-resoruces.csv", "bibsonomy/2008-01-01/tas");
-		
-		System.exit(0);
-		
+	public static void main(String[] args) {		
 		ParallelForEach.LOG.info("Running program with "+threads+" threads.");
 		CollaborativeDatabase db = new CollaborativeDatabase();
 		//db.initializeMovieLensTags("ml-10M100K/tags.dat");
-		db.intializeBibsonomyTags("bibsonomy/2008-01-01/tas");
+		db.intializeBibsonomyTags(args[0]);
 		try {
 			generateTagSimilarityCSV(db, new CollaborativeMatching(db), "collab_matching.csv");
 			generateTagSimilarityCSV(db, new CollaborativeMutualInformation(db), "collab_MI.csv");
@@ -51,7 +47,7 @@ public class Main {
 		
 		DistributionalDatabase ddb = new DistributionalDatabase();
 		//ddb.initializeMovieLensTags("ml-10M100K/tags.dat");
-		ddb.intializeBibsonomyTags("bibsonomy/2008-01-01/tas");
+		ddb.intializeBibsonomyTags(args[0]);
 		try {
 			generateTagSimilarityCSV(ddb, new DistributionalMutualInformation(ddb), "dist_MI.csv");
 		} catch (IOException e) {
@@ -60,7 +56,7 @@ public class Main {
 		
 		ProjectionalDatabase pdb = new ProjectionalDatabase();
 		//pdb.initializeMovieLensTags("ml-10M100K/tags.dat");
-		pdb.initializeMovieLensTags("bibsonomy/2008-01-01/tas");
+		pdb.initializeMovieLensTags(args[0]);
 		try {
 			generateTagSimilarityCSV(pdb, new DistributionalMatching(pdb), "dist_matching.csv");
 		} catch (IOException e) {
