@@ -108,7 +108,7 @@ public class CollaborativeDatabase implements Database{
 				String tag = tagInfo[1];
 				String resource = tagInfo[2];
 				
-				if(tagInfo.length == 6)
+				if(tagInfo.length == 5)
 					addTag(user, resource, tag);
 			}
 			

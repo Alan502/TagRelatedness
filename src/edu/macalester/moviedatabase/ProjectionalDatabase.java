@@ -80,7 +80,7 @@ public class ProjectionalDatabase implements Database{
 				String movie = tagInfo[1];
 				String tag = tagInfo[2];
 				
-				if(tagInfo.length == 6)
+				if(tagInfo.length == 5)
 					addTag(movie, tag);
 			}
 			
