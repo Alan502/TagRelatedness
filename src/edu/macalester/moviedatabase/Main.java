@@ -37,7 +37,7 @@ public class Main {
 		ParallelForEach.LOG.info("Running program with "+threads+" threads.");
 		CollaborativeDatabase db = new CollaborativeDatabase();
 		//db.initializeMovieLensTags("ml-10M100K/tags.dat");
-		db.intializeBibsonomyTags(args[0]);
+		db.intializeBibsonomyTags("bibsonomy/2008-01-01/tas-2000-most-common");
 		try {
 			generateTagSimilarityCSV(db, new CollaborativeMatching(db), "collab_matching.csv");
 			generateTagSimilarityCSV(db, new CollaborativeMutualInformation(db), "collab_MI.csv");
@@ -47,7 +47,7 @@ public class Main {
 		
 		DistributionalDatabase ddb = new DistributionalDatabase();
 		//ddb.initializeMovieLensTags("ml-10M100K/tags.dat");
-		ddb.intializeBibsonomyTags(args[0]);
+		ddb.intializeBibsonomyTags("bibsonomy/2008-01-01/tas-2000-most-common");
 		try {
 			generateTagSimilarityCSV(ddb, new DistributionalMutualInformation(ddb), "dist_MI.csv");
 		} catch (IOException e) {
@@ -56,7 +56,7 @@ public class Main {
 		
 		ProjectionalDatabase pdb = new ProjectionalDatabase();
 		//pdb.initializeMovieLensTags("ml-10M100K/tags.dat");
-		pdb.initializeMovieLensTags(args[0]);
+		pdb.intializeBibsonomyTags("bibsonomy/2008-01-01/tas-2000-most-common");
 		try {
 			generateTagSimilarityCSV(pdb, new DistributionalMatching(pdb), "dist_matching.csv");
 		} catch (IOException e) {
