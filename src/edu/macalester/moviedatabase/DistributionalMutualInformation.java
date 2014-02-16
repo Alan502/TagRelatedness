@@ -24,12 +24,11 @@ public class DistributionalMutualInformation implements TagSimilarityMeasure{
 		double similarity = 0.0;
 		final double totalEntries = db.getTotalEntries();		
 		for(String comparingMovie : movieSet1){
-			double marginalProbability1 = moviesMap.get(comparingMovie).size()/totalEntries;
-			for(String comparedMovie : movieSet2){
-				double marginalProbability2 = moviesMap.get(comparedMovie).size()/totalEntries;
-				
-				ArrayList<String> tagsList1 = moviesMap.get(comparedMovie);
-				ArrayList<String> tagsList2 = moviesMap.get(comparingMovie);
+			ArrayList<String> tagsList1 = moviesMap.get(comparingMovie);
+			double marginalProbability1 = tagsList1.size()/totalEntries;
+			for(String comparedMovie : movieSet2){			
+				ArrayList<String> tagsList2 = moviesMap.get(comparedMovie);
+				double marginalProbability2 = tagsList2.size()/totalEntries;
 				
 				HashSet<String> tagsSet1 = new HashSet<String>(tagsList1);				
 				HashSet<String> tagsSet2 = new HashSet<String>(tagsList2);
@@ -42,19 +41,23 @@ public class DistributionalMutualInformation implements TagSimilarityMeasure{
 				 * all the other fields will be equal to 0, therefore
 				 * the do not attribute to the sum*/
 				
-				for(String tag : tagsSet1){
+				for(String comparingTag : tagsSet1){
 				double freq1 = 0;
 				double freq2 = 0;
-					for(String tagFreq : tagsList1){
-						if(tag.equals(tagFreq))
+					for(String comparedTag : tagsList1){
+						if(comparingTag.equals(comparedTag))
 							freq1++;
 					}
 					
-					for(String tagFreq : tagsList2){
-						if(tag.equals(tagFreq))
+					for(String comparedTag : tagsList2){
+						if(comparingTag.equals(comparedTag))
 							freq2++;
-					}					
-					minSum += freq1 - freq2 > 0 ? freq2 : freq1;
+					}
+					
+					double fuzzy1 = freq1 / moviesMap.size();
+					double fuzzy2 = freq2 / moviesMap.size();
+					
+					minSum += fuzzy1 - fuzzy2 > 0 ? fuzzy2 : fuzzy1;
 				}
 								
 				double jointProbability = minSum/totalEntries;
