@@ -41,24 +41,24 @@ public class DistributionalMutualInformation implements TagSimilarityMeasure{
 				 * all the other fields will be equal to 0, therefore
 				 * the do not attribute to the sum*/
 				
-				for(String comparingTag : tagsSet1){
-				double freq1 = 0;
-				double freq2 = 0;
-					for(String comparedTag : tagsList1){
-						if(comparingTag.equals(comparedTag))
-							freq1++;
-					}
-					
-					for(String comparedTag : tagsList2){
-						if(comparingTag.equals(comparedTag))
-							freq2++;
-					}
-					
-					double fuzzy1 = freq1 / tagsMap.size();
-					double fuzzy2 = freq2 / tagsMap.size();
-					
-					minSum += fuzzy1 - fuzzy2 > 0 ? fuzzy2 : fuzzy1;
-				}
+				minSum = tagsList1.size() - tagsList2.size() > 0 ? tagsList2.size()/tagsMap.size() : tagsList1.size()/tagsMap.size();
+				
+//				for(String comparingTag : tagsSet1){
+//				double freq1 = 0;
+//				double freq2 = 0;
+//					for(String comparedTag : tagsList1){
+//						if(comparingTag.equals(comparedTag))
+//							freq1++;
+//					}
+//					
+//					for(String comparedTag : tagsList2){
+//						if(comparingTag.equals(comparedTag))
+//							freq2++;
+//					}
+//					
+//					
+//					minSum += freq1 - freq2 > 0 ? freq1/tagsMap.get(comparingTag).size() : freq2/tagsMap.get(comparingTag).size();
+//				}
 								
 				double jointProbability = minSum/totalEntries;
 				
