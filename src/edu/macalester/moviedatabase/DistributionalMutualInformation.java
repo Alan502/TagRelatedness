@@ -54,8 +54,8 @@ public class DistributionalMutualInformation implements TagSimilarityMeasure{
 							freq2++;
 					}
 					
-					double fuzzy1 = freq1 / moviesMap.size();
-					double fuzzy2 = freq2 / moviesMap.size();
+					double fuzzy1 = freq1 / tagsMap.size();
+					double fuzzy2 = freq2 / tagsMap.size();
 					
 					minSum += fuzzy1 - fuzzy2 > 0 ? fuzzy2 : fuzzy1;
 				}
