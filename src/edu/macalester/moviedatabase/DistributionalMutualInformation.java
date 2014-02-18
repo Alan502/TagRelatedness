@@ -53,8 +53,8 @@ public class DistributionalMutualInformation implements TagSimilarityMeasure{
 						if(comparingTag.equals(comparedTag))
 							freq2++;
 					}					
-					
-					minSum += freq1 - freq2 < 0 ? freq1/((double) tagsList1.size()): (freq2/ (double) tagsList2.size());
+					double denom = (double) tagsMap.get(comparingTag).size();
+					minSum += freq1 - freq2 < 0 ? (freq1/ denom) : (freq2/ denom);
 				}
 								
 				double jointProbability = minSum/totalEntries;
