@@ -30,35 +30,32 @@ public class DistributionalMutualInformation implements TagSimilarityMeasure{
 				ArrayList<String> tagsList2 = moviesMap.get(comparedMovie);
 				double marginalProbability2 = tagsList2.size()/totalEntries;
 				
-//				HashSet<String> tagsSet1 = new HashSet<String>(tagsList1);				
-//				HashSet<String> tagsSet2 = new HashSet<String>(tagsList2);
-//								
-//				tagsSet1.retainAll(tagsSet2); // tagSet1 now holds the intersection between both sets
+				HashSet<String> tagsSet1 = new HashSet<String>(tagsList1);				
+				HashSet<String> tagsSet2 = new HashSet<String>(tagsList2);
+								
+				tagsSet1.retainAll(tagsSet2); // tagSet1 now holds the intersection between both sets
 				
 				double minSum = 0.0;
 				
 				/* We use the intersection between tags because
 				 * all the other fields will be equal to 0, therefore
 				 * the do not attribute to the sum*/
-				
-				minSum = tagsList1.size() - tagsList2.size() > 0 ? (double) tagsList2.size()/tagsMap.size() : (double) tagsList1.size()/tagsMap.size();
-				
-//				for(String comparingTag : tagsSet1){
-//				double freq1 = 0;
-//				double freq2 = 0;
-//					for(String comparedTag : tagsList1){
-//						if(comparingTag.equals(comparedTag))
-//							freq1++;
-//					}
-//					
-//					for(String comparedTag : tagsList2){
-//						if(comparingTag.equals(comparedTag))
-//							freq2++;
-//					}
-//					
-//					
-//					minSum += freq1 - freq2 > 0 ? freq1/tagsMap.get(comparingTag).size() : freq2/tagsMap.get(comparingTag).size();
-//				}
+								
+				for(String comparingTag : tagsSet1){
+				double freq1 = 0.0;
+				double freq2 = 0.0;
+					for(String comparedTag : tagsList1){
+						if(comparingTag.equals(comparedTag))
+							freq1++;
+					}
+					
+					for(String comparedTag : tagsList2){
+						if(comparingTag.equals(comparedTag))
+							freq2++;
+					}					
+					
+					minSum += freq1 - freq2 < 0 ? freq1/((double) tagsList1.size()): (freq2/ (double) tagsList2.size());
+				}
 								
 				double jointProbability = minSum/totalEntries;
 				
