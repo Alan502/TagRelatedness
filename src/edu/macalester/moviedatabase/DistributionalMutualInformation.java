@@ -30,10 +30,10 @@ public class DistributionalMutualInformation implements TagSimilarityMeasure{
 				ArrayList<String> tagsList2 = moviesMap.get(comparedMovie);
 				double marginalProbability2 = tagsList2.size()/totalEntries;
 				
-				HashSet<String> tagsSet1 = new HashSet<String>(tagsList1);				
-				HashSet<String> tagsSet2 = new HashSet<String>(tagsList2);
-								
-				tagsSet1.retainAll(tagsSet2); // tagSet1 now holds the intersection between both sets
+//				HashSet<String> tagsSet1 = new HashSet<String>(tagsList1);				
+//				HashSet<String> tagsSet2 = new HashSet<String>(tagsList2);
+//								
+//				tagsSet1.retainAll(tagsSet2); // tagSet1 now holds the intersection between both sets
 				
 				double minSum = 0.0;
 				
@@ -41,7 +41,7 @@ public class DistributionalMutualInformation implements TagSimilarityMeasure{
 				 * all the other fields will be equal to 0, therefore
 				 * the do not attribute to the sum*/
 				
-				minSum = tagsList1.size() - tagsList2.size() > 0 ? tagsList2.size()/tagsMap.size() : tagsList1.size()/tagsMap.size();
+				minSum = tagsList1.size() - tagsList2.size() > 0 ? (double) tagsList2.size()/tagsMap.size() : (double) tagsList1.size()/tagsMap.size();
 				
 //				for(String comparingTag : tagsSet1){
 //				double freq1 = 0;
