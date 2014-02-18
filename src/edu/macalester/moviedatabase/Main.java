@@ -35,6 +35,12 @@ public class Main {
 
 	public static void main(String[] args) {		
 		ParallelForEach.LOG.info("Running program with "+threads+" threads.");
+		
+		generateMostFrequentResources("bibsonomy/2007-10-31/tas", "bibsonomy/2007-10-31/most-common-resources");
+		filterBibsonomy("bibsonomy/2007-10-31/most-common-resources", "bibsonomy/2007-10-31/tas", "bibsonomy/2007-10-31/tas-2000-most-common");
+		
+		System.exit(0);
+		
 //		CollaborativeDatabase db = new CollaborativeDatabase();
 //		//db.initializeMovieLensTags("ml-10M100K/tags.dat");
 //		db.intializeBibsonomyTags("bibsonomy/2008-01-01/tas-2000-most-common");
@@ -229,7 +235,7 @@ public class Main {
         
 	}
 	
-	public static void filterBibsonomy(String mostCommonResourcesCSV, String bibsonomyDir){
+	public static void filterBibsonomy(String mostCommonResourcesCSV, String bibsonomyDir, String outputDir){
 		java.util.List<String> lines = null;
 		try {
 			lines = Files.readAllLines(Paths.get(mostCommonResourcesCSV), Charset.defaultCharset());
@@ -247,7 +253,7 @@ public class Main {
 			fileStream = new FileInputStream(bibsonomyDir);
 			bufferedStream = new BufferedInputStream(fileStream);
 			readerStream = new BufferedReader(new InputStreamReader(bufferedStream));
-			writer = new FileWriter("tas-2000-most-common");
+			writer = new FileWriter(outputDir);
 			
 			while(readerStream.ready()){
 				String line = readerStream.readLine();
