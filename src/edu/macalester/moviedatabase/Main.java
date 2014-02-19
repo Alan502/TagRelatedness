@@ -198,7 +198,7 @@ public class Main {
 		String lastContentID = overlappingTagEntries.get(0).contentID;
 		int frequency = 1;
 		
-		for(BibsonomyRecord rec : overlappingTagEntries){
+		for(BibsonomyRecord rec : overlappingTagEntries.subList(1, overlappingTagEntries.size())){
 			if(lastContentID.equals(rec.contentID)){
 				frequency++;
 			}else{
@@ -210,11 +210,9 @@ public class Main {
 		
 		Collections.sort(bibsonomyEntries);
 		Collections.reverse(bibsonomyEntries);
-				
-		bibsonomyEntries = bibsonomyEntries.subList(0, 2000);
-		
+						
 		ArrayList<String> mostCommonResources= new ArrayList<String>();
-		for(EntryFrequency bib : bibsonomyEntries){
+		for(EntryFrequency bib : bibsonomyEntries.subList(0, 2000)){
 			mostCommonResources.add(bib.contentID);
 		}
 		
@@ -223,8 +221,9 @@ public class Main {
 		try {
 			writer = new FileWriter(outputDir);
 			for(BibsonomyRecord rec : overlappingTagEntries){
-				if(mostCommonResources.contains(rec.contentID));
+				if(mostCommonResources.contains(rec.contentID)){
 					writer.write(rec.line+"\n");
+				}	
 			}
 			writer.flush();
 			writer.close();
