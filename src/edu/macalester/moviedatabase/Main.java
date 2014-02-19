@@ -17,8 +17,10 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
+import edu.cmu.lti.jawjaw.pobj.POS;
 import edu.cmu.lti.lexical_db.ILexicalDatabase;
 import edu.cmu.lti.lexical_db.NictWordNet;
+import edu.cmu.lti.ws4j.WS4J;
 import edu.cmu.lti.ws4j.impl.JiangConrath;
 import edu.cmu.lti.ws4j.impl.Path;
 import edu.cmu.lti.ws4j.util.WS4JConfiguration;
@@ -153,8 +155,6 @@ public class Main {
 		BufferedReader readerStream;
 		
 		WS4JConfiguration.getInstance().setMFS(true);
-        ILexicalDatabase db = new NictWordNet();
-		final Path rc = new Path(db);
 		
 		List<BibsonomyRecord> overlappingTagEntries = new LinkedList<BibsonomyRecord>();
 		
@@ -166,7 +166,13 @@ public class Main {
 			while(readerStream.ready()){
 				String line = readerStream.readLine();
 				String tagInfo[] = line.split("\t");
-				if( tagInfo.length == 5 && rc.calcRelatednessOfWords(tagInfo[1], "apple") >= 0.0){
+				if( tagInfo.length == 5 && 
+						!(WS4J.findDefinitions(tagInfo[1], POS.a).isEmpty() &&
+								WS4J.findDefinitions(tagInfo[1], POS.n).isEmpty() &&
+								WS4J.findDefinitions(tagInfo[1], POS.r).isEmpty() &&
+								WS4J.findDefinitions(tagInfo[1], POS.v).isEmpty()
+								)
+						){
 					overlappingTagEntries.add(new BibsonomyRecord(tagInfo[2], line));
 				}
 			}
