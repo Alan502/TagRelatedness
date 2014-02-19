@@ -1,17 +1,16 @@
 package edu.macalester.moviedatabase;
 
-public class BibsonomyEntry implements Comparable<BibsonomyEntry>{
+public class EntryFrequency implements Comparable<EntryFrequency>{
 	
-
 	String contentID;
 	int frequency;
 	
-	public BibsonomyEntry(String content, int freq){
+	public EntryFrequency(String content, int freq){
 		contentID = content;
 		frequency = freq;
 	}
 
-	public int compareTo(BibsonomyEntry o) {
+	public int compareTo(EntryFrequency o) {
 		return frequency - o.frequency;
 	}
 

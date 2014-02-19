@@ -7,25 +7,17 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.TreeMap;
 
-import edu.cmu.lti.jawjaw.pobj.POS;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
+
 import edu.cmu.lti.lexical_db.ILexicalDatabase;
 import edu.cmu.lti.lexical_db.NictWordNet;
-import edu.cmu.lti.ws4j.WS4J;
 import edu.cmu.lti.ws4j.impl.JiangConrath;
 import edu.cmu.lti.ws4j.impl.Path;
 import edu.cmu.lti.ws4j.util.WS4JConfiguration;
@@ -37,8 +29,7 @@ public class Main {
 	public static void main(String[] args) {		
 		ParallelForEach.LOG.info("Running program with "+threads+" threads.");
 		
-		generateMostFrequentResources("bibsonomy/2007-10-31/tas", "bibsonomy/2007-10-31/most-common-resources");
-		filterBibsonomy("bibsonomy/2007-10-31/most-common-resources", "bibsonomy/2007-10-31/tas", "bibsonomy/2007-10-31/tas-2000-most-common");
+		generateMostFrequentResources("bibsonomy/2007-10-31/tas", "bibsonomy/2007-10-31/tas-2000-most-common");
 		
 		System.exit(0);
 		
@@ -54,7 +45,7 @@ public class Main {
 //		
 		DistributionalDatabase ddb = new DistributionalDatabase();
 		//ddb.initializeMovieLensTags("ml-10M100K/tags.dat");
-		ddb.intializeBibsonomyTags("bibsonomy/2008-01-01/tas-2000-most-common");
+		ddb.intializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
 		try {
 			generateTagSimilarityCSV(ddb, new DistributionalMutualInformation(ddb), "dist_MI.csv");
 		} catch (IOException e) {
@@ -164,7 +155,7 @@ public class Main {
         ILexicalDatabase db = new NictWordNet();
 		final Path rc = new Path(db);
 		
-		LinkedList<String> resourcesWithOverlappingTags = new LinkedList<String>();
+		LinkedList<BibsonomyRecord> overlappingTagEntries = new LinkedList<BibsonomyRecord>();
 		
 		try {
 			fileStream = new FileInputStream(bibsonomyDSdir);
@@ -175,9 +166,11 @@ public class Main {
 				String line = readerStream.readLine();
 				String tagInfo[] = line.split("\t");
 				if( tagInfo.length == 5 && rc.calcRelatednessOfWords(tagInfo[1], "apple") >= 0.0){
-					resourcesWithOverlappingTags.add(tagInfo[2]);
-				}	
+					overlappingTagEntries.add(new BibsonomyRecord(tagInfo[2], line));
+				}
 			}
+			
+			System.out.println(overlappingTagEntries.size());
 			
 			readerStream.close();
 			fileStream.close();
@@ -191,94 +184,47 @@ public class Main {
 			e.printStackTrace();
 		}
 		
-		Collections.sort(resourcesWithOverlappingTags);
-		LinkedList<BibsonomyEntry> bibs = new LinkedList<BibsonomyEntry>();
-        
-        int count = 0;
-        String lastKey = resourcesWithOverlappingTags.get(0);
-        System.out.println(resourcesWithOverlappingTags);
-		for(String res : resourcesWithOverlappingTags.subList(1, resourcesWithOverlappingTags.size())){
-			if(res.equals(lastKey)){
-				count++;
+		Collections.sort(overlappingTagEntries);
+		
+		LinkedList<EntryFrequency> bibsonomyEntries  = new LinkedList<EntryFrequency>();
+		
+		String lastContentID = overlappingTagEntries.get(0).contentID;
+		int frequency = 1;
+		
+		for(BibsonomyRecord rec : overlappingTagEntries){
+			if(lastContentID.equals(rec.contentID)){
+				frequency++;
 			}else{
-				System.out.println(count+" "+lastKey);
-				bibs.add(new BibsonomyEntry(lastKey, count));
-				lastKey = res;
-				count = 0;
+				bibsonomyEntries.add(new EntryFrequency(lastContentID, frequency));
+				lastContentID = rec.contentID;
+				frequency = 1;
 			}
 		}
 		
-		Collections.sort(bibs);
-		Collections.reverse(bibs);
+		Collections.sort(bibsonomyEntries);
+		Collections.reverse(bibsonomyEntries);
 		
-        try {
-			FileWriter writer = new FileWriter(outputDir);
-				
-			int i = 0;
-			for(BibsonomyEntry bib : bibs){
-				if(2000 <= i)
-					break;
-				
-				writer.append(bib.contentID+"\n");	
-				
-				i++;
-			}
-			
-			writer.flush();
-			writer.close();
-			
-		} catch (IOException e) {
-			System.out.println("IOException: "+e.getMessage());
-			e.printStackTrace();
+		bibsonomyEntries = (LinkedList<EntryFrequency>) bibsonomyEntries.subList(0, 2000);
+		ArrayList<String> mostCommonResources= new ArrayList<String>();
+		for(EntryFrequency bib : bibsonomyEntries){
+			mostCommonResources.add(bib.contentID);
 		}
-        
-	}
-	
-	public static void filterBibsonomy(String mostCommonResourcesCSV, String bibsonomyDir, String outputDir){
-		java.util.List<String> lines = null;
-		try {
-			lines = Files.readAllLines(Paths.get(mostCommonResourcesCSV), Charset.defaultCharset());
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
-		HashSet<String> mostCommonResources = new HashSet<String>(lines);
 		
-		FileInputStream fileStream = null;
-		BufferedInputStream bufferedStream = null;
-		BufferedReader readerStream = null;
 		FileWriter writer = null;
 		
 		try {
-			fileStream = new FileInputStream(bibsonomyDir);
-			bufferedStream = new BufferedInputStream(fileStream);
-			readerStream = new BufferedReader(new InputStreamReader(bufferedStream));
 			writer = new FileWriter(outputDir);
-			
-			while(readerStream.ready()){
-				String line = readerStream.readLine();
-				String tagInfo[] = line.split("\t");
-				if( tagInfo.length == 5 && mostCommonResources.contains(tagInfo[2]) ){
-					writer.append(line+"\n");
-				}		
+			for(BibsonomyRecord rec : overlappingTagEntries){
+				if(mostCommonResources.contains(rec.contentID));
+					writer.write(rec.line+"\n");
 			}
-			
-			readerStream.close();
-			fileStream.close();
-			bufferedStream.close();
 			writer.flush();
 			writer.close();
-			
-		} catch (FileNotFoundException e) {
-			System.out.println("File not found exception: "+e.getMessage());
-			e.printStackTrace();
 		} catch (IOException e) {
 			System.out.println("IOException: "+e.getMessage());
-			e.printStackTrace();
 		}
-		
-	}
-	
-	
+        
+	}	
 
 }
 
