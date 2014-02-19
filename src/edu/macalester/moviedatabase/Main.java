@@ -32,10 +32,8 @@ public class Main {
 	public static void main(String[] args) {		
 		ParallelForEach.LOG.info("Running program with "+threads+" threads.");
 		
-		generateMostFrequentResources("bibsonomy/2007-10-31/tas", "bibsonomy/2007-10-31/tas-2000-most-common");
-		
-		System.exit(0);
-		
+//		generateMostFrequentResources("bibsonomy/2007-10-31/tas", "bibsonomy/2007-10-31/tas-2000-most-common");
+				
 //		CollaborativeDatabase db = new CollaborativeDatabase();
 //		//db.initializeMovieLensTags("ml-10M100K/tags.dat");
 //		db.intializeBibsonomyTags("bibsonomy/2008-01-01/tas-2000-most-common");
