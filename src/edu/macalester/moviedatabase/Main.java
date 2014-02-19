@@ -15,6 +15,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
+import java.util.List;
 
 import edu.cmu.lti.lexical_db.ILexicalDatabase;
 import edu.cmu.lti.lexical_db.NictWordNet;
@@ -155,7 +156,7 @@ public class Main {
         ILexicalDatabase db = new NictWordNet();
 		final Path rc = new Path(db);
 		
-		LinkedList<BibsonomyRecord> overlappingTagEntries = new LinkedList<BibsonomyRecord>();
+		List<BibsonomyRecord> overlappingTagEntries = new LinkedList<BibsonomyRecord>();
 		
 		try {
 			fileStream = new FileInputStream(bibsonomyDSdir);
@@ -186,7 +187,7 @@ public class Main {
 		
 		Collections.sort(overlappingTagEntries);
 		
-		LinkedList<EntryFrequency> bibsonomyEntries  = new LinkedList<EntryFrequency>();
+		List<EntryFrequency> bibsonomyEntries  = new LinkedList<EntryFrequency>();
 		
 		String lastContentID = overlappingTagEntries.get(0).contentID;
 		int frequency = 1;
@@ -203,8 +204,9 @@ public class Main {
 		
 		Collections.sort(bibsonomyEntries);
 		Collections.reverse(bibsonomyEntries);
+				
+		bibsonomyEntries = bibsonomyEntries.subList(0, 2000);
 		
-		bibsonomyEntries = (LinkedList<EntryFrequency>) bibsonomyEntries.subList(0, 2000);
 		ArrayList<String> mostCommonResources= new ArrayList<String>();
 		for(EntryFrequency bib : bibsonomyEntries){
 			mostCommonResources.add(bib.contentID);
