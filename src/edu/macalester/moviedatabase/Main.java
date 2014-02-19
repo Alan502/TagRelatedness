@@ -36,7 +36,7 @@ public class Main {
 				
 		CollaborativeDatabase db = new CollaborativeDatabase();
 		//db.initializeMovieLensTags("ml-10M100K/tags.dat");
-		db.intializeBibsonomyTags("bibsonomy/2008-01-01/tas-2000-most-common");
+		db.intializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
 		try {
 			generateTagSimilarityCSV(db, new CollaborativeMatching(db), "collab_matching.csv");
 			generateTagSimilarityCSV(db, new CollaborativeMutualInformation(db), "collab_MI.csv");
@@ -55,7 +55,7 @@ public class Main {
 //		
 		ProjectionalDatabase pdb = new ProjectionalDatabase();
 		pdb.initializeMovieLensTags("ml-10M100K/tags.dat");
-		pdb.intializeBibsonomyTags("bibsonomy/2008-01-01/tas-2000-most-common");
+		pdb.intializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
 		try {
 			generateTagSimilarityCSV(pdb, new DistributionalMatching(pdb), "dist_matching.csv");
 		} catch (IOException e) {
