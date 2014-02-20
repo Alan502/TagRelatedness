@@ -23,8 +23,8 @@ public class CollaborativeMatching implements TagSimilarityMeasure{
 			if(null == tagsMap.get(tag1) || null == tagsMap.get(tag2))
 				continue;			
 			
-//			double totalTags = (double) tagsMap.size();
-//			similarity += Math.log(totalTags/ (totalTags+1));	
+			double totalTags = (double) tagsMap.size();
+			similarity += Math.log(totalTags/ (totalTags+1));	
 			
 			HashMap<String, HashSet<String>> moviesMap = userMap.get(user).get(0);
 			
@@ -33,18 +33,13 @@ public class CollaborativeMatching implements TagSimilarityMeasure{
 			
 			movies1.retainAll(movies2);
 			
-//			double totalMovies = (double) moviesMap.size();
+			double totalMovies = (double) moviesMap.size();	
 			
-			
-			
-			
-//			for(String movie : movies1 ){
-//				double associated = (double) moviesMap.get(movie).size();
-//				similarity += Math.log(associated / (totalMovies + 1) );
-				
-				similarity += (double) movies1.size() * Math.log(1/  (double) moviesMap.size());
-				
-//			}
+			for(String movie : movies1 ){
+				double associated = (double) moviesMap.get(movie).size();
+				similarity += Math.log(associated / (totalMovies + 1) );
+								
+			}
 			
 			
 		}
