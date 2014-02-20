@@ -33,11 +33,10 @@ public class CollaborativeMatching implements TagSimilarityMeasure{
 			
 			movies1.retainAll(movies2);
 			
-			double totalMovies = (double) moviesMap.size();	
 			
 			for(String movie : movies1 ){
 				double associated = (double) moviesMap.get(movie).size();
-				similarity += Math.log(associated / (totalMovies + 1) );
+				similarity += Math.log(associated / totalTags );
 								
 			}
 			
