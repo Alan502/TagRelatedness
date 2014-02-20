@@ -15,19 +15,16 @@ public class CollaborativeMatching implements TagSimilarityMeasure{
 	public double calculateSimilarity(String tag1, String tag2) {
 		HashMap<String, ArrayList<HashMap<String, HashSet<String>>>> userMap = db.getUserMap();
 		double similarity = 0.0;
-		boolean tagsIntersect = false;
 				
 		for(String user : userMap.keySet()){
 		
 			HashMap<String, HashSet<String>> tagsMap = userMap.get(user).get(1);
 			
-			double totalTags = (double) tagsMap.keySet().size();
-			similarity += Math.log(totalTags/ (totalTags+1));
-			
 			if(null == tagsMap.get(tag1) || null == tagsMap.get(tag2))
-				continue;
+				continue;			
 			
-			
+			double totalTags = (double) tagsMap.size();
+			similarity += Math.log(totalTags/ (totalTags+1));	
 			
 			HashMap<String, HashSet<String>> moviesMap = userMap.get(user).get(0);
 			
@@ -35,9 +32,6 @@ public class CollaborativeMatching implements TagSimilarityMeasure{
 			HashSet<String> movies2 = (HashSet<String>) tagsMap.get(tag2).clone();
 			
 			movies1.retainAll(movies2);
-			
-			if(movies1.size() > 0)
-				tagsIntersect = true;
 							
 			for(String movie : movies1 ){
 				double associated = (double) moviesMap.get(movie).size();
@@ -46,8 +40,7 @@ public class CollaborativeMatching implements TagSimilarityMeasure{
 			
 			
 		}
-		double returnValue = tagsIntersect ? similarity*-1 : 0.0;
-		return returnValue;
+		return similarity*-1;
 		
 	}
 	
