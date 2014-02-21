@@ -28,8 +28,8 @@ public class CollaborativeMatching implements TagSimilarityMeasure{
 			HashMap<String, HashSet<String>> moviesMap = userMap.get(user).get(0);
 			
 			double totalTags = (double) tagsMap.size();
-			double totalMovies = (double) moviesMap.size();
-			similarity += Math.log(1/ (totalMovies));				
+			
+			similarity += Math.log(totalTags/ (totalTags+1));				
 			
 			HashSet<String> movies1 = (HashSet<String>) tagsMap.get(tag1).clone();
 			HashSet<String> movies2 = (HashSet<String>) tagsMap.get(tag2).clone();
