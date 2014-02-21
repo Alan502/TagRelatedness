@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MoveAction;
+
 public class CollaborativeMatching implements TagSimilarityMeasure{
 	
 	CollaborativeDatabase db;
@@ -23,10 +25,11 @@ public class CollaborativeMatching implements TagSimilarityMeasure{
 			if(null == tagsMap.get(tag1) || null == tagsMap.get(tag2))
 				continue;			
 			
-			double totalTags = (double) tagsMap.size();
-			similarity += Math.log(totalTags/ (totalTags+1));	
-			
 			HashMap<String, HashSet<String>> moviesMap = userMap.get(user).get(0);
+			
+			double totalTags = (double) tagsMap.size();
+			double totalMovies = (double) moviesMap.size();
+			similarity += Math.log(1/ (totalMovies));				
 			
 			HashSet<String> movies1 = (HashSet<String>) tagsMap.get(tag1).clone();
 			HashSet<String> movies2 = (HashSet<String>) tagsMap.get(tag2).clone();
@@ -36,8 +39,7 @@ public class CollaborativeMatching implements TagSimilarityMeasure{
 			
 			for(String movie : movies1 ){
 				double associated = (double) moviesMap.get(movie).size();
-				similarity += Math.log(associated / totalTags );
-								
+				similarity += Math.log(associated / (totalTags+1) );					
 			}
 			
 			
