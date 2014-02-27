@@ -7,36 +7,43 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+
+import org.wikapidia.conf.ConfigurationException;
+import org.wikapidia.conf.Configurator;
+import org.wikapidia.core.cmd.Env;
+import org.wikapidia.core.cmd.EnvBuilder;
+import org.wikapidia.core.dao.DaoException;
+import org.wikapidia.core.dao.LocalPageDao;
+import org.wikapidia.core.lang.Language;
+import org.wikapidia.sr.MonolingualSRMetric;
+import org.wikapidia.sr.SRResult;
 
 import edu.cmu.lti.jawjaw.pobj.POS;
 import edu.cmu.lti.lexical_db.ILexicalDatabase;
 import edu.cmu.lti.lexical_db.NictWordNet;
 import edu.cmu.lti.ws4j.WS4J;
 import edu.cmu.lti.ws4j.impl.JiangConrath;
-import edu.cmu.lti.ws4j.impl.Path;
 import edu.cmu.lti.ws4j.util.WS4JConfiguration;
-
 
 public class Main {
 	static int threads  = Runtime.getRuntime().availableProcessors();
-
-	public static void main(String[] args) {		
-		ParallelForEach.LOG.info("Running program with "+threads+" threads.");
+	public static void main(String[] args) {      
+		ParallelForEach.LOG.info("Running program with "+threads+" threads.");        
 		
 //		generateMostFrequentResources("bibsonomy/2007-10-31/tas", "bibsonomy/2007-10-31/tas-2000-most-common");
 				
 		CollaborativeDatabase db = new CollaborativeDatabase();
 		//db.initializeMovieLensTags("ml-10M100K/tags.dat");
 		db.intializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
+		
+		
 		try {
 			generateTagSimilarityCSV(db, new CollaborativeMatching(db), "collab_matching.csv");
 //			generateTagSimilarityCSV(db, new CollaborativeMutualInformation(db), "collab_MI.csv");
@@ -128,11 +135,11 @@ public class Main {
 							
             				double cc = similarityMeasure.calculateSimilarity(comparingTag, comparedTag);
             				
-            				if(cc != 0){
+//            				if(cc != 0){
             					// Remove newlines, commas and apostrophes that may distort the CSV file when being written.
             					synchronized(writer){
             					writer.append("\"" + comparingTag.replace("\"", "").replace("\n", "").replace(",", "") + '"'+ ',' + '"' + comparedTag.replace("\"", "").replace("\n", "").replace(",", "") + '"' + "," + cc+"\n");
-            					}           						
+//            					}           						
             						
             						
             				}
@@ -229,7 +236,33 @@ public class Main {
 			System.out.println("IOException: "+e.getMessage());
 		}
         
-	}	
+	}
+	
+	public static void generateWikAPIdiaCSV(String inputDir, String outputDir, ArrayList<String> tags){
+		
+		try {
+			Env env = new EnvBuilder().build();
+			Configurator conf = env.getConfigurator();
+			LocalPageDao lpDao = conf.get(LocalPageDao.class);
+			
+			Language simple = Language.getByLangCode("simple");
 
+			MonolingualSRMetric sr = conf.get(
+			        MonolingualSRMetric.class, "ensemble",
+			        "language", simple.getLangCode());
+			
+			SRResult s = sr.similarity("yes", "no", false);
+
+		} catch (ConfigurationException e) {
+			System.out.println("Configuration Exception: "+e.getMessage());
+		} catch (DaoException e) {
+			System.out.println("Dao Exception: "+e.getMessage());
+
+		}
+		
+		
+	}  
 }
+
+
 
