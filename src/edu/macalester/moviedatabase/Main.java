@@ -39,17 +39,17 @@ public class Main {
 		
 //		generateMostFrequentResources("bibsonomy/2007-10-31/tas", "bibsonomy/2007-10-31/tas-2000-most-common");
 				
-		CollaborativeDatabase db = new CollaborativeDatabase();
+//		CollaborativeDatabase db = new CollaborativeDatabase();
 		//db.initializeMovieLensTags("ml-10M100K/tags.dat");
-		db.intializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
+//		db.intializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
 		
 		
-		try {
-			generateTagSimilarityCSV(db, new CollaborativeMatching(db), "collab_matching.csv");
+//		try {
+//			generateTagSimilarityCSV(db, new CollaborativeMatching(db), "collab_matching.csv");
 //			generateTagSimilarityCSV(db, new CollaborativeMutualInformation(db), "collab_MI.csv");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 		
 //		DistributionalDatabase ddb = new DistributionalDatabase();
 		//ddb.initializeMovieLensTags("ml-10M100K/tags.dat");
@@ -79,11 +79,9 @@ public class Main {
 	}
 	
 	public static void tauBetweenCSVandWordnet(String file){
-		
 		WS4JConfiguration.getInstance().setMFS(true);
         ILexicalDatabase db = new NictWordNet();
 		final JiangConrath rc = new JiangConrath(db);
-		
 		
 		final ArrayList<Double> distMatchingSimilarities  = new ArrayList<Double>();
 		final ArrayList<Double> wordnetSimilarities = new ArrayList<Double>();
@@ -98,6 +96,7 @@ public class Main {
 			public void call(String line){
 				String[] column = line.split(",");
 				 double jc = rc.calcRelatednessOfWords(column[0].replace("\"", "").replace(" ", "") , column[1].replace("\"", "").replace(" ", ""));
+				 System.out.println(jc);
 				 if(jc != 0.0){
 					 synchronized (distMatchingSimilarities) {
 						 distMatchingSimilarities.add(Double.parseDouble(column[2]));
@@ -139,10 +138,8 @@ public class Main {
             					// Remove newlines, commas and apostrophes that may distort the CSV file when being written.
             					synchronized(writer){
             					writer.append("\"" + comparingTag.replace("\"", "").replace("\n", "").replace(",", "") + '"'+ ',' + '"' + comparedTag.replace("\"", "").replace("\n", "").replace(",", "") + '"' + "," + cc+"\n");
-//            					}           						
-            						
-            						
-            				}
+            					} 							
+//            				}
             				
             			}
                     }
