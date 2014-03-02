@@ -92,11 +92,12 @@ public class Main {
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
+		System.out.println("All lines read.");
 		ParallelForEach.loop(lines, threads, new Procedure<String>() {
 			public void call(String line){
 				String[] column = line.split(",");
 				 double jc = rc.calcRelatednessOfWords(column[0].replace("\"", "").replace(" ", "") , column[1].replace("\"", "").replace(" ", ""));
-				 System.out.println(jc);
+				 System.out.println("The jiang conrath coefficient is:"+jc);
 				 if(jc != 0.0){
 					 synchronized (distMatchingSimilarities) {
 						 distMatchingSimilarities.add(Double.parseDouble(column[2]));
