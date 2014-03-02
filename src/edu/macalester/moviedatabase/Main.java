@@ -68,6 +68,7 @@ public class Main {
 //		} catch (IOException e) {
 //			e.printStackTrace();
 //		}
+		System.out.println("What the fuck does it do before this?");
 		System.out.println("Calculation for collaborative matching:");
 		tauBetweenCSVandWordnet("collab_matching.csv");
 //		System.out.println("Calculation for collaborative MI:");
