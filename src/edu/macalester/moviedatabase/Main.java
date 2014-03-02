@@ -79,6 +79,7 @@ public class Main {
 	}
 	
 	public static void tauBetweenCSVandWordnet(String file){
+		System.out.println("Starting to calculate tau.");
 		WS4JConfiguration.getInstance().setMFS(true);
         ILexicalDatabase db = new NictWordNet();
 		final JiangConrath rc = new JiangConrath(db);
