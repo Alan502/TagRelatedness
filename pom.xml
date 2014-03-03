@@ -1,7 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
+  <groupId>com.macalester.edu.moviedatabase</groupId>
   <artifactId>MovieDatabase</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+  <name>MovieDatabase</name>
   <build>
     <sourceDirectory>src</sourceDirectory>
     <plugins>
@@ -15,8 +18,14 @@
       </plugin>
     </plugins>
   </build>
-  <groupId>edu.macalester.moviedatabase</groupId>
   <dependencies>
+  	<dependency>
+    	<artifactId>..</artifactId>
+    	<groupId>..</groupId>
+    	<scope>system</scope>
+    	<version> 1.0</version>
+    	<systemPath>${basedir}/lib/ws4j-1.0.1.jar</systemPath>
+	</dependency>
   	<dependency>
   		<groupId>com.github.shilad.wikapidia</groupId>
   		<artifactId>wikAPIdia-core</artifactId>
@@ -57,7 +66,7 @@
   		<artifactId>wikAPIdia-mapper</artifactId>
   		<version>0.1-SNAPSHOT</version>
   	</dependency>
-  	<dependency>
+  	<dependency>    	
   		<groupId>com.github.shilad.wikapidia</groupId>
   		<artifactId>wikAPIdia-lucene</artifactId>
   		<version>0.1-SNAPSHOT</version>
