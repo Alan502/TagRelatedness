@@ -31,56 +31,55 @@ import edu.cmu.lti.lexical_db.NictWordNet;
 import edu.cmu.lti.ws4j.WS4J;
 import edu.cmu.lti.ws4j.impl.JiangConrath;
 import edu.cmu.lti.ws4j.util.WS4JConfiguration;
+import edu.emory.mathcs.backport.java.util.Arrays;
 
 public class Main {
 	static int threads  = Runtime.getRuntime().availableProcessors();
 	public static void main(String[] args) {      
 		ParallelForEach.LOG.info("Running program with "+threads+" threads.");        
 		
-//		generateMostFrequentResources("bibsonomy/2007-10-31/tas", "bibsonomy/2007-10-31/tas-2000-most-common");
+		generateMostFrequentResources("bibsonomy/2007-10-31/tas", "bibsonomy/2007-10-31/tas-2000-most-common");
 				
-//		CollaborativeDatabase db = new CollaborativeDatabase();
+		CollaborativeDatabase db = new CollaborativeDatabase();
 		//db.initializeMovieLensTags("ml-10M100K/tags.dat");
-//		db.intializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
+		db.intializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
 		
 		
-//		try {
-//			generateTagSimilarityCSV(db, new CollaborativeMatching(db), "collab_matching.csv");
-//			generateTagSimilarityCSV(db, new CollaborativeMutualInformation(db), "collab_MI.csv");
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
+		try {
+			generateTagSimilarityCSV(db, new CollaborativeMatching(db), "collab_matching.csv");
+			generateTagSimilarityCSV(db, new CollaborativeMutualInformation(db), "collab_MI.csv");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
-//		DistributionalDatabase ddb = new DistributionalDatabase();
+		DistributionalDatabase ddb = new DistributionalDatabase();
 		//ddb.initializeMovieLensTags("ml-10M100K/tags.dat");
-//		ddb.intializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
-//		try {
-//			generateTagSimilarityCSV(ddb, new DistributionalMutualInformation(ddb), "dist_MI.csv");
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//		
-//		ProjectionalDatabase pdb = new ProjectionalDatabase();
+		ddb.intializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
+		try {
+			generateTagSimilarityCSV(ddb, new DistributionalMutualInformation(ddb), "dist_MI.csv");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		ProjectionalDatabase pdb = new ProjectionalDatabase();
 //		pdb.initializeMovieLensTags("ml-10M100K/tags.dat");
-//		pdb.intializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
-//		try {
-//			generateTagSimilarityCSV(pdb, new DistributionalMatching(pdb), "dist_matching.csv");
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-		System.out.println("What the fuck does it do before this?");
+		pdb.intializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
+		try {
+			generateTagSimilarityCSV(pdb, new DistributionalMatching(pdb), "dist_matching.csv");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		System.out.println("Calculation for collaborative matching:");
 		tauBetweenCSVandWordnet("collab_matching.csv");
-//		System.out.println("Calculation for collaborative MI:");
-//		tauBetweenCSVandWordnet("collab_MI.csv");
-//		System.out.println("Calculation for distributional matching:");
-//		tauBetweenCSVandWordnet("dist_matching.csv");
-//		System.out.println("Calculation for distributional MI:");
-//		tauBetweenCSVandWordnet("dist_MI.csv");
+		System.out.println("Calculation for collaborative MI:");
+		tauBetweenCSVandWordnet("collab_MI.csv");
+		System.out.println("Calculation for distributional matching:");
+		tauBetweenCSVandWordnet("dist_matching.csv");
+		System.out.println("Calculation for distributional MI:");
+		tauBetweenCSVandWordnet("dist_MI.csv");
 	}
 	
 	public static void tauBetweenCSVandWordnet(String file){
-		System.out.println("Starting to calculate tau.");
 		WS4JConfiguration.getInstance().setMFS(true);
         ILexicalDatabase db = new NictWordNet();
 		final JiangConrath rc = new JiangConrath(db);
@@ -94,21 +93,27 @@ public class Main {
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		System.out.println("All lines read.");
-		ParallelForEach.loop(lines, threads, new Procedure<String>() {
+		ParallelForEach.loop(lines.subList(1, lines.size()), threads, new Procedure<String>() {
 			public void call(String line){
 				String[] column = line.split(",");
-				 double jc = rc.calcRelatednessOfWords(column[0].replace("\"", "").replace(" ", "") , column[1].replace("\"", "").replace(" ", ""));
-				 System.out.println("The jiang conrath coefficient is:"+jc);
-				 if(jc != 0.0){
+				 String word1 = column[0].replace("\"", "").replace(" ", "");
+				 String word2 = column[1].replace("\"", "").replace(" ", "");
+				 double jc = rc.calcRelatednessOfWords(word1, word2 );
+//				 if(jc != 0.0){
 					 synchronized (distMatchingSimilarities) {
-						 distMatchingSimilarities.add(Double.parseDouble(column[2]));
-						 wordnetSimilarities.add(jc);
-					 }
+						 try{
+							 double csvSimilarity = Double.parseDouble(column[2]);
+							 distMatchingSimilarities.add(csvSimilarity);
+							 wordnetSimilarities.add(jc);
+						 }catch(NumberFormatException e){
+							 System.out.println("NumberFormatException Ex: "+column[2]);
+						 }catch(ArrayIndexOutOfBoundsException e){
+							 System.out.println("ArrayIndexOutOfBounds Ex: "+Arrays.toString(column));
+						 }
+//					 }
 				 }
 			}
 		});
-		
 	    System.out.println("Tau: "+KendallsCorrelation.correlation(distMatchingSimilarities, wordnetSimilarities));
 	}
 	
@@ -148,6 +153,8 @@ public class Main {
                     }
                 }
 				);
+		
+		
 
 		fWriter.flush();
 	    fWriter.close();
