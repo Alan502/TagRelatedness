@@ -40,18 +40,18 @@ public class Main {
 		
 //		generateMostFrequentResources("bibsonomy/2007-10-31/tas", "bibsonomy/2007-10-31/tas-2000-most-common");
 //				
-//		CollaborativeDatabase db = new CollaborativeDatabase();
+		CollaborativeDatabase db = new CollaborativeDatabase();
 		//db.initializeMovieLensTags("ml-10M100K/tags.dat");
-//		db.intializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
+		db.intializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
 //		
 //		
-//		try {
-//			generateTagSimilarityCSV(db, new CollaborativeMatching(db), "collab_matching.csv");
+		try {
+			generateTagSimilarityCSV(db, new CollaborativeMatching(db), "collab_matching.csv");
 //			generateTagSimilarityCSV(db, new CollaborativeMutualInformation(db), "collab_MI.csv");
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//		
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 //		DistributionalDatabase ddb = new DistributionalDatabase();
 		//ddb.initializeMovieLensTags("ml-10M100K/tags.dat");
 //		ddb.intializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
