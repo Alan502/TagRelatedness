@@ -16,16 +16,17 @@
           <target>1.7</target>
         </configuration>
       </plugin>
+	 
     </plugins>
   </build>
+  
   <dependencies>
   	<dependency>
-    	<artifactId>..</artifactId>
-    	<groupId>..</groupId>
-    	<scope>system</scope>
-    	<version> 1.0</version>
-    	<systemPath>${basedir}/lib/ws4j-1.0.1.jar</systemPath>
-	</dependency>
+      <groupId>edu.cmu.lti</groupId>
+      <artifactId>ws4j</artifactId>
+      <version>1.0.1</version>
+ 	</dependency>
+  
   	<dependency>
   		<groupId>com.github.shilad.wikapidia</groupId>
   		<artifactId>wikAPIdia-core</artifactId>

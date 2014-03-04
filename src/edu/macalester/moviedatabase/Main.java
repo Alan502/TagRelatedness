@@ -245,30 +245,30 @@ public class Main {
         
 	}
 	
-	public static void generateWikAPIdiaCSV(String inputDir, String outputDir, ArrayList<String> tags){
-		
-		try {
-			Env env = new EnvBuilder().build();
-			Configurator conf = env.getConfigurator();
-			LocalPageDao lpDao = conf.get(LocalPageDao.class);
-			
-			Language simple = Language.getByLangCode("simple");
-
-			MonolingualSRMetric sr = conf.get(
-			        MonolingualSRMetric.class, "ensemble",
-			        "language", simple.getLangCode());
-			
-			SRResult s = sr.similarity("yes", "no", false);
-
-		} catch (ConfigurationException e) {
-			System.out.println("Configuration Exception: "+e.getMessage());
-		} catch (DaoException e) {
-			System.out.println("Dao Exception: "+e.getMessage());
-
-		}
-		
-		
-	}  
+//	public static void generateWikAPIdiaCSV(String inputDir, String outputDir, ArrayList<String> tags){
+//		
+//		try {
+//			Env env = new EnvBuilder().build();
+//			Configurator conf = env.getConfigurator();
+//			LocalPageDao lpDao = conf.get(LocalPageDao.class);
+//			
+//			Language simple = Language.getByLangCode("simple");
+//
+//			MonolingualSRMetric sr = conf.get(
+//			        MonolingualSRMetric.class, "ensemble",
+//			        "language", simple.getLangCode());
+//			
+//			SRResult s = sr.similarity("yes", "no", false);
+//
+//		} catch (ConfigurationException e) {
+//			System.out.println("Configuration Exception: "+e.getMessage());
+//		} catch (DaoException e) {
+//			System.out.println("Dao Exception: "+e.getMessage());
+//
+//		}
+//		
+//		
+//	}  
 }
 
 
