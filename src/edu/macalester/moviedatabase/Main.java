@@ -38,37 +38,37 @@ public class Main {
 	public static void main(String[] args) {      
 		ParallelForEach.LOG.info("Running program with "+threads+" threads.");        
 		
-		generateMostFrequentResources("bibsonomy/2007-10-31/tas", "bibsonomy/2007-10-31/tas-2000-most-common");
-				
-		CollaborativeDatabase db = new CollaborativeDatabase();
+//		generateMostFrequentResources("bibsonomy/2007-10-31/tas", "bibsonomy/2007-10-31/tas-2000-most-common");
+//				
+//		CollaborativeDatabase db = new CollaborativeDatabase();
 		//db.initializeMovieLensTags("ml-10M100K/tags.dat");
-		db.intializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
-		
-		
-		try {
-			generateTagSimilarityCSV(db, new CollaborativeMatching(db), "collab_matching.csv");
-			generateTagSimilarityCSV(db, new CollaborativeMutualInformation(db), "collab_MI.csv");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		DistributionalDatabase ddb = new DistributionalDatabase();
+//		db.intializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
+//		
+//		
+//		try {
+//			generateTagSimilarityCSV(db, new CollaborativeMatching(db), "collab_matching.csv");
+//			generateTagSimilarityCSV(db, new CollaborativeMutualInformation(db), "collab_MI.csv");
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//		
+//		DistributionalDatabase ddb = new DistributionalDatabase();
 		//ddb.initializeMovieLensTags("ml-10M100K/tags.dat");
-		ddb.intializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
-		try {
-			generateTagSimilarityCSV(ddb, new DistributionalMutualInformation(ddb), "dist_MI.csv");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+//		ddb.intializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
+//		try {
+//			generateTagSimilarityCSV(ddb, new DistributionalMutualInformation(ddb), "dist_MI.csv");
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 		
-		ProjectionalDatabase pdb = new ProjectionalDatabase();
+//		ProjectionalDatabase pdb = new ProjectionalDatabase();
 //		pdb.initializeMovieLensTags("ml-10M100K/tags.dat");
-		pdb.intializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
-		try {
-			generateTagSimilarityCSV(pdb, new DistributionalMatching(pdb), "dist_matching.csv");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+//		pdb.intializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
+//		try {
+//			generateTagSimilarityCSV(pdb, new DistributionalMatching(pdb), "dist_matching.csv");
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 		System.out.println("Calculation for collaborative matching:");
 		tauBetweenCSVandWordnet("collab_matching.csv");
 		System.out.println("Calculation for collaborative MI:");
@@ -99,7 +99,7 @@ public class Main {
 				 String word1 = column[0].replace("\"", "").replace(" ", "");
 				 String word2 = column[1].replace("\"", "").replace(" ", "");
 				 double jc = rc.calcRelatednessOfWords(word1, word2 );
-//				 if(jc != 0.0){
+				 if(jc != 0.0){
 					 synchronized (distMatchingSimilarities) {
 						 try{
 							 double csvSimilarity = Double.parseDouble(column[2]);
@@ -110,7 +110,7 @@ public class Main {
 						 }catch(ArrayIndexOutOfBoundsException e){
 							 System.out.println("ArrayIndexOutOfBounds Ex: "+Arrays.toString(column));
 						 }
-//					 }
+					 }
 				 }
 			}
 		});
