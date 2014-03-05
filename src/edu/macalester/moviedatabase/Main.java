@@ -47,28 +47,28 @@ public class Main {
 //		
 		try {
 			generateTagSimilarityCSV(db, new CollaborativeMatching(db), "collab_matching.csv");
-//			generateTagSimilarityCSV(db, new CollaborativeMutualInformation(db), "collab_MI.csv");
+			generateTagSimilarityCSV(db, new CollaborativeMutualInformation(db), "collab_MI.csv");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
-//		DistributionalDatabase ddb = new DistributionalDatabase();
+		DistributionalDatabase ddb = new DistributionalDatabase();
 		//ddb.initializeMovieLensTags("ml-10M100K/tags.dat");
-//		ddb.intializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
-//		try {
-//			generateTagSimilarityCSV(ddb, new DistributionalMutualInformation(ddb), "dist_MI.csv");
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
+		ddb.intializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
+		try {
+			generateTagSimilarityCSV(ddb, new DistributionalMutualInformation(ddb), "dist_MI.csv");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
-//		ProjectionalDatabase pdb = new ProjectionalDatabase();
+		ProjectionalDatabase pdb = new ProjectionalDatabase();
 //		pdb.initializeMovieLensTags("ml-10M100K/tags.dat");
-//		pdb.intializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
-//		try {
-//			generateTagSimilarityCSV(pdb, new DistributionalMatching(pdb), "dist_matching.csv");
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
+		pdb.intializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
+		try {
+			generateTagSimilarityCSV(pdb, new DistributionalMatching(pdb), "dist_matching.csv");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		System.out.println("Calculation for collaborative matching:");
 		tauBetweenCSVandWordnet("collab_matching.csv");
 		System.out.println("Calculation for collaborative MI:");
@@ -98,8 +98,14 @@ public class Main {
 				String[] column = line.split(",");
 				 String word1 = column[0].replace("\"", "").replace(" ", "");
 				 String word2 = column[1].replace("\"", "").replace(" ", "");
-				 double jc = rc.calcRelatednessOfWords(word1, word2 );
+				 double jc = rc.calcRelatednessOfWords(word1, word2);
 				 if(jc != 0.0){
+					 
+					long factor = (long) Math.pow(10, 2);
+					jc = jc * factor;
+					long tmp = Math.round(jc);
+					jc = tmp / factor;
+					
 					 synchronized (distMatchingSimilarities) {
 						 try{
 							 double csvSimilarity = Double.parseDouble(column[2]);
@@ -144,6 +150,10 @@ public class Main {
             				
 //            				if(cc != 0){
             					// Remove newlines, commas and apostrophes that may distort the CSV file when being written.
+            					long factor = (long) Math.pow(10, 2);
+            					cc = cc * factor;
+            					long tmp = Math.round(cc);
+            					cc = tmp / factor;
             					synchronized(writer){
             					writer.append("\"" + comparingTag.replace("\"", "").replace("\n", "").replace(",", "") + '"'+ ',' + '"' + comparedTag.replace("\"", "").replace("\n", "").replace(",", "") + '"' + "," + cc+"\n");
             					} 							
