@@ -101,9 +101,7 @@ public class Main {
 				 String word1 = column[0].replace("\"", "").replace(" ", "");
 				 String word2 = column[1].replace("\"", "").replace(" ", "");
 				 double jc = rc.calcRelatednessOfWords(word1, word2);
-				 if(jc != 0.0){
- 				    DecimalFormat df = new DecimalFormat("#.##");
-					
+				 if(jc != 0.0){					
 					 synchronized (distMatchingSimilarities) {
 						 try{
 							 double csvSimilarity = Double.parseDouble(column[2]);
@@ -148,9 +146,8 @@ public class Main {
             				
             				if(cc != 0){
             					// Remove newlines, commas and apostrophes that may distort the CSV file when being written.
-            				    DecimalFormat df = new DecimalFormat("#.##");
             					synchronized(writer){
-            					writer.append("\"" + comparingTag.replace("\"", "").replace("\n", "").replace(",", "") + '"'+ ',' + '"' + comparedTag.replace("\"", "").replace("\n", "").replace(",", "") + '"' + "," + df.format(cc) +"\n");
+            					writer.append("\"" + comparingTag.replace("\"", "").replace("\n", "").replace(",", "") + '"'+ ',' + '"' + comparedTag.replace("\"", "").replace("\n", "").replace(",", "") + '"' + "," +  ((double)Math.round(cc * 100) / 100 ) +"\n");
             					} 							
             				}
             				
