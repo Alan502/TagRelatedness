@@ -25,6 +25,8 @@ import org.wikapidia.core.lang.Language;
 import org.wikapidia.sr.MonolingualSRMetric;
 import org.wikapidia.sr.SRResult;
 
+import com.ibm.icu.text.DecimalFormat;
+
 import edu.cmu.lti.jawjaw.pobj.POS;
 import edu.cmu.lti.lexical_db.ILexicalDatabase;
 import edu.cmu.lti.lexical_db.NictWordNet;
@@ -36,7 +38,7 @@ import edu.emory.mathcs.backport.java.util.Arrays;
 public class Main {
 	static int threads  = Runtime.getRuntime().availableProcessors();
 	public static void main(String[] args) {      
-		ParallelForEach.LOG.info("Running program with "+threads+" threads.");        
+		ParallelForEach.LOG.info("Running program with "+threads+" threads.");
 		
 //		generateMostFrequentResources("bibsonomy/2007-10-31/tas", "bibsonomy/2007-10-31/tas-2000-most-common");
 //				
@@ -100,17 +102,13 @@ public class Main {
 				 String word2 = column[1].replace("\"", "").replace(" ", "");
 				 double jc = rc.calcRelatednessOfWords(word1, word2);
 				 if(jc != 0.0){
-					 
-					long factor = (long) Math.pow(10, 2);
-					jc = jc * factor;
-					long tmp = Math.round(jc);
-					jc = tmp / factor;
+ 				    DecimalFormat df = new DecimalFormat("#.##");
 					
 					 synchronized (distMatchingSimilarities) {
 						 try{
 							 double csvSimilarity = Double.parseDouble(column[2]);
 							 distMatchingSimilarities.add(csvSimilarity);
-							 wordnetSimilarities.add(jc);
+							 wordnetSimilarities.add((double)Math.round(jc * 100) / 100);
 						 }catch(NumberFormatException e){
 							 System.out.println("NumberFormatException Ex: "+column[2]);
 						 }catch(ArrayIndexOutOfBoundsException e){
@@ -148,16 +146,13 @@ public class Main {
 							
             				double cc = similarityMeasure.calculateSimilarity(comparingTag, comparedTag);
             				
-//            				if(cc != 0){
+            				if(cc != 0){
             					// Remove newlines, commas and apostrophes that may distort the CSV file when being written.
-            					long factor = (long) Math.pow(10, 2);
-            					cc = cc * factor;
-            					long tmp = Math.round(cc);
-            					cc = tmp / factor;
+            				    DecimalFormat df = new DecimalFormat("#.##");
             					synchronized(writer){
-            					writer.append("\"" + comparingTag.replace("\"", "").replace("\n", "").replace(",", "") + '"'+ ',' + '"' + comparedTag.replace("\"", "").replace("\n", "").replace(",", "") + '"' + "," + cc+"\n");
+            					writer.append("\"" + comparingTag.replace("\"", "").replace("\n", "").replace(",", "") + '"'+ ',' + '"' + comparedTag.replace("\"", "").replace("\n", "").replace(",", "") + '"' + "," + df.format(cc) +"\n");
             					} 							
-//            				}
+            				}
             				
             			}
                     }
