@@ -101,12 +101,13 @@ public class Main {
 				 String word1 = column[0].replace("\"", "").replace(" ", "");
 				 String word2 = column[1].replace("\"", "").replace(" ", "");
 				 double jc = rc.calcRelatednessOfWords(word1, word2);
-				 if(jc != 0.0){					
+				 jc = (double)Math.round(jc * 100) / 100;
+				 if(jc < 0.001 && jc > -.001){					
 					 synchronized (distMatchingSimilarities) {
 						 try{
 							 double csvSimilarity = Double.parseDouble(column[2]);
 							 distMatchingSimilarities.add(csvSimilarity);
-							 wordnetSimilarities.add((double)Math.round(jc * 100) / 100);
+							 wordnetSimilarities.add(jc);
 						 }catch(NumberFormatException e){
 							 System.out.println("NumberFormatException Ex: "+column[2]);
 						 }catch(ArrayIndexOutOfBoundsException e){
@@ -143,11 +144,11 @@ public class Main {
                     	for(String comparedTag : tags.subList(start+1, tags.size() )){
 							
             				double cc = similarityMeasure.calculateSimilarity(comparingTag, comparedTag);
-            				
-            				if(cc != 0){
+            				cc = ((double)Math.round(cc * 100) / 100 );
+            				if(cc < 0.001 && cc > -.001){
             					// Remove newlines, commas and apostrophes that may distort the CSV file when being written.
             					synchronized(writer){
-            					writer.append("\"" + comparingTag.replace("\"", "").replace("\n", "").replace(",", "") + '"'+ ',' + '"' + comparedTag.replace("\"", "").replace("\n", "").replace(",", "") + '"' + "," +  ((double)Math.round(cc * 100) / 100 ) +"\n");
+            					writer.append("\"" + comparingTag.replace("\"", "").replace("\n", "").replace(",", "") + '"'+ ',' + '"' + comparedTag.replace("\"", "").replace("\n", "").replace(",", "") + '"' + "," +  cc +"\n");
             					} 							
             				}
             				
