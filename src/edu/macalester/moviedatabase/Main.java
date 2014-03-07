@@ -45,8 +45,7 @@ public class Main {
 		CollaborativeDatabase db = new CollaborativeDatabase();
 		//db.initializeMovieLensTags("ml-10M100K/tags.dat");
 		db.intializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
-//		
-//		
+	
 		try {
 			generateTagSimilarityCSV(db, new CollaborativeMatching(db), "collab_matching.csv");
 			generateTagSimilarityCSV(db, new CollaborativeMutualInformation(db), "collab_MI.csv");
@@ -102,7 +101,7 @@ public class Main {
 				 String word2 = column[1].replace("\"", "").replace(" ", "");
 				 double jc = rc.calcRelatednessOfWords(word1, word2);
 				 jc = (double)Math.round(jc * 100) / 100;
-				 if(jc < 0.001 && jc > -.001){					
+				 if(!(jc < 0.001 && jc > -.001)){					
 					 synchronized (distMatchingSimilarities) {
 						 try{
 							 double csvSimilarity = Double.parseDouble(column[2]);
@@ -145,7 +144,7 @@ public class Main {
 							
             				double cc = similarityMeasure.calculateSimilarity(comparingTag, comparedTag);
             				cc = ((double)Math.round(cc * 100) / 100 );
-            				if(cc < 0.001 && cc > -.001){
+            				if(!(cc < 0.001 && cc > -.001)){
             					// Remove newlines, commas and apostrophes that may distort the CSV file when being written.
             					synchronized(writer){
             					writer.append("\"" + comparingTag.replace("\"", "").replace("\n", "").replace(",", "") + '"'+ ',' + '"' + comparedTag.replace("\"", "").replace("\n", "").replace(",", "") + '"' + "," +  cc +"\n");
