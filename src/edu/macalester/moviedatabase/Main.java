@@ -101,7 +101,7 @@ public class Main {
 				 String word2 = column[1].replace("\"", "").replace(" ", "");
 				 double jc = rc.calcRelatednessOfWords(word1, word2);
 				 jc = (double)Math.round(jc * 100) / 100;
-				 if(!(jc < 0.001 && jc > -.001)){					
+//				 if(!(jc < 0.001 && jc > -.001)){					
 					 synchronized (distMatchingSimilarities) {
 						 try{
 							 double csvSimilarity = Double.parseDouble(column[2]);
@@ -113,7 +113,7 @@ public class Main {
 							 System.out.println("ArrayIndexOutOfBounds Ex: "+Arrays.toString(column));
 						 }
 					 }
-				 }
+//				 }
 			}
 		});
 	    System.out.println("Tau: "+KendallsCorrelation.correlation(distMatchingSimilarities, wordnetSimilarities));
