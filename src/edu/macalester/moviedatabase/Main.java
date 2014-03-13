@@ -42,7 +42,7 @@ public class Main {
 		
 		SRResult s = null;
 		try {
-			Env env = new EnvBuilder().setBaseDir("wikAPIdia").build();
+			Env env = new EnvBuilder().setBaseDir("../wikAPIdia").build();
 			Configurator conf = env.getConfigurator();
 			LocalPageDao lpDao = conf.get(LocalPageDao.class);
 			
