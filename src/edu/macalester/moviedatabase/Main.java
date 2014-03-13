@@ -40,44 +40,69 @@ public class Main {
 	public static void main(String[] args) {      
 		ParallelForEach.LOG.info("Running program with "+threads+" threads.");
 		
+		SRResult s = null;
+		try {
+			Env env = new EnvBuilder().setBaseDir("wikAPIdia").build();
+			Configurator conf = env.getConfigurator();
+			LocalPageDao lpDao = conf.get(LocalPageDao.class);
+			
+			Language simple = Language.getByLangCode("simple");
+
+			MonolingualSRMetric sr = conf.get(
+			        MonolingualSRMetric.class, "ensemble",
+			        "language", simple.getLangCode());
+			
+			s = sr.similarity("cat","kitty",true);
+
+		} catch (ConfigurationException e) {
+			System.out.println("Configuration Exception: "+e.getMessage());
+		} catch (DaoException e) {
+			System.out.println("Dao Exception: "+e.getMessage());
+
+		}
+		
+		System.out.println("The score for this two pages:"+s.getScore());
+		
+		System.exit(0);
+		
 //		generateMostFrequentResources("bibsonomy/2007-10-31/tas", "bibsonomy/2007-10-31/tas-2000-most-common");
 //				
-		CollaborativeDatabase db = new CollaborativeDatabase();
+//		CollaborativeDatabase db = new CollaborativeDatabase();
 		//db.initializeMovieLensTags("ml-10M100K/tags.dat");
-		db.intializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
+//		db.intializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
 	
-		try {
-			generateTagSimilarityCSV(db, new CollaborativeMatching(db), "collab_matching.csv");
-			generateTagSimilarityCSV(db, new CollaborativeMutualInformation(db), "collab_MI.csv");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+//		try {
+//			generateTagSimilarityCSV(db, new CollaborativeMatching(db), "collab_matching.csv");
+//			generateTagSimilarityCSV(db, new CollaborativeMutualInformation(db), "collab_MI.csv");
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 		
-		DistributionalDatabase ddb = new DistributionalDatabase();
+//		DistributionalDatabase ddb = new DistributionalDatabase();
 		//ddb.initializeMovieLensTags("ml-10M100K/tags.dat");
-		ddb.intializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
-		try {
-			generateTagSimilarityCSV(ddb, new DistributionalMutualInformation(ddb), "dist_MI.csv");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+//		ddb.intializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
+//		try {
+//			generateTagSimilarityCSV(ddb, new DistributionalMutualInformation(ddb), "dist_MI.csv");
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 		
-		ProjectionalDatabase pdb = new ProjectionalDatabase();
+//		ProjectionalDatabase pdb = new ProjectionalDatabase();
 //		pdb.initializeMovieLensTags("ml-10M100K/tags.dat");
-		pdb.intializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
-		try {
-			generateTagSimilarityCSV(pdb, new DistributionalMatching(pdb), "dist_matching.csv");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		System.out.println("Calculation for collaborative matching:");
-		tauBetweenCSVandWordnet("collab_matching.csv");
-		System.out.println("Calculation for collaborative MI:");
-		tauBetweenCSVandWordnet("collab_MI.csv");
-		System.out.println("Calculation for distributional matching:");
-		tauBetweenCSVandWordnet("dist_matching.csv");
-		System.out.println("Calculation for distributional MI:");
-		tauBetweenCSVandWordnet("dist_MI.csv");
+//		pdb.intializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
+//		try {
+//			generateTagSimilarityCSV(pdb, new DistributionalMatching(pdb), "dist_matching.csv");
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//		System.out.println("Calculation for collaborative matching:");
+//		tauBetweenCSVandWordnet("collab_matching.csv");
+//		System.out.println("Calculation for collaborative MI:");
+//		tauBetweenCSVandWordnet("collab_MI.csv");
+//		System.out.println("Calculation for distributional matching:");
+//		tauBetweenCSVandWordnet("dist_matching.csv");
+//		System.out.println("Calculation for distributional MI:");
+//		tauBetweenCSVandWordnet("dist_MI.csv");
 	}
 	
 	public static void tauBetweenCSVandWordnet(String file){
@@ -247,30 +272,30 @@ public class Main {
         
 	}
 	
-//	public static void generateWikAPIdiaCSV(String inputDir, String outputDir, ArrayList<String> tags){
-//		
-//		try {
-//			Env env = new EnvBuilder().build();
-//			Configurator conf = env.getConfigurator();
-//			LocalPageDao lpDao = conf.get(LocalPageDao.class);
-//			
-//			Language simple = Language.getByLangCode("simple");
-//
-//			MonolingualSRMetric sr = conf.get(
-//			        MonolingualSRMetric.class, "ensemble",
-//			        "language", simple.getLangCode());
-//			
-//			SRResult s = sr.similarity("yes", "no", false);
-//
-//		} catch (ConfigurationException e) {
-//			System.out.println("Configuration Exception: "+e.getMessage());
-//		} catch (DaoException e) {
-//			System.out.println("Dao Exception: "+e.getMessage());
-//
-//		}
-//		
-//		
-//	}  
+	public static void generateWikAPIdiaCSV(String inputDir, String outputDir, ArrayList<String> tags){
+		
+		try {
+			Env env = new EnvBuilder().build();
+			Configurator conf = env.getConfigurator();
+			LocalPageDao lpDao = conf.get(LocalPageDao.class);
+			
+			Language simple = Language.getByLangCode("simple");
+
+			MonolingualSRMetric sr = conf.get(
+			        MonolingualSRMetric.class, "ensemble",
+			        "language", simple.getLangCode());
+			
+			SRResult s = sr.similarity("yes", "no", false);
+
+		} catch (ConfigurationException e) {
+			System.out.println("Configuration Exception: "+e.getMessage());
+		} catch (DaoException e) {
+			System.out.println("Dao Exception: "+e.getMessage());
+
+		}
+		
+		
+	}  
 }
 
 
