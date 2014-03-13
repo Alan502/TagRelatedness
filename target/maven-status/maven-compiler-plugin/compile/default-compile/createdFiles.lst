@@ -10,10 +10,10 @@ edu/macalester/moviedatabase/ParallelForEach$ThreadPoolErrors.class
 edu/macalester/moviedatabase/Procedure.class
 edu/macalester/moviedatabase/Database.class
 edu/macalester/moviedatabase/ProjectionalJaccard.class
-edu/macalester/moviedatabase/Main$2.class
 edu/macalester/moviedatabase/TagSimilarityMeasure.class
-edu/macalester/moviedatabase/ParallelForEach$1.class
+edu/macalester/moviedatabase/Main$2.class
 edu/macalester/moviedatabase/Main$1.class
+edu/macalester/moviedatabase/ParallelForEach$1.class
 edu/macalester/moviedatabase/KendallsCorrelation$ComparablePair.class
 edu/macalester/moviedatabase/ParallelForEach$2.class
 edu/macalester/moviedatabase/ParallelForEach.class
@@ -22,8 +22,8 @@ edu/macalester/moviedatabase/Main.class
 edu/macalester/moviedatabase/BibsonomyRecord.class
 edu/macalester/moviedatabase/EntryFrequency.class
 edu/macalester/moviedatabase/Function.class
-edu/macalester/moviedatabase/CollaborativeDatabase.class
 edu/macalester/moviedatabase/CollaborativeMatching.class
+edu/macalester/moviedatabase/CollaborativeDatabase.class
 edu/macalester/moviedatabase/KendallsCorrelation.class
 edu/macalester/moviedatabase/ParallelForEach$BoundedExecutor$1.class
 edu/macalester/moviedatabase/ProjectionalDatabase.class

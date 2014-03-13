@@ -1,3 +1,0 @@
-03-12 21:24:54 jdbc[7]: exception
-org.h2.jdbc.JdbcSQLException: Table "META_INFO" not found; SQL statement:
-select "PUBLIC"."META_INFO"."LANG_ID" from "PUBLIC"."META_INFO" where ("PUBLIC"."META_INFO"."COMPONENT" = cast(? as varchar(255)) and "PUBLIC"."META_INFO"."LANG_ID" is not null) [42102-174]
