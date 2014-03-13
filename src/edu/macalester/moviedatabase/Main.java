@@ -25,7 +25,6 @@ import org.wikapidia.core.lang.Language;
 import org.wikapidia.sr.MonolingualSRMetric;
 import org.wikapidia.sr.SRResult;
 
-import com.ibm.icu.text.DecimalFormat;
 
 import edu.cmu.lti.jawjaw.pobj.POS;
 import edu.cmu.lti.lexical_db.ILexicalDatabase;
@@ -42,7 +41,7 @@ public class Main {
 		
 		SRResult s = null;
 		try {
-			Env env = new EnvBuilder().setBaseDir("../wikAPIdia").build();
+			Env env = new EnvBuilder().setBaseDir("../../wikAPIdia").build();
 			Configurator conf = env.getConfigurator();
 			LocalPageDao lpDao = conf.get(LocalPageDao.class);
 			
