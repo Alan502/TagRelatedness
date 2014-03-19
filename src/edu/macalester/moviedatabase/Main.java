@@ -11,6 +11,7 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -25,14 +26,8 @@ import org.wikapidia.core.lang.Language;
 import org.wikapidia.sr.MonolingualSRMetric;
 import org.wikapidia.sr.SRResult;
 
-
-import edu.cmu.lti.jawjaw.pobj.POS;
-import edu.cmu.lti.lexical_db.ILexicalDatabase;
-import edu.cmu.lti.lexical_db.NictWordNet;
 import edu.cmu.lti.ws4j.WS4J;
-import edu.cmu.lti.ws4j.impl.JiangConrath;
 import edu.cmu.lti.ws4j.util.WS4JConfiguration;
-import edu.emory.mathcs.backport.java.util.Arrays;
 
 public class Main {
 	static int threads  = Runtime.getRuntime().availableProcessors();
@@ -41,7 +36,7 @@ public class Main {
 		
 		SRResult s = null;
 		try {
-			Env env = new EnvBuilder().setBaseDir("../../../wikAPIdia").build();
+			Env env = new EnvBuilder().setBaseDir("../wikAPIdia").build();
 			Configurator conf = env.getConfigurator();
 			LocalPageDao lpDao = conf.get(LocalPageDao.class);
 			
@@ -106,9 +101,7 @@ public class Main {
 	
 	public static void tauBetweenCSVandWordnet(String file){
 		WS4JConfiguration.getInstance().setMFS(true);
-        ILexicalDatabase db = new NictWordNet();
-		final JiangConrath rc = new JiangConrath(db);
-		
+				
 		final ArrayList<Double> distMatchingSimilarities  = new ArrayList<Double>();
 		final ArrayList<Double> wordnetSimilarities = new ArrayList<Double>();
 		
@@ -123,7 +116,7 @@ public class Main {
 				String[] column = line.split(",");
 				 String word1 = column[0].replace("\"", "").replace(" ", "");
 				 String word2 = column[1].replace("\"", "").replace(" ", "");
-				 double jc = rc.calcRelatednessOfWords(word1, word2);
+				 double jc = WS4J.runJCN(word1, word2);
 				 jc = (double)Math.round(jc * 100) / 100;
 				 if(!(jc < 0.001 && jc > -.001)){					
 					 synchronized (distMatchingSimilarities) {
@@ -204,13 +197,7 @@ public class Main {
 			while(readerStream.ready()){
 				String line = readerStream.readLine();
 				String tagInfo[] = line.split("\t");
-				if( tagInfo.length == 5 && 
-						!(WS4J.findDefinitions(tagInfo[1], POS.a).isEmpty() &&
-								WS4J.findDefinitions(tagInfo[1], POS.n).isEmpty() &&
-								WS4J.findDefinitions(tagInfo[1], POS.r).isEmpty() &&
-								WS4J.findDefinitions(tagInfo[1], POS.v).isEmpty()
-								)
-						){
+				if( tagInfo.length == 5 && WS4J.runJCN("apple", tagInfo[1]) != 0.0){
 					overlappingTagEntries.add(new BibsonomyRecord(tagInfo[2], line));
 				}
 			}
