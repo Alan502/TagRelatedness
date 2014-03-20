@@ -14,9 +14,9 @@ public class WikAPIdiaEnsemble implements TagSimilarityMeasure {
 	
 	MonolingualSRMetric sr = null;
 	
-	public WikAPIdiaEnsemble(){
+	public WikAPIdiaEnsemble(String wikAPidiaInstallDir){
 		try {
-			Env env = new EnvBuilder().setBaseDir(System.getProperty("user.home")+".wikAPIdia/").build();
+			Env env = new EnvBuilder().setBaseDir(wikAPidiaInstallDir).build();
 			Configurator conf = env.getConfigurator();
 			LocalPageDao lpDao = conf.get(LocalPageDao.class);
 			

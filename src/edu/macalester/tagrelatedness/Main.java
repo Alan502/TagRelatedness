@@ -55,7 +55,7 @@ public class Main {
 			e.printStackTrace();
 		}
 		
-		WikAPIdiaEnsemble wikApidia = new WikAPIdiaEnsemble();
+		WikAPIdiaEnsemble wikApidia = new WikAPIdiaEnsemble(System.getProperty("user.home")+"/.wikAPIdia/");
 		try {
 			generateTagSimilarityCSV(new LinkedList<>(pdb.getTagsSet()), wikApidia, "wikAPIdia_ensemble.csv");
 		} catch (IOException e) {
