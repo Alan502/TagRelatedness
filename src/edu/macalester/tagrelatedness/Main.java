@@ -33,70 +33,53 @@ public class Main {
 	static int threads  = Runtime.getRuntime().availableProcessors();
 	public static void main(String[] args) {      
 		ParallelForEach.LOG.info("Running program with "+threads+" threads.");
-		
-		SRResult s = null;
+
+		CollaborativeDatabase db = new CollaborativeDatabase();
+		//db.initializeMovieLensTags("ml-10M100K/tags.dat");
+		db.initializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
+	
 		try {
-			Env env = new EnvBuilder().setBaseDir("../wikAPIdia/").build();
-			Configurator conf = env.getConfigurator();
-			LocalPageDao lpDao = conf.get(LocalPageDao.class);
-			
-			Language simple = Language.getByLangCode("simple");
-
-			MonolingualSRMetric sr = conf.get(
-			        MonolingualSRMetric.class, "ensemble",
-			        "language", simple.getLangCode());
-			
-			s = sr.similarity("cat","kitty",true);
-
-		} catch (ConfigurationException e) {
-			System.out.println("Configuration Exception: "+e.getMessage());
-		} catch (DaoException e) {
-			System.out.println("Dao Exception: "+e.getMessage());
-
+			generateTagSimilarityCSV(new LinkedList<>(db.getTagsSet()), new CollaborativeMatching(db), "collab_matching.csv");
+			generateTagSimilarityCSV(new LinkedList<>(db.getTagsSet()), new CollaborativeMutualInformation(db), "collab_MI.csv");
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 		
-		System.out.println("The score for this two pages:"+s.getScore());
-		
-		System.exit(0);
-		
-//		generateMostFrequentResources("bibsonomy/2007-10-31/tas", "bibsonomy/2007-10-31/tas-2000-most-common");
-//				
-//		CollaborativeDatabase db = new CollaborativeDatabase();
-		//db.initializeMovieLensTags("ml-10M100K/tags.dat");
-//		db.intializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
-	
-//		try {
-//			generateTagSimilarityCSV(db, new CollaborativeMatching(db), "collab_matching.csv");
-//			generateTagSimilarityCSV(db, new CollaborativeMutualInformation(db), "collab_MI.csv");
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-		
-//		DistributionalDatabase ddb = new DistributionalDatabase();
+		DistributionalDatabase ddb = new DistributionalDatabase();
 		//ddb.initializeMovieLensTags("ml-10M100K/tags.dat");
-//		ddb.intializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
-//		try {
-//			generateTagSimilarityCSV(ddb, new DistributionalMutualInformation(ddb), "dist_MI.csv");
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
+		ddb.initializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
+		try {
+			generateTagSimilarityCSV(new LinkedList<>(ddb.getTagsSet()), new DistributionalMutualInformation(ddb), "dist_MI.csv");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
-//		ProjectionalDatabase pdb = new ProjectionalDatabase();
+		ProjectionalDatabase pdb = new ProjectionalDatabase();
 //		pdb.initializeMovieLensTags("ml-10M100K/tags.dat");
-//		pdb.intializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
-//		try {
-//			generateTagSimilarityCSV(pdb, new DistributionalMatching(pdb), "dist_matching.csv");
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//		System.out.println("Calculation for collaborative matching:");
-//		tauBetweenCSVandWordnet("collab_matching.csv");
-//		System.out.println("Calculation for collaborative MI:");
-//		tauBetweenCSVandWordnet("collab_MI.csv");
-//		System.out.println("Calculation for distributional matching:");
-//		tauBetweenCSVandWordnet("dist_matching.csv");
-//		System.out.println("Calculation for distributional MI:");
-//		tauBetweenCSVandWordnet("dist_MI.csv");
+		pdb.initializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
+		try {
+			generateTagSimilarityCSV(new LinkedList<>(pdb.getTagsSet()), new DistributionalMatching(pdb), "dist_matching.csv");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		WikAPIdiaEnsemble wikApidia = new WikAPIdiaEnsemble();
+		try {
+			generateTagSimilarityCSV(new LinkedList<>(pdb.getTagsSet()), wikApidia, "wikAPIdia_ensemble.csv");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println("Calculation for collaborative matching:");
+		tauBetweenCSVandWordnet("collab_matching.csv");
+		System.out.println("Calculation for collaborative MI:");
+		tauBetweenCSVandWordnet("collab_MI.csv");
+		System.out.println("Calculation for distributional matching:");
+		tauBetweenCSVandWordnet("dist_matching.csv");
+		System.out.println("Calculation for distributional MI:");
+		tauBetweenCSVandWordnet("dist_MI.csv");
+		System.out.println("Calculation for wikAPIdia:");
+		tauBetweenCSVandWordnet("wikAPIdia_ensemble.csv");
 	}
 	
 	public static void tauBetweenCSVandWordnet(String file){
@@ -117,7 +100,7 @@ public class Main {
 				 String word1 = column[0].replace("\"", "").replace(" ", "");
 				 String word2 = column[1].replace("\"", "").replace(" ", "");
 				 double jc = WS4J.runJCN(word1, word2);
-				 jc = (double)Math.round(jc * 100) / 100;
+				 jc = (double)Math.round(jc * 10000) / 10000;
 				 if(!(jc < 0.001 && jc > -.001)){					
 					 synchronized (distMatchingSimilarities) {
 						 try{
@@ -136,8 +119,8 @@ public class Main {
 	    System.out.println("Tau: "+KendallsCorrelation.correlation(distMatchingSimilarities, wordnetSimilarities));
 	}
 	
-	public static void generateTagSimilarityCSV(Database database, final TagSimilarityMeasure similarityMeasure, String outputFile) throws IOException{
-		
+	public static void generateTagSimilarityCSV(LinkedList<String> tagsList, final TagSimilarityMeasure similarityMeasure, String outputFile) throws IOException{
+		final LinkedList<String> tags = tagsList;
 		FileWriter fWriter = null;
 		try {
 			fWriter = new FileWriter(outputFile);
@@ -148,7 +131,6 @@ public class Main {
 		fWriter.append('"' + " Tag 1 " + '"'+ ',' + '"' + " Tag 2 " + '"' + " , " + "Similarity");
 		fWriter.append('\n');
 		
-		final LinkedList<String> tags = new LinkedList<String>(database.getTagsSet());
 								
 		final FileWriter writer = fWriter;
 		ParallelForEach.loop(tags,
@@ -160,7 +142,7 @@ public class Main {
                     	for(String comparedTag : tags.subList(start+1, tags.size() )){
 							
             				double cc = similarityMeasure.calculateSimilarity(comparingTag, comparedTag);
-            				cc = ((double)Math.round(cc * 100) / 100 );
+            				cc = ((double)Math.round(cc * 10000) / 10000 );
 //            				if(!(cc < 0.001 && cc > -.001)){
             					// Remove newlines, commas and apostrophes that may distort the CSV file when being written.
             					synchronized(writer){
@@ -257,31 +239,7 @@ public class Main {
 		}
         
 	}
-	
-	public static void generateWikAPIdiaCSV(String inputDir, String outputDir, ArrayList<String> tags){
-		
-		try {
-			Env env = new EnvBuilder().build();
-			Configurator conf = env.getConfigurator();
-			LocalPageDao lpDao = conf.get(LocalPageDao.class);
-			
-			Language simple = Language.getByLangCode("simple");
-
-			MonolingualSRMetric sr = conf.get(
-			        MonolingualSRMetric.class, "ensemble",
-			        "language", simple.getLangCode());
-			
-			SRResult s = sr.similarity("yes", "no", false);
-
-		} catch (ConfigurationException e) {
-			System.out.println("Configuration Exception: "+e.getMessage());
-		} catch (DaoException e) {
-			System.out.println("Dao Exception: "+e.getMessage());
-
-		}
-		
-		
-	}  
+	  
 }
 
 
