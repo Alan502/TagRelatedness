@@ -33,6 +33,8 @@ public class Main {
 	static int threads  = Runtime.getRuntime().availableProcessors();
 	public static void main(String[] args) {      
 		ParallelForEach.LOG.info("Running program with "+threads+" threads.");
+		
+		generateMostFrequentResources("bibsonomy/2007-10-31/tas", "bibsonomy/2007-10-31/tas-2000-most-common");
 
 		CollaborativeDatabase db = new CollaborativeDatabase();
 		//db.initializeMovieLensTags("ml-10M100K/tags.dat");

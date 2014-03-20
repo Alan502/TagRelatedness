@@ -5,6 +5,7 @@ edu/macalester/tagrelatedness/Procedure.class
 edu/macalester/tagrelatedness/DistributionalMatching.class
 edu/macalester/tagrelatedness/ProjectionalMatching.class
 edu/macalester/tagrelatedness/KendallsCorrelation$ComparablePair.class
+edu/macalester/tagrelatedness/WikAPIdiaEnsemble.class
 edu/macalester/tagrelatedness/ParallelForEach$3.class
 edu/macalester/tagrelatedness/ParallelForEach$2.class
 edu/macalester/tagrelatedness/DistributionalMutualInformation.class
