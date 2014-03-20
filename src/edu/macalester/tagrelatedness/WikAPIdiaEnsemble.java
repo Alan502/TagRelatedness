@@ -16,7 +16,7 @@ public class WikAPIdiaEnsemble implements TagSimilarityMeasure {
 	
 	public WikAPIdiaEnsemble(){
 		try {
-			Env env = new EnvBuilder().setBaseDir("~/.wikAPIdia/").build();
+			Env env = new EnvBuilder().setBaseDir(System.getProperty("user.home")+".wikAPIdia/").build();
 			Configurator conf = env.getConfigurator();
 			LocalPageDao lpDao = conf.get(LocalPageDao.class);
 			

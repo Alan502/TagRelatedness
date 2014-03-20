@@ -16,16 +16,6 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.wikapidia.conf.ConfigurationException;
-import org.wikapidia.conf.Configurator;
-import org.wikapidia.core.cmd.Env;
-import org.wikapidia.core.cmd.EnvBuilder;
-import org.wikapidia.core.dao.DaoException;
-import org.wikapidia.core.dao.LocalPageDao;
-import org.wikapidia.core.lang.Language;
-import org.wikapidia.sr.MonolingualSRMetric;
-import org.wikapidia.sr.SRResult;
-
 import edu.cmu.lti.ws4j.WS4J;
 import edu.cmu.lti.ws4j.util.WS4JConfiguration;
 
@@ -34,28 +24,28 @@ public class Main {
 	public static void main(String[] args) {      
 		ParallelForEach.LOG.info("Running program with "+threads+" threads.");
 		
-		generateMostFrequentResources("bibsonomy/2007-10-31/tas", "bibsonomy/2007-10-31/tas-2000-most-common");
-
-		CollaborativeDatabase db = new CollaborativeDatabase();
-		//db.initializeMovieLensTags("ml-10M100K/tags.dat");
-		db.initializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
-	
-		try {
-			generateTagSimilarityCSV(new LinkedList<>(db.getTagsSet()), new CollaborativeMatching(db), "collab_matching.csv");
-			generateTagSimilarityCSV(new LinkedList<>(db.getTagsSet()), new CollaborativeMutualInformation(db), "collab_MI.csv");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		DistributionalDatabase ddb = new DistributionalDatabase();
-		//ddb.initializeMovieLensTags("ml-10M100K/tags.dat");
-		ddb.initializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
-		try {
-			generateTagSimilarityCSV(new LinkedList<>(ddb.getTagsSet()), new DistributionalMutualInformation(ddb), "dist_MI.csv");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
+//		generateMostFrequentResources("bibsonomy/2007-10-31/tas", "bibsonomy/2007-10-31/tas-2000-most-common");
+//
+//		CollaborativeDatabase db = new CollaborativeDatabase();
+//		//db.initializeMovieLensTags("ml-10M100K/tags.dat");
+//		db.initializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
+//	
+//		try {
+//			generateTagSimilarityCSV(new LinkedList<>(db.getTagsSet()), new CollaborativeMatching(db), "collab_matching.csv");
+//			generateTagSimilarityCSV(new LinkedList<>(db.getTagsSet()), new CollaborativeMutualInformation(db), "collab_MI.csv");
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//		
+//		DistributionalDatabase ddb = new DistributionalDatabase();
+//		//ddb.initializeMovieLensTags("ml-10M100K/tags.dat");
+//		ddb.initializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
+//		try {
+//			generateTagSimilarityCSV(new LinkedList<>(ddb.getTagsSet()), new DistributionalMutualInformation(ddb), "dist_MI.csv");
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//		
 		ProjectionalDatabase pdb = new ProjectionalDatabase();
 //		pdb.initializeMovieLensTags("ml-10M100K/tags.dat");
 		pdb.initializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
@@ -72,15 +62,15 @@ public class Main {
 			e.printStackTrace();
 		}
 		
-		System.out.println("Calculation for collaborative matching:");
-		tauBetweenCSVandWordnet("collab_matching.csv");
-		System.out.println("Calculation for collaborative MI:");
-		tauBetweenCSVandWordnet("collab_MI.csv");
-		System.out.println("Calculation for distributional matching:");
-		tauBetweenCSVandWordnet("dist_matching.csv");
-		System.out.println("Calculation for distributional MI:");
-		tauBetweenCSVandWordnet("dist_MI.csv");
-		System.out.println("Calculation for wikAPIdia:");
+//		System.out.println("Calculation for collaborative matching:");
+//		tauBetweenCSVandWordnet("collab_matching.csv");
+//		System.out.println("Calculation for collaborative MI:");
+//		tauBetweenCSVandWordnet("collab_MI.csv");
+//		System.out.println("Calculation for distributional matching:");
+//		tauBetweenCSVandWordnet("dist_matching.csv");
+//		System.out.println("Calculation for distributional MI:");
+//		tauBetweenCSVandWordnet("dist_MI.csv");
+//		System.out.println("Calculation for wikAPIdia:");
 		tauBetweenCSVandWordnet("wikAPIdia_ensemble.csv");
 	}
 	
