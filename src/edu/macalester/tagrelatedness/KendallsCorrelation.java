@@ -1,5 +1,6 @@
 package edu.macalester.tagrelatedness;
 
+import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
@@ -198,8 +199,11 @@ public class KendallsCorrelation {
         long concordantMinusDiscordant = (long) numPairs - tiedXPairs - tiedYPairs
                 + tiedXYPairs - 2 * swaps;
         System.out.println("Swaps: "+swaps+" Numpairs: "+numPairs+" Concordant - Discordant: "+concordantMinusDiscordant+" Tied X pairs: "+tiedXPairs+" Tied Y pairs: "+tiedYPairs+" Tied XY Pairs: "+tiedXYPairs);
-        return concordantMinusDiscordant /
-                Math.sqrt((numPairs - tiedXPairs) * (numPairs - tiedYPairs));
+        BigInteger[] b = (new BigInteger(concordantMinusDiscordant+"").divideAndRemainder(new BigInteger((Math.sqrt((numPairs - tiedXPairs) * (numPairs - tiedYPairs))+""))));
+        return b[0].doubleValue() + concordantMinusDiscordant/b[1].doubleValue();
+        
+//        return concordantMinusDiscordant /
+//                Math.sqrt((numPairs - tiedXPairs) * (numPairs - tiedYPairs));
 
     }
 
