@@ -25,53 +25,53 @@ public class Main {
 		ParallelForEach.LOG.info("Running program with "+threads+" threads.");
 		
 //		generateMostFrequentResources("bibsonomy/2007-10-31/tas", "bibsonomy/2007-10-31/tas-2000-most-common");
-//
-//		CollaborativeDatabase db = new CollaborativeDatabase();
-//		//db.initializeMovieLensTags("ml-10M100K/tags.dat");
-//		db.initializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
-//	
-//		try {
-//			generateTagSimilarityCSV(new LinkedList<>(db.getTagsSet()), new CollaborativeMatching(db), "collab_matching.csv");
-//			generateTagSimilarityCSV(new LinkedList<>(db.getTagsSet()), new CollaborativeMutualInformation(db), "collab_MI.csv");
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//		
-//		DistributionalDatabase ddb = new DistributionalDatabase();
-//		//ddb.initializeMovieLensTags("ml-10M100K/tags.dat");
-//		ddb.initializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
-//		try {
-//			generateTagSimilarityCSV(new LinkedList<>(ddb.getTagsSet()), new DistributionalMutualInformation(ddb), "dist_MI.csv");
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//		
-//		ProjectionalDatabase pdb = new ProjectionalDatabase();
-//		pdb.initializeMovieLensTags("ml-10M100K/tags.dat");
-//		pdb.initializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
-//		try {
-//			generateTagSimilarityCSV(new LinkedList<>(pdb.getTagsSet()), new DistributionalMatching(pdb), "dist_matching.csv");
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//		
+
+		CollaborativeDatabase db = new CollaborativeDatabase();
+		//db.initializeMovieLensTags("ml-10M100K/tags.dat");
+		db.initializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
+	
+		try {
+			generateTagSimilarityCSV(new LinkedList<>(db.getTagsSet()), new CollaborativeMatching(db), "collab_matching.csv");
+			generateTagSimilarityCSV(new LinkedList<>(db.getTagsSet()), new CollaborativeMutualInformation(db), "collab_MI.csv");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		DistributionalDatabase ddb = new DistributionalDatabase();
+		//ddb.initializeMovieLensTags("ml-10M100K/tags.dat");
+		ddb.initializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
+		try {
+			generateTagSimilarityCSV(new LinkedList<>(ddb.getTagsSet()), new DistributionalMutualInformation(ddb), "dist_MI.csv");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		ProjectionalDatabase pdb = new ProjectionalDatabase();
+		pdb.initializeMovieLensTags("ml-10M100K/tags.dat");
+		pdb.initializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
+		try {
+			generateTagSimilarityCSV(new LinkedList<>(pdb.getTagsSet()), new DistributionalMatching(pdb), "dist_matching.csv");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 //		WikAPIdiaEnsemble wikApidia = new WikAPIdiaEnsemble(System.getProperty("user.home")+"/.wikAPIdia/");
 //		try {
 //			generateTagSimilarityCSV(new LinkedList<>(pdb.getTagsSet()), wikApidia, "wikAPIdia_ensemble.csv");
 //		} catch (IOException e) {
 //			e.printStackTrace();
 //		}
-//		
-//		System.out.println("Calculation for collaborative matching:");
-//		tauBetweenCSVandWordnet("collab_matching.csv");
-//		System.out.println("Calculation for collaborative MI:");
-//		tauBetweenCSVandWordnet("collab_MI.csv");
-//		System.out.println("Calculation for distributional matching:");
-//		tauBetweenCSVandWordnet("dist_matching.csv");
-//		System.out.println("Calculation for distributional MI:");
-//		tauBetweenCSVandWordnet("dist_MI.csv");
-		System.out.println("Calculation for wikAPIdia:");
-		tauBetweenCSVandWordnet("wikAPIdia_ensemble.csv");
+		
+		System.out.println("Calculation for collaborative matching:");
+		tauBetweenCSVandWordnet("collab_matching.csv");
+		System.out.println("Calculation for collaborative MI:");
+		tauBetweenCSVandWordnet("collab_MI.csv");
+		System.out.println("Calculation for distributional matching:");
+		tauBetweenCSVandWordnet("dist_matching.csv");
+		System.out.println("Calculation for distributional MI:");
+		tauBetweenCSVandWordnet("dist_MI.csv");
+//		System.out.println("Calculation for wikAPIdia:");
+//		tauBetweenCSVandWordnet("wikAPIdia_ensemble.csv");
 	}
 	
 	public static void tauBetweenCSVandWordnet(String file){
