@@ -6,8 +6,10 @@ import java.util.List;
 import java.util.ArrayList;
 
 import org.apache.commons.math3.exception.DimensionMismatchException;
+import org.apache.commons.math3.fraction.BigFraction;
 import org.apache.commons.math3.linear.BlockRealMatrix;
 import org.apache.commons.math3.linear.RealMatrix;
+import org.apache.commons.math3.util.BigReal;
 
 public class KendallsCorrelation {
 
@@ -199,9 +201,10 @@ public class KendallsCorrelation {
         long concordantMinusDiscordant = (long) numPairs - tiedXPairs - tiedYPairs
                 + tiedXYPairs - 2 * swaps;
         System.out.println("Swaps: "+swaps+" Numpairs: "+numPairs+" Concordant - Discordant: "+concordantMinusDiscordant+" Tied X pairs: "+tiedXPairs+" Tied Y pairs: "+tiedYPairs+" Tied XY Pairs: "+tiedXYPairs);
-        BigInteger[] b = (new BigInteger(concordantMinusDiscordant+"").divideAndRemainder(new BigInteger((Math.sqrt((numPairs - tiedXPairs) * (numPairs - tiedYPairs))+""))));
-        return b[0].doubleValue() + ((double) concordantMinusDiscordant)/b[1].doubleValue();
-        
+
+        BigReal cmc = new BigReal(concordantMinusDiscordant);
+        BigReal sqrt = new BigReal( Math.sqrt((numPairs - tiedXPairs) * (numPairs - tiedYPairs)));
+        return cmc.divide(sqrt).doubleValue();
 //        return concordantMinusDiscordant /
 //                Math.sqrt((numPairs - tiedXPairs) * (numPairs - tiedYPairs));
 
