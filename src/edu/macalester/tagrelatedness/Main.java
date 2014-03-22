@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.math.RoundingMode;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -16,7 +17,7 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.ibm.icu.text.DecimalFormat;
+import java.text.DecimalFormat;
 
 import edu.cmu.lti.jawjaw.pobj.POS;
 import edu.cmu.lti.lexical_db.ILexicalDatabase;
@@ -28,8 +29,8 @@ import edu.cmu.lti.ws4j.util.WS4JConfiguration;
 
 public class Main {
 	static int threads  = Runtime.getRuntime().availableProcessors();
-	static final DecimalFormat formatter = new DecimalFormat("##0.000");
-	public static void main(String[] args) {      
+	
+	public static void main(String[] args) {
 		ParallelForEach.LOG.info("Running program with "+threads+" threads.");
 		
 //		generateMostFrequentResources("bibsonomy/2007-10-31/tas", "bibsonomy/2007-10-31/tas-2000-most-common");
@@ -86,8 +87,10 @@ public class Main {
 		ILexicalDatabase db = new NictWordNet();
 		final RelatednessCalculator rc = new JiangConrath(db);
 		WS4JConfiguration.getInstance().setMFS(true);
+		final DecimalFormat formatter = new DecimalFormat("0.000");
+		formatter.setRoundingMode(RoundingMode.HALF_UP);
 
-		final ArrayList<Double> distMatchingSimilarities  = new ArrayList<Double>();
+		final ArrayList<Double> measurementSimilarities  = new ArrayList<Double>();
 		final ArrayList<Double> wordnetSimilarities = new ArrayList<Double>();
 		
 		java.util.List<String> lines = null;
@@ -102,10 +105,10 @@ public class Main {
 				 String word1 = column[0].replace("\"", "").replace(" ", "");
 				 String word2 = column[1].replace("\"", "").replace(" ", "");
 				 double jc = rc.calcRelatednessOfWords(word1, word2);
-				 if(!(jc < 0.00001 && jc > -.00001)){					
-					 synchronized (distMatchingSimilarities) {
+				 if(!(jc < 0.00001 && jc > -.00001)){
+					 synchronized (measurementSimilarities) {
 						 try{
-							 distMatchingSimilarities.add(Double.parseDouble(column[2]));
+							 measurementSimilarities.add(Double.parseDouble(column[2]));
 							 wordnetSimilarities.add(Double.parseDouble(formatter.format(jc)));
 						 }catch(NumberFormatException e){
 							 System.out.println("NumberFormatException Ex: "+column[2]);
@@ -116,11 +119,13 @@ public class Main {
 				 }
 			}
 		});
-	    System.out.println("Tau: "+KendallsCorrelation.correlation(distMatchingSimilarities, wordnetSimilarities));
+	    System.out.println("Tau: "+KendallsCorrelation.correlation(measurementSimilarities, wordnetSimilarities));
 	}
 	
 	public static void generateTagSimilarityCSV(LinkedList<String> tagsList, final TagSimilarityMeasure similarityMeasure, String outputFile) throws IOException{
 		final LinkedList<String> tags = tagsList;
+		final DecimalFormat formatter = new DecimalFormat("0.000");
+		formatter.setRoundingMode(RoundingMode.HALF_UP);
 		FileWriter fWriter = null;
 		try {
 			fWriter = new FileWriter(outputFile);
@@ -144,8 +149,8 @@ public class Main {
 //            				if(!(cc < 0.001 && cc > -.001)){
             					// Remove newlines, commas and apostrophes that may distort the CSV file when being written.
             					synchronized(writer){
-            					writer.append("\"" + comparingTag.replace("\"", "").replace("\n", "").replace(",", "") + '"'+ ',' + '"' + comparedTag.replace("\"", "").replace("\n", "").replace(",", "") + '"' + "," + formatter.format(cc) +"\n");
-            					}				
+            					writer.append("\"" + comparingTag.replace("\"", "").replace("\n", "").replace(",", "") + '"'+ ',' + '"' + comparedTag.replace("\"", "").replace("\n", "").replace(",", "") + '"' + "," + formatter.format(cc).replace("-", "") +"\n");
+            					}
 //            				}
             				
             			}
