@@ -202,11 +202,8 @@ public class KendallsCorrelation {
                 + tiedXYPairs - 2 * swaps;
         System.out.println("Swaps: "+swaps+" Numpairs: "+numPairs+" Concordant - Discordant: "+concordantMinusDiscordant+" Tied X pairs: "+tiedXPairs+" Tied Y pairs: "+tiedYPairs+" Tied XY Pairs: "+tiedXYPairs);
 
-        BigReal cmc = new BigReal(concordantMinusDiscordant);
-        BigReal sqrt = new BigReal( Math.sqrt((numPairs - tiedXPairs) * (numPairs - tiedYPairs)));
-        return cmc.divide(sqrt).doubleValue();
-//        return concordantMinusDiscordant /
-//                Math.sqrt((numPairs - tiedXPairs) * (numPairs - tiedYPairs));
+        return concordantMinusDiscordant /
+                Math.sqrt((numPairs - tiedXPairs) * (numPairs - tiedYPairs));
 
     }
 
