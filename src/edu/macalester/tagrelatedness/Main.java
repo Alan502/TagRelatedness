@@ -87,7 +87,7 @@ public class Main {
 		ILexicalDatabase db = new NictWordNet();
 		final RelatednessCalculator rc = new JiangConrath(db);
 		WS4JConfiguration.getInstance().setMFS(true);
-		final DecimalFormat formatter = new DecimalFormat("0.000");
+		final DecimalFormat formatter = new DecimalFormat("0.0000");
 		formatter.setRoundingMode(RoundingMode.HALF_UP);
 
 		final ArrayList<Double> measurementSimilarities  = new ArrayList<Double>();
@@ -124,7 +124,7 @@ public class Main {
 	
 	public static void generateTagSimilarityCSV(LinkedList<String> tagsList, final TagSimilarityMeasure similarityMeasure, String outputFile) throws IOException{
 		final LinkedList<String> tags = tagsList;
-		final DecimalFormat formatter = new DecimalFormat("0.000");
+		final DecimalFormat formatter = new DecimalFormat("0.0000");
 		formatter.setRoundingMode(RoundingMode.HALF_UP);
 		FileWriter fWriter = null;
 		try {
