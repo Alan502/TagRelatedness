@@ -7,7 +7,6 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.math.RoundingMode;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -16,8 +15,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-
-import java.text.DecimalFormat;
 
 import edu.cmu.lti.jawjaw.pobj.POS;
 import edu.cmu.lti.lexical_db.ILexicalDatabase;
@@ -33,7 +30,7 @@ public class Main {
 	public static void main(String[] args) {
 		ParallelForEach.LOG.info("Running program with "+threads+" threads.");
 		
-//		generateMostFrequentResources("bibsonomy/2007-10-31/tas", "bibsonomy/2007-10-31/tas-2000-most-common");
+//		generateMostFrequentResources("bibsonomy/2007-10-31/tas", "bibsonomy/2007-10-31/tas-2000-most-common");		
 		
 		CollaborativeDatabase db = new CollaborativeDatabase();
 		//db.initializeMovieLensTags("ml-10M100K/tags.dat");
@@ -87,8 +84,6 @@ public class Main {
 		ILexicalDatabase db = new NictWordNet();
 		final RelatednessCalculator rc = new JiangConrath(db);
 		WS4JConfiguration.getInstance().setMFS(true);
-		final DecimalFormat formatter = new DecimalFormat("0.00");
-		formatter.setRoundingMode(RoundingMode.HALF_UP);
 
 		final ArrayList<Double> measurementSimilarities  = new ArrayList<Double>();
 		final ArrayList<Double> wordnetSimilarities = new ArrayList<Double>();
@@ -109,7 +104,7 @@ public class Main {
 					 synchronized (measurementSimilarities) {
 						 try{
 							 measurementSimilarities.add(Double.parseDouble(column[2]));
-							 wordnetSimilarities.add(Double.parseDouble(formatter.format(jc)));
+							 wordnetSimilarities.add(roundToSignificantFigures(jc, 3));
 						 }catch(NumberFormatException e){
 							 System.out.println("NumberFormatException Ex: "+column[2]);
 						 }catch(ArrayIndexOutOfBoundsException e){
@@ -124,8 +119,6 @@ public class Main {
 	
 	public static void generateTagSimilarityCSV(LinkedList<String> tagsList, final TagSimilarityMeasure similarityMeasure, String outputFile) throws IOException{
 		final LinkedList<String> tags = tagsList;
-		final DecimalFormat formatter = new DecimalFormat("0.00");
-		formatter.setRoundingMode(RoundingMode.HALF_UP);
 		FileWriter fWriter = null;
 		try {
 			fWriter = new FileWriter(outputFile);
@@ -149,7 +142,7 @@ public class Main {
 //            				if(!(cc < 0.001 && cc > -.001)){
             					// Remove newlines, commas and apostrophes that may distort the CSV file when being written.
             					synchronized(writer){
-            					writer.append("\"" + comparingTag.replace("\"", "").replace("\n", "").replace(",", "") + '"'+ ',' + '"' + comparedTag.replace("\"", "").replace("\n", "").replace(",", "") + '"' + "," + formatter.format(cc).replace("-", "") +"\n");
+            					writer.append("\"" + comparingTag.replace("\"", "").replace("\n", "").replace(",", "") + '"'+ ',' + '"' + comparedTag.replace("\"", "").replace("\n", "").replace(",", "") + '"' + "," + roundToSignificantFigures(cc, 3) +"\n");
             					}
 //            				}
             				
@@ -244,6 +237,24 @@ public class Main {
 			System.out.println("IOException: "+e.getMessage());
 		}
         
+	}
+	/**
+	 * Taken from http://stackoverflow.com/questions/202302/rounding-to-an-arbitrary-number-of-significant-digits
+	 * @param num number to round
+	 * @param n number of significant figures
+	 * @return a number with the specified number of significant figures.s
+	 */
+	public static double roundToSignificantFigures(double num, int n) {
+	    if(num == 0) {
+	        return 0;
+	    }
+
+	    final double d = Math.ceil(Math.log10(num < 0 ? -num: num));
+	    final int power = n - (int) d;
+
+	    final double magnitude = Math.pow(10, power);
+	    final long shifted = Math.round(num*magnitude);
+	    return shifted/magnitude;
 	}
 	  
 }

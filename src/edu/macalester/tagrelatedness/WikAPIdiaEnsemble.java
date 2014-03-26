@@ -18,7 +18,6 @@ public class WikAPIdiaEnsemble implements TagSimilarityMeasure {
 		try {
 			Env env = new EnvBuilder().setBaseDir(wikAPidiaInstallDir).build();
 			Configurator conf = env.getConfigurator();
-			LocalPageDao lpDao = conf.get(LocalPageDao.class);
 			
 			Language simple = Language.getByLangCode("simple");
 
