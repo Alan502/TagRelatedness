@@ -7,14 +7,17 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.math.RoundingMode;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+
 
 import edu.cmu.lti.jawjaw.pobj.POS;
 import edu.cmu.lti.lexical_db.ILexicalDatabase;
@@ -29,8 +32,8 @@ public class Main {
 	
 	public static void main(String[] args) {
 		ParallelForEach.LOG.info("Running program with "+threads+" threads.");
-		
-//		generateMostFrequentResources("bibsonomy/2007-10-31/tas", "bibsonomy/2007-10-31/tas-2000-most-common");		
+
+		generateMostFrequentResources("bibsonomy/2007-10-31/tas", "bibsonomy/2007-10-31/tas-2000-most-common");		
 		
 		CollaborativeDatabase db = new CollaborativeDatabase();
 		//db.initializeMovieLensTags("ml-10M100K/tags.dat");
@@ -88,6 +91,9 @@ public class Main {
 		final ArrayList<Double> measurementSimilarities  = new ArrayList<Double>();
 		final ArrayList<Double> wordnetSimilarities = new ArrayList<Double>();
 		
+		final DecimalFormat formatter = new DecimalFormat("0.000000000000");
+		formatter.setRoundingMode(RoundingMode.HALF_UP);
+		
 		java.util.List<String> lines = null;
 		try {
 			lines = Files.readAllLines(Paths.get(file), Charset.defaultCharset());
@@ -100,11 +106,12 @@ public class Main {
 				 String word1 = column[0].replace("\"", "").replace(" ", "");
 				 String word2 = column[1].replace("\"", "").replace(" ", "");
 				 double jc = rc.calcRelatednessOfWords(word1, word2);
-				 if(!(jc < 0.00001 && jc > -.00001)){
+				 
+				 if(!(jc < 0.00000000000000001 && jc > -.00000000000000001)){
 					 synchronized (measurementSimilarities) {
 						 try{
 							 measurementSimilarities.add(Double.parseDouble(column[2]));
-							 wordnetSimilarities.add(roundToSignificantFigures(jc, 3));
+							 wordnetSimilarities.add(Double.parseDouble(formatter.format(jc)));
 						 }catch(NumberFormatException e){
 							 System.out.println("NumberFormatException Ex: "+column[2]);
 						 }catch(ArrayIndexOutOfBoundsException e){
@@ -129,6 +136,8 @@ public class Main {
 		fWriter.append('"' + " Tag 1 " + '"'+ ',' + '"' + " Tag 2 " + '"' + " , " + "Similarity");
 		fWriter.append('\n');
 		
+		final DecimalFormat formatter = new DecimalFormat("0.000000000000");
+		formatter.setRoundingMode(RoundingMode.HALF_UP);
 								
 		final FileWriter writer = fWriter;
 		ParallelForEach.loop(tags,
@@ -142,7 +151,7 @@ public class Main {
 //            				if(!(cc < 0.001 && cc > -.001)){
             					// Remove newlines, commas and apostrophes that may distort the CSV file when being written.
             					synchronized(writer){
-            					writer.append("\"" + comparingTag.replace("\"", "").replace("\n", "").replace(",", "") + '"'+ ',' + '"' + comparedTag.replace("\"", "").replace("\n", "").replace(",", "") + '"' + "," + roundToSignificantFigures(cc, 3) +"\n");
+            					writer.append("\"" + comparingTag.replace("\"", "").replace("\n", "").replace(",", "") + '"'+ ',' + '"' + comparedTag.replace("\"", "").replace("\n", "").replace(",", "") + '"' + "," + formatter.format(cc) +"\n");
             					}
 //            				}
             				
@@ -182,9 +191,7 @@ public class Main {
 					overlappingTagEntries.add(new BibsonomyRecord(tagInfo[2], line));
 				}
 			}
-			
-			System.out.println(overlappingTagEntries.size());
-			
+						
 			readerStream.close();
 			fileStream.close();
 			bufferedStream.close();
@@ -206,7 +213,10 @@ public class Main {
 		
 		for(BibsonomyRecord rec : overlappingTagEntries.subList(1, overlappingTagEntries.size())){
 			if(lastContentID.equals(rec.contentID)){
-				frequency++;
+				if(rec.equals(overlappingTagEntries.get(overlappingTagEntries.size()-1)))
+					bibsonomyEntries.add(new EntryFrequency(lastContentID, frequency));
+				else
+					frequency++;
 			}else{
 				bibsonomyEntries.add(new EntryFrequency(lastContentID, frequency));
 				lastContentID = rec.contentID;
