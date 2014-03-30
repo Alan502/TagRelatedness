@@ -33,11 +33,11 @@ public class Main {
 	public static void main(String[] args) {
 		ParallelForEach.LOG.info("Running program with "+threads+" threads.");
 
-		generateMostFrequentResources("bibsonomy/2007-10-31/tas", "bibsonomy/2007-10-31/tas-2000-most-common");		
+		generateMostFrequentResources("bibsonomy/2008-01-01/tas", "bibsonomy/2008-01-01/tas-2000-most-common");		
 		
 		CollaborativeDatabase db = new CollaborativeDatabase();
 		//db.initializeMovieLensTags("ml-10M100K/tags.dat");
-		db.initializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
+		db.initializeBibsonomyTags("bibsonomy/2008-01-01/tas-2000-most-common");
 	
 		try {
 			generateTagSimilarityCSV(new LinkedList<>(db.getTagsSet()), new CollaborativeMatching(db), "collab_matching.csv");
