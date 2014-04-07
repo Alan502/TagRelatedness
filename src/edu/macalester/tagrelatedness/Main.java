@@ -204,12 +204,14 @@ public class Main {
 //				System.exit(1);
 //			break;
 //		}
+//		
+//		System.exit(0);
 
-		generateMostFrequentResources("bibsonomy/2008-01-01/tas", "bibsonomy/2008-01-01/tas-2000-most-common");		
+//		generateMostFrequentResources("bibsonomy/2008-01-01/tas", "bibsonomy/2008-01-01/tas-2000-most-common");		
 		
 		CollaborativeDatabase db = new CollaborativeDatabase();
 		//db.initializeMovieLensTags("ml-10M100K/tags.dat");
-		db.initializeBibsonomyTags("bibsonomy/2008-01-01/tas-2000-most-common");
+		db.initializeMovieLensTags("ml-10M100K/tags.dat");
 	
 		try {
 			generateTagSimilarityCSV(new LinkedList<>(db.getTagsSet()), new CollaborativeMatching(db), "collab_matching.csv");
@@ -220,7 +222,7 @@ public class Main {
 		
 		DistributionalDatabase ddb = new DistributionalDatabase();
 		//ddb.initializeMovieLensTags("ml-10M100K/tags.dat");
-		ddb.initializeBibsonomyTags("2008-01-01/tas-2000-most-common");
+		ddb.initializeMovieLensTags("ml-10M100K/tags.dat");
 		try {
 			generateTagSimilarityCSV(new LinkedList<>(ddb.getTagsSet()), new DistributionalMutualInformation(ddb), "dist_MI.csv");
 		} catch (IOException e) {
@@ -229,7 +231,7 @@ public class Main {
 		
 		ProjectionalDatabase pdb = new ProjectionalDatabase();
 //		pdb.initializeMovieLensTags("ml-10M100K/tags.dat");
-		pdb.initializeBibsonomyTags("bibsonomy/2008-01-01/tas-2000-most-common");
+		pdb.initializeMovieLensTags("ml-10M100K/tags.dat");
 		try {
 			generateTagSimilarityCSV(new LinkedList<>(pdb.getTagsSet()), new DistributionalMatching(pdb), "dist_matching.csv");
 		} catch (IOException e) {
