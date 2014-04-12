@@ -1,5 +1,7 @@
 package edu.macalester.tagrelatedness;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -54,7 +56,11 @@ public class CollaborativeMatching implements TagSimilarityMeasure{
 			
 			
 		}
-		return similarity*-1;
+		
+		final DecimalFormat formatter = new DecimalFormat("0.00");
+		formatter.setRoundingMode(RoundingMode.HALF_UP);
+		
+		return Double.parseDouble(formatter.format(similarity*-1)); //return the figure rounded to 2 figures
 		
 	}
 	

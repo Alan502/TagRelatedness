@@ -3,7 +3,12 @@ package edu.macalester.tagrelatedness;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-
+/**
+ * This MacroAggregation similarity determines tag similarity by making each user have a vote on a projectional database.
+ * For more reference on the construction of this algorithm look at: www2009.org/proceedings/pdf/p641.pdf
+ * @author alan
+ *
+ */
 public class MacroAggregationMatching implements TagSimilarityMeasure{
 	
 	CollaborativeDatabase db;
@@ -11,6 +16,11 @@ public class MacroAggregationMatching implements TagSimilarityMeasure{
 	public MacroAggregationMatching(CollaborativeDatabase database){
 		db = database;
 	}
+	/**
+	 * Calculates the similarity between two tags in the CollaborativeDatabase.
+	 * @param tag1 first tag
+	 * @param tag2 second tag
+	 */
 	@SuppressWarnings("unchecked")
 	public double calculateSimilarity(String tag1, String tag2) {
 		HashMap<String, ArrayList<HashMap<String, HashSet<String>>>> userMap = db.getUserMap();

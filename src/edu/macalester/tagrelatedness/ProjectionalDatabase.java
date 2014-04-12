@@ -10,6 +10,12 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * The projectional database stores whether each tag has been associated with a resource, without keeping any information of how many users may have put that tag on a certain resource.
+ * For more reference on the construction of this algorithm look at: www2009.org/proceedings/pdf/p641.pdf
+ * @author alan
+ *
+ */
 public class ProjectionalDatabase implements Database{
 
 	protected HashMap<String, HashSet<String>> tagsMap;
@@ -21,13 +27,20 @@ public class ProjectionalDatabase implements Database{
 		resourcesMap = new HashMap<String, HashSet<String>>();
 		totalEntries = 0;
 	}
-	
+	/**
+	 * Adds a tag to the projectional database.
+	 * @param resourceName The identifier of the resource to be added.
+	 * @param tagName The name of the tag to be added.
+	 */
 	public void addTag(String resourceName, String tagName){
 		
 		HashSet<String> tagsSet = resourcesMap.get(resourceName);
 		
 		if(null == tagsSet)
 			tagsSet = new HashSet<String>();
+		
+		if(!tagsSet.contains(tagName))
+			totalEntries++; // if this is a new tag added, increment the number of total entries
 		
 		tagsSet.add(tagName);
 		resourcesMap.put(resourceName, tagsSet);
@@ -37,28 +50,42 @@ public class ProjectionalDatabase implements Database{
 		if(null == resourcesSet)
 			resourcesSet = new HashSet<String>();
 		
-		resourcesSet.add(resourceName);			
+		resourcesSet.add(resourceName);	
 		tagsMap.put(tagName, resourcesSet);
 		
-		totalEntries++;
 	}
-	
+	/**
+	 * Get a set containing all the tags added to the projectional database.
+	 * @returns a set with all the tags in the database
+	 */
 	public Set<String> getTagsSet(){
 		return tagsMap.keySet();
 	}
-	
+	/**
+	 * Gets a set containing all the resources added to the projectional database.
+	 * @return a set with all the resources that have been added to the database
+	 */
 	public Set<String> getResourcesSet(){
 		return resourcesMap.keySet();
 	}
-	
+	/**
+	 * Returns a HashMap with tags as keys and a HashSet of the resources associated with such tag as values.
+	 * @return A HashMap with tags and keys and a HashSet of the resources of such tag as values.
+	 */
 	public HashMap<String, HashSet<String>> getTagsMap(){
 		return tagsMap;
 	}
-	
+	/**
+	 * Returns a HashMap with resources as keys and a HashSet of the tags associated with such resource as values.
+	 * @return A HashMap with resources as keys and an HashSet of the tags of such resource as values.
+	 */
 	public HashMap<String, HashSet<String>> getResourcesMap(){
 		return resourcesMap;
 	}
-	
+	/**
+	 * Adds all the tags from a specified movie lens tags.dat file.
+	 * @param tagsDataFileDir The directory of the tags.dat file to be added to the database.
+	 */
 	public void initializeMovieLensTags(String tagsDataFileDir){
 		
 		FileInputStream fileStream;
@@ -92,7 +119,10 @@ public class ProjectionalDatabase implements Database{
 			e.printStackTrace();
 		}
 	}
-	
+	/**
+	 * Adds all the tags from a specified Bibsonomy tas file.
+	 * @param dir The directory of the Bibsonomy tas file to be added.
+	 */
 	public void initializeBibsonomyTags(String dir){
 		FileInputStream fileStream;
 		BufferedInputStream bufferedStream;
@@ -124,7 +154,10 @@ public class ProjectionalDatabase implements Database{
 			e.printStackTrace();
 		}
 	}
-
+	/**
+	 * Returns the total number of entries in the database.
+	 * @return An int with the size of entries in the database.
+	 */
 	public int getTotalEntries() {
 		return totalEntries;
 	}

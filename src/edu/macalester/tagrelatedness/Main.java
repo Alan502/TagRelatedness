@@ -207,11 +207,11 @@ public class Main {
 //		
 //		System.exit(0);
 
-//		generateMostFrequentResources("bibsonomy/2008-01-01/tas", "bibsonomy/2008-01-01/tas-2000-most-common");		
+		generateMostFrequentResources("bibsonomy/2007-10-31/tas", "bibsonomy/2007-10-31/tas-2000-most-common");		
 		
 		CollaborativeDatabase db = new CollaborativeDatabase();
 		//db.initializeMovieLensTags("ml-10M100K/tags.dat");
-		db.initializeMovieLensTags("ml-10M100K/tags.dat");
+		db.initializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
 	
 		try {
 			generateTagSimilarityCSV(new LinkedList<>(db.getTagsSet()), new CollaborativeMatching(db), "collab_matching.csv");
@@ -222,7 +222,7 @@ public class Main {
 		
 		DistributionalDatabase ddb = new DistributionalDatabase();
 		//ddb.initializeMovieLensTags("ml-10M100K/tags.dat");
-		ddb.initializeMovieLensTags("ml-10M100K/tags.dat");
+		ddb.initializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
 		try {
 			generateTagSimilarityCSV(new LinkedList<>(ddb.getTagsSet()), new DistributionalMutualInformation(ddb), "dist_MI.csv");
 		} catch (IOException e) {
@@ -231,7 +231,7 @@ public class Main {
 		
 		ProjectionalDatabase pdb = new ProjectionalDatabase();
 //		pdb.initializeMovieLensTags("ml-10M100K/tags.dat");
-		pdb.initializeMovieLensTags("ml-10M100K/tags.dat");
+		pdb.initializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
 		try {
 			generateTagSimilarityCSV(new LinkedList<>(pdb.getTagsSet()), new DistributionalMatching(pdb), "dist_matching.csv");
 		} catch (IOException e) {
@@ -265,9 +265,6 @@ public class Main {
 		final ArrayList<Double> measurementSimilarities  = new ArrayList<Double>();
 		final ArrayList<Double> wordnetSimilarities = new ArrayList<Double>();
 		
-		final DecimalFormat formatter = new DecimalFormat("0.000000000000");
-		formatter.setRoundingMode(RoundingMode.HALF_UP);
-		
 		java.util.List<String> lines = null;
 		try {
 			lines = Files.readAllLines(Paths.get(file), Charset.defaultCharset());
@@ -285,7 +282,7 @@ public class Main {
 					 synchronized (measurementSimilarities) {
 						 try{
 							 measurementSimilarities.add(Double.parseDouble(column[2]));
-							 wordnetSimilarities.add(Double.parseDouble(formatter.format(jc)));
+							 wordnetSimilarities.add(jc);
 						 }catch(NumberFormatException e){
 							 System.out.println("NumberFormatException Ex: "+column[2]);
 						 }catch(ArrayIndexOutOfBoundsException e){

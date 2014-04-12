@@ -9,7 +9,12 @@ import org.wikapidia.core.dao.LocalPageDao;
 import org.wikapidia.core.lang.Language;
 import org.wikapidia.sr.MonolingualSRMetric;
 import org.wikapidia.sr.SRResult;
-
+/**
+ * The WikAPIdiaEnsemble similarity measure. This similarity measure uses the WikAPIdia library to calculate the similarity measure between two tags.
+ * For more information visit: https://github.com/shilad/wikAPIdia
+ * @author alan
+ *
+ */
 public class WikAPIdiaEnsemble implements TagSimilarityMeasure {
 	
 	MonolingualSRMetric sr = null;
@@ -29,7 +34,11 @@ public class WikAPIdiaEnsemble implements TagSimilarityMeasure {
 			System.out.println("Configuration Exception: "+e.getMessage());
 		}
 	}
-
+	/**
+	 * Calculates the similarity between two tags using WikAPIdia.
+	 * @param tag1 the first tag
+	 * @param tag2 the second tags
+	 */
 	@Override
 	public double calculateSimilarity(String tag1, String tag2) {
 		SRResult s = null;
