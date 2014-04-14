@@ -258,15 +258,16 @@ public class Main {
 		
 		ProjectionalDatabase pdb = new ProjectionalDatabase();
 		pdb.initializeMovieLensTags("ml-10M100K/tags.dat");
-		
-		System.out.println("Tags initialized.");
-		
+				
 		WikAPIdiaEnsemble wikApidia = new WikAPIdiaEnsemble(System.getProperty("user.home")+"/.wikAPIdia/");
+		
 		try {
 			generateTagSimilarityCSV(new LinkedList<>(pdb.getTagsSet()), wikApidia, "movielens_wikapidia_ensemble.csv");
-		} catch (IOException e) {
-			e.printStackTrace();
+		} catch (IOException e1) {
+			System.out.println("IO Exception: "+e1.getMessage());
+			e1.printStackTrace();
 		}
+		
 		System.out.println("WikAPIdiaEnsemble for movielens:");
 		tauBetweenCSVandWordnet("movielens_wikapidia_ensemble.csv");
 		
