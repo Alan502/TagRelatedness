@@ -107,7 +107,7 @@ public class ProjectionalDatabase implements Database{
 				String resource = tagInfo[1];
 				String tag = tagInfo[2];
 				
-				if(tagInfo.length == 5)
+				if(tagInfo.length == 4)
 					addTag(resource, tag);
 			}
 			

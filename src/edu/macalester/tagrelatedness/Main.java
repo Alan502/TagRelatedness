@@ -258,9 +258,7 @@ public class Main {
 		
 		ProjectionalDatabase pdb = new ProjectionalDatabase();
 		pdb.initializeMovieLensTags("ml-10M100K/tags.dat");
-		
-		System.out.println("Initialized tags, the size: "+pdb.getTotalEntries()+" tags set size: "+pdb.getTagsSet().size());
-				
+						
 		WikAPIdiaEnsemble wikApidia = new WikAPIdiaEnsemble(System.getProperty("user.home")+"/.wikAPIdia/");
 		
 		try {
