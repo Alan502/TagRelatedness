@@ -280,9 +280,6 @@ public class Main {
 		tauBetweenCSVandWordnet("bibsonomy_wikapidia_ensemble.csv");
 		
 	}
-		
-		WikAPIdiaEnsemble wikApidia = new WikAPIdiaEnsemble(System.getProperty("user.home")+"/.wikAPIdia/");
-	
 	public static void tauBetweenCSVandWordnet(String file){
 		ILexicalDatabase db = new NictWordNet();
 		final RelatednessCalculator rc = new JiangConrath(db);
