@@ -57,10 +57,8 @@ public class CollaborativeMatching implements TagSimilarityMeasure{
 			
 		}
 		
-		final DecimalFormat formatter = new DecimalFormat("0.00");
-		formatter.setRoundingMode(RoundingMode.HALF_UP);
 		
-		return Double.parseDouble(formatter.format(similarity*-1)); //return the figure rounded to 2 figures
+		return (double)Math.round((similarity*-1) * 100) / 100; //rounding is necessary to match the results given at: www2009.org/proceedings/pdf/p641.pdf
 		
 	}
 	
