@@ -256,23 +256,23 @@ public class Main {
 //		System.out.println("Calculation for wikAPIdia:");
 //		tauBetweenCSVandWordnet("wikAPIdia_ensemble.csv");
 		
-		ProjectionalDatabase pdb = new ProjectionalDatabase();
-		pdb.initializeMovieLensTags("ml-10M100K/tags.dat");
-						
+//		ProjectionalDatabase pdb = new ProjectionalDatabase();
+//		pdb.initializeMovieLensTags("ml-10M100K/tags.dat");
+//						
 		WikAPIdiaEnsemble wikApidia = new WikAPIdiaEnsemble(System.getProperty("user.home")+"/.wikAPIdia/");
 		
-		try {
-			generateTagSimilarityCSV(new LinkedList<>(pdb.getTagsSet()), wikApidia, "movielens_wikapidia_ensemble.csv");
-		} catch (IOException e1) {
-			System.out.println("IO Exception: "+e1.getMessage());
-			e1.printStackTrace();
-		}
-		
-		System.out.println("WikAPIdiaEnsemble for movielens:");
-		tauBetweenCSVandWordnet("movielens_wikapidia_ensemble.csv");
-		
+//		try {
+//			generateTagSimilarityCSV(new LinkedList<>(pdb.getTagsSet()), wikApidia, "movielens_wikapidia_ensemble.csv");
+//		} catch (IOException e1) {
+//			System.out.println("IO Exception: "+e1.getMessage());
+//			e1.printStackTrace();
+//		}
+//		
+//		System.out.println("WikAPIdiaEnsemble for movielens:");
+//		tauBetweenCSVandWordnet("movielens_wikapidia_ensemble.csv");
+//		
 		ProjectionalDatabase pdb2 = new ProjectionalDatabase();
-		pdb.initializeBibsonomyTags("bibsonomy/2007-10-31/tas");
+		pdb2.initializeBibsonomyTags("bibsonomy/2007-10-31/tas");
 		try {
 			generateTagSimilarityCSV(new LinkedList<>(pdb2.getTagsSet()), wikApidia, "bibsonomy_wikapidia_ensemble.csv");
 		} catch (IOException e) {
