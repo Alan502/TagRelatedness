@@ -58,7 +58,7 @@ public class CollaborativeMatching implements TagSimilarityMeasure{
 		}
 		
 		
-		return (double)Math.round((similarity*-1) * 100) / 100; //rounding is necessary to match the results given at: www2009.org/proceedings/pdf/p641.pdf
+		return similarity*-1; //rounding is necessary to match the results given at: www2009.org/proceedings/pdf/p641.pdf
 		
 	}
 	
