@@ -1,6 +1,5 @@
 package edu.macalester.tagrelatedness;
 
-
 public interface Function<T,R> {
     /**
      * Call the function. If an exception occurs, it must be handled by the caller.
