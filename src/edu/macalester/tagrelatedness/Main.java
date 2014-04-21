@@ -204,75 +204,96 @@ public class Main {
 //		}
 //		
 //		System.exit(0);
+		
+		
 
 //		generateMostFrequentResources("bibsonomy/2007-10-31/tas", "bibsonomy/2007-10-31/tas-2000-most-common");		
 		
-		CollaborativeDatabase db = new CollaborativeDatabase();
-		//db.initializeMovieLensTags("ml-10M100K/tags.dat");
-		db.initializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
+//		CollaborativeDatabase db = new CollaborativeDatabase();
+//		//db.initializeMovieLensTags("ml-10M100K/tags.dat");
+//		db.initializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
+//		
+//		CollaborativeDatabase db2 = new CollaborativeDatabase();
+//		db2.initializeBibsonomyTags("bibsonomy/2007-10-31/tas");
+//		
+//		CollaborativeDatabase db3 = new CollaborativeDatabase();
+//		db3.initializeMovieLensTags("ml-10M100K/tags.dat");
+//	
+//		try {
+//			generateTagSimilarityCSV(new LinkedList<>(db.getTagsSet()), new CollaborativeMatching(db), "collab_matching-tas-most-common.csv");
+//			generateTagSimilarityCSV(new LinkedList<>(db.getTagsSet()), new CollaborativeMutualInformation(db), "collab_MI-tas-most-common.csv");
+//			generateTagSimilarityCSV(new LinkedList<>(db2.getTagsSet()), new CollaborativeMatching(db2), "collab_matching-tas.csv");
+//			generateTagSimilarityCSV(new LinkedList<>(db2.getTagsSet()), new CollaborativeMutualInformation(db2), "collab_MI-tas.csv");
+//			generateTagSimilarityCSV(new LinkedList<>(db3.getTagsSet()), new CollaborativeMatching(db3), "collab_matching-movielens.csv");
+//			generateTagSimilarityCSV(new LinkedList<>(db3.getTagsSet()), new CollaborativeMutualInformation(db3), "collab_MI-movielens.csv");
+//
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//		
+//		DistributionalDatabase ddb = new DistributionalDatabase();
+//		//ddb.initializeMovieLensTags("ml-10M100K/tags.dat");
+//		ddb.initializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
+//		
+//		DistributionalDatabase ddb2 = new DistributionalDatabase();
+//		ddb2.initializeBibsonomyTags("bibsonomy/2007-10-31/tas");
+//		
+//		DistributionalDatabase ddb3 = new DistributionalDatabase();
+//		db3.initializeMovieLensTags("ml-10M100K/tags.dat");
+//
+//		try {
+//			generateTagSimilarityCSV(new LinkedList<>(ddb.getTagsSet()), new DistributionalMutualInformation(ddb), "dist_MI-tas-most-common.csv");
+//			generateTagSimilarityCSV(new LinkedList<>(ddb2.getTagsSet()), new DistributionalMutualInformation(ddb2), "dist_MI-tas.csv");
+//			generateTagSimilarityCSV(new LinkedList<>(ddb3.getTagsSet()), new DistributionalMutualInformation(ddb3), "dist_MI-movielens.csv");
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//		
+//		ProjectionalDatabase pdb = new ProjectionalDatabase();
+//		pdb.initializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
+//		
+//		ProjectionalDatabase pdb2 = new ProjectionalDatabase();
+//		pdb2.initializeBibsonomyTags("bibsonomy/2007-10-31/tas");
+//		
+//		ProjectionalDatabase pdb3 = new ProjectionalDatabase();
+//		pdb3.initializeMovieLensTags("ml-10M100K/tags.dat");
+//		try {
+//			generateTagSimilarityCSV(new LinkedList<>(pdb.getTagsSet()), new DistributionalMatching(pdb), "dist_matching-tas-most-common.csv");
+//			generateTagSimilarityCSV(new LinkedList<>(pdb2.getTagsSet()), new DistributionalMatching(pdb2), "dist_matching-tas.csv");
+//			generateTagSimilarityCSV(new LinkedList<>(pdb3.getTagsSet()), new DistributionalMatching(pdb3), "dist_matching-movielens.csv");
+//
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//		
+//		WikAPIdiaEnsemble wikApidia = new WikAPIdiaEnsemble(System.getProperty("user.home")+"/.wikAPIdia/");
+//		try {
+//			generateTagSimilarityCSV(new LinkedList<>(pdb.getTagsSet()), wikApidia, "wikAPIdia_ensemble-tas-most-common.csv.csv");
+//			generateTagSimilarityCSV(new LinkedList<>(pdb2.getTagsSet()), wikApidia, "wikAPIdia_ensemble-tas.csv");
+//			generateTagSimilarityCSV(new LinkedList<>(pdb3.getTagsSet()), wikApidia, "wikAPIdia_ensemble-movielens.csv");
+//		} catch (IOException e) {
+//			
+//			e.printStackTrace();
+//		}
 		
-		CollaborativeDatabase db2 = new CollaborativeDatabase();
-		db2.initializeBibsonomyTags("bibsonomy/2007-10-31/tas");
 		
-		CollaborativeDatabase db3 = new CollaborativeDatabase();
-		db3.initializeMovieLensTags("ml-10M100K/tags.dat");
-	
+		CollaborativeDatabase database = new CollaborativeDatabase();
+		database.addTag("alice", "cnn.com", "news");
+		database.addTag("alice", "www2009.org", "web");
+		database.addTag("alice", "www2009.org", "tech");
+		database.addTag("bob", "cnn.com", "news");
+		database.addTag("bob", "wired.com", "news");
+		database.addTag("bob", "wired.com", "web");
+		database.addTag("bob", "wired.com", "tech");
+		
 		try {
-			generateTagSimilarityCSV(new LinkedList<>(db.getTagsSet()), new CollaborativeMatching(db), "collab_matching-tas-most-common.csv");
-			generateTagSimilarityCSV(new LinkedList<>(db.getTagsSet()), new CollaborativeMutualInformation(db), "collab_MI-tas-most-common.csv");
-			generateTagSimilarityCSV(new LinkedList<>(db2.getTagsSet()), new CollaborativeMatching(db2), "collab_matching-tas.csv");
-			generateTagSimilarityCSV(new LinkedList<>(db2.getTagsSet()), new CollaborativeMutualInformation(db2), "collab_MI-tas.csv");
-			generateTagSimilarityCSV(new LinkedList<>(db3.getTagsSet()), new CollaborativeMatching(db3), "collab_matching-movielens.csv");
-			generateTagSimilarityCSV(new LinkedList<>(db3.getTagsSet()), new CollaborativeMutualInformation(db3), "collab_MI-movielens.csv");
+			generateTagSimilarityCSV(new LinkedList<>(database.getTagsSet()), new CollaborativeMutualInformation(database), "text.csv");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 		
-		DistributionalDatabase ddb = new DistributionalDatabase();
-		//ddb.initializeMovieLensTags("ml-10M100K/tags.dat");
-		ddb.initializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
-		
-		DistributionalDatabase ddb2 = new DistributionalDatabase();
-		ddb2.initializeBibsonomyTags("bibsonomy/2007-10-31/tas");
-		
-		DistributionalDatabase ddb3 = new DistributionalDatabase();
-		db3.initializeMovieLensTags("ml-10M100K/tags.dat");
-
-		try {
-			generateTagSimilarityCSV(new LinkedList<>(ddb.getTagsSet()), new DistributionalMutualInformation(ddb), "dist_MI-tas-most-common.csv");
-			generateTagSimilarityCSV(new LinkedList<>(ddb2.getTagsSet()), new DistributionalMutualInformation(ddb2), "dist_MI-tas.csv");
-			generateTagSimilarityCSV(new LinkedList<>(ddb3.getTagsSet()), new DistributionalMutualInformation(ddb3), "dist_MI-movielens.csv");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		ProjectionalDatabase pdb = new ProjectionalDatabase();
-		pdb.initializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
-		
-		ProjectionalDatabase pdb2 = new ProjectionalDatabase();
-		pdb2.initializeBibsonomyTags("bibsonomy/2007-10-31/tas");
-		
-		ProjectionalDatabase pdb3 = new ProjectionalDatabase();
-		pdb3.initializeMovieLensTags("ml-10M100K/tags.dat");
-		try {
-			generateTagSimilarityCSV(new LinkedList<>(pdb.getTagsSet()), new DistributionalMatching(pdb), "dist_matching-tas-most-common.csv");
-			generateTagSimilarityCSV(new LinkedList<>(pdb2.getTagsSet()), new DistributionalMatching(pdb2), "dist_matching-tas.csv");
-			generateTagSimilarityCSV(new LinkedList<>(pdb3.getTagsSet()), new DistributionalMatching(pdb3), "dist_matching-movielens.csv");
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		WikAPIdiaEnsemble wikApidia = new WikAPIdiaEnsemble(System.getProperty("user.home")+"/.wikAPIdia/");
-		try {
-			generateTagSimilarityCSV(new LinkedList<>(pdb.getTagsSet()), wikApidia, "wikAPIdia_ensemble-tas-most-common.csv.csv");
-			generateTagSimilarityCSV(new LinkedList<>(pdb2.getTagsSet()), wikApidia, "wikAPIdia_ensemble-tas.csv");
-			generateTagSimilarityCSV(new LinkedList<>(pdb3.getTagsSet()), wikApidia, "wikAPIdia_ensemble-movielens.csv");
-		} catch (IOException e) {
-			
-			e.printStackTrace();
-		}
 //		
 //		System.out.println("Calculation for collaborative matching tas most common:");
 //		tauBetweenCSVandWordnet("collab_matching-tas-most-common.csv");
