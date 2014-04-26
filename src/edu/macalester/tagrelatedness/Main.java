@@ -34,191 +34,30 @@ public class Main {
 	public static void main(String[] args) {
 		ParallelForEach.LOG.info("Running program with "+threads+" threads.");
 		
-//		if(args.length < 2){
-//			System.out.println("Not enough arguments were provided to run the program.");
-//			System.exit(0);
-//		}
-//		
-//		switch(args[0]){
-//			case "generate-bibsonomy-top-2000":
-//				String file = null;
-//				String output = null;
-//				for(int i = 1; i<args.length; i++){
-//					if(args[i].startsWith("-")){
-//						if(args.length == i-1 || args[i+1].startsWith("-")){
-//							System.out.println("No argument for the option "+args[i]);
-//							System.exit(1);
-//						}else if(args[i].equals("-file")){
-//							File f = new File(args[i+1]);
-//						      if(f.exists()){
-//						    	  file = args[i+1];
-//						      }else{
-//						          System.out.println("Bibsonomy file "+args[i+1]+" was not found!");
-//						          System.exit(1);
-//						      }
-//						}else if(args[i].equals("-output")){
-//							File f = new File(args[i+1]);
-//						      if(f.exists()){
-//						    	  System.out.println("Output File "+args[i+1]+" already exists!");
-//						    	  System.exit(1);
-//						      }else{
-//						          output = args[i+1];
-//						      }
-//						}
-//					}
-//				}
-//				if(null == file){
-//					System.out.println("Unspecified option: -file bibsonomy_input_file");
-//					System.exit(1);
-//				}else if(null == output){
-//					System.out.println("Unspecified option: -output top_2000_output_file");
-//					System.exit(1);
-//				}else{
-//					generateMostFrequentResources(file, output);	
-//				}
-//			break;
-//			case "tau-with-wordnet":
-//				String csv = null;
-//				for(int i = 1; i<args.length; i++){
-//					if(args[i].startsWith("-")){
-//						if(args.length == i-1 || args[i+1].startsWith("-")){
-//							System.out.println("No argument for the option "+args[i]);
-//							System.exit(1);
-//						}else if(args[i].equals("-csv")){
-//							File f = new File(args[i+1]);
-//						      if(f.exists()){
-//						    	  csv = args[i+1];
-//						      }else{
-//						          System.out.println("CSV file "+args[i+1]+" was not found!");
-//						          System.exit(1);
-//						      }
-//						}
-//					}
-//				}
-//				if(null == csv){
-//					System.out.println("Unspecified option: -csv csv_input_file");
-//					System.exit(1);
-//				}else{
-//					tauBetweenCSVandWordnet(csv);
-//				}
-//			break;
-//			case "generate-csv":
-//				String tagMeasure = null;
-//				String output_file = null;
-//				String bibsonomy = null;
-//				String movielens = null;
-//				for(int i = 1; i<args.length; i++){
-//					if(args[i].startsWith("-")){
-//						if(args.length == i-1 || args[i+1].startsWith("-")){
-//							System.out.println("No argument for the option "+args[i]);
-//							System.exit(1);
-//						}else if(args[i].equals("-tag_measure")){
-//							if(args[i+1].equals("collaborative_matching") || args[i+1].equals("collaborative_mutual_information") || args[i+1].equals("distributional_matching") || args[i+1].equals("distributional_mutual_information")){
-//								tagMeasure = args[i+1];
-//							}else{
-//								System.out.println("Unrecognized tag measure: "+args[i+1]);
-//								System.exit(1);
-//							}
-//						}else if(args[i].equals("-output")){
-//							File f = new File(args[i+1]);
-//						      if(f.exists()){
-//						    	  System.out.println("Output File "+args[i+1]+" already exists!");
-//						    	  System.exit(1);
-//						      }else{
-//						          output_file = args[i+1];
-//						      }							
-//						}else if(args[i].equals("-bibsonomy")){
-//							File f = new File(args[i+1]);
-//						      if(f.exists()){
-//						    	  bibsonomy = args[i+1];
-//						      }else{
-//						          System.out.println("Bibsonomy file "+args[i+1]+" was not found!");
-//						          System.exit(1);
-//						      }							
-//						}else if(args[i].equals("-movielens")){
-//							File f = new File(args[i+1]);
-//						      if(f.exists()){
-//						    	  movielens = args[i+1];
-//						      }else{
-//						          System.out.println("Movielens file "+args[i+1]+" was not found!");
-//						          System.exit(1);
-//						      }		
-//						}
-//					}
-//				}
-//				if(null == tagMeasure){
-//					System.out.println("Unspecified option: -tag_measure collaborative_matching,collaborative_mutual_information,distributional_matching,distributional_mutual_information");
-//					System.exit(1);
-//				}else if(null == output_file){
-//					System.out.println("Unspecified option: -output output_csv_file");
-//					System.exit(1);
-//				}else if(null == bibsonomy && null == movielens){
-//					System.out.println("Unspecified option: -bibsonomy bibsonomy_input_file OR -movielens movielens_input_file");
-//					System.exit(1);
-//				}else{
-//					TagSimilarityMeasure measure = null;
-//					switch(tagMeasure){
-//						case "collaborative_matching":
-//							CollaborativeDatabase db = new CollaborativeDatabase();
-//							if(null != bibsonomy)
-//								db.initializeBibsonomyTags(bibsonomy);
-//							if(null != movielens)
-//								db.initializeMovieLensTags(movielens);
-//							measure = new CollaborativeMatching(db);
-//						break;
-//						case "collaborative_mutual_information":
-//							CollaborativeDatabase db2 = new CollaborativeDatabase();
-//							if(null != bibsonomy)
-//								db2.initializeBibsonomyTags(bibsonomy);
-//							if(null != movielens)
-//								db2.initializeMovieLensTags(movielens);
-//							measure = new CollaborativeMutualInformation(db2);
-//						break;
-//						case "distributional_matching":
-//							ProjectionalDatabase db3 = new ProjectionalDatabase();
-//							if(null != bibsonomy)
-//								db3.initializeBibsonomyTags(bibsonomy);
-//							if(null != movielens)
-//								db3.initializeMovieLensTags(movielens);
-//							measure = new DistributionalMatching(db3);
-//						break;
-//						case "distributional_mutual_information":
-//							DistributionalDatabase db4 = new DistributionalDatabase();
-//							if(null != bibsonomy)
-//								db4.initializeBibsonomyTags(bibsonomy);
-//							if(null != movielens)
-//								db4.initializeMovieLensTags(movielens);
-//							measure = new DistributionalMutualInformation(db4);
-//						break;
-//						default:
-//							System.out.println("Tag similartiy measure "+tagMeasure+" not defined.");
-//							System.exit(1);
-//						break;
-//					}
-//				}
-//			break;
-//			default:
-//				System.out.println("Unrecognized task in the program's parameters.");
-//				System.exit(1);
-//			break;
-//		}
-//		
-//		System.exit(0);
-		
-		
-
+		CSVSorter.sortCSV("collab_matching-tas-most-common.csv", "collab_matching-tas-most-common-sorted.csv",true);
+		CSVSorter.sortCSV("collab_MI-tas-most-common.csv", "collab_MI-tas-most-common-sorted.csv",true);
+		CSVSorter.sortCSV("collab_matching-tas.csv", "collab_matching-tas-sorted.csv",true);
+		CSVSorter.sortCSV("collab_MI-tas.csv", "collab_MI-tas-sorted.csv",true);
+		CSVSorter.sortCSV("collab_matching-movielens.csv", "collab_matching-movielens-sorted.csv",true);
+		CSVSorter.sortCSV("collab_MI-movielens.csv", "collab_MI-movielens-sorted.csv",true);
+		CSVSorter.sortCSV("dist_MI-tas-most-common.csv","dist_MI-tas-most-common-sorted.csv",true);
+		CSVSorter.sortCSV("dist_MI-tas.csv","dist_MI-tas-sorted.csv",true);
+		CSVSorter.sortCSV("dist_MI-movielens.csv","dist_MI-movielens-sorted.csv",true);
+		CSVSorter.sortCSV("dist_matching-tas-most-common.csv","dist_matching-tas-most-common-sorted.csv",true);
+		CSVSorter.sortCSV("dist_matching-tas.csv","dist_matching-tas-sorted.csv",true);
+		CSVSorter.sortCSV("dist_matching-movielens.csv","dist_matching-movielens-sorted.csv",true);
+		CSVSorter.sortCSV("wikAPIdia_ensemble-tas-most-common.csv","wikAPIdia_ensemble-tas-most-common-sorted.csv",true);
+		CSVSorter.sortCSV("wikAPIdia_ensemble-tas.csv","wikAPIdia_ensemble-tas-sorted.csv",true);
+		CSVSorter.sortCSV("wikAPIdia_ensemble-movielens.csv","wikAPIdia_ensemble-movielens-sorter.csv",true);
+			
 //		generateMostFrequentResources("bibsonomy/2007-10-31/tas", "bibsonomy/2007-10-31/tas-2000-most-common");		
-		
 //		CollaborativeDatabase db = new CollaborativeDatabase();
-//		//db.initializeMovieLensTags("ml-10M100K/tags.dat");
+		//db.initializeMovieLensTags("ml-10M100K/tags.dat");
 //		db.initializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
-//		
 //		CollaborativeDatabase db2 = new CollaborativeDatabase();
 //		db2.initializeBibsonomyTags("bibsonomy/2007-10-31/tas");
-//		
 //		CollaborativeDatabase db3 = new CollaborativeDatabase();
 //		db3.initializeMovieLensTags("ml-10M100K/tags.dat");
-//	
 //		try {
 //			generateTagSimilarityCSV(new LinkedList<>(db.getTagsSet()), new CollaborativeMatching(db), "collab_matching-tas-most-common.csv");
 //			generateTagSimilarityCSV(new LinkedList<>(db.getTagsSet()), new CollaborativeMutualInformation(db), "collab_MI-tas-most-common.csv");
@@ -274,26 +113,7 @@ public class Main {
 //		} catch (IOException e) {
 //			
 //			e.printStackTrace();
-//		}
-		
-		
-		CollaborativeDatabase database = new CollaborativeDatabase();
-		database.addTag("alice", "cnn.com", "news");
-		database.addTag("alice", "www2009.org", "web");
-		database.addTag("alice", "www2009.org", "tech");
-		database.addTag("bob", "cnn.com", "news");
-		database.addTag("bob", "wired.com", "news");
-		database.addTag("bob", "wired.com", "web");
-		database.addTag("bob", "wired.com", "tech");
-		
-		try {
-			generateTagSimilarityCSV(new LinkedList<>(database.getTagsSet()), new CollaborativeMutualInformation(database), "text.csv");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		
+//		}		
 //		
 //		System.out.println("Calculation for collaborative matching tas most common:");
 //		tauBetweenCSVandWordnet("collab_matching-tas-most-common.csv");
@@ -313,12 +133,10 @@ public class Main {
 //		tauBetweenCSVandWordnet("dist_matching-tas.csv");
 //		System.out.println("Calculation for distributional MI movielens:");
 //		tauBetweenCSVandWordnet("dist_MI-movielens.csv");
-		
 //		ProjectionalDatabase pdb = new ProjectionalDatabase();
 //		pdb.initializeMovieLensTags("ml-10M100K/tags.dat");
 //						
 //		WikAPIdiaEnsemble wikApidia = new WikAPIdiaEnsemble(System.getProperty("user.home")+"/.wikAPIdia/");
-		
 //		try {
 //			generateTagSimilarityCSV(new LinkedList<>(pdb.getTagsSet()), wikApidia, "movielens_wikapidia_ensemble.csv");
 //		} catch (IOException e1) {
@@ -339,7 +157,6 @@ public class Main {
 //		System.out.println("WikAPIdiaEnsemble for all of bibsonomy:");
 //		
 //		tauBetweenCSVandWordnet("bibsonomy_wikapidia_ensemble.csv");
-		
 	}
 	public static void tauBetweenCSVandWordnet(String file){
 		ILexicalDatabase db = new NictWordNet();
@@ -501,24 +318,6 @@ public class Main {
 			System.out.println("IOException: "+e.getMessage());
 		}
         
-	}
-	/**
-	 * Taken from http://stackoverflow.com/questions/202302/rounding-to-an-arbitrary-number-of-significant-digits
-	 * @param num number to round
-	 * @param n number of significant figures
-	 * @return a number with the specified number of significant figures.s
-	 */
-	public static double roundToSignificantFigures(double num, int n) {
-	    if(num == 0) {
-	        return 0;
-	    }
-
-	    final double d = Math.ceil(Math.log10(num < 0 ? -num: num));
-	    final int power = n - (int) d;
-
-	    final double magnitude = Math.pow(10, power);
-	    final long shifted = Math.round(num*magnitude);
-	    return shifted/magnitude;
 	}
 	  
 }
