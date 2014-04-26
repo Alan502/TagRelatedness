@@ -93,7 +93,7 @@ public class CSVSorter {
 			int end = (int) Math.pow(base, i+1) > lines.size() ? lines.size() : (int) Math.pow(base, i+1);
 			FileWriter fWriter = null;
 			try {
-				fWriter = new FileWriter(new File(inputFile.split(".")[0]+"-"+i));
+				fWriter = new FileWriter(new File(inputFile+"-"+i+"csv" ));
 				for(String line : lines.subList(start, end)){
 					fWriter.write(line+"\n");
 			}
