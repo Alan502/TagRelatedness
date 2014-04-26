@@ -38,7 +38,11 @@ public class CSVSorter {
 				String line = readerStream.readLine();
 				String[] fields = line.split(",");
 				if(fields.length == 3){
-					csvEntries.add( new CSVEntry(fields[0], fields[1], Double.parseDouble(fields[2]) ) );
+					try{
+						csvEntries.add( new CSVEntry(fields[0], fields[1], Double.parseDouble(fields[2]) ) );
+					}catch(NumberFormatException e){
+						continue;
+					}
 				}						
 			}
 		} catch (IOException e) {
