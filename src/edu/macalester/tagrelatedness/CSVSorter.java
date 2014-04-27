@@ -210,6 +210,12 @@ class CSVEntry implements Comparable<CSVEntry>{
 	}
 	
 	public int compareTo(CSVEntry o) {
-		return (int) (similarity - o.similarity);
+		double comparison = similarity - o.similarity;
+		if(comparison < 0)
+			return -1;
+		else if(comparison > 0)
+			return 1;
+		else
+			return 0;
 	}
 }
