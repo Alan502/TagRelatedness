@@ -24,64 +24,7 @@ import org.apache.lucene.search.similarities.Similarity;
 import edu.cmu.lti.jawjaw.pobj.POS;
 import edu.cmu.lti.ws4j.WS4J;
 
-public class CSVHandler {
-
-	public static void sortCSV(String inputFile, String outputFile, boolean outputDivisions){
-		FileInputStream fileStream = null;
-		try {
-			fileStream = new FileInputStream(inputFile);
-		} catch (FileNotFoundException e) {
-			System.out.println("FileNotFoundException: "+e.toString());
-			e.printStackTrace();
-		}
-		BufferedInputStream bufferedStream = new BufferedInputStream(fileStream);
-		BufferedReader readerStream = new BufferedReader(new InputStreamReader(bufferedStream));
-		
-		LinkedList<CSVEntry> csvEntries = new LinkedList<CSVEntry>();
-		
-		try {
-			while(readerStream.ready()){
-				String line = readerStream.readLine();
-				String[] fields = line.split(",");
-				if(fields.length == 3){
-					try{
-						csvEntries.add( new CSVEntry(fields[0], fields[1], Double.parseDouble(fields[2]) ) );
-					}catch(NumberFormatException e){
-						continue;
-					}
-				}						
-			}
-		} catch (IOException e) {
-			System.out.println("IOException: "+e.toString());
-			e.printStackTrace();
-		}
-		
-		Collections.sort(csvEntries);
-		
-		FileWriter writer = null;
-		
-		try {
-			writer = new FileWriter(new File(outputFile).getAbsoluteFile());
-			
-			for(CSVEntry entry : csvEntries){
-				try {
-					writer.write(entry.tagOne+","+entry.tagTwo+","+entry.similarity+"\n");
-				} catch (IOException e) {
-					System.out.println("IOException: "+e.getMessage());
-					e.printStackTrace();
-				}
-			}
-			writer.flush();
-			writer.close();
-			
-		} catch (IOException e) {
-			
-		}
-		
-		if(outputDivisions)
-			outputExponentialDivisions(outputFile);
-		
-	}
+public class CSVUtils {
 	
 	public static void generateTagSimilarityCSV(LinkedList<String> tagsList, final TagSimilarityMeasure similarityMeasure, String outputFile, int threads) throws IOException{
 		final LinkedList<String> tags = tagsList;
@@ -92,8 +35,6 @@ public class CSVHandler {
 			e.printStackTrace();
 		}
 		
-		fWriter.append('"' + " Tag 1 " + '"'+ ',' + '"' + " Tag 2 " + '"' + " , " + "Similarity");
-		fWriter.append('\n');
 		final DecimalFormat formatter = new DecimalFormat("0.00000000000000000");
 		formatter.setRoundingMode(RoundingMode.HALF_UP);
 								
@@ -111,7 +52,7 @@ public class CSVHandler {
             					synchronized(writer){
             					writer.append("\"" + comparingTag.replace("\"", "").replace("\n", "").replace(",", "") + '"'+ ',' + '"' + comparedTag.replace("\"", "").replace("\n", "").replace(",", "") + '"' + "," + formatter.format(cc) +"\n");
             					}
-//            				}
+//    IOException        				}
             				
             			}
                     }
@@ -129,7 +70,7 @@ public class CSVHandler {
 		generateTagSimilarityCSV(tagsList, similarityMeasure, outputFile, Runtime.getRuntime().availableProcessors());
 	}
 	
-	public static void outputExponentialDivisions(String inputFile){
+	public static void exponentialFileSplit(String inputFile){
 		List<String> lines = null;
 		try {
 			lines = Files.readAllLines(Paths.get(inputFile), Charset.defaultCharset());
@@ -145,18 +86,16 @@ public class CSVHandler {
 			int end = (int) Math.pow(base, i+1) > lines.size() ? lines.size() : (int) Math.pow(base, i+1);
 			FileWriter fWriter = null;
 			try {
-				fWriter = new FileWriter(new File(inputFile+"-"+i+"csv" ));
+				fWriter = new FileWriter(new File(inputFile.replace(".csv", "")+"-"+i+".csv" ));
 				for(String line : lines.subList(start, end)){
 					fWriter.write(line+"\n");
+				}
+				fWriter.flush();
+				fWriter.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
-			fWriter.flush();
-			fWriter.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			
-		}
-
 	}
 	
 	public static void generateMostFrequentResources(String bibsonomyDSdir, String outputDir){
@@ -249,7 +188,7 @@ public class CSVHandler {
      * @return a sorted array of roots, or <code>null</code> if no solutions
      *         exist
      */
-    public static double[] solveQuartic(double e) {
+    private static double[] solveQuartic(double e) {
         double p = -0.375 * 1 + 1;
         double q = 0.125 * 1 * 1 - 0.5 * 1 * 1 + 1;
         double r = -0.01171875 * 1 * 1 + 0.0625 * 1 * 1 - 0.25 * 1 * 1 + e;
@@ -307,7 +246,7 @@ public class CSVHandler {
         }
         return null;
     }
-    private static final double solveCubicForQuartic(double p, double q, double r) {
+    private static double solveCubicForQuartic(double p, double q, double r) {
         double A2 = p * p;
         double Q = (A2 - 3.0 * q) / 9.0;
         double R = (p * (A2 - 4.5 * q) + 13.5 * r) / 27.0;
@@ -329,27 +268,4 @@ public class CSVHandler {
         }
     }
 
-}
-
-class CSVEntry implements Comparable<CSVEntry>{
-	
-	public String tagOne;
-	public String tagTwo;
-	public double similarity;
-	
-	public CSVEntry(String tag1, String tag2, double tagSimilarity){
-		tagOne = tag1;
-		tagTwo = tag2;
-		similarity = tagSimilarity;
-	}
-	
-	public int compareTo(CSVEntry o) {
-		double comparison = similarity - o.similarity;
-		if(comparison < 0)
-			return -1;
-		else if(comparison > 0)
-			return 1;
-		else
-			return 0;
-	}
 }

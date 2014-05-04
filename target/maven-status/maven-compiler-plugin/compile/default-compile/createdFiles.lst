@@ -1,10 +1,8 @@
 edu/macalester/tagrelatedness/ParallelForEach$BoundedExecutor$1.class
 edu/macalester/tagrelatedness/CollaborativeMutualInformation.class
-edu/macalester/tagrelatedness/CSVHandler.class
 edu/macalester/tagrelatedness/Main.class
 edu/macalester/tagrelatedness/Procedure.class
 edu/macalester/tagrelatedness/DistributionalMatching.class
-edu/macalester/tagrelatedness/CSVEntry.class
 edu/macalester/tagrelatedness/ProjectionalMatching.class
 edu/macalester/tagrelatedness/KendallsCorrelation$1.class
 edu/macalester/tagrelatedness/WikAPIdiaEnsemble.class
@@ -15,14 +13,15 @@ edu/macalester/tagrelatedness/DistributionalMutualInformation.class
 edu/macalester/tagrelatedness/TagSimilarityMeasure.class
 edu/macalester/tagrelatedness/BibsonomyRecord.class
 edu/macalester/tagrelatedness/ParallelForEach$BoundedExecutor.class
+edu/macalester/tagrelatedness/CSVUtils.class
 edu/macalester/tagrelatedness/ParallelForEach.class
-edu/macalester/tagrelatedness/CSVHandler$1.class
 edu/macalester/tagrelatedness/ParallelForEach$ThreadPoolErrors.class
 edu/macalester/tagrelatedness/CSVComparator.class
 edu/macalester/tagrelatedness/ResultsReproducer.class
 edu/macalester/tagrelatedness/Database.class
 edu/macalester/tagrelatedness/ProjectionalOverlap.class
 edu/macalester/tagrelatedness/DistributionalDatabase.class
+edu/macalester/tagrelatedness/CSVUtils$1.class
 edu/macalester/tagrelatedness/ParallelForEach$1.class
 edu/macalester/tagrelatedness/MacroAggregationMatching.class
 edu/macalester/tagrelatedness/KendallsCorrelation.class

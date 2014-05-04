@@ -1,12 +1,12 @@
 /home/alan/workspace/TagRelatedness/src/edu/macalester/tagrelatedness/ParallelForEach.java
 /home/alan/workspace/TagRelatedness/src/edu/macalester/tagrelatedness/EntryFrequency.java
 /home/alan/workspace/TagRelatedness/src/edu/macalester/tagrelatedness/CollaborativeMutualInformation.java
+/home/alan/workspace/TagRelatedness/src/edu/macalester/tagrelatedness/CSVUtils.java
 /home/alan/workspace/TagRelatedness/src/edu/macalester/tagrelatedness/DistributionalMutualInformation.java
 /home/alan/workspace/TagRelatedness/src/edu/macalester/tagrelatedness/ProjectionalOverlap.java
 /home/alan/workspace/TagRelatedness/src/edu/macalester/tagrelatedness/ProjectionalMatching.java
 /home/alan/workspace/TagRelatedness/src/edu/macalester/tagrelatedness/Function.java
 /home/alan/workspace/TagRelatedness/src/edu/macalester/tagrelatedness/KendallsCorrelation.java
-/home/alan/workspace/TagRelatedness/src/edu/macalester/tagrelatedness/CSVHandler.java
 /home/alan/workspace/TagRelatedness/src/edu/macalester/tagrelatedness/ProjectionalJaccard.java
 /home/alan/workspace/TagRelatedness/src/edu/macalester/tagrelatedness/CSVComparator.java
 /home/alan/workspace/TagRelatedness/src/edu/macalester/tagrelatedness/ProjectionalDatabase.java

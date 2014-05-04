@@ -14,7 +14,7 @@ public class ResultsReproducer {
 	
 	public static void main(String[] args) {
 		
-		CSVHandler.generateMostFrequentResources("bibsonomy/2007-10-31/tas", "bibsonomy/2007-10-31/tas-2000-most-common");
+		CSVUtils.generateMostFrequentResources("bibsonomy/2007-10-31/tas", "bibsonomy/2007-10-31/tas-2000-most-common");
 		CollaborativeDatabase db = new CollaborativeDatabase();
 		db.initializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
 		DistributionalDatabase ddb = new DistributionalDatabase();
@@ -23,10 +23,10 @@ public class ResultsReproducer {
 		pdb.initializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
 		
 		try {
-			CSVHandler.generateTagSimilarityCSV(new LinkedList<>(db.getTagsSet()), new CollaborativeMatching(db), "collab_matching-tas-most-common.csv");
-			CSVHandler.generateTagSimilarityCSV(new LinkedList<>(db.getTagsSet()), new CollaborativeMutualInformation(db), "collab_MI-tas-most-common.csv");
-			CSVHandler.generateTagSimilarityCSV(new LinkedList<>(ddb.getTagsSet()), new DistributionalMutualInformation(ddb), "dist_MI-tas-most-common.csv");
-			CSVHandler.generateTagSimilarityCSV(new LinkedList<>(pdb.getTagsSet()), new DistributionalMatching(pdb), "dist_matching-tas-most-common.csv");
+			CSVUtils.generateTagSimilarityCSV(new LinkedList<>(db.getTagsSet()), new CollaborativeMatching(db), "collab_matching-tas-most-common.csv");
+			CSVUtils.generateTagSimilarityCSV(new LinkedList<>(db.getTagsSet()), new CollaborativeMutualInformation(db), "collab_MI-tas-most-common.csv");
+			CSVUtils.generateTagSimilarityCSV(new LinkedList<>(ddb.getTagsSet()), new DistributionalMutualInformation(ddb), "dist_MI-tas-most-common.csv");
+			CSVUtils.generateTagSimilarityCSV(new LinkedList<>(pdb.getTagsSet()), new DistributionalMatching(pdb), "dist_matching-tas-most-common.csv");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

@@ -38,6 +38,7 @@ public class WikAPIdiaEnsemble implements TagSimilarityMeasure {
 	 * @param tag1 the first tag
 	 * @param tag2 the second tags
 	 */
+	
 	@Override
 	public double calculateSimilarity(String tag1, String tag2) {
 		SRResult s = null;
@@ -47,6 +48,7 @@ public class WikAPIdiaEnsemble implements TagSimilarityMeasure {
 			System.out.println("Dao Exception: "+e.getMessage());
 			e.printStackTrace();
 		}
+		
 		return s.getScore();
 	}
 
