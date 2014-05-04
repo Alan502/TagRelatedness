@@ -1,14 +1,13 @@
 package edu.macalester.tagrelatedness;
 
-import org.wikapidia.conf.ConfigurationException;
-import org.wikapidia.conf.Configurator;
-import org.wikapidia.core.cmd.Env;
-import org.wikapidia.core.cmd.EnvBuilder;
-import org.wikapidia.core.dao.DaoException;
-import org.wikapidia.core.dao.LocalPageDao;
-import org.wikapidia.core.lang.Language;
-import org.wikapidia.sr.MonolingualSRMetric;
-import org.wikapidia.sr.SRResult;
+import org.wikibrain.conf.ConfigurationException;
+import org.wikibrain.conf.Configurator;
+import org.wikibrain.core.cmd.Env;
+import org.wikibrain.core.cmd.EnvBuilder;
+import org.wikibrain.core.dao.DaoException;
+import org.wikibrain.core.lang.Language;
+import org.wikibrain.sr.MonolingualSRMetric;
+import org.wikibrain.sr.SRResult;
 /**
  * The WikAPIdiaEnsemble similarity measure. This similarity measure uses the WikAPIdia library to calculate the similarity measure between two tags.
  * For more information visit: https://github.com/shilad/wikAPIdia

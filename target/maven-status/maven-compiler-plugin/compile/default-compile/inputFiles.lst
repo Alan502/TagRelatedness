@@ -1,4 +1,3 @@
-/home/alan/workspace/TagRelatedness/src/edu/macalester/tagrelatedness/CSVSorter.java
 /home/alan/workspace/TagRelatedness/src/edu/macalester/tagrelatedness/ParallelForEach.java
 /home/alan/workspace/TagRelatedness/src/edu/macalester/tagrelatedness/EntryFrequency.java
 /home/alan/workspace/TagRelatedness/src/edu/macalester/tagrelatedness/CollaborativeMutualInformation.java
@@ -7,12 +6,15 @@
 /home/alan/workspace/TagRelatedness/src/edu/macalester/tagrelatedness/ProjectionalMatching.java
 /home/alan/workspace/TagRelatedness/src/edu/macalester/tagrelatedness/Function.java
 /home/alan/workspace/TagRelatedness/src/edu/macalester/tagrelatedness/KendallsCorrelation.java
+/home/alan/workspace/TagRelatedness/src/edu/macalester/tagrelatedness/CSVHandler.java
 /home/alan/workspace/TagRelatedness/src/edu/macalester/tagrelatedness/ProjectionalJaccard.java
+/home/alan/workspace/TagRelatedness/src/edu/macalester/tagrelatedness/CSVComparator.java
 /home/alan/workspace/TagRelatedness/src/edu/macalester/tagrelatedness/ProjectionalDatabase.java
 /home/alan/workspace/TagRelatedness/src/edu/macalester/tagrelatedness/TagSimilarityMeasure.java
 /home/alan/workspace/TagRelatedness/src/edu/macalester/tagrelatedness/DistributionalMatching.java
 /home/alan/workspace/TagRelatedness/src/edu/macalester/tagrelatedness/BibsonomyRecord.java
 /home/alan/workspace/TagRelatedness/src/edu/macalester/tagrelatedness/CollaborativeMatching.java
+/home/alan/workspace/TagRelatedness/src/edu/macalester/tagrelatedness/ResultsReproducer.java
 /home/alan/workspace/TagRelatedness/src/edu/macalester/tagrelatedness/DistributionalDatabase.java
 /home/alan/workspace/TagRelatedness/src/edu/macalester/tagrelatedness/CollaborativeDatabase.java
 /home/alan/workspace/TagRelatedness/src/edu/macalester/tagrelatedness/WikAPIdiaEnsemble.java

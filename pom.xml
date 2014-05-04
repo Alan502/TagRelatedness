@@ -61,68 +61,95 @@
   		<version>1.0.1-SNAPSHOT</version>
 	</dependency>
   	<dependency>
-  		<groupId>com.github.shilad.wikapidia</groupId>
-  		<artifactId>wikAPIdia-core</artifactId>
+  		<groupId>com.google.code.externalsortinginjava</groupId>
+  		<artifactId>externalsortinginjava</artifactId>
+  		<version>0.1.9</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>com.github.shilad.wikibrain</groupId>
+  		<artifactId>wikibrain-all</artifactId>
+  		<version>0.1-SNAPSHOT</version>
+  		<type>pom</type>
+  	</dependency>
+  	<dependency>
+  		<groupId>com.github.shilad.wikibrain</groupId>
+  		<artifactId>wikibrain-cookbook</artifactId>
   		<version>0.1-SNAPSHOT</version>
   	</dependency>
   	<dependency>
-  		<groupId>com.github.shilad.wikapidia</groupId>
-  		<artifactId>wikAPIdia-wikidata</artifactId>
+  		<groupId>com.github.shilad.wikibrain</groupId>
+  		<artifactId>wikibrain-core</artifactId>
   		<version>0.1-SNAPSHOT</version>
   	</dependency>
   	<dependency>
-  		<groupId>com.github.shilad.wikapidia</groupId>
-  		<artifactId>wikAPIdia-utils</artifactId>
+  		<groupId>com.github.shilad.wikibrain</groupId>
+  		<artifactId>wikibrain-download</artifactId>
   		<version>0.1-SNAPSHOT</version>
   	</dependency>
   	<dependency>
-  		<groupId>com.github.shilad.wikapidia</groupId>
-  		<artifactId>wikAPIdia-sr</artifactId>
+  		<groupId>com.github.shilad.wikibrain</groupId>
+  		<artifactId>wikibrain-integration-tests</artifactId>
   		<version>0.1-SNAPSHOT</version>
   	</dependency>
   	<dependency>
-  		<groupId>com.github.shilad.wikapidia</groupId>
-  		<artifactId>wikAPIdia-phrases</artifactId>
+  		<groupId>com.github.shilad.wikibrain</groupId>
+  		<artifactId>wikibrain-loader</artifactId>
   		<version>0.1-SNAPSHOT</version>
   	</dependency>
   	<dependency>
-  		<groupId>com.github.shilad.wikapidia</groupId>
-  		<artifactId>wikAPIdia-parser</artifactId>
+  		<groupId>com.github.shilad.wikibrain</groupId>
+  		<artifactId>wikibrain-lucene</artifactId>
   		<version>0.1-SNAPSHOT</version>
   	</dependency>
   	<dependency>
-  		<groupId>com.github.shilad.wikapidia</groupId>
-  		<artifactId>wikAPIdia-matrix</artifactId>
+  		<groupId>com.github.shilad.wikibrain</groupId>
+  		<artifactId>wikibrain-mapper</artifactId>
   		<version>0.1-SNAPSHOT</version>
   	</dependency>
   	<dependency>
-  		<groupId>com.github.shilad.wikapidia</groupId>
-  		<artifactId>wikAPIdia-mapper</artifactId>
-  		<version>0.1-SNAPSHOT</version>
-  	</dependency>
-  	<dependency>    	
-  		<groupId>com.github.shilad.wikapidia</groupId>
-  		<artifactId>wikAPIdia-lucene</artifactId>
+  		<groupId>com.github.shilad.wikibrain</groupId>
+  		<artifactId>wikibrain-matrix</artifactId>
   		<version>0.1-SNAPSHOT</version>
   	</dependency>
   	<dependency>
-  		<groupId>com.github.shilad.wikapidia</groupId>
-  		<artifactId>wikAPIdia-loader</artifactId>
+  		<groupId>com.github.shilad.wikibrain</groupId>
+  		<artifactId>wikibrain-pageview</artifactId>
   		<version>0.1-SNAPSHOT</version>
   	</dependency>
   	<dependency>
-  		<groupId>com.github.shilad.wikapidia</groupId>
-  		<artifactId>wikAPIdia-integration-tests</artifactId>
+  		<groupId>com.github.shilad.wikibrain</groupId>
+  		<artifactId>wikibrain-parent</artifactId>
+  		<version>0.1-SNAPSHOT</version>
+  		<type>pom</type>
+  	</dependency>
+  	<dependency>
+  		<groupId>com.github.shilad.wikibrain</groupId>
+  		<artifactId>wikibrain-parser</artifactId>
   		<version>0.1-SNAPSHOT</version>
   	</dependency>
   	<dependency>
-  		<groupId>com.github.shilad.wikapidia</groupId>
-  		<artifactId>wikAPIdia-download</artifactId>
+  		<groupId>com.github.shilad.wikibrain</groupId>
+  		<artifactId>wikibrain-phrases</artifactId>
   		<version>0.1-SNAPSHOT</version>
   	</dependency>
   	<dependency>
-  		<groupId>com.github.shilad.wikapidia</groupId>
-  		<artifactId>wikAPIdia-cookbook</artifactId>
+  		<groupId>com.github.shilad.wikibrain</groupId>
+  		<artifactId>wikibrain-spatial</artifactId>
+  		<version>0.1-SNAPSHOT</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>com.github.shilad.wikibrain</groupId>
+  		<artifactId>wikibrain-sr</artifactId>
+  		<version>0.1-SNAPSHOT</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>com.github.shilad.wikibrain</groupId>
+  		<artifactId>wikibrain-utils</artifactId>
+  		<version>0.1-SNAPSHOT</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>com.github.shilad.wikibrain</groupId>
+  		<artifactId>wikibrain-wikidata</artifactId>
   		<version>0.1-SNAPSHOT</version>
   	</dependency>
   </dependencies>
