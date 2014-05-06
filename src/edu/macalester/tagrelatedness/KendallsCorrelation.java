@@ -270,5 +270,9 @@ public class KendallsCorrelation {
     public static void tauBetweenCSVandWordnet(String file){
     	tauBetweenCSVandWordnet(file, true, 0, Runtime.getRuntime().availableProcessors());
     }
+    
+    public static void tauBetweenCSVandWordnet(String file, final boolean includeZeroes, final int roundingFigures){
+    	tauBetweenCSVandWordnet(file, includeZeroes, roundingFigures, Runtime.getRuntime().availableProcessors() );
+    }
 
 }
