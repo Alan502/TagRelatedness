@@ -64,7 +64,7 @@ public class Main {
 //			e.printStackTrace();
 //		}
 		
-		WikAPIdiaEnsemble wikApidia = new WikAPIdiaEnsemble(System.getProperty("user.home")+"/.wikAPIdia/");
+		WikAPIdiaEnsemble wikApidia = new WikAPIdiaEnsemble(System.getProperty("user.home")+"/.wikibrain/");
 		try {
 			CSVUtils.generateTagSimilarityCSV(new LinkedList<>(pdb.getTagsSet()), wikApidia, "wikAPIdia_ensemble-tas-most-common.csv.csv");
 			CSVUtils.generateTagSimilarityCSV(new LinkedList<>(pdb2.getTagsSet()), wikApidia, "wikAPIdia_ensemble-tas.csv");
