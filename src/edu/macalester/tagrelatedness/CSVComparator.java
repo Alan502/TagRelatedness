@@ -7,8 +7,13 @@ public class CSVComparator implements Comparator<String>{
 	public int compare(String r1, String r2) {
 		String[] data1 = r1.replace("\"", "").split(",");
 		String[] data2 = r2.replace("\"", "").split(",");
+		double result = 0;
 		
-		double result = Double.parseDouble(data1[1]) - Double.parseDouble(data2[1]);
+		try{
+			result = Double.parseDouble(data1[2]) - Double.parseDouble(data2[2]);
+		}catch(NumberFormatException e){
+			return 0;
+		}
 		
 		if(result < 0)
 			return -1;
