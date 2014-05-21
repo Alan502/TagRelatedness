@@ -10,13 +10,13 @@ import com.google.code.externalsorting.ExternalSort;
 public class Main {	
 	public static void main(String[] args) {
 		
-		CollaborativeDatabase db = new CollaborativeDatabase();
-		db.initializeMovieLensTags("ml-10M100K/tags.dat");
-		db.initializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
-		CollaborativeDatabase db2 = new CollaborativeDatabase();
-		db2.initializeBibsonomyTags("bibsonomy/2007-10-31/tas");
-		CollaborativeDatabase db3 = new CollaborativeDatabase();
-		db3.initializeMovieLensTags("ml-10M100K/tags.dat");
+//		CollaborativeDatabase db = new CollaborativeDatabase();
+//		db.initializeMovieLensTags("ml-10M100K/tags.dat");
+//		db.initializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
+//		CollaborativeDatabase db2 = new CollaborativeDatabase();
+//		db2.initializeBibsonomyTags("bibsonomy/2007-10-31/tas");
+//		CollaborativeDatabase db3 = new CollaborativeDatabase();
+//		db3.initializeMovieLensTags("ml-10M100K/tags.dat");
 //		try {
 //			CSVUtils.generateTagSimilarityCSV(new LinkedList<>(db.getTagsSet()), new CollaborativeMatching(db), "collab_matching-tas-most-common.csv");
 //			CSVUtils.generateTagSimilarityCSV(new LinkedList<>(db.getTagsSet()), new CollaborativeMutualInformation(db), "collab_MI-tas-most-common.csv");
@@ -47,14 +47,14 @@ public class Main {
 //			e.printStackTrace();
 //		}
 //		
-		ProjectionalDatabase pdb = new ProjectionalDatabase();
-		pdb.initializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
-		
-		ProjectionalDatabase pdb2 = new ProjectionalDatabase();
-		pdb2.initializeBibsonomyTags("bibsonomy/2007-10-31/tas");
-		
-		ProjectionalDatabase pdb3 = new ProjectionalDatabase();
-		pdb3.initializeMovieLensTags("ml-10M100K/tags.dat");
+//		ProjectionalDatabase pdb = new ProjectionalDatabase();
+//		pdb.initializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
+//		
+//		ProjectionalDatabase pdb2 = new ProjectionalDatabase();
+//		pdb2.initializeBibsonomyTags("bibsonomy/2007-10-31/tas");
+//		
+//		ProjectionalDatabase pdb3 = new ProjectionalDatabase();
+//		pdb3.initializeMovieLensTags("ml-10M100K/tags.dat");
 //		try {
 //			CSVUtils.generateTagSimilarityCSV(new LinkedList<>(pdb.getTagsSet()), new DistributionalMatching(pdb), "dist_matching-tas-most-common.csv");
 //			CSVUtils.generateTagSimilarityCSV(new LinkedList<>(pdb2.getTagsSet()), new DistributionalMatching(pdb2), "dist_matching-tas.csv");
@@ -64,15 +64,15 @@ public class Main {
 //			e.printStackTrace();
 //		}
 		
-		WikAPIdiaEnsemble wikApidia = new WikAPIdiaEnsemble(System.getProperty("user.home")+"/.wikibrain/");
-		try {
-			CSVUtils.generateTagSimilarityCSV(new LinkedList<>(pdb.getTagsSet()), wikApidia, "wikAPIdia_ensemble-tas-most-common.csv.csv");
-			CSVUtils.generateTagSimilarityCSV(new LinkedList<>(pdb2.getTagsSet()), wikApidia, "wikAPIdia_ensemble-tas.csv");
-			CSVUtils.generateTagSimilarityCSV(new LinkedList<>(pdb3.getTagsSet()), wikApidia, "wikAPIdia_ensemble-movielens.csv");
-		} catch (IOException e) {
-			
-			e.printStackTrace();
-		}		
+//		WikAPIdiaEnsemble wikApidia = new WikAPIdiaEnsemble(System.getProperty("user.home")+"/.wikibrain/");
+//		try {
+//			CSVUtils.generateTagSimilarityCSV(new LinkedList<>(pdb.getTagsSet()), wikApidia, "wikAPIdia_ensemble-tas-most-common.csv.csv");
+//			CSVUtils.generateTagSimilarityCSV(new LinkedList<>(pdb2.getTagsSet()), wikApidia, "wikAPIdia_ensemble-tas.csv");
+//			CSVUtils.generateTagSimilarityCSV(new LinkedList<>(pdb3.getTagsSet()), wikApidia, "wikAPIdia_ensemble-movielens.csv");
+//		} catch (IOException e) {
+//			
+//			e.printStackTrace();
+//		}		
 		
 				
 		ExternalSort.defaultcomparator = new CSVComparator();
@@ -97,9 +97,23 @@ public class Main {
 			System.out.println(e.toString());
 		}
 		
-		
-			
-		
+//		CSVUtils.exponentialFileSplit("collab_matching-tas-most-common-sorted.csv");
+//		CSVUtils.exponentialFileSplit("collab_MI-tas-most-common-sorted.csv");
+//		CSVUtils.exponentialFileSplit("collab_matching-tas-sorted.csv");
+//		CSVUtils.exponentialFileSplit("collab_MI-tas-sorted.csv");
+//		CSVUtils.exponentialFileSplit("collab_matching-movielens-sorted.csv");
+//		CSVUtils.exponentialFileSplit("collab_MI-movielens-sorted.csv");
+//		CSVUtils.exponentialFileSplit("dist_MI-tas-most-common-sorted.csv");
+//		CSVUtils.exponentialFileSplit("dist_MI-tas-sorted.csv");
+//		CSVUtils.exponentialFileSplit("dist_MI-movielens-sorted.csv");
+//		CSVUtils.exponentialFileSplit("dist_matching-tas-most-common-sorted.csv");
+//		CSVUtils.exponentialFileSplit("dist_matching-tas-sorted.csv");
+//		CSVUtils.exponentialFileSplit("dist_matching-movielens-sorted.csv");
+//		CSVUtils.exponentialFileSplit("wikAPIdia_ensemble-tas-most-common-sorted.csv");
+//		CSVUtils.exponentialFileSplit("wikAPIdia_ensemble-tas-sorted.csv");
+//		CSVUtils.exponentialFileSplit("wikAPIdia_ensemble-movielens-sorted.csv");
+
+
 //		
 //		System.out.println("Calculation for collaborative matching tas most common:");
 //		tauBetweenCSVandWordnet("collab_matching-tas-most-common.csv");

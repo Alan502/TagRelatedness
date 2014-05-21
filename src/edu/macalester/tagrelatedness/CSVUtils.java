@@ -52,7 +52,7 @@ public class CSVUtils {
             					synchronized(writer){
             					writer.append("\"" + comparingTag.replace("\"", "").replace("\n", "").replace(",", "") + '"'+ ',' + '"' + comparedTag.replace("\"", "").replace("\n", "").replace(",", "") + '"' + "," + formatter.format(cc) +"\n");
             					}
-//    IOException        				}
+// 	        				}
             				
             			}
                     }
