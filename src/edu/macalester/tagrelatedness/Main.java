@@ -75,29 +75,31 @@ public class Main {
 //		}		
 		
 				
-		ExternalSort.defaultcomparator = new CSVComparator();
-		
-		try{		
-		ExternalSort.sort(new File("collab_matching-tas-most-common.csv"), new File("collab_matching-tas-most-common-sorted.csv"));
-		ExternalSort.sort(new File("collab_MI-tas-most-common.csv"), new File("collab_MI-tas-most-common-sorted.csv"));
-		ExternalSort.sort(new File("collab_matching-tas.csv"), new File("collab_matching-tas-sorted.csv"));
-		ExternalSort.sort(new File("collab_MI-tas.csv"), new File("collab_MI-tas-sorted.csv"));
-		ExternalSort.sort(new File("collab_matching-movielens.csv"), new File("collab_matching-movielens-sorted.csv"));
-		ExternalSort.sort(new File("collab_MI-movielens.csv"), new File("collab_MI-movielens-sorted.csv"));
-		ExternalSort.sort(new File("dist_MI-tas-most-common.csv"),new File("dist_MI-tas-most-common-sorted.csv"));
-		ExternalSort.sort(new File("dist_MI-tas.csv"),new File("dist_MI-tas-sorted.csv"));
-		ExternalSort.sort(new File("dist_MI-movielens.csv"),new File("dist_MI-movielens-sorted.csv"));
-		ExternalSort.sort(new File("dist_matching-tas-most-common.csv"),new File("dist_matching-tas-most-common-sorted.csv"));
-		ExternalSort.sort(new File("dist_matching-tas.csv"),new File("dist_matching-tas-sorted.csv"));
-		ExternalSort.sort(new File("dist_matching-movielens.csv"),new File("dist_matching-movielens-sorted.csv"));
-		ExternalSort.sort(new File("wikAPIdia_ensemble-tas-most-common.csv"),new File("wikAPIdia_ensemble-tas-most-common-sorted.csv"));
-		ExternalSort.sort(new File("wikAPIdia_ensemble-tas.csv"),new File("wikAPIdia_ensemble-tas-sorted.csv"));
-		ExternalSort.sort(new File("wikAPIdia_ensemble-movielens.csv"),new File("wikAPIdia_ensemble-movielens-sorted.csv"));
-		}catch(Exception e){
-			System.out.println(e.toString());
-		}
-		
-//		CSVUtils.exponentialFileSplit("collab_matching-tas-most-common-sorted.csv");
+//		ExternalSort.defaultcomparator = new CSVComparator();
+//
+//		try{
+//		ExternalSort.sort(new File("collab_matching-tas-most-common.csv"), new File("collab_matching-tas-most-common-sorted.csv"));
+//		ExternalSort.sort(new File("collab_MI-tas-most-common.csv"), new File("collab_MI-tas-most-common-sorted.csv"));
+//		ExternalSort.sort(new File("collab_matching-tas.csv"), new File("collab_matching-tas-sorted.csv"));
+//		ExternalSort.sort(new File("collab_MI-tas.csv"), new File("collab_MI-tas-sorted.csv"));
+//		ExternalSort.sort(new File("collab_matching-movielens.csv"), new File("collab_matching-movielens-sorted.csv"));
+//		ExternalSort.sort(new File("collab_MI-movielens.csv"), new File("collab_MI-movielens-sorted.csv"));
+//		ExternalSort.sort(new File("dist_MI-tas-most-common.csv"),new File("dist_MI-tas-most-common-sorted.csv"));
+//		ExternalSort.sort(new File("dist_MI-tas.csv"),new File("dist_MI-tas-sorted.csv"));
+//		ExternalSort.sort(new File("dist_MI-movielens.csv"),new File("dist_MI-movielens-sorted.csv"));
+//		ExternalSort.sort(new File("dist_matching-tas-most-common.csv"),new File("dist_matching-tas-most-common-sorted.csv"));
+//		ExternalSort.sort(new File("dist_matching-tas.csv"),new File("dist_matching-tas-sorted.csv"));
+//		ExternalSort.sort(new File("dist_matching-movielens.csv"),new File("dist_matching-movielens-sorted.csv"));
+//		ExternalSort.sort(new File("wikAPIdia_ensemble-tas-most-common.csv"),new File("wikAPIdia_ensemble-tas-most-common-sorted.csv"));
+//		ExternalSort.sort(new File("wikAPIdia_ensemble-tas.csv"),new File("wikAPIdia_ensemble-tas-sorted.csv"));
+//		ExternalSort.sort(new File("wikAPIdia_ensemble-movielens.csv"),new File("wikAPIdia_ensemble-movielens-sorted.csv"));
+//		}catch(Exception e){
+//			System.out.println(e.toString());
+//		}
+//
+		CSVUtils.fileSplit("collab_matching-tas-most-common-sorted-4.csv", 4);
+        CSVUtils.fileSplit("collab_matching-tas-most-common-sorted-5.csv", 5);
+
 //		CSVUtils.exponentialFileSplit("collab_MI-tas-most-common-sorted.csv");
 //		CSVUtils.exponentialFileSplit("collab_matching-tas-sorted.csv");
 //		CSVUtils.exponentialFileSplit("collab_MI-tas-sorted.csv");
