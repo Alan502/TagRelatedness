@@ -84,6 +84,7 @@ public class CSVUtils {
 		for(int i = 0; i<divisions; i++){
 			int start = (int) Math.pow(base, i);
 			int end = (int) Math.pow(base, i+1) > totalLines ? totalLines : (int) Math.pow(base, i+1);
+            System.out.println("Going to output the lines from "+start+" to "+end+" now.");
 			FileWriter fWriter = null;
 			try {
 				fWriter = new FileWriter(new File(inputFile.replace(".csv", "")+"-"+i+".csv" ));
