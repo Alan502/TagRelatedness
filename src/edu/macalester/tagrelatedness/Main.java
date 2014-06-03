@@ -97,8 +97,12 @@ public class Main {
 //			System.out.println(e.toString());
 //		}
 //
-		CSVUtils.fileSplit("collab_matching-tas-most-common-sorted-4.csv", 4);
-        CSVUtils.fileSplit("collab_matching-tas-most-common-sorted-5.csv", 5);
+        try {
+            CSVUtils.fileSplit("collab_matching-tas-most-common-sorted-4.csv", 4);
+            CSVUtils.fileSplit("collab_matching-tas-most-common-sorted-5.csv", 5);
+        }catch (IOException e){
+            System.out.println(e.toString());
+        }
 
 //		CSVUtils.exponentialFileSplit("collab_MI-tas-most-common-sorted.csv");
 //		CSVUtils.exponentialFileSplit("collab_matching-tas-sorted.csv");

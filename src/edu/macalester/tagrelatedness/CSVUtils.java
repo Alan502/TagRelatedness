@@ -1,14 +1,9 @@
 package edu.macalester.tagrelatedness;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Writer;
+import edu.cmu.lti.jawjaw.pobj.POS;
+import edu.cmu.lti.ws4j.WS4J;
+
+import java.io.*;
 import java.math.RoundingMode;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -18,11 +13,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-
-import org.apache.lucene.search.similarities.Similarity;
-
-import edu.cmu.lti.jawjaw.pobj.POS;
-import edu.cmu.lti.ws4j.WS4J;
 
 public class CSVUtils {
 	
@@ -70,14 +60,22 @@ public class CSVUtils {
 		generateTagSimilarityCSV(tagsList, similarityMeasure, outputFile, Runtime.getRuntime().availableProcessors());
 	}
 	
-	public static void fileSplit(String inputFile, int divisions){
-		List<String> lines = null;
-		try {
-			lines = Files.readAllLines(Paths.get(inputFile), Charset.defaultCharset());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		int totalLines = lines.size();
+	public static void fileSplit(String inputFile, int divisions) throws IOException {
+        File file = new File(inputFile);
+        LineNumberReader lnr = null;
+        try {
+            lnr = new LineNumberReader(new FileReader(file));
+
+        }catch (FileNotFoundException e){
+            System.out.println(e.toString());
+        }catch (IOException e){
+            System.out.println(e.toString());
+        }
+
+        int totalLines = 0;
+        while (lnr.readLine() != null){
+            totalLines++;
+        }
 		
 		double base = Math.pow(totalLines, (1/divisions));
 		
@@ -88,15 +86,19 @@ public class CSVUtils {
 			FileWriter fWriter = null;
 			try {
 				fWriter = new FileWriter(new File(inputFile.replace(".csv", "")+"-"+i+".csv" ));
-				for(String line : lines.subList(start, end)){
-					fWriter.write(line+"\n");
-				}
+
+                lnr.setLineNumber(start);
+
+                for(int j = start; j<end; j++){
+                    fWriter.write(lnr.readLine()+"\n");
+                }
+
 				fWriter.flush();
 				fWriter.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 	}
 	
 	public static void generateMostFrequentResources(String bibsonomyDSdir, String outputDir){
