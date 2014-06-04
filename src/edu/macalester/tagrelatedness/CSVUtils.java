@@ -60,11 +60,17 @@ public class CSVUtils {
 		generateTagSimilarityCSV(tagsList, similarityMeasure, outputFile, Runtime.getRuntime().availableProcessors());
 	}
 	
-	public static void fileSplit(String inputFile, int divisions) throws IOException {
+	public static void fileSplit(String inputFile, int divisions) {
         File file = new File(inputFile);
         LineNumberReader lnr = null;
+        FileReader fr = null;
+        int totalLines = 0;
         try {
-            lnr = new LineNumberReader(new FileReader(file));
+            fr = new FileReader(file);
+            lnr = new LineNumberReader(fr);
+            while (lnr.readLine() != null){
+                totalLines++;
+            }
 
         }catch (FileNotFoundException e){
             System.out.println(e.toString());
@@ -72,13 +78,17 @@ public class CSVUtils {
             System.out.println(e.toString());
         }
 
-        int totalLines = 0;
-        while (lnr.readLine() != null){
-            totalLines++;
+		
+		double base = Math.pow( (double) totalLines, (1/ (double) divisions) );
+
+        System.out.println("Total Lines: "+totalLines+" divisions: "+divisions+" base: "+base);
+        BufferedReader bfr = null;
+        try {
+            bfr = new BufferedReader(new FileReader(file));
+        }catch (FileNotFoundException e){
+            System.out.println(e.toString());
         }
-		
-		double base = Math.pow(totalLines, (1/divisions));
-		
+
 		for(int i = 0; i<divisions; i++){
 			int start = (int) Math.pow(base, i);
 			int end = (int) Math.pow(base, i+1) > totalLines ? totalLines : (int) Math.pow(base, i+1);
@@ -87,10 +97,8 @@ public class CSVUtils {
 			try {
 				fWriter = new FileWriter(new File(inputFile.replace(".csv", "")+"-"+i+".csv" ));
 
-                lnr.setLineNumber(start);
-
                 for(int j = start; j<end; j++){
-                    fWriter.write(lnr.readLine()+"\n");
+                    fWriter.write(bfr.readLine()+"\n");
                 }
 
 				fWriter.flush();
