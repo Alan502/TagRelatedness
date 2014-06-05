@@ -91,22 +91,7 @@ public class Main {
 //		ExternalSort.sort(new File("dist_matching-tas-most-common.csv"),new File("dist_matching-tas-most-common-sorted.csv"));
 //		ExternalSort.sort(new File("dist_matching-tas.csv"),new File("dist_matching-tas-sorted.csv"));
 //		ExternalSort.sort(new File("dist_matching-movielens.csv"),new File("dist_matching-movielens-sorted.csv"));
-		ExternalSort.sort(new File("wikAPIdia_ensemble-tas-most-common.csv"),new File("wikAPIdia_ensemble-tas-most-common-sorted.csv"));
-//		ExternalSort.sort(new File("wikAPIdia_ensemble-tas.csv"),new File("wikAPIdia_ensemble-tas-sorted.csv"));
-//		ExternalSort.sort(new File("wikAPIdia_ensemble-movielens.csv"),new File("wikAPIdia_ensemble-movielens-sorted.csv"));
-		}catch(Exception e){
-			System.out.println(e.toString());
-		}
-
-        try {
-            Files.copy(new File("wikAPIdia_ensemble-tas-most-common-sorted.csv").toPath(), new File("4wikAPIdia_ensemble-tas-most-common-sorted.csv").toPath());
-            Files.copy(new File("wikAPIdia_ensemble-tas-most-common-sorted.csv").toPath(), new File("5wikAPIdia_ensemble-tas-most-common-sorted.csv").toPath());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        CSVUtils.fileSplit("4wikAPIdia_ensemble-tas-most-common-sorted.csv", 4);
-        CSVUtils.fileSplit("5wikAPIdia_ensemble-tas-most-common-sorted.csv", 4);
+        CSVUtils.fileSplit("5wikAPIdia_ensemble-tas-most-common-sorted.csv", 5);
 
 
 //		CSVUtils.exponentialFileSplit("collab_MI-tas-most-common-sorted.csv");
