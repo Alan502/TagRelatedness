@@ -76,9 +76,9 @@ public class Main {
 //		}		
 		
 				
-		ExternalSort.defaultcomparator = new CSVComparator();
+//		ExternalSort.defaultcomparator = new CSVComparator();
 
-		try{
+//		try{
 //		ExternalSort.sort(new File("collab_matching-tas-most-common.csv"), new File("collab_matching-tas-most-common-sorted.csv"));
 //		ExternalSort.sort(new File("collab_MI-tas-most-common.csv"), new File("collab_MI-tas-most-common-sorted.csv"));
 //		ExternalSort.sort(new File("collab_matching-tas.csv"), new File("collab_matching-tas-sorted.csv"));
