@@ -1,16 +1,170 @@
 package edu.macalester.tagrelatedness;
 
 import com.google.code.externalsorting.ExternalSort;
+import org.apache.commons.cli.*;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.nio.file.Files;
+import java.io.*;
+import java.util.LinkedList;
 
 
 public class Main {	
 	public static void main(String[] args) {
-		
+        CommandLineParser parser = new PosixParser();
+        String availableAlgorithms = "dist-matching" +
+                " dist-mi" +
+                " collab-matching" +
+                " collab-mi" +
+                " wikibrain-ensemble";
+        String supportedDatabases = "bibsonomy " +
+                "movielens";
+
+        Options options = new Options();
+        options.addOption(OptionBuilder.withLongOpt("output-file")
+                                        .withDescription("File to output the analyzing on")
+                                        .hasArg()
+                                        .withArgName("FILE")
+                                        .create());
+        options.addOption(OptionBuilder.withLongOpt("input-file")
+                                        .withDescription("Input file to take the tags from")
+                                        .hasArg()
+                                        .withArgName("FILE")
+                                        .create());
+        options.addOption(OptionBuilder.withLongOpt("algorithm")
+                                        .withDescription("Algorithm to use to calculate the similarity. Algorithms available: "+availableAlgorithms)
+                                        .hasArg()
+                                        .withArgName("ALGORITHM")
+                                        .create());
+
+        HelpFormatter formatter = new HelpFormatter();
+
+
+        File inputFile = null;
+        String algorithmType = null;
+        TagSimilarityMeasure algorithm = null;
+        String outputFileDir = null;
+
+        try {
+            CommandLine line = parser.parse(options, args);
+
+            if(!line.hasOption("input-file")){
+                System.out.println("An input file needs to be specified");
+                formatter.printHelp( "tag-relatedness", options );
+                System.exit(1);
+            }else{
+                inputFile = new File(line.getOptionValue("input-file"));
+            }
+
+            algorithmType = line.getOptionValue("algorithm", "wikibrain-ensemble");
+            outputFileDir = line.getOptionValue("output-file", algorithm+"-"+inputFile.getName());
+
+        }catch (ParseException exp){
+            System.out.println("Exception: "+exp.toString());
+            System.exit(1);
+        }
+
+
+
+        BufferedReader inputReader = null;
+        String firstLine = "";
+        try {
+            inputReader = new BufferedReader(new FileReader(inputFile));
+            firstLine = inputReader.readLine();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        String databaseType = "";
+        if(firstLine.split("::").length == 4 ){
+            System.out.println("Detected database: movielens "+inputFile.getName());
+            databaseType = "movielens";
+        }else if(firstLine.split("\t").length == 5){
+            System.out.println("Detected database: bibsonomy "+inputFile.getName());
+            databaseType = "bibsonomy";
+        }else{
+            System.out.println("Database from inputFile "+inputFile.getName()+" does not seem to be one of available supported Databases. "+supportedDatabases);
+            System.exit(1);
+        }
+
+        Database db = null;
+
+        switch (algorithmType){
+            case "wikibrain-ensembe":
+                algorithm = new WikAPIdiaEnsemble(System.getProperty("user.home")+"/.wikibrain/");
+                break;
+            case "collab-matching":
+                db = new CollaborativeDatabase();
+                switch (databaseType){
+                    case "bibsonomy":
+                        db.initializeBibsonomyTags(inputFile.getAbsolutePath());
+                        break;
+                    case "movielens":
+                        db.initializeMovieLensTags(inputFile.getAbsolutePath());
+                        break;
+                }
+                algorithm = new CollaborativeMatching((CollaborativeDatabase) db);
+                break;
+            case "collab-mi":
+                db = new CollaborativeDatabase();
+                switch (databaseType){
+                    case "bibsonomy":
+                        db.initializeBibsonomyTags(inputFile.getAbsolutePath());
+                        break;
+                    case "movielens":
+                        db.initializeMovieLensTags(inputFile.getAbsolutePath());
+                        break;
+                }
+                algorithm = new CollaborativeMutualInformation((CollaborativeDatabase) db);
+                break;
+            case "dist-matching":
+                db = new ProjectionalDatabase();
+                switch (databaseType){
+                    case "bibsonomy":
+                        db.initializeBibsonomyTags(inputFile.getAbsolutePath());
+                        break;
+                    case "movielens":
+                        db.initializeMovieLensTags(inputFile.getAbsolutePath());
+                        break;
+                }
+                algorithm = new DistributionalMatching((ProjectionalDatabase) db);
+                break;
+            case "dist-mi":
+                db = new DistributionalDatabase();
+                switch (databaseType){
+                    case "bibsonomy":
+                        db.initializeBibsonomyTags(inputFile.getAbsolutePath());
+                        break;
+                    case "movielens":
+                        db.initializeMovieLensTags(inputFile.getAbsolutePath());
+                        break;
+                }
+                algorithm = new DistributionalMutualInformation((DistributionalDatabase) db);
+                break;
+            default:
+                System.out.println("The selected algorithm was not recognized. use one of: "+availableAlgorithms);
+                System.exit(1);
+
+        }
+        File temp = null;
+        try {
+            File.createTempFile("tmp"+outputFileDir,".tmp");
+            temp.deleteOnExit();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        CSVUtils.generateTagSimilarityCSV(new LinkedList<String>(db.getTagsSet()), algorithm, temp);
+
+        ExternalSort.defaultcomparator = new CSVComparator();
+        try {
+            File temporary = new File("tmp-"+outputFileDir);
+            ExternalSort.sort(temporary,  new File(outputFileDir));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
 //		CollaborativeDatabase db = new CollaborativeDatabase();
 //		db.initializeMovieLensTags("ml-10M100K/tags.dat");
 //		db.initializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
@@ -76,7 +230,6 @@ public class Main {
 //		}		
 		
 				
-//		ExternalSort.defaultcomparator = new CSVComparator();
 
 //		try{
 //		ExternalSort.sort(new File("collab_matching-tas-most-common.csv"), new File("collab_matching-tas-most-common-sorted.csv"));
@@ -91,7 +244,7 @@ public class Main {
 //		ExternalSort.sort(new File("dist_matching-tas-most-common.csv"),new File("dist_matching-tas-most-common-sorted.csv"));
 //		ExternalSort.sort(new File("dist_matching-tas.csv"),new File("dist_matching-tas-sorted.csv"));
 //		ExternalSort.sort(new File("dist_matching-movielens.csv"),new File("dist_matching-movielens-sorted.csv"));
-        CSVUtils.fileSplit("5wikAPIdia_ensemble-tas-most-common-sorted.csv", 5);
+//        CSVUtils.fileSplit("collab_matching-tas-most-common.csv", 5);
 
 
 //		CSVUtils.exponentialFileSplit("collab_MI-tas-most-common-sorted.csv");
@@ -139,7 +292,8 @@ public class Main {
 //			System.out.println("IO Exception: "+e1.getMessage());
 //			e1.printStackTrace();
 //		}
-//		
+//
+
 //		System.out.println("WikAPIdiaEnsemble for movielens:");
 //		tauBetweenCSVandWordnet("movielens_wikapidia_ensemble.csv");
 //		

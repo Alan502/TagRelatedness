@@ -16,7 +16,7 @@ import java.util.List;
 
 public class CSVUtils {
 	
-	public static void generateTagSimilarityCSV(LinkedList<String> tagsList, final TagSimilarityMeasure similarityMeasure, String outputFile, int threads) throws IOException{
+	public static void generateTagSimilarityCSV(LinkedList<String> tagsList, final TagSimilarityMeasure similarityMeasure, File outputFile, int threads){
 		final LinkedList<String> tags = tagsList;
 		FileWriter fWriter = null;
 		try {
@@ -50,14 +50,17 @@ public class CSVUtils {
 				);
 		
 		
+        try {
+            fWriter.flush();
+            fWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-		fWriter.flush();
-	    fWriter.close();
-		
-	}
+    }
 	
-	public static void generateTagSimilarityCSV(LinkedList<String> tagsList, final TagSimilarityMeasure similarityMeasure, String outputFile) throws IOException{
-		generateTagSimilarityCSV(tagsList, similarityMeasure, outputFile, Runtime.getRuntime().availableProcessors());
+	public static void generateTagSimilarityCSV(LinkedList<String> tagsList, final TagSimilarityMeasure similarityMeasure, File outputFile){
+		generateTagSimilarityCSV(tagsList, similarityMeasure, outputFile , Runtime.getRuntime().availableProcessors());
 	}
 	
 	public static void fileSplit(String inputFile, int divisions) {
