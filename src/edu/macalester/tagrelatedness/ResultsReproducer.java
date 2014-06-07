@@ -1,5 +1,6 @@
 package edu.macalester.tagrelatedness;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.LinkedList;
 
@@ -22,14 +23,10 @@ public class ResultsReproducer {
 		ProjectionalDatabase pdb = new ProjectionalDatabase();
 		pdb.initializeBibsonomyTags("bibsonomy/2007-10-31/tas-2000-most-common");
 		
-		try {
-			CSVUtils.generateTagSimilarityCSV(new LinkedList<>(db.getTagsSet()), new CollaborativeMatching(db), "collab_matching-tas-most-common.csv");
-			CSVUtils.generateTagSimilarityCSV(new LinkedList<>(db.getTagsSet()), new CollaborativeMutualInformation(db), "collab_MI-tas-most-common.csv");
-			CSVUtils.generateTagSimilarityCSV(new LinkedList<>(ddb.getTagsSet()), new DistributionalMutualInformation(ddb), "dist_MI-tas-most-common.csv");
-			CSVUtils.generateTagSimilarityCSV(new LinkedList<>(pdb.getTagsSet()), new DistributionalMatching(pdb), "dist_matching-tas-most-common.csv");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+        CSVUtils.generateTagSimilarityCSV(new LinkedList<>(db.getTagsSet()), new CollaborativeMatching(db), new File("collab_matching-tas-most-common.csv"));
+        CSVUtils.generateTagSimilarityCSV(new LinkedList<>(db.getTagsSet()), new CollaborativeMutualInformation(db), new File("collab_MI-tas-most-common.csv"));
+        CSVUtils.generateTagSimilarityCSV(new LinkedList<>(ddb.getTagsSet()), new DistributionalMutualInformation(ddb), new File("dist_MI-tas-most-common.csv"));
+        CSVUtils.generateTagSimilarityCSV(new LinkedList<>(pdb.getTagsSet()), new DistributionalMatching(pdb), new File("dist_matching-tas-most-common.csv"));
 		
 		KendallsCorrelation.tauBetweenCSVandWordnet("collab_matching-tas-most-common.csv", true, 2);
 		KendallsCorrelation.tauBetweenCSVandWordnet("collab_MI-tas-most-common.csv", true, 15 );

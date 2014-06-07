@@ -91,6 +91,7 @@ public class Main {
         Database db = null;
 
         switch (algorithmType){
+            default:
             case "wikibrain-ensembe":
                 algorithm = new WikAPIdiaEnsemble(System.getProperty("user.home")+"/.wikibrain/");
                 break;
@@ -142,14 +143,12 @@ public class Main {
                 }
                 algorithm = new DistributionalMutualInformation((DistributionalDatabase) db);
                 break;
-            default:
-                System.out.println("The selected algorithm was not recognized. use one of: "+availableAlgorithms);
-                System.exit(1);
-
         }
+
+        System.out.println(outputFileDir);
         File temp = null;
         try {
-            File.createTempFile("tmp"+outputFileDir,".tmp");
+            temp = File.createTempFile("tmp"+outputFileDir,".tmp");
             temp.deleteOnExit();
         } catch (IOException e) {
             e.printStackTrace();
