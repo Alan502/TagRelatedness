@@ -92,6 +92,7 @@ public class Main {
 
         switch (algorithmType){
             default:
+            System.out.println("No algorithm specified. Default: wikibrain-ensemble.");
             case "wikibrain-ensembe":
                 algorithm = new WikAPIdiaEnsemble(System.getProperty("user.home")+"/.wikibrain/");
                 break;
@@ -153,6 +154,8 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        System.out.println("Going to generate csv now.");
         CSVUtils.generateTagSimilarityCSV(new LinkedList<String>(db.getTagsSet()), algorithm, temp);
 
         ExternalSort.defaultcomparator = new CSVComparator();

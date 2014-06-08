@@ -2,12 +2,12 @@ package edu.macalester.tagrelatedness;
 
 import edu.cmu.lti.jawjaw.pobj.POS;
 import edu.cmu.lti.ws4j.WS4J;
+import org.apache.commons.cli.*;
+import org.h2.command.Command;
+
 
 import java.io.*;
 import java.math.RoundingMode;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,6 +15,81 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class CSVUtils {
+
+    public static void main(String[] args){
+
+        String availableActions = "bibsonomy-most-frequent " +
+                                  "filesplit";
+
+        CommandLineParser parser = new PosixParser();
+        Options options = new Options();
+
+        options.addOption(OptionBuilder.withLongOpt("input-file")
+                                        .withDescription("File to process")
+                                        .hasArg()
+                                        .withArgName("FILE")
+                                        .create());
+        options.addOption(OptionBuilder.withLongOpt("action")
+                .withDescription("Action to perform on the file. It should be one of " + availableActions)
+                .hasArg()
+                .withArgName("ACTION")
+                .hasOptionalArg()
+                .withArgName("FILESPLIT-DIVISIONS")
+                .create());
+//        options.addOption(Option)
+
+        HelpFormatter formatter = new HelpFormatter();
+
+        File input = null;
+        File output = null;
+        String action = "";
+
+        try {
+            CommandLine line = parser.parse(options, args);
+
+            if(!line.hasOption("input-file")){
+                System.out.println("Please specify an input file. ");
+                formatter.printHelp("tagrelatedness - CSVUtils", options);
+                System.exit(1);
+            }else{
+                input = new File(line.getOptionValue("input-file"));
+            }
+
+            if(line.hasOption("output-file")){
+                output = new File(line.getOptionValue("output-file"));
+            }else{
+                output = new File("output-"+input.getName());
+            }
+
+            if(!line.hasOption("action")){
+                System.out.println("Please specify an action file. ");
+                formatter.printHelp("tagrelatedness - CSVUtils", options);
+                System.exit(1);
+            }else{
+                String[] optionValues =  line.getOptionValues("action");
+                switch(optionValues[0]){
+                    case "bibsonomy-most-frequent":
+                        generateMostFrequentResources(input, output);
+                        break;
+                    case "fielsplit":
+                        int div;
+                        try{
+                            div = Integer.parseInt(optionValues[1]);
+                        }catch (ArrayIndexOutOfBoundsException | NumberFormatException ex){
+                            div = 5;
+                        }
+                        fileSplit(input, div);
+                        break;
+
+                }
+            }
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+
+    }
 	
 	public static void generateTagSimilarityCSV(LinkedList<String> tagsList, final TagSimilarityMeasure similarityMeasure, File outputFile, int threads){
 		final LinkedList<String> tags = tagsList;
@@ -63,8 +138,8 @@ public class CSVUtils {
 		generateTagSimilarityCSV(tagsList, similarityMeasure, outputFile , Runtime.getRuntime().availableProcessors());
 	}
 	
-	public static void fileSplit(String inputFile, int divisions) {
-        File file = new File(inputFile);
+	public static void fileSplit(File input, int divisions) {
+        File file = input;
         LineNumberReader lnr = null;
         FileReader fr = null;
         int totalLines = 0;
@@ -98,7 +173,7 @@ public class CSVUtils {
             System.out.println("Going to output the lines from "+start+" to "+end+" now.");
 			FileWriter fWriter = null;
 			try {
-				fWriter = new FileWriter(new File(inputFile.replace(".csv", "")+"-"+i+".csv" ));
+				fWriter = new FileWriter(new File(input.getName().replace(".csv", "")+"-"+i+".csv" ));
 
                 for(int j = start; j<end; j++){
                     fWriter.write(bfr.readLine()+"\n");
@@ -112,7 +187,7 @@ public class CSVUtils {
         }
 	}
 	
-	public static void generateMostFrequentResources(String bibsonomyDSdir, String outputDir){
+	public static void generateMostFrequentResources(File bibsonomy, File output){
 		FileInputStream fileStream;
 		BufferedInputStream bufferedStream;
 		BufferedReader readerStream;
@@ -120,7 +195,7 @@ public class CSVUtils {
 		List<BibsonomyRecord> overlappingTagEntries = new LinkedList<BibsonomyRecord>();
 		
 		try {
-			fileStream = new FileInputStream(bibsonomyDSdir);
+			fileStream = new FileInputStream(bibsonomy);
 			bufferedStream = new BufferedInputStream(fileStream);
 			readerStream = new BufferedReader(new InputStreamReader(bufferedStream));
 			
@@ -180,7 +255,7 @@ public class CSVUtils {
 		FileWriter writer = null;
 		
 		try {
-			writer = new FileWriter(outputDir);
+			writer = new FileWriter(output);
 			for(BibsonomyRecord rec : overlappingTagEntries){
 				if(mostCommonResources.contains(rec.contentID)){
 					writer.write(rec.line+"\n");
