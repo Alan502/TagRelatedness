@@ -26,7 +26,7 @@ public class WikAPIdiaEnsemble implements TagSimilarityMeasure {
 			Language simple = Language.getByLangCode("simple");
 
 			sr = conf.get(
-			        MonolingualSRMetric.class, "inlink",
+			        MonolingualSRMetric.class, "ensemble",
 			        "language", simple.getLangCode());
 			
 		} catch (ConfigurationException e) {
