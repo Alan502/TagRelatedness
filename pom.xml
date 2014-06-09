@@ -27,29 +27,29 @@
                     </goals>
                 </execution>
             </executions>
-            <configuration>
-                <executable>java</executable>
-                <arguments>
-                     <argument>-classpath</argument>
-                     <argument>${project.basedir}/lib</argument>
-                     <argument>edu.macalester.moviedatabase.Main</argument>
-                </arguments>
-            </configuration>
-        </plugin> 
-        <plugin>
-		<groupId>org.apache.maven.plugins</groupId>
-  		<artifactId>maven-jar-plugin</artifactId>
-  		<version>2.4</version>
-  		<configuration>
-		<archive>
-		<manifest>
-			<addClasspath>true</addClasspath>
-			<mainClass>edu.macalester.moviedatabase.Main</mainClass>
-			<classpathPrefix>dependency-jars</classpathPrefix>
-		</manifest>
-		</archive>
-  		</configuration>
- 	</plugin>
+            <!--<configuration>-->
+                <!--<executable>java</executable>-->
+                <!--<arguments>-->
+                     <!--<argument>-classpath</argument>-->
+                     <!--<argument>${project.basedir}/lib</argument>-->
+                     <!--<argument>edu.macalester.moviedatabase.Main</argument>-->
+                <!--</arguments>-->
+            <!--</configuration>-->
+      </plugin>
+      <!--<plugin>-->
+		<!--<groupId>org.apache.maven.plugins</groupId>-->
+  		<!--<artifactId>maven-jar-plugin</artifactId>-->
+  		<!--<version>2.4</version>-->
+  		<!--<configuration>-->
+		<!--<archive>-->
+		<!--<manifest>-->
+			<!--<addClasspath>true</addClasspath>-->
+			<!--<mainClass>edu.macalester.moviedatabase.Main</mainClass>-->
+			<!--<classpathPrefix>dependency-jars</classpathPrefix>-->
+		<!--</manifest>-->
+		<!--</archive>-->
+  		<!--</configuration>-->
+ 	  <!--</plugin>-->
 		
     </plugins>
   </build>

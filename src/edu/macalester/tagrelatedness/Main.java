@@ -37,7 +37,6 @@ public class Main {
 
         HelpFormatter formatter = new HelpFormatter();
 
-
         File inputFile = null;
         String algorithmType = null;
         TagSimilarityMeasure algorithm = null;
@@ -93,7 +92,7 @@ public class Main {
         switch (algorithmType){
             default:
             System.out.println("No algorithm specified. Default: wikibrain-ensemble.");
-            case "wikibrain-ensembe":
+            case "wikibrain-ensemble":
                 algorithm = new WikAPIdiaEnsemble(System.getProperty("user.home")+"/.wikibrain/");
                 break;
             case "collab-matching":
@@ -150,7 +149,7 @@ public class Main {
         File temp = null;
         try {
             temp = File.createTempFile("tmp"+outputFileDir,".tmp");
-            temp.deleteOnExit();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -160,11 +159,12 @@ public class Main {
 
         ExternalSort.defaultcomparator = new CSVComparator();
         try {
-            File temporary = new File("tmp-"+outputFileDir);
-            ExternalSort.sort(temporary,  new File(outputFileDir));
+            ExternalSort.sort(temp,  new File(outputFileDir));
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        temp.deleteOnExit();
 
 
 //		CollaborativeDatabase db = new CollaborativeDatabase();
