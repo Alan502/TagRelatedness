@@ -57,7 +57,6 @@ public class CollaborativeMatching implements TagSimilarityMeasure{
 			
 		}
 		
-		
 		return similarity*-1; //rounding is necessary to match the results given at: www2009.org/proceedings/pdf/p641.pdf
 		
 	}

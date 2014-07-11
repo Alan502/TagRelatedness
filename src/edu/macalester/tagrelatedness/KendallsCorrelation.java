@@ -121,14 +121,15 @@ public class KendallsCorrelation {
     static public <E extends Comparable<E>, F extends Comparable<F>> double correlation (
             final List<E> xs,
             final List<F> ys) {
-        
+
         final int n = xs.size();
         final long numPairs = (long) n * (n - 1) / 2;
-        
+
         ComparablePair[] pairs = new ComparablePair[n];
         for (int i = 0; i < n; i++) {
             pairs[i] = new ComparablePair(xs.get(i), ys.get(i));
         }
+
         Arrays.sort(pairs);
 
         long tiedXPairs = 0;
@@ -171,7 +172,7 @@ public class KendallsCorrelation {
                     if (i < iEnd) {
                         if (j < jEnd) {
                             if (pairs[i].y.compareTo(pairs[j].y) <= 0) {
-                            	pairsDestination[copyLocation] = pairs[i];
+                                pairsDestination[copyLocation] = pairs[i];
                                 i++;
                             } else {
                                 pairsDestination[copyLocation] = pairs[j];
@@ -192,7 +193,7 @@ public class KendallsCorrelation {
             final ComparablePair[] pairsTemp = pairs;
             pairs = pairsDestination;
             pairsDestination = pairsTemp;
-            
+
         }
 
         long tiedYPairs = 0;
@@ -217,62 +218,6 @@ public class KendallsCorrelation {
         return concordantMinusDiscordant /
                 Math.sqrt((numPairs - tiedXPairs) * (numPairs - tiedYPairs));
 
-    }
-    
-    public static void tauBetweenCSVandWordnet(String file, final boolean includeZeroes, final int roundingFigures, int threads){
-		ILexicalDatabase db = new NictWordNet();
-		final RelatednessCalculator rc = new JiangConrath(db);
-		WS4JConfiguration.getInstance().setMFS(true);		
-		
-		final ArrayList<Double> measurementSimilarities  = new ArrayList<Double>();
-		final ArrayList<Double> wordnetSimilarities = new ArrayList<Double>();
-		
-		java.util.List<String> lines = null;
-		try {
-			lines = Files.readAllLines(Paths.get(file), Charset.defaultCharset());
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}		
-		ParallelForEach.loop(lines.subList(1, lines.size()), threads, new Procedure<String>() {
-			public void call(String line){
-				String[] column = line.split(",");
-				 String word1 = column[0].replace("\"", "").replace(" ", "");
-				 String word2 = column[1].replace("\"", "").replace(" ", "");
-				 double jc = rc.calcRelatednessOfWords(word1, word2);
-				 double cc = Double.parseDouble(column[2]);
-				 
-				 final int roundingConstant = (int) Math.pow(10, roundingFigures);
-				 
-				 if(includeZeroes && cc == 0)
-					 return; 
-				 
-				 if(!(jc < 0.00000000000000001 && jc > -.00000000000000001)){
-					 synchronized (measurementSimilarities) {
-						 try{
-							 if(roundingFigures > 0){
-								 measurementSimilarities.add((double)Math.round(cc * roundingConstant) / roundingConstant);
-								 wordnetSimilarities.add( (double) Math.round(jc * roundingConstant) / roundingConstant);
-							 }else{
-								 measurementSimilarities.add(cc);
-								 wordnetSimilarities.add(jc);
-							 }
-						 }catch(NumberFormatException e){
-							 System.out.println("NumberFormatException Ex: "+column[2]);
-						 }catch(ArrayIndexOutOfBoundsException e){
-							 System.out.println("ArrayIndexOutOfBounds Ex: "+Arrays.toString(column));
-						 }
-					 }
-				 }
-			}
-		});
-	    System.out.println("Tau: "+KendallsCorrelation.correlation(measurementSimilarities, wordnetSimilarities));
-	}
-    public static void tauBetweenCSVandWordnet(String file){
-    	tauBetweenCSVandWordnet(file, true, 0, Runtime.getRuntime().availableProcessors());
-    }
-    
-    public static void tauBetweenCSVandWordnet(String file, final boolean includeZeroes, final int roundingFigures){
-    	tauBetweenCSVandWordnet(file, includeZeroes, roundingFigures, Runtime.getRuntime().availableProcessors() );
     }
 
 }

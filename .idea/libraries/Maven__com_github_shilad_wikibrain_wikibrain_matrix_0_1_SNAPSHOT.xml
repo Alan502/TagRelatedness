@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.github.shilad.wikibrain:wikibrain-matrix:0.1-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/shilad/wikibrain/wikibrain-matrix/0.1-SNAPSHOT/wikibrain-matrix-0.1-20140423.044936-1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/shilad/wikibrain/wikibrain-matrix/0.1-SNAPSHOT/wikibrain-matrix-0.1-20140423.044936-1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/shilad/wikibrain/wikibrain-matrix/0.1-SNAPSHOT/wikibrain-matrix-0.1-20140423.044936-1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

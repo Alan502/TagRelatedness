@@ -28,22 +28,24 @@ public class CSVUtils {
                 .withDescription("File to process")
                 .hasArg()
                 .withArgName("FILE")
+                .withType(File.class)
                 .create());
         options.addOption(OptionBuilder.withLongOpt("action")
                 .withDescription("Action to perform on the file. It should be one of " + availableActions)
                 .hasOptionalArgs(2)
+                .withType(String.class)
                 .create());
         options.addOption(OptionBuilder.withLongOpt("output-file")
                 .withDescription("Output of file ")
                 .hasArg()
                 .withArgName("FILE")
+                .withType(String.class)
                 .create());
 
         HelpFormatter formatter = new HelpFormatter();
 
         File input = null;
-        File output = null;
-        String action = "";
+        File output;
 
         try {
             CommandLine line = parser.parse(options, args);
