@@ -158,12 +158,12 @@ public class Main {
         System.out.println("Going to generate csv now.");
         CSVUtils.generateTagSimilarityCSV(new LinkedList<String>(db.getTagsSet()), algorithm, temp);
 
-        ExternalSort.defaultcomparator = new CSVComparator();
         try {
-            ExternalSort.sort(temp,  new File(outputFileDir));
-        } catch (IOException e) {
+			ExternalSort.mergeSortedFiles(ExternalSort.sortInBatch(temp, new CSVComparator()),
+					new File(outputFileDir));
+		} catch (IOException e) {
             e.printStackTrace();
-        }
+		}
 
         temp.deleteOnExit();
 	}
