@@ -25,12 +25,12 @@ public class CalculateCorrelation {
     public static void main(String[] args){
         CommandLineParser parser = new PosixParser();
         Options options = new Options();
-        options.addOption(OptionBuilder.withLongOpt("--input-file")
+        options.addOption(OptionBuilder.withLongOpt("input-file")
                                         .withDescription("Input file to calculate the correlation of")
                                         .hasArg()
                                         .withArgName("FILE")
                                         .create());
-        options.addOption(OptionBuilder.withLongOpt("--measure")
+        options.addOption(OptionBuilder.withLongOpt("measure")
                                         .withDescription("wordnet")
                                         .hasArg()
                                         .withArgName("NAME")
