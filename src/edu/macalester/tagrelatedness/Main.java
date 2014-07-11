@@ -1,6 +1,5 @@
 package edu.macalester.tagrelatedness;
 
-import com.google.code.externalsorting.ExternalSort;
 import org.apache.commons.cli.*;
 
 import java.io.*;
