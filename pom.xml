@@ -3,7 +3,6 @@
   <groupId>com.macalester.edu.tagrelatedness</groupId>
   <artifactId>TagRelatedness</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <packaging>pom</packaging>
   <name>TagRelatedness</name>
   <build>
     <sourceDirectory>src</sourceDirectory>
