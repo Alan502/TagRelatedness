@@ -25,70 +25,84 @@ public class CSVUtils {
         Options options = new Options();
 
         options.addOption(OptionBuilder.withLongOpt("input-file")
-                .withDescription("File to process")
+                .withDescription("Input file to process")
                 .hasArg()
                 .withArgName("FILE")
                 .withType(File.class)
-                .create());
-        options.addOption(OptionBuilder.withLongOpt("action")
-                .withDescription("Action to perform on the file. It should be one of " + availableActions)
-                .hasOptionalArgs(2)
-                .withType(String.class)
-                .create());
+                .create("i"));
         options.addOption(OptionBuilder.withLongOpt("output-file")
                 .withDescription("Output of file ")
                 .hasArg()
                 .withArgName("FILE")
                 .withType(String.class)
-                .create());
+                .create("o"));
+        options.addOption(OptionBuilder.withLongOpt("files")
+        		.withDescription("Number of files for the file split")
+        		.hasArg()
+        		.withArgName("NUMBER")
+        		.withType(Integer.class)
+        		.create("f"));
 
         HelpFormatter formatter = new HelpFormatter();
 
         File input = null;
-        File output;
+        File output = null;
+        String action = "";
+        
+        if(args.length < 1){
+        	System.out.println("ERROR: must specify an action.");
+        	printHelp(formatter, options);
+        }else{
+        	action = args[0];
+        }
 
         try {
             CommandLine line = parser.parse(options, args);
-
-            if(!line.hasOption("input-file")){
-                System.out.println("Please specify an input file. ");
-                formatter.printHelp("tagrelatedness - CSVUtils", options);
-                System.exit(1);
-            }else{
+            if(line.hasOption("i")){
+                input = new File(line.getOptionValue("i"));
+            }else if(line.hasOption("input-file")){
                 input = new File(line.getOptionValue("input-file"));
+            }else{
+                System.out.println("ERROR: Please specify an input file. ");
+                printHelp(formatter, options);
             }
-
-            if(line.hasOption("output-file")){
+            
+            if(line.hasOption("o")){
+                output = new File(line.getOptionValue("o"));
+            }else if(line.hasOption("output-file")){
                 output = new File(line.getOptionValue("output-file"));
             }else{
-                output = new File("output-"+input.getName());
+            	System.out.println("ERROR: Please specify an output file. ");
+                printHelp(formatter, options);
             }
 
-            if(!line.hasOption("action")){
-                System.out.println("Please specify an action file. ");
-                formatter.printHelp("tagrelatedness - CSVUtils", options);
-                System.exit(1);
-            }else{
-                String[] optionValues =  line.getOptionValues("action");
-                switch(optionValues[0]){
-                    case "bibsonomy-most-frequent":
-                        generateMostFrequentResources(input, output);
-                        break;
-                    case "filesplit":
-                        int div;
-                        try{
-                            div = Integer.parseInt(optionValues[1]);
-                        }catch (ArrayIndexOutOfBoundsException | NumberFormatException ex){
-                            System.out.println("defaulting, optionValues "+optionValues.length);
-                            div = 5;
-                        }
-                        fileSplit(input, div);
-                        break;
-                    default:
-                        System.out.println("Unrecognized action. ");
-                        formatter.printHelp("tagrelatedness - CSVUtils", options);
-                        System.exit(1);
-                }
+            switch(action){
+                case "bibsonomy-most-frequent":
+                    generateMostFrequentResources(input, output);
+                    break;
+                case "filesplit":
+                    int div;
+                    String filesOption = "";
+                    
+                    if(options.hasOption("f")){
+                    	filesOption = line.getOptionValue("f");
+                    }else if(options.hasOption("files")){
+                    	filesOption = line.getOptionValue("files");
+                    }
+                    
+                    try{
+                        div = Integer.parseInt(filesOption);
+                    }catch (ArrayIndexOutOfBoundsException | NumberFormatException ex){
+                        System.out.println("INFO: No files number specified. Default: 5");
+                        div = 5;
+                    }
+                    
+                    fileSplit(input, div);
+                    break;
+                default:
+                    System.out.println("ERROR: Unrecognized action.");
+                    printHelp(formatter, options);
+                    break;
             }
 
         } catch (ParseException e) {
@@ -96,6 +110,16 @@ public class CSVUtils {
         }
 
 
+    }
+    
+    public static void printHelp(HelpFormatter formatter, Options options){
+		System.out.println("CSVUtils Help: ");
+		System.out.println("java edu.macalester.tagrelatedness.CSVUtils <ACTION> <OPTIONS>");
+		System.out.println("ALGORITHM		bibsonomy-most-frequent or filesplit");
+		System.out.println("OPTIONS			see below");
+		formatter.printHelp( "tag-relatedness", options );
+    	formatter.printHelp("CSVUtils", options);
+        System.exit(1);
     }
 
     public static void generateTagSimilarityCSV(LinkedList<String> tagsList, final TagSimilarityMeasure similarityMeasure, File outputFile, int threads){

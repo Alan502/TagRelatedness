@@ -19,49 +19,60 @@ public class Main {
 
         Options options = new Options();
         options.addOption(OptionBuilder.withLongOpt("output-file")
-                                        .withDescription("File to output the analyzing on")
+                                        .withDescription("Output CSV with tag similarities.")
                                         .hasArg()
                                         .withArgName("FILE")
                                         .withType(File.class)
-                                        .create());
+                                        .create("o"));
         options.addOption(OptionBuilder.withLongOpt("input-file")
-                                        .withDescription("Input file to take the tags from")
+                                        .withDescription("Input database with tags.")
                                         .hasArg()
                                         .withType(File.class)
                                         .withArgName("FILE")
-                                        .create());
-        options.addOption(OptionBuilder.withLongOpt("algorithm")
-                                        .withDescription("Algorithm to use to calculate the similarity. Algorithms available: "+availableAlgorithms)
-                                        .hasArg()
-                                        .withType(String.class)
-                                        .withArgName("ALGORITHM")
-                                        .create());
+                                        .create("i"));
 
         HelpFormatter formatter = new HelpFormatter();
-
+        
         File inputFile = null;
-        String algorithmType = null;
         TagSimilarityMeasure algorithm = null;
         String outputFileDir = null;
-
+        String algorithmType = "";
+        
+        if(args.length < 1){
+        	printHelp(formatter, options);
+        }else{
+        	algorithmType = args[0];
+        }
+        
+        // Detect input and output file
+        	
         try {
             CommandLine line = parser.parse(options, args);
 
-            if(!line.hasOption("input-file")){
-                System.out.println("An input file needs to be specified");
-                formatter.printHelp( "tag-relatedness", options );
-                System.exit(1);
-            }else{
+            if(line.hasOption("i")){
+                inputFile = new File(line.getOptionValue("i"));
+            }else if(line.hasOption("input-file")){
                 inputFile = new File(line.getOptionValue("input-file"));
+            }else{
+                System.out.println("ERROR: An input file needs to be specified.");
+                printHelp(formatter, options);
             }
-
-            algorithmType = line.getOptionValue("algorithm", "wikibrain-ensemble");
-            outputFileDir = line.getOptionValue("output-file", algorithm+"-"+inputFile.getName());
+            
+            if(line.hasOption("o")){
+            	outputFileDir = line.getOptionValue("o");
+            }else if(line.hasOption("output-file")){
+            	outputFileDir = line.getOptionValue("output-file");
+            }else{
+            	System.out.println("ERROR: An output file needs to be specified.");
+            	printHelp(formatter, options);
+            }
 
         }catch (ParseException exp){
             System.out.println("Exception: "+exp.toString());
             System.exit(1);
         }
+        
+        // Detect the database
 
         BufferedReader inputReader = null;
         String firstLine = "";
@@ -77,21 +88,24 @@ public class Main {
 
         String databaseType = "";
         if(firstLine.split("::").length == 4 ){
-            System.out.println("Detected database: movielens "+inputFile.getName());
+            System.out.println("INFO: Detected database: movielens "+inputFile.getName());
             databaseType = "movielens";
         }else if(firstLine.split("\t").length == 5){
-            System.out.println("Detected database: bibsonomy "+inputFile.getName());
+            System.out.println("INFO: Detected database: bibsonomy "+inputFile.getName());
             databaseType = "bibsonomy";
         }else{
-            System.out.println("Database from inputFile "+inputFile.getName()+" does not seem to be one of available supported Databases. "+supportedDatabases);
-            System.exit(1);
+            System.out.println("ERROR: Database from inputFile "+inputFile.getName()+" does not seem to be one of available supported Databases. "+supportedDatabases);
+            printHelp(formatter, options);
         }
-
+        
         Database db = null;
-
+        
+        // Detect the algorithm
         switch (algorithmType){
             default:
-            System.out.println("No algorithm specified. Default: wikibrain-ensemble.");
+            	System.out.println("ERROR: No algorithm specified.");
+            	printHelp(formatter, options);
+            	break;
             case "wikibrain-ensemble":
                 algorithm = new WikAPIdiaEnsemble(System.getProperty("user.home")+"/.wikibrain/");
                 break;
@@ -154,7 +168,7 @@ public class Main {
             e.printStackTrace();
         }
 
-        System.out.println("Going to generate csv now.");
+        System.out.println("INFO: Generating CSV.");
         CSVUtils.generateTagSimilarityCSV(new LinkedList<String>(db.getTagsSet()), algorithm, temp);
 
         try {
@@ -165,6 +179,15 @@ public class Main {
 		}
 
         temp.deleteOnExit();
+	}
+	
+	public static void printHelp(HelpFormatter formatter, Options options){
+		System.out.println("Tagrelatedness Help: ");
+		System.out.println("java edu.macalester.tagrelatedness.Main <ALGORITHM> <OPTIONS>");
+		System.out.println("ALGORITHM		one of collab-matching, collab-mi, dist-matching or dist-mi");
+		System.out.println("OPTIONS			see below");
+		formatter.printHelp( "tag-relatedness", options );
+		System.exit(1);
 	}
 	  
 }

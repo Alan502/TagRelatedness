@@ -30,28 +30,22 @@ public class CalculateCorrelation {
                                         .hasArg()
                                         .withArgName("FILE")
                                         .withType(File.class)
-                                        .create());
-        options.addOption(OptionBuilder.withLongOpt("measure")
-                                        .withDescription("Measure to be used for correlation")
-                                        .hasArg()
-                                        .withType(String.class)
-                                        .withArgName("NAME")
-                                        .create());
+                                        .create("i"));
 
         HelpFormatter formatter = new HelpFormatter();
 
         try {
             File input = null;
             CommandLine line = parser.parse(options, args);
-            if(!line.hasOption("input-file")){
-                System.out.println("An input file needs to be specified.");
+            if(line.hasOption("i")){
+            	input = new File(line.getOptionValue("i"));
+            }else if(line.hasOption("input-file")){
+                input = new File(line.getOptionValue("input-file"));
+            }else{
+                System.out.println("ERROR: An input file needs to be specified.");
                 formatter.printHelp("Correlation calculator", options);
                 System.exit(1);
-            }else{
-                input = new File(line.getOptionValue("input-file"));
             }
-
-            // If other correlation  measures are needed, identify them here with line.getOption("measure")
             assert null != input;
             tauBetweenCSVandWordnet(input);
         } catch (ParseException e) {
