@@ -1,6 +1,7 @@
 package edu.macalester.tagrelatedness;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -24,6 +25,18 @@ import edu.cmu.lti.ws4j.impl.JiangConrath;
 import edu.cmu.lti.ws4j.util.WS4JConfiguration;
 
 public class KendallsCorrelation {
+	
+	public static void main(String args[]){
+		long tiedx = new BigInteger("1853724906736").longValue();
+		long tiedy = new BigInteger("5328254589").longValue();
+		long numpairs = new BigInteger("4094164093575").longValue();
+		BigSquareRoot sqrt = new BigSquareRoot();
+		BigInteger first = new BigInteger(""+(numpairs-tiedx));
+		BigInteger second = new BigInteger(""+(numpairs-tiedy));
+		BigDecimal result = sqrt.get(first.multiply(second));
+		System.out.println( result.doubleValue() );
+		
+	}
 
     /**
      * This code is taken from a patch submitted for the Apache Commons 3.3
@@ -213,11 +226,189 @@ public class KendallsCorrelation {
 
         long concordantMinusDiscordant = (long) numPairs - tiedXPairs - tiedYPairs
                 + tiedXYPairs - 2 * swaps;
+        
+//      The formula for tau is annotated below. Here, it is done with several objects to handle big numbers
+//      concordantMinusDiscordant / Math.sqrt((numPairs - tiedXPairs) * (numPairs - tiedYPairs));
+        
         System.out.println("Swaps: "+swaps+" Numpairs: "+numPairs+" Concordant - Discordant: "+concordantMinusDiscordant+" Tied X pairs: "+tiedXPairs+" Tied Y pairs: "+tiedYPairs+" Tied XY Pairs: "+tiedXYPairs);
-
-        return concordantMinusDiscordant /
-                Math.sqrt((numPairs - tiedXPairs) * (numPairs - tiedYPairs));
-
+        
+        BigSquareRoot bigSqrt = new BigSquareRoot();
+        
+        BigInteger numPairsMinusTiedX = new BigInteger("" + (numPairs - tiedXPairs));
+        BigInteger numPairsMinusTiedY = new BigInteger("" + (numPairs - tiedYPairs));
+        
+        BigReal numerator = new BigReal(concordantMinusDiscordant);
+        BigDecimal denominator = bigSqrt.get(numPairsMinusTiedX.multiply(numPairsMinusTiedY));
+        
+        BigReal result = numerator.divide(new BigReal(denominator));
+        
+        return result.doubleValue();
     }
 
 }
+
+
+/**
+ * This is a utility class that is used to find the square root of BigInteger objects.
+ * This was obtained from:
+ * 
+ * http://www.merriampark.com/bigsqrt.htm
+ * 
+ * The "license" for this code, as written on the web site, is:
+ * 
+ * "The following source code (BigSquareRoot.java) is free for you to use in whatever way you 
+ * wish, with no restrictions and no guarantees."
+ * 
+ * @author Michael Gilleland
+ */
+class BigSquareRoot {
+
+	  private static BigDecimal ZERO = new BigDecimal ("0");
+	  private static BigDecimal ONE = new BigDecimal ("1");
+	  private static BigDecimal TWO = new BigDecimal ("2");
+	  public static final int DEFAULT_MAX_ITERATIONS = 50;
+	  public static final int DEFAULT_SCALE = 10;
+
+	  private BigDecimal error;
+	  private int iterations;
+	  private boolean traceFlag;
+	  private int scale = DEFAULT_SCALE;
+	  private int maxIterations = DEFAULT_MAX_ITERATIONS;
+
+	  //---------------------------------------
+	  // The error is the original number minus
+	  // (sqrt * sqrt). If the original number
+	  // was a perfect square, the error is 0.
+	  //---------------------------------------
+
+	  public BigDecimal getError () {
+	    return error;
+	  }
+
+	  //-------------------------------------------------------------
+	  // Number of iterations performed when square root was computed
+	  //-------------------------------------------------------------
+
+	  public int getIterations () {
+	    return iterations;
+	  }
+
+	  //-----------
+	  // Trace flag
+	  //-----------
+
+	  public boolean getTraceFlag () {
+	    return traceFlag;
+	  }
+
+	  public void setTraceFlag (boolean flag) {
+	    traceFlag = flag;
+	  }
+
+	  //------
+	  // Scale
+	  //------
+
+	  public int getScale () {
+	    return scale;
+	  }
+
+	  public void setScale (int scale) {
+	    this.scale = scale;
+	  }
+
+	  //-------------------
+	  // Maximum iterations
+	  //-------------------
+
+	  public int getMaxIterations () {
+	    return maxIterations;
+	  }
+
+	  public void setMaxIterations (int maxIterations) {
+	    this.maxIterations = maxIterations;
+	  }
+
+	  //--------------------------
+	  // Get initial approximation
+	  //--------------------------
+
+	  private static BigDecimal getInitialApproximation (BigDecimal n) {
+	    BigInteger integerPart = n.toBigInteger ();
+	    int length = integerPart.toString ().length ();
+	    if ((length % 2) == 0) {
+	      length--;
+	    }
+	    length /= 2;
+	    BigDecimal guess = ONE.movePointRight (length);
+	    return guess;
+	  }
+
+	  //----------------
+	  // Get square root
+	  //----------------
+
+	  public BigDecimal get (BigInteger n) {
+	    return get (new BigDecimal (n));
+	  }
+
+	  public BigDecimal get (BigDecimal n) {
+
+	    // Make sure n is a positive number
+
+	    if (n.compareTo (ZERO) <= 0) {
+	      throw new IllegalArgumentException ();
+	    }
+
+	    BigDecimal initialGuess = getInitialApproximation (n);
+	    trace ("Initial guess " + initialGuess.toString ());
+	    BigDecimal lastGuess = ZERO;
+	    BigDecimal guess = new BigDecimal (initialGuess.toString ());
+
+	    // Iterate
+
+	    iterations = 0;
+	    boolean more = true;
+	    while (more) {
+	      lastGuess = guess;
+	      guess = n.divide(guess, scale, BigDecimal.ROUND_HALF_UP);
+	      guess = guess.add(lastGuess);
+	      guess = guess.divide (TWO, scale, BigDecimal.ROUND_HALF_UP);
+	      trace ("Next guess " + guess.toString ());
+	      error = n.subtract (guess.multiply (guess));
+	      if (++iterations >= maxIterations) {
+	        more = false;
+	      }
+	      else if (lastGuess.equals (guess)) {
+	        more = error.abs ().compareTo (ONE) >= 0;
+	      }
+	    }
+	    return guess;
+
+	  }
+
+	  //------
+	  // Trace
+	  //------
+
+	  private void trace (String s) {
+	    if (traceFlag) {
+	      System.out.println (s);
+	    }
+	  }
+
+	  //----------------------
+	  // Get random BigInteger
+	  //----------------------
+
+	  public static BigInteger getRandomBigInteger (int nDigits) {
+	    StringBuffer sb = new StringBuffer ();
+	    java.util.Random r = new java.util.Random ();
+	    for (int i = 0; i < nDigits; i++) {
+	      sb.append (r.nextInt (10));
+	    }
+	    return new BigInteger (sb.toString ());
+	  }
+
+	}
+

@@ -96,7 +96,6 @@ public class CSVUtils {
                         System.out.println("INFO: No files number specified. Default: 5");
                         div = 5;
                     }
-                    
                     fileSplit(input, div);
                     break;
                 default:
