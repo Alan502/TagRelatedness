@@ -39,25 +39,24 @@ public class CollaborativeMatching implements TagSimilarityMeasure{
 			
 			HashMap<String, HashSet<String>> resourcesMap = userMap.get(user).get(0);
 			
-			double totalTags = (double) tagsMap.size();
+			double userSimilarity = 0.0;
 			
-			similarity += Math.log(totalTags/ (totalTags+1));				
-			
-			HashSet<String> resources1 = (HashSet<String>) tagsMap.get(tag1).clone();
-			HashSet<String> resources2 = (HashSet<String>) tagsMap.get(tag2).clone();
-			
-			resources1.retainAll(resources2);
-			
-			
-			for(String resource : resources1 ){
-				double associated = (double) resourcesMap.get(resource).size();
-				similarity += Math.log(associated / (totalTags+1) );					
+			for(String resource : resourcesMap.keySet()){
+				HashSet<String> tags = resourcesMap.get(resource);
+				
+				if(tags.contains(tag1) && tags.contains(tag2)){
+					userSimilarity += Math.log(tags.size()/( tags.size() + 1 ));
+				}else{
+					continue;
+				}
+								
 			}
 			
+			similarity += -userSimilarity;
 			
 		}
 		
-		return similarity*-1; //rounding is necessary to match the results given at: www2009.org/proceedings/pdf/p641.pdf
+		return similarity; //rounding is necessary to match the results given at: www2009.org/proceedings/pdf/p641.pdf
 		
 	}
 	
