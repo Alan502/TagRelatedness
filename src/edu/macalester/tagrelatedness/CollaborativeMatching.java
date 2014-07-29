@@ -33,9 +33,10 @@ public class CollaborativeMatching implements TagSimilarityMeasure{
 		for(String user : userMap.keySet()){
 		
 			HashMap<String, HashSet<String>> tagsMap = userMap.get(user).get(1);
+			int totalTags = tagsMap.keySet().size();
 			
 			if(null == tagsMap.get(tag1) || null == tagsMap.get(tag2))
-				continue;			
+				continue;
 			
 			HashMap<String, HashSet<String>> resourcesMap = userMap.get(user).get(0);
 			
@@ -47,7 +48,7 @@ public class CollaborativeMatching implements TagSimilarityMeasure{
 				if(tags.contains(tag1) && tags.contains(tag2)){
 					userSimilarity += Math.log(
 							( (double) tags.size() ) /
-							( ( (double) tags.size() ) + 1.0  )
+							( ( (double) totalTags ) + 1.0 )
 							);
 				}else{
 					continue;
