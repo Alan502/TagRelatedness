@@ -50,10 +50,7 @@ public class CollaborativeMatching implements TagSimilarityMeasure{
 							( (double) tags.size() ) /
 							( ( (double) totalTags ) + 1.0 )
 							);
-				}else{
-					continue;
-				}
-								
+				}				
 			}
 			
 			similarity += -userSimilarity;

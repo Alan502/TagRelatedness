@@ -229,9 +229,7 @@ public class KendallsCorrelation {
         
 //      The formula for tau is annotated below. Here, it is done with several objects to handle big numbers
 //      concordantMinusDiscordant / Math.sqrt((numPairs - tiedXPairs) * (numPairs - tiedYPairs));
-        
-        System.out.println("Swaps: "+swaps+" Numpairs: "+numPairs+" Concordant - Discordant: "+concordantMinusDiscordant+" Tied X pairs: "+tiedXPairs+" Tied Y pairs: "+tiedYPairs+" Tied XY Pairs: "+tiedXYPairs);
-        
+                
         BigSquareRoot bigSqrt = new BigSquareRoot();
         
         BigInteger numPairsMinusTiedX = new BigInteger("" + (numPairs - tiedXPairs));
