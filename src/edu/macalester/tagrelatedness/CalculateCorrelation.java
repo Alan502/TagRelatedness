@@ -1,20 +1,21 @@
 package edu.macalester.tagrelatedness;
 
-import edu.cmu.lti.lexical_db.ILexicalDatabase;
-import edu.cmu.lti.lexical_db.NictWordNet;
-import edu.cmu.lti.ws4j.RelatednessCalculator;
-import edu.cmu.lti.ws4j.WS4J;
-import edu.cmu.lti.ws4j.impl.JiangConrath;
-import edu.cmu.lti.ws4j.util.WS4JConfiguration;
-import org.apache.commons.cli.*;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
+
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.CommandLineParser;
+import org.apache.commons.cli.HelpFormatter;
+import org.apache.commons.cli.OptionBuilder;
+import org.apache.commons.cli.Options;
+import org.apache.commons.cli.ParseException;
+import org.apache.commons.cli.PosixParser;
+
+import edu.cmu.lti.ws4j.WS4J;
 
 /**
  * Created by alan on 6/9/14.
@@ -54,7 +55,8 @@ public class CalculateCorrelation {
 
     }
 
-    public static void tauBetweenCSVandWordnet(File file, int threads){
+    public static void tauBetweenCSVandWordnet(File file, int threads){	
+    	
     	long start = System.nanoTime();
 
         final ArrayList<Double> measurementSimilarities  = new ArrayList<Double>();
@@ -68,23 +70,42 @@ public class CalculateCorrelation {
         }
         System.out.println("Similarities to add: "+lines.size());
         
-        ParallelForEach.loop(lines.subList(0, lines.size()), threads, new Procedure<String>() {
-            public void call(String line){
-                String[] column = line.split(",");
-                String word1 = column[0].replace("\"", "").replace(" ", "");
-                String word2 = column[1].replace("\"", "").replace(" ", "");
-                double jc = WS4J.runJCN(word1, word2);
-                double cc = Double.parseDouble(column[2]);
+        for(String line : lines.subList(0, lines.size())){
+        	
+            String[] column = line.split(",");
+            String word1 = column[0].replace("\"", "").replace(" ", "");
+            String word2 = column[1].replace("\"", "").replace(" ", "");
+            double jc = WS4J.runJCN(word1, word2);
+            double cc = Double.parseDouble(column[2]);
 
-                if(jc != 0){ // check that wordnet does have a result for this word pair
-                    synchronized (measurementSimilarities) {
-                                measurementSimilarities.add(cc);
-                                wordnetSimilarities.add(jc);
-                    }
+            if(jc != 0){ // check that wordnet does have a result for this word pair
+                synchronized (measurementSimilarities) {
+                            measurementSimilarities.add(cc);
+                            wordnetSimilarities.add(jc);
                 }
             }
-        });
+        	
+        }
+        
+//        ParallelForEach.loop(lines.subList(0, lines.size()), threads, new Procedure<String>() {
+//            public void call(String line){
+//                String[] column = line.split(",");
+//                String word1 = column[0].replace("\"", "").replace(" ", "");
+//                String word2 = column[1].replace("\"", "").replace(" ", "");
+//                double jc = WS4J.runJCN(word1, word2);
+//                double cc = Double.parseDouble(column[2]);
+//
+//                if(jc != 0){ // check that wordnet does have a result for this word pair
+//                    synchronized (measurementSimilarities) {
+//                                measurementSimilarities.add(cc);
+//                                wordnetSimilarities.add(jc);
+//                    }
+//                }
+//            }
+//        });
         System.out.println("Tau: "+KendallsCorrelation.correlation(measurementSimilarities, wordnetSimilarities));
+        
+        System.out.println("Time: "+ (System.nanoTime()-start) );
     }
     
     public static void tauBetweenCSVandWordnet(File file){
