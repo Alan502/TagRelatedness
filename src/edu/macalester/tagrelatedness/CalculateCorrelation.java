@@ -70,42 +70,26 @@ public class CalculateCorrelation {
         }
         System.out.println("Similarities to add: "+lines.size());
         
-        for(String line : lines.subList(0, lines.size())){
-        	
-            String[] column = line.split(",");
-            String word1 = column[0].replace("\"", "").replace(" ", "");
-            String word2 = column[1].replace("\"", "").replace(" ", "");
-            double jc = WS4J.runJCN(word1, word2);
-            double cc = Double.parseDouble(column[2]);
-
-            if(jc != 0){ // check that wordnet does have a result for this word pair
-                synchronized (measurementSimilarities) {
-                            measurementSimilarities.add(cc);
-                            wordnetSimilarities.add(jc);
-                }
-            }
-        	
-        }
         
-//        ParallelForEach.loop(lines.subList(0, lines.size()), threads, new Procedure<String>() {
-//            public void call(String line){
-//                String[] column = line.split(",");
-//                String word1 = column[0].replace("\"", "").replace(" ", "");
-//                String word2 = column[1].replace("\"", "").replace(" ", "");
-//                double jc = WS4J.runJCN(word1, word2);
-//                double cc = Double.parseDouble(column[2]);
-//
-//                if(jc != 0){ // check that wordnet does have a result for this word pair
-//                    synchronized (measurementSimilarities) {
-//                                measurementSimilarities.add(cc);
-//                                wordnetSimilarities.add(jc);
-//                    }
-//                }
-//            }
-//        });
+	   ParallelForEach.loop(lines.subList(0, lines.size()), threads, new Procedure<String>() {
+	   public void call(String line){
+	          String[] column = line.split(",");
+	          String word1 = column[0].replace("\"", "").replace(" ", "");
+	          String word2 = column[1].replace("\"", "").replace(" ", "");
+	          double jc = WS4J.runJCN(word1, word2);
+	          double cc = Double.parseDouble(column[2]);
+	
+	          if(jc != 0){ // check that wordnet does have a result for this word pair
+	              synchronized (measurementSimilarities) {
+	                          measurementSimilarities.add(cc);
+	                          wordnetSimilarities.add(jc);
+	              }
+	          }
+	      }
+	  });
+        
         System.out.println("Tau: "+KendallsCorrelation.correlation(measurementSimilarities, wordnetSimilarities));
         
-        System.out.println("Time: "+ (System.nanoTime()-start) );
     }
     
     public static void tauBetweenCSVandWordnet(File file){
